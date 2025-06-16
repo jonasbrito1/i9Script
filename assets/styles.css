@@ -1,0 +1,104 @@
+/* Reset básico para garantir consistência */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo e fontes */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1f1f1f;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Estilo para animações */
+.animate__animated.animate__fadeIn {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+header .logo {
+    width: 50px;
+    margin-right: 10px;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+/* Seções */
+section {
+    padding: 60px 20px;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+form input, form textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e67e22;
+}
+
+/* Rodapé */
+footer {
+    background-color: #0a2a3b;
+    color: #fff;
+    padding: 10px;
+}
