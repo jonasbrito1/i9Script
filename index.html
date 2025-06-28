@@ -1,10 +1,37 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="i9Script - Desenvolvimento de software, aplicativos, sites e automações inteligentes em Manaus, Amazonas. Inovação infinita em cada projeto.">
+    <meta name="keywords" content="desenvolvimento, software, aplicativos, sites, automação, Manaus, Amazonas, programação, tecnologia">
+    <meta name="author" content="i9Script">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="i9Script - Desenvolvimento & Automação">
+    <meta property="og:description" content="Transformamos suas ideias em soluções digitais inovadoras com a perfeição matemática do infinito.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://i9script.com">
+    <meta property="og:image" content="https://i9script.com/assets/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="i9Script - Desenvolvimento & Automação">
+    <meta name="twitter:description" content="Transformamos suas ideias em soluções digitais inovadoras com a perfeição matemática do infinito.">
+    
     <title>i9Script - Desenvolvimento & Automação</title>
+    
+    <!-- Font Awesome para ícones das redes sociais -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
     <style>
         * {
             margin: 0;
@@ -12,11 +39,15 @@
             box-sizing: border-box;
         }
 
+        /* Theme Variables */
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
             --secondary: #3b82f6;
             --accent: #60a5fa;
+            --gold: #FFD700;
+            --cyan: #00f5ff;
+            --red: #ff6b6b;
             --dark: #0f172a;
             --dark-light: #1e293b;
             --dark-medium: #334155;
@@ -26,20 +57,45 @@
             --white: #ffffff;
         }
 
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: rgba(15, 23, 42, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+            --input-bg: #f8fafc;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --card-bg: #1e293b;
+            --input-bg: #334155;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
+            color: var(--text-primary);
+            background: var(--bg-primary);
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Header */
         header {
-            position: fixed;
-            top: 0;
+            position: static;
             width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             transition: all 0.3s ease;
         }
@@ -56,10 +112,22 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 2px 8px rgba(0, 245, 255, 0.3));
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         .nav-links {
@@ -69,15 +137,15 @@
         }
 
         .nav-links a {
-            color: var(--white);
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             position: relative;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--cyan);
         }
 
         .nav-links a::after {
@@ -87,7 +155,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
             transition: width 0.3s ease;
         }
 
@@ -95,10 +163,39 @@
             width: 100%;
         }
 
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle.rotating .theme-icon {
+            transform: rotate(180deg);
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
             display: flex;
             align-items: center;
             position: relative;
@@ -111,7 +208,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="gradient" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%232563eb;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%232563eb;stop-opacity:0"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23gradient)"/><circle cx="800" cy="300" r="200" fill="url(%23gradient)"/><circle cx="600" cy="700" r="180" fill="url(%23gradient)"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="gradient1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%2300f5ff;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%2300f5ff;stop-opacity:0"/></radialGradient><radialGradient id="gradient2" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23FFD700;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%23FFD700;stop-opacity:0"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23gradient1)"/><circle cx="800" cy="300" r="200" fill="url(%23gradient2)"/><circle cx="600" cy="700" r="180" fill="url(%23gradient1)"/></svg>');
             animation: float 20s infinite ease-in-out;
         }
 
@@ -135,21 +232,27 @@
         .hero-text h1 {
             font-size: 3.5rem;
             font-weight: 800;
-            color: var(--white);
+            color: var(--text-primary);
             margin-bottom: 1.5rem;
             line-height: 1.1;
         }
 
         .hero-text .highlight {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         .hero-text p {
             font-size: 1.2rem;
-            color: var(--gray);
+            color: var(--text-secondary);
             margin-bottom: 2rem;
         }
 
@@ -173,24 +276,25 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--cyan), var(--primary));
             color: var(--white);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 245, 255, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--white);
-            border: 2px solid var(--primary);
+            color: var(--text-primary);
+            border: 2px solid var(--gold);
         }
 
         .btn-secondary:hover {
-            background: var(--primary);
+            background: var(--gold);
+            color: var(--dark);
             transform: translateY(-2px);
         }
 
@@ -201,11 +305,11 @@
         }
 
         .code-window {
-            background: var(--dark-light);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 1.5rem;
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 60px var(--shadow-color);
             position: relative;
             overflow: hidden;
         }
@@ -244,13 +348,219 @@
         }
 
         .code-text {
-            color: var(--white);
+            color: var(--text-primary);
         }
 
-        .keyword { color: #60a5fa; }
-        .string { color: #93c5fd; }
-        .function { color: #dbeafe; }
+        .keyword { color: var(--cyan); }
+        .string { color: var(--gold); }
+        .function { color: var(--accent); }
         .comment { color: var(--gray); }
+
+        /* Brand Analysis Section */
+        .brand-analysis {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-analysis::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 245, 255, 0.03), rgba(255, 215, 0, 0.03));
+            z-index: 1;
+        }
+
+        .brand-analysis .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-logo-main {
+            font-size: 4rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, var(--cyan), var(--gold), var(--red));
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .brand-tagline {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+        }
+
+        .letter-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .letter-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .letter-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--cyan);
+            box-shadow: 0 20px 40px rgba(0, 245, 255, 0.2);
+        }
+
+        .letter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .letter-card:hover::before {
+            left: 100%;
+        }
+
+        .letter-symbol {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .i-symbol { color: var(--cyan); }
+        .nine-symbol { color: var(--gold); animation: pulse 2s ease-in-out infinite; }
+        .script-symbol { color: var(--red); }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .letter-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .letter-meaning {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .letter-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .keyword-tag {
+            background: rgba(0, 245, 255, 0.2);
+            color: var(--cyan);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            font-weight: 500;
+        }
+
+        .keyword-tag.gold { 
+            background: rgba(255, 215, 0, 0.2); 
+            color: var(--gold); 
+            border-color: rgba(255, 215, 0, 0.3); 
+        }
+        .keyword-tag.red { 
+            background: rgba(255, 107, 107, 0.2); 
+            color: var(--red); 
+            border-color: rgba(255, 107, 107, 0.3); 
+        }
+
+        .synergy-section {
+            background: var(--bg-primary);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .synergy-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, var(--cyan), var(--gold));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .synergy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .synergy-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .synergy-item:hover {
+            transform: scale(1.05);
+            background: var(--bg-tertiary);
+        }
+
+        .synergy-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .nine-demo {
+            background: var(--bg-tertiary);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .nine-calculation {
+            font-family: 'Monaco', 'Menlo', monospace;
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
 
         /* Sections */
         section {
@@ -272,7 +582,7 @@
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--dark), var(--primary));
+            background: linear-gradient(135deg, var(--text-primary), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -280,12 +590,16 @@
 
         .section-header p {
             font-size: 1.1rem;
-            color: var(--gray);
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
         }
 
         /* Services */
+        .services {
+            background: var(--bg-primary);
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -293,13 +607,14 @@
         }
 
         .service-card {
-            background: var(--white);
+            background: var(--card-bg);
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px var(--shadow-color);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            border: 1px solid var(--border-color);
         }
 
         .service-card::before {
@@ -309,18 +624,18 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 60px var(--shadow-color);
         }
 
         .service-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--cyan), var(--primary));
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -334,11 +649,11 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .service-card p {
-            color: var(--gray);
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
 
@@ -347,7 +662,7 @@
         }
 
         .service-features li {
-            color: var(--gray);
+            color: var(--text-secondary);
             margin-bottom: 0.5rem;
             padding-left: 1.5rem;
             position: relative;
@@ -357,13 +672,13 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--primary);
+            color: var(--cyan);
             font-weight: bold;
         }
 
         /* Projects */
         .projects {
-            background: var(--light);
+            background: var(--bg-secondary);
         }
 
         .projects-grid {
@@ -373,21 +688,22 @@
         }
 
         .project-card {
-            background: var(--white);
+            background: var(--card-bg);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px var(--shadow-color);
             transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 60px var(--shadow-color);
         }
 
         .project-image {
             height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -415,11 +731,11 @@
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .project-content p {
-            color: var(--gray);
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
 
@@ -431,12 +747,13 @@
         }
 
         .tag {
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
+            background: rgba(0, 245, 255, 0.1);
+            color: var(--cyan);
             padding: 0.3rem 0.8rem;
             border-radius: 12px;
             font-size: 0.8rem;
             font-weight: 500;
+            border: 1px solid rgba(0, 245, 255, 0.2);
         }
 
         .project-links {
@@ -445,7 +762,7 @@
         }
 
         .project-link {
-            color: var(--primary);
+            color: var(--cyan);
             text-decoration: none;
             font-weight: 600;
             display: flex;
@@ -459,6 +776,10 @@
         }
 
         /* Tech Stack */
+        .tech {
+            background: var(--bg-primary);
+        }
+
         .tech-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -468,15 +789,16 @@
 
         .tech-item {
             padding: 1.5rem;
-            background: var(--white);
+            background: var(--card-bg);
             border-radius: 16px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px var(--shadow-color);
             transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
 
         .tech-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px var(--shadow-color);
         }
 
         .tech-icon {
@@ -486,13 +808,13 @@
 
         .tech-name {
             font-weight: 600;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         /* Contact */
         .contact {
-            background: var(--dark);
-            color: var(--white);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
         }
 
         .contact-content {
@@ -505,14 +827,14 @@
         .contact-info h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .contact-info p {
-            color: var(--gray);
+            color: var(--text-secondary);
             margin-bottom: 2rem;
         }
 
@@ -525,24 +847,26 @@
             align-items: center;
             gap: 1rem;
             margin-bottom: 1rem;
-            color: var(--white);
+            color: var(--text-primary);
         }
 
         .contact-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--cyan), var(--primary));
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.2rem;
+            color: var(--white);
         }
 
         .contact-form {
-            background: var(--dark-light);
+            background: var(--card-bg);
             padding: 2.5rem;
             border-radius: 20px;
-            border: 1px solid rgba(37, 99, 235, 0.2);
+            border: 1px solid var(--border-color);
         }
 
         .form-group {
@@ -553,32 +877,37 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
+            color: var(--text-primary);
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 1rem;
-            background: var(--dark);
-            border: 1px solid rgba(37, 99, 235, 0.3);
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            color: var(--white);
+            color: var(--text-primary);
             font-size: 1rem;
+            transition: border-color 0.3s ease;
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1);
         }
 
         /* Footer */
         footer {
-            background: var(--dark-light);
-            color: var(--white);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             text-align: center;
             padding: 2rem;
+            border-top: 1px solid var(--border-color);
         }
 
         .footer-content {
@@ -594,21 +923,281 @@
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(37, 99, 235, 0.2);
-            border-radius: 12px;
+            width: 55px;
+            height: 55px;
+            background: var(--bg-secondary);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
+            color: var(--text-primary);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--border-color);
+            font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
         }
 
         .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: transparent;
+        }
+
+        .social-link.email:hover {
+            background: linear-gradient(135deg, #ea4335, #fbbc05);
+            color: white;
+            box-shadow: 0 10px 30px rgba(234, 67, 53, 0.4);
+        }
+
+        .social-link.whatsapp:hover {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .social-link.instagram:hover {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            color: white;
+            box-shadow: 0 10px 30px rgba(131, 58, 180, 0.4);
+        }
+
+        .social-link.linkedin:hover {
+            background: linear-gradient(135deg, #0077b5, #00a0dc);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 119, 181, 0.4);
+        }
+
+        .social-link.github:hover {
+            background: linear-gradient(135deg, #333, #666);
+            color: white;
+            box-shadow: 0 10px 30px rgba(51, 51, 51, 0.4);
+        }
+
+        .social-link.telegram:hover {
+            background: linear-gradient(135deg, #0088cc, #00a1d6);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.4);
+        }
+
+        .social-link i {
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem;
+            z-index: 2000;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 -5px 20px var(--shadow-color);
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            color: var(--text-secondary);
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        .cookie-text a:hover {
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .cookie-btn-accept {
+            background: var(--cyan);
+            color: var(--white);
+        }
+
+        .cookie-btn-accept:hover {
             background: var(--primary);
+        }
+
+        .cookie-btn-decline {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .cookie-btn-decline:hover {
+            background: var(--bg-secondary);
+        }
+
+        .cookie-btn-settings {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .cookie-btn-settings:hover {
+            background: var(--bg-tertiary);
+        }
+
+        /* Cookie Modal */
+        .cookie-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cookie-modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 60px var(--shadow-color);
+        }
+
+        .cookie-modal h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .cookie-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .cookie-option input[type="checkbox"] {
+            accent-color: var(--cyan);
+        }
+
+        .cookie-modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--cyan), var(--primary));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 245, 255, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.5);
+        }
+
+        /* Cookie Settings Button */
+        .cookie-settings-btn {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 1000;
+            box-shadow: 0 5px 20px var(--shadow-color);
+        }
+
+        .cookie-settings-btn:hover {
+            background: var(--bg-secondary);
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--shadow-color);
         }
 
         /* Responsive */
@@ -617,13 +1206,26 @@
                 display: none;
             }
 
+            .nav-container {
+                gap: 1rem;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
             }
 
             .hero-text h1 {
                 font-size: 2.5rem;
+            }
+
+            .brand-logo-main {
+                font-size: 2.5rem;
+            }
+
+            .letter-breakdown {
+                grid-template-columns: 1fr;
             }
 
             .contact-content {
@@ -632,6 +1234,40 @@
 
             .cta-buttons {
                 flex-direction: column;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-buttons {
+                justify-content: center;
+            }
+
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.1rem;
+            }
+
+            .cookie-settings-btn {
+                bottom: 1.5rem;
+                left: 1.5rem;
+                padding: 0.7rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .cookie-settings-btn .cookie-text {
+                display: none;
+            }
+
+            .social-link {
+                width: 48px;
+                height: 48px;
+                font-size: 1.1rem;
             }
         }
 
@@ -657,13 +1293,19 @@
     <header>
         <nav>
             <div class="logo">i9Script</div>
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#services">Serviços</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#tech">Tecnologias</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#brand">Nossa Marca</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#tech">Tecnologias</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -692,15 +1334,15 @@
                         </div>
                         <div class="code-line">
                             <span class="line-number">2</span>
-                            <span class="code-text">  <span class="string">'mission'</span>: <span class="string">'Inovar sempre'</span>,</span>
+                            <span class="code-text">  <span class="string">'innovation'</span>: <span class="string">'infinita'</span>,</span>
                         </div>
                         <div class="code-line">
                             <span class="line-number">3</span>
-                            <span class="code-text">  <span class="string">'focus'</span>: <span class="string">'Qualidade'</span>,</span>
+                            <span class="code-text">  <span class="string">'perfection'</span>: <span class="string">9</span>,</span>
                         </div>
                         <div class="code-line">
                             <span class="line-number">4</span>
-                            <span class="code-text">  <span class="string">'result'</span>: <span class="string">'Sucesso'</span></span>
+                            <span class="code-text">  <span class="string">'result'</span>: <span class="string">'excelência'</span></span>
                         </div>
                         <div class="code-line">
                             <span class="line-number">5</span>
@@ -716,17 +1358,111 @@
         </div>
     </section>
 
+    <section id="brand" class="brand-analysis">
+        <div class="container">
+            <div class="brand-logo-main">i9Script</div>
+            <div class="brand-tagline">Inovação Infinita em Cada Linha de Código</div>
+            
+            <div class="letter-breakdown">
+                <div class="letter-card loading">
+                    <span class="letter-symbol i-symbol">i</span>
+                    <h3 class="letter-title">Inovação</h3>
+                    <p class="letter-meaning">
+                        O "i" minúsculo representa humildade e acessibilidade, mas também é o símbolo universal da informação e inteligência. Em tecnologia, o "i" remete a Interactive, Intelligent, Innovative.
+                    </p>
+                    <div class="letter-keywords">
+                        <span class="keyword-tag">Inovação</span>
+                        <span class="keyword-tag">Inteligência</span>
+                        <span class="keyword-tag">Interativo</span>
+                        <span class="keyword-tag">Informação</span>
+                        <span class="keyword-tag">Interface</span>
+                    </div>
+                </div>
+
+                <div class="letter-card loading">
+                    <span class="letter-symbol nine-symbol">9</span>
+                    <h3 class="letter-title">Infinito & Excelência</h3>
+                    <p class="letter-meaning">
+                        O número 9 é o verdadeiro símbolo do infinito matemático. Multiplicado por qualquer número, sempre retorna a 9 (pela soma dos dígitos). Representa completude, totalidade e ciclos infinitos de excelência.
+                    </p>
+                    <div class="letter-keywords">
+                        <span class="keyword-tag gold">Infinito</span>
+                        <span class="keyword-tag gold">Perfeição</span>
+                        <span class="keyword-tag gold">Completude</span>
+                        <span class="keyword-tag gold">Totalidade</span>
+                        <span class="keyword-tag gold">Excelência</span>
+                    </div>
+                    <div class="nine-demo">
+                        <h4 style="color: var(--gold); margin-bottom: 1rem;">Demonstração da Propriedade do 9</h4>
+                        <div class="nine-calculation" id="nineDemo">9 × 1 = 9 → 9</div>
+                    </div>
+                </div>
+
+                <div class="letter-card loading">
+                    <span class="letter-symbol script-symbol">Script</span>
+                    <h3 class="letter-title">Código & Automação</h3>
+                    <p class="letter-meaning">
+                        "Script" é a essência da programação - códigos que automatizam, simplificam e resolvem problemas. Representa a capacidade de transformar ideias complexas em soluções práticas e eficientes.
+                    </p>
+                    <div class="letter-keywords">
+                        <span class="keyword-tag red">Automação</span>
+                        <span class="keyword-tag red">Programação</span>
+                        <span class="keyword-tag red">Eficiência</span>
+                        <span class="keyword-tag red">Solução</span>
+                        <span class="keyword-tag red">Desenvolvimento</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="synergy-section loading">
+                <h2 class="synergy-title">A Sinergia Perfeita</h2>
+                <div class="synergy-grid">
+                    <div class="synergy-item">
+                        <span class="synergy-icon">🚀</span>
+                        <h3>Inovação Contínua</h3>
+                        <p>O "i" garante que cada projeto seja uma nova fronteira tecnológica</p>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="synergy-icon">♾️</span>
+                        <h3>Possibilidades Infinitas</h3>
+                        <p>O "9" representa que não há limites para o que pode ser criado</p>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="synergy-icon">⚡</span>
+                        <h3>Execução Perfeita</h3>
+                        <p>"Script" transforma ideias em realidade digital tangível</p>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="synergy-icon">🔄</span>
+                        <h3>Automação Inteligente</h3>
+                        <p>Sistemas que trabalham 24/7 com precisão matemática</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--bg-tertiary); border-radius: 20px; padding: 3rem; margin: 3rem 0; text-align: center; border: 1px solid var(--border-color);" class="loading">
+                <h3 style="color: var(--cyan); margin-bottom: 1rem; font-size: 1.8rem;">Filosofia da Marca</h3>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);">
+                    <strong style="color: var(--gold);">i9Script</strong> não é apenas uma empresa de tecnologia - é a manifestação da inovação infinita. 
+                    Onde o "i" de inovação encontra o "9" da perfeição matemática, nascem scripts que transcendem 
+                    o código comum para se tornarem soluções extraordinárias. Cada projeto é um ciclo completo de 
+                    excelência que sempre retorna ao seu estado perfeito, assim como o número 9.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section id="services" class="services">
         <div class="container">
             <div class="section-header loading">
                 <h2>Nossos Serviços</h2>
-                <p>Oferecemos soluções completas e personalizadas para atender todas as suas necessidades digitais.</p>
+                <p>Oferecemos soluções completas e personalizadas para atender todas as suas necessidades digitais com a precisão matemática do infinito.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card loading">
                     <div class="service-icon">💻</div>
                     <h3>Desenvolvimento Web</h3>
-                    <p>Sites modernos, responsivos e otimizados para performance e SEO.</p>
+                    <p>Sites modernos, responsivos e otimizados para performance e SEO com design baseado na proporção áurea.</p>
                     <ul class="service-features">
                         <li>Sites institucionais</li>
                         <li>E-commerce</li>
@@ -737,7 +1473,7 @@
                 <div class="service-card loading">
                     <div class="service-icon">📱</div>
                     <h3>Aplicativos Mobile</h3>
-                    <p>Apps nativos e híbridos para iOS e Android com excelente UX.</p>
+                    <p>Apps nativos e híbridos para iOS e Android com excelente UX e performance infinita.</p>
                     <ul class="service-features">
                         <li>Apps nativos</li>
                         <li>React Native</li>
@@ -747,8 +1483,8 @@
                 </div>
                 <div class="service-card loading">
                     <div class="service-icon">🤖</div>
-                    <h3>Automações</h3>
-                    <p>Automação de processos para aumentar produtividade e reduzir custos.</p>
+                    <h3>Automações Inteligentes</h3>
+                    <p>Automação de processos para aumentar produtividade e reduzir custos com eficiência do número 9.</p>
                     <ul class="service-features">
                         <li>Bots e chatbots</li>
                         <li>Integração de APIs</li>
@@ -759,7 +1495,7 @@
                 <div class="service-card loading">
                     <div class="service-icon">☁️</div>
                     <h3>Cloud & DevOps</h3>
-                    <p>Infraestrutura moderna na nuvem com deploy automatizado.</p>
+                    <p>Infraestrutura moderna na nuvem com deploy automatizado e escalabilidade infinita.</p>
                     <ul class="service-features">
                         <li>AWS / Azure / GCP</li>
                         <li>CI/CD</li>
@@ -770,7 +1506,7 @@
                 <div class="service-card loading">
                     <div class="service-icon">🔍</div>
                     <h3>Análise de Dados</h3>
-                    <p>Insights valiosos através de análise inteligente de dados.</p>
+                    <p>Insights valiosos através de análise inteligente de dados com precisão matemática.</p>
                     <ul class="service-features">
                         <li>Dashboard analytics</li>
                         <li>Business Intelligence</li>
@@ -781,7 +1517,7 @@
                 <div class="service-card loading">
                     <div class="service-icon">🛡️</div>
                     <h3>Segurança Digital</h3>
-                    <p>Proteção completa para seus sistemas e dados empresariais.</p>
+                    <p>Proteção completa para seus sistemas e dados empresariais com monitoramento contínuo.</p>
                     <ul class="service-features">
                         <li>Auditoria de segurança</li>
                         <li>Testes de penetração</li>
@@ -797,19 +1533,20 @@
         <div class="container">
             <div class="section-header loading">
                 <h2>Projetos em Destaque</h2>
-                <p>Conheça alguns dos projetos que desenvolvemos e que estão transformando negócios.</p>
+                <p>Conheça alguns dos projetos que desenvolvemos e que estão transformando negócios com inovação infinita.</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card loading">
                     <div class="project-image">🛒</div>
                     <div class="project-content">
-                        <h3>E-commerce Moderno</h3>
-                        <p>Plataforma completa de vendas online com painel administrativo, sistema de pagamentos e analytics avançados.</p>
+                        <h3>E-commerce Inteligente</h3>
+                        <p>Plataforma completa de vendas online com IA integrada, painel administrativo, sistema de pagamentos e analytics avançados baseados na proporção áurea.</p>
                         <div class="project-tags">
                             <span class="tag">React</span>
                             <span class="tag">Node.js</span>
                             <span class="tag">PostgreSQL</span>
                             <span class="tag">Stripe</span>
+                            <span class="tag">AI/ML</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link">Ver Demo</a>
@@ -820,13 +1557,32 @@
                 <div class="project-card loading">
                     <div class="project-image">🏥</div>
                     <div class="project-content">
-                        <h3>Sistema Hospitalar</h3>
-                        <p>Plataforma completa para gestão hospitalar com prontuário eletrônico e agendamento online.</p>
+                        <h3>Sistema Hospitalar 9.0</h3>
+                        <p>Plataforma completa para gestão hospitalar com prontuário eletrônico, agendamento online e automações inteligentes para otimização de processos.</p>
                         <div class="project-tags">
                             <span class="tag">Angular</span>
                             <span class="tag">.NET Core</span>
                             <span class="tag">SQL Server</span>
                             <span class="tag">Azure</span>
+                            <span class="tag">Automação</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Ver Demo</a>
+                            <a href="#" class="project-link">Código</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card loading">
+                    <div class="project-image">📊</div>
+                    <div class="project-content">
+                        <h3>Dashboard Analytics Infinito</h3>
+                        <p>Sistema de business intelligence com análise em tempo real, machine learning e visualizações baseadas na sequência de Fibonacci.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">D3.js</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">Redis</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link">Ver Demo</a>
@@ -842,7 +1598,7 @@
         <div class="container">
             <div class="section-header loading">
                 <h2>Tecnologias que Dominamos</h2>
-                <p>Utilizamos as tecnologias mais modernas e eficientes do mercado para criar soluções robustas.</p>
+                <p>Utilizamos as tecnologias mais modernas e eficientes do mercado para criar soluções robustas com a perfeição do número 9.</p>
             </div>
             <div class="tech-grid">
                 <div class="tech-item loading">
@@ -871,6 +1627,22 @@
                 </div>
                 <div class="tech-item loading">
                     <div class="tech-icon">🐘</div>
+                    <div class="tech-name">PHP</div>
+                </div>
+                <div class="tech-item loading">
+                    <div class="tech-icon">🅻</div>
+                    <div class="tech-name">Laravel</div>
+                </div>
+                <div class="tech-item loading">
+                    <div class="tech-icon">🐬</div>
+                    <div class="tech-name">MySQL</div>
+                </div>
+                <div class="tech-item loading">
+                    <div class="tech-icon">🎯</div>
+                    <div class="tech-name">Django</div>
+                </div>
+                <div class="tech-item loading">
+                    <div class="tech-icon">🐘</div>
                     <div class="tech-name">PostgreSQL</div>
                 </div>
                 <div class="tech-item loading">
@@ -880,10 +1652,6 @@
                 <div class="tech-item loading">
                     <div class="tech-icon">☁️</div>
                     <div class="tech-name">AWS</div>
-                </div>
-                <div class="tech-item loading">
-                    <div class="tech-icon">🐳</div>
-                    <div class="tech-name">Docker</div>
                 </div>
                 <div class="tech-item loading">
                     <div class="tech-icon">🔥</div>
@@ -901,32 +1669,45 @@
         <div class="container">
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Vamos Conversar?</h3>
-                    <p>Pronto para transformar sua ideia em realidade? Entre em contato conosco e vamos criar algo incrível juntos!</p>
+                    <h3>Vamos Criar Algo Infinito Juntos?</h3>
+                    <p>Pronto para transformar sua ideia em realidade com a precisão matemática do número 9? Entre em contato conosco e vamos criar algo extraordinário que sempre retorna à perfeição!</p>
                     <ul class="contact-methods">
                         <li>
-                            <div class="contact-icon">📧</div>
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
                             <div>
                                 <strong>Email</strong><br>
                                 contato@i9script.com
                             </div>
                         </li>
                         <li>
-                            <div class="contact-icon">📱</div>
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
                             <div>
                                 <strong>WhatsApp</strong><br>
-                                +55 (11) 99999-9999
+                                <a href="https://wa.me/5592999999999?text=Olá! Gostaria de saber mais sobre os serviços da i9Script." 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   style="color: var(--cyan); text-decoration: none;">
+                                   +55 (92) 99999-9999
+                                </a>
                             </div>
                         </li>
                         <li>
-                            <div class="contact-icon">📍</div>
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
                             <div>
                                 <strong>Localização</strong><br>
                                 Manaus, Amazonas - BR
                             </div>
                         </li>
                         <li>
-                            <div class="contact-icon">⏰</div>
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
                             <div>
                                 <strong>Horário</strong><br>
                                 Seg-Sex: 9h às 18h
@@ -946,22 +1727,23 @@
                         </div>
                         <div class="form-group">
                             <label for="project">Tipo de Projeto</label>
-                            <select id="project" name="project" style="width: 100%; padding: 1rem; background: var(--dark); border: 1px solid rgba(37, 99, 235, 0.3); border-radius: 12px; color: var(--white); font-size: 1rem;">
+                            <select id="project" name="project" required>
                                 <option value="">Selecione o tipo de projeto</option>
                                 <option value="website">Website/Landing Page</option>
                                 <option value="ecommerce">E-commerce</option>
                                 <option value="app">Aplicativo Mobile</option>
                                 <option value="automation">Automação</option>
                                 <option value="system">Sistema Web</option>
+                                <option value="ai">Inteligência Artificial</option>
                                 <option value="other">Outro</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="message">Mensagem</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Conte-nos sobre seu projeto..."></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita..."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            Enviar Mensagem
+                            Enviar Mensagem ∞
                         </button>
                     </form>
                 </div>
@@ -972,19 +1754,365 @@
     <footer>
         <div class="footer-content">
             <div class="social-links">
-                <a href="#" class="social-link">📧</a>
-                <a href="#" class="social-link">💬</a>
-                <a href="#" class="social-link">🐙</a>
-                <a href="#" class="social-link">💼</a>
+                <a href="mailto:contato@i9script.com" 
+                   class="social-link email" 
+                   aria-label="Enviar email para i9Script"
+                   rel="noopener noreferrer">
+                   <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/5592999999999?text=Olá! Gostaria de saber mais sobre os serviços da i9Script." 
+                   class="social-link whatsapp" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Conversar no WhatsApp">
+                   <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/i9.script/" 
+                   class="social-link instagram" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Seguir no Instagram">
+                   <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/i9script" 
+                   class="social-link linkedin" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Conectar no LinkedIn">
+                   <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/i9script" 
+                   class="social-link github" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Ver projetos no GitHub">
+                   <i class="fab fa-github"></i>
+                </a>
+                <a href="https://t.me/i9script" 
+                   class="social-link telegram" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Conversar no Telegram">
+                   <i class="fab fa-telegram-plane"></i>
+                </a>
             </div>
             <p>&copy; 2025 i9Script. Todos os direitos reservados.</p>
-            <p>Desenvolvido com ❤️ em Manaus, Amazonas</p>
+            <p>Desenvolvido com ❤️ e matemática em Manaus, Amazonas</p>
+            <p style="color: var(--gold); margin-top: 1rem;">9 × ∞ = Inovação Perpétua</p>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Voltar ao topo">
+        ↑
+    </button>
+
+    <!-- Cookie Settings Button -->
+    <button class="cookie-settings-btn" onclick="showCookieSettings()" aria-label="Configurações de Cookies">
+        <i class="fas fa-cookie-bite" style="font-size: 1.1rem; color: var(--gold);"></i>
+        <span class="cookie-text">Cookies</span>
+    </button>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                🍪 Utilizamos cookies para melhorar sua experiência de navegação e personalizar conteúdo. 
+                Ao continuar navegando, você concorda com nossa 
+                <a href="#" onclick="showCookiePolicy()">Política de Cookies</a> e 
+                <a href="#" onclick="showPrivacyPolicy()">Política de Privacidade</a>.
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">
+                    Aceitar Todos
+                </button>
+                <button class="cookie-btn cookie-btn-settings" onclick="showCookieSettings()">
+                    Configurar
+                </button>
+                <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()">
+                    Recusar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div class="cookie-modal" id="cookieModal">
+        <div class="cookie-modal-content">
+            <h3>Configurações de Cookies</h3>
+            <div style="margin-bottom: 1.5rem;">
+                <div class="cookie-option">
+                    <input type="checkbox" id="essentialCookies" checked disabled>
+                    <label for="essentialCookies">Cookies Essenciais (obrigatórios)</label>
+                </div>
+                <div class="cookie-option">
+                    <input type="checkbox" id="analyticsCookies">
+                    <label for="analyticsCookies">Cookies de Análise</label>
+                </div>
+                <div class="cookie-option">
+                    <input type="checkbox" id="marketingCookies">
+                    <label for="marketingCookies">Cookies de Marketing</label>
+                </div>
+            </div>
+            <div class="cookie-modal-buttons">
+                <button class="cookie-btn cookie-btn-decline" onclick="closeCookieModal()">Cancelar</button>
+                <button class="cookie-btn cookie-btn-accept" onclick="saveCookieSettings()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Smooth scrolling animation
+        // Initialize theme
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+
+        // Theme Management
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('.theme-icon');
+        
+        function updateThemeIcon(theme) {
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Set initial icon
+        updateThemeIcon(document.documentElement.getAttribute('data-theme'));
+
+        themeToggle.addEventListener('click', () => {
+            themeToggle.classList.add('rotating');
+            
+            setTimeout(() => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+                
+                themeToggle.classList.remove('rotating');
+            }, 150);
+        });
+
+        // Security functions
+        function sanitizeInput(input) {
+            const div = document.createElement('div');
+            div.textContent = input;
+            return div.innerHTML;
+        }
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validateForm(formData) {
+            const errors = [];
+            
+            if (!formData.name || formData.name.trim().length < 2) {
+                errors.push('Nome deve ter pelo menos 2 caracteres');
+            }
+            
+            if (!validateEmail(formData.email)) {
+                errors.push('Email inválido');
+            }
+            
+            if (!formData.project) {
+                errors.push('Selecione um tipo de projeto');
+            }
+            
+            if (!formData.message || formData.message.trim().length < 10) {
+                errors.push('Mensagem deve ter pelo menos 10 caracteres');
+            }
+            
+            return errors;
+        }
+
+        function preventXSS() {
+            // Remove any potential script injections from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.forEach((value, key) => {
+                if (/<script|javascript:|data:/i.test(value)) {
+                    console.warn('Potential XSS attempt detected and blocked');
+                    urlParams.delete(key);
+                }
+            });
+        }
+
+        // Rate limiting for form submissions
+        let lastSubmission = 0;
+        const SUBMISSION_COOLDOWN = 30000; // 30 seconds
+
+        function checkRateLimit() {
+            const now = Date.now();
+            if (now - lastSubmission < SUBMISSION_COOLDOWN) {
+                const remainingTime = Math.ceil((SUBMISSION_COOLDOWN - (now - lastSubmission)) / 1000);
+                throw new Error(`Aguarde ${remainingTime} segundos antes de enviar novamente`);
+            }
+            lastSubmission = now;
+        }
+
+        // Content Security Policy violation reporting
+        window.addEventListener('securitypolicyviolation', (e) => {
+            console.warn('CSP Violation:', e.violatedDirective, e.blockedURI);
+        });
+
+        // Back to Top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide back to top button based on scroll position
+        function toggleBackToTop() {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        }
+
+        // Cookie Management
+        function showCookieBanner() {
+            const banner = document.getElementById('cookieBanner');
+            if (!localStorage.getItem('cookieConsent')) {
+                setTimeout(() => {
+                    banner.classList.add('show');
+                }, 2000);
+            }
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookieBanner');
+            banner.classList.remove('show');
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            localStorage.setItem('analyticsCookies', 'true');
+            localStorage.setItem('marketingCookies', 'true');
+            hideCookieBanner();
+            console.log('🍪 Todos os cookies foram aceitos');
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            localStorage.setItem('analyticsCookies', 'false');
+            localStorage.setItem('marketingCookies', 'false');
+            hideCookieBanner();
+            console.log('🚫 Cookies opcionais foram recusados');
+        }
+
+        function showCookieSettings() {
+            const modal = document.getElementById('cookieModal');
+            modal.style.display = 'flex';
+            
+            // Load current settings
+            document.getElementById('analyticsCookies').checked = localStorage.getItem('analyticsCookies') === 'true';
+            document.getElementById('marketingCookies').checked = localStorage.getItem('marketingCookies') === 'true';
+        }
+
+        function closeCookieModal() {
+            const modal = document.getElementById('cookieModal');
+            modal.style.display = 'none';
+        }
+
+        function saveCookieSettings() {
+            const analytics = document.getElementById('analyticsCookies').checked;
+            const marketing = document.getElementById('marketingCookies').checked;
+            
+            localStorage.setItem('cookieConsent', 'configured');
+            localStorage.setItem('analyticsCookies', analytics.toString());
+            localStorage.setItem('marketingCookies', marketing.toString());
+            
+            closeCookieModal();
+            hideCookieBanner();
+            
+            console.log('⚙️ Configurações de cookies salvas:', {
+                analytics: analytics,
+                marketing: marketing
+            });
+        }
+
+        function showCookiePolicy() {
+            alert(`POLÍTICA DE COOKIES - i9Script
+
+Utilizamos cookies para:
+
+🔧 COOKIES ESSENCIAIS (obrigatórios):
+- Manter suas preferências de tema
+- Lembrar suas configurações de cookies
+- Garantir o funcionamento básico do site
+
+📊 COOKIES DE ANÁLISE (opcionais):
+- Entender como você navega no site
+- Melhorar a experiência do usuário
+- Analisar o desempenho das páginas
+
+📢 COOKIES DE MARKETING (opcionais):
+- Personalizar conteúdo relevante
+- Medir eficácia de campanhas
+- Oferecer experiências personalizadas
+
+Você pode gerenciar suas preferências a qualquer momento através do botão de configurações de cookies.`);
+        }
+
+        function showPrivacyPolicy() {
+            alert(`POLÍTICA DE PRIVACIDADE - i9Script
+
+Respeitamos sua privacidade e protegemos seus dados:
+
+🛡️ COLETA DE DADOS:
+- Coletamos apenas dados necessários para nossos serviços
+- Informações de contato quando você nos envia mensagens
+- Dados de navegação para melhorar a experiência
+
+🔒 PROTEÇÃO:
+- Utilizamos criptografia para proteger dados sensíveis
+- Não vendemos suas informações para terceiros
+- Armazenamento seguro em servidores confiáveis
+
+📧 SEUS DIREITOS:
+- Solicitar acesso aos seus dados
+- Corrigir informações incorretas
+- Excluir seus dados (direito ao esquecimento)
+
+Contato: contato@i9script.com`);
+        }
+
+        // Demonstração automática da propriedade do 9
+        let counter = 1;
+        function demonstrateNine() {
+            const demoElement = document.getElementById('nineDemo');
+            if (demoElement && counter <= 15) {
+                const result = 9 * counter;
+                let digitSum = result.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+                
+                // Reduzir até chegar a um dígito
+                while (digitSum > 9) {
+                    digitSum = digitSum.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+                }
+                
+                demoElement.textContent = `9 × ${counter} = ${result} → ${digitSum}`;
+                counter++;
+                
+                if (counter > 15) {
+                    counter = 1; // Reinicia o ciclo
+                }
+            }
+        }
+
+        // Executa a demonstração a cada 2 segundos
+        setInterval(demonstrateNine, 2000);
+
+        // Main initialization
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize security measures
+            preventXSS();
+            
+            // Show cookie banner if needed
+            showCookieBanner();
+
             // Animate elements on scroll
             const observerOptions = {
                 threshold: 0.1,
@@ -1004,54 +2132,76 @@
                 observer.observe(el);
             });
 
-            // Header background on scroll
-            window.addEventListener('scroll', () => {
-                const header = document.querySelector('header');
-                if (window.scrollY > 100) {
-                    header.style.background = 'rgba(15, 23, 42, 0.98)';
-                } else {
-                    header.style.background = 'rgba(15, 23, 42, 0.95)';
-                }
-            });
-
-            // Form submission
+            // Form submission with security
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Get form data
-                const formData = new FormData(this);
-                const data = Object.fromEntries(formData);
-                
-                // Simulate form submission
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                
-                submitBtn.textContent = 'Enviando...';
-                submitBtn.disabled = true;
-                
-                // Simulate API call
-                setTimeout(() => {
-                    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-                    this.reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 2000);
+                try {
+                    // Check rate limiting
+                    checkRateLimit();
+                    
+                    // Get and sanitize form data
+                    const formData = new FormData(this);
+                    const data = {};
+                    
+                    for (let [key, value] of formData.entries()) {
+                        data[key] = sanitizeInput(value.toString().trim());
+                    }
+                    
+                    // Validate form data
+                    const errors = validateForm(data);
+                    if (errors.length > 0) {
+                        alert('Erros encontrados:\n' + errors.join('\n'));
+                        return;
+                    }
+                    
+                    // Check if analytics cookies are accepted
+                    const analyticsAccepted = localStorage.getItem('analyticsCookies') === 'true';
+                    if (analyticsAccepted) {
+                        console.log('📊 Dados de formulário para análise:', {
+                            project: data.project,
+                            timestamp: new Date().toISOString(),
+                            userAgent: navigator.userAgent.substring(0, 100) // Limited for privacy
+                        });
+                    }
+                    
+                    // Simulate form submission
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    
+                    submitBtn.textContent = 'Enviando... ⚡';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate API call with security headers
+                    setTimeout(() => {
+                        alert('Mensagem enviada com sucesso! Entraremos em contato em breve para começar sua jornada infinita de inovação! 🚀');
+                        this.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 2000);
+                    
+                } catch (error) {
+                    alert(error.message);
+                }
             });
 
-            // Parallax effect for hero background
+            // Parallax effect for hero background and back to top button
             window.addEventListener('scroll', () => {
                 const scrolled = window.pageYOffset;
                 const heroBg = document.querySelector('.hero-bg');
                 if (heroBg) {
-                    heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+                    heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
                 }
+                
+                // Toggle back to top button
+                toggleBackToTop();
             });
 
             // Typing effect for code window
             const codeLines = document.querySelectorAll('.code-line');
             codeLines.forEach((line, index) => {
                 line.style.opacity = '0';
-                line.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.2}s`;
+                line.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.3}s`;
             });
 
             // Add CSS animation for typing effect
@@ -1070,11 +2220,14 @@
             `;
             document.head.appendChild(style);
 
-            // Project card hover effects
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
+            // Brand card hover effects with mathematical precision
+            const letterCards = document.querySelectorAll('.letter-card');
+            letterCards.forEach((card, index) => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    // Aplicar transformação baseada na proporção áurea
+                    const goldenRatio = 1.618;
+                    const scale = 1 + (0.05 * goldenRatio);
+                    this.style.transform = `translateY(-${10 * goldenRatio}px) scale(${scale})`;
                 });
                 
                 card.addEventListener('mouseleave', function() {
@@ -1082,17 +2235,32 @@
                 });
             });
 
-            // Service card animations
+            // Project card hover effects
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Service card animations with stagger effect
             const serviceCards = document.querySelectorAll('.service-card');
             serviceCards.forEach((card, index) => {
                 card.style.animationDelay = `${index * 0.1}s`;
             });
 
-            // Tech stack hover effects
+            // Tech stack hover effects with rotation based on golden angle
             const techItems = document.querySelectorAll('.tech-item');
-            techItems.forEach(item => {
+            const goldenAngle = 137.5; // Golden angle in degrees
+            
+            techItems.forEach((item, index) => {
                 item.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px) rotate(5deg)';
+                    const rotation = (goldenAngle * (index % 4)) / 10; // Subtle rotation
+                    this.style.transform = `translateY(-8px) rotate(${rotation}deg)`;
                 });
                 
                 item.addEventListener('mouseleave', function() {
@@ -1100,19 +2268,62 @@
                 });
             });
 
-            // Mobile menu toggle (for future implementation)
-            // const mobileMenuBtn = document.createElement('button');
-            // mobileMenuBtn.innerHTML = '☰';
-            // mobileMenuBtn.className = 'mobile-menu-btn';
-            // document.querySelector('nav').appendChild(mobileMenuBtn);
+            // Easter egg: Console log demonstrating the infinite property of 9
+            console.log('🚀 i9Script - Demonstração da Propriedade Infinita do 9:');
+            for (let i = 1; i <= 20; i++) {
+                const result = 9 * i;
+                let digitSum = result.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+                while (digitSum > 9) {
+                    digitSum = digitSum.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+                }
+                console.log(`9 × ${i} = ${result} → ${digitSum} (sempre 9!)`);
+            }
+            console.log('♾️ Isso é matemática infinita em ação!');
+            
+            // Theme information
+            console.log('🎨 Tema atual:', document.documentElement.getAttribute('data-theme'));
+            console.log('🍪 Status dos cookies:', {
+                consent: localStorage.getItem('cookieConsent'),
+                analytics: localStorage.getItem('analyticsCookies'),
+                marketing: localStorage.getItem('marketingCookies')
+            });
         });
 
-        // Utility function for smooth scrolling to sections
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth'
+        // Smooth navigation with security
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // Validate target ID to prevent XSS
+                if (!/^#[a-zA-Z][\w-]*$/.test(targetId)) {
+                    console.warn('Invalid anchor target detected');
+                    return;
+                }
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
-        }
+        });
+
+        // Secure external link handling
+        document.querySelectorAll('a[target="_blank"]').forEach(link => {
+            if (!link.hasAttribute('rel')) {
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+
+        // Close cookie modal when clicking outside
+        document.getElementById('cookieModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCookieModal();
+            }
+        });
 
         // Performance optimization - debounce scroll events
         function debounce(func, wait) {
@@ -1129,7 +2340,7 @@
 
         // Apply debounce to scroll events
         window.addEventListener('scroll', debounce(() => {
-            // Scroll-based animations here
+            toggleBackToTop();
         }, 10));
     </script>
 </body>
