@@ -29,8 +29,16 @@
     
     <title>i9Script - Desenvolvimento & Automação</title>
     
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300f5ff;stop-opacity:1' /><stop offset='100%25' style='stop-color:%23FFD700;stop-opacity:1' /></linearGradient></defs><text x='50' y='65' font-family='Orbitron,sans-serif' font-size='60' font-weight='800' text-anchor='middle' fill='url(%23grad)'>i9</text></svg>" type="image/svg+xml">
+    
     <!-- Font Awesome para ícones das redes sociais -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Google Fonts para Orbitron (usada no favicon e logo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -107,9 +115,11 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 1rem 2rem;
+            position: relative;
         }
 
         .logo {
+            font-family: 'Orbitron', 'Inter', sans-serif;
             font-size: 1.8rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--cyan), var(--gold));
@@ -117,6 +127,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             transition: all 0.3s ease;
+            z-index: 1002;
         }
 
         .logo:hover {
@@ -134,6 +145,7 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            transition: all 0.3s ease;
         }
 
         .nav-links a {
@@ -142,6 +154,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav-links a:hover {
@@ -161,6 +174,47 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1002;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            color: var(--cyan);
+            transform: scale(1.1);
+        }
+
+        /* Mobile Navigation */
+        .nav-links.mobile-open {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--bg-primary);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            z-index: 1001;
+            backdrop-filter: blur(10px);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .nav-links.mobile-open a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1rem;
         }
 
         /* Theme Toggle */
@@ -1178,96 +1232,396 @@
         /* Cookie Settings Button */
         .cookie-settings-btn {
             position: fixed;
-            bottom: 2rem;
-            left: 2rem;
+            bottom: 1.5rem;
+            left: 1.5rem;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 0.8rem 1.2rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
             transition: all 0.3s ease;
-            color: var(--text-primary);
+            color: var(--text-secondary);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
             z-index: 1000;
-            box-shadow: 0 5px 20px var(--shadow-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            opacity: 0.7;
         }
 
         .cookie-settings-btn:hover {
             background: var(--bg-secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px var(--shadow-color);
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 5px 15px var(--shadow-color);
+            opacity: 1;
+            color: var(--gold);
         }
 
-        /* Responsive */
+        .cookie-settings-btn i {
+            font-size: 0.9rem;
+        }
+
+        .cookie-text {
+            display: none;
+        }
+
+        /* Responsive Breakpoints */
+        
+        /* Extra Large Screens */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .hero-text h1 {
+                font-size: 4rem;
+            }
+            
+            .brand-logo-main {
+                font-size: 5rem;
+            }
+        }
+
+        /* Large Tablets and Small Desktops */
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: 3rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            
+            .brand-logo-main {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Tablets */
         @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.6rem;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
             .nav-links {
                 display: none;
             }
-
+            
             .nav-container {
                 gap: 1rem;
+            }
+            
+            .theme-toggle {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
             }
 
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
                 gap: 2rem;
+                padding: 1rem;
             }
 
             .hero-text h1 {
                 font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-text p {
+                font-size: 1.1rem;
             }
 
             .brand-logo-main {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .brand-tagline {
+                font-size: 1.1rem;
             }
 
             .letter-breakdown {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .letter-card {
+                padding: 1.5rem;
+            }
+            
+            .letter-symbol {
+                font-size: 3rem;
+            }
+
+            .synergy-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
             }
 
             .contact-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .cta-buttons {
                 flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
             }
 
             .cookie-content {
                 flex-direction: column;
                 text-align: center;
+                gap: 1.5rem;
             }
 
             .cookie-buttons {
                 justify-content: center;
+                flex-wrap: wrap;
             }
 
-            .back-to-top {
-                width: 45px;
-                height: 45px;
-                bottom: 1.5rem;
-                right: 1.5rem;
-                font-size: 1.1rem;
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-header p {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Large Mobile Phones */
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.8rem;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .theme-toggle {
+                padding: 0.3rem 0.6rem;
+            }
+            
+            .theme-icon {
+                font-size: 1rem;
             }
 
-            .cookie-settings-btn {
-                bottom: 1.5rem;
-                left: 1.5rem;
-                padding: 0.7rem 1rem;
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-text p {
+                font-size: 1rem;
+            }
+            
+            .code-window {
+                padding: 1rem;
+                margin: 0 1rem;
+            }
+            
+            .code-content {
                 font-size: 0.8rem;
             }
 
-            .cookie-settings-btn .cookie-text {
-                display: none;
+            .brand-logo-main {
+                font-size: 2.2rem;
+            }
+            
+            .brand-tagline {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .letter-card {
+                padding: 1.2rem;
+            }
+            
+            .letter-symbol {
+                font-size: 2.5rem;
+            }
+            
+            .letter-title {
+                font-size: 1.3rem;
+            }
+
+            .service-card, .project-card {
+                margin: 0 0.5rem;
+            }
+            
+            .service-card {
+                padding: 1.8rem;
+            }
+            
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 1rem;
+            }
+            
+            .tech-item {
+                padding: 1rem;
+            }
+            
+            .tech-icon {
+                font-size: 2rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 0.8rem;
+                font-size: 0.9rem;
             }
 
             .social-link {
-                width: 48px;
-                height: 48px;
-                font-size: 1.1rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            
+            .cookie-settings-btn {
+                bottom: 1rem;
+                left: 1rem;
+                width: 35px;
+                height: 35px;
+            }
+
+            .cookie-settings-btn i {
+                font-size: 0.8rem;
+            }
+
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 1rem;
+                right: 1rem;
+                font-size: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-info h3 {
+                font-size: 1.6rem;
+            }
+            
+            .synergy-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Small Mobile Phones */
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .brand-logo-main {
+                font-size: 2rem;
+            }
+            
+            .letter-card {
+                padding: 1rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .cta-buttons {
+                gap: 0.8rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Landscape Orientation Fixes */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                min-height: 100vh;
+                padding: 2rem 0;
+            }
+            
+            .hero-content {
+                gap: 2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-text p {
+                margin-bottom: 1rem;
+            }
+            
+            .cta-buttons {
+                margin-bottom: 1rem;
             }
         }
 
@@ -1294,16 +1648,19 @@
         <nav>
             <div class="logo">i9Script</div>
             <div class="nav-container">
-                <ul class="nav-links">
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#brand">Nossa Marca</a></li>
-                    <li><a href="#services">Serviços</a></li>
-                    <li><a href="#projects">Projetos</a></li>
-                    <li><a href="#tech">Tecnologias</a></li>
-                    <li><a href="#contact">Contato</a></li>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" onclick="closeMenu()">Início</a></li>
+                    <li><a href="#brand" onclick="closeMenu()">Nossa Marca</a></li>
+                    <li><a href="#services" onclick="closeMenu()">Serviços</a></li>
+                    <li><a href="#projects" onclick="closeMenu()">Projetos</a></li>
+                    <li><a href="#tech" onclick="closeMenu()">Tecnologias</a></li>
+                    <li><a href="#contact" onclick="closeMenu()">Contato</a></li>
                 </ul>
                 <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
                     <span class="theme-icon">🌙</span>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </nav>
@@ -1314,7 +1671,7 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Desenvolvimento & <span class="highlight">Automação</span> Inteligente</h1>
-                <p>Transformamos suas ideias em soluções digitais inovadoras. Especializados em desenvolvimento de software, aplicativos, sites e automações que impulsionam seu negócio.</p>
+                <p>Transformamos suas ideias em soluções digitais inovadoras. Especializados em desenvolvimento de software, aplicativos, sites e automações que impulsionam seu negócio com a perfeição matemática do infinito.</p>
                 <div class="cta-buttons">
                     <a href="#projects" class="btn btn-primary">Ver Projetos</a>
                     <a href="#contact" class="btn btn-secondary">Fale Conosco</a>
@@ -1797,7 +2154,7 @@
                 </a>
             </div>
             <p>&copy; 2025 i9Script. Todos os direitos reservados.</p>
-            <p>Desenvolvido com ❤️ e matemática em Manaus, Amazonas</p>
+            <p>Desenvolvido com eficiência e qualidade em Manaus, Amazonas</p>
             <p style="color: var(--gold); margin-top: 1rem;">9 × ∞ = Inovação Perpétua</p>
         </div>
     </footer>
@@ -1808,9 +2165,8 @@
     </button>
 
     <!-- Cookie Settings Button -->
-    <button class="cookie-settings-btn" onclick="showCookieSettings()" aria-label="Configurações de Cookies">
-        <i class="fas fa-cookie-bite" style="font-size: 1.1rem; color: var(--gold);"></i>
-        <span class="cookie-text">Cookies</span>
+    <button class="cookie-settings-btn" onclick="showCookieSettings()" aria-label="Configurações de Cookies" title="Configurações de Cookies">
+        <i class="fas fa-cookie-bite"></i>
     </button>
 
     <!-- Cookie Banner -->
@@ -1865,7 +2221,44 @@
         // Initialize theme
         document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
 
-        // Theme Management
+        // Mobile Menu Management
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = mobileMenuToggle.querySelector('i');
+
+        function toggleMenu() {
+            navLinks.classList.toggle('mobile-open');
+            
+            if (navLinks.classList.contains('mobile-open')) {
+                menuIcon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                menuIcon.className = 'fas fa-bars';
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('mobile-open');
+            menuIcon.className = 'fas fa-bars';
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('.theme-icon');
         
@@ -2303,10 +2696,16 @@ Contato: contato@i9script.com`);
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    // Close mobile menu if open
+                    closeMenu();
+                    
+                    // Smooth scroll to target
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 100);
                 }
             });
         });

@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="i9Script - Desenvolvimento de software, aplicativos, sites e automações inteligentes em Manaus, Amazonas. Inovação infinita em cada projeto.">
+    <meta name="keywords" content="desenvolvimento, software, aplicativos, sites, automação, Manaus, Amazonas, programação, tecnologia">
+    <meta name="author" content="i9Script">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self';">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="i9Script - Desenvolvimento & Automação">
+    <meta property="og:description" content="Transformamos suas ideias em soluções digitais inovadoras com a perfeição matemática do infinito.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://i9script.com">
+    <meta property="og:image" content="https://i9script.com/assets/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="i9Script - Desenvolvimento & Automação">
+    <meta name="twitter:description" content="Transformamos suas ideias em soluções digitais inovadoras com a perfeição matemática do infinito.">
+    
+    <title>i9Script - Desenvolvimento & Automação</title>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Theme Variables */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --gold: #FFD700;
+            --cyan: #00f5ff;
+            --red: #ff6b6b;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --dark-medium: #334155;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: rgba(15, 23, 42, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+            --input-bg: #f8fafc;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --card-bg: #1e293b;
+            --input-bg: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 2px 8px rgba(0, 245, 255, 0.3));
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Social Links in Header */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            color: var(--white);
+        }
+
+        .social-link.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-link.linkedin:hover {
+            background: #0077b5;
+        }
+
+        .social-link.whatsapp:hover {
+            background: #25d366;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            color: var(--cyan);
+            transform: scale(1.1);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0 0 15px 15px;
+            padding: 1rem;
+            box-shadow: 0 5px 20px var(--shadow-color);
+        }
+
+        .mobile-menu.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu .nav-links {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mobile-menu .nav-links a {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .mobile-menu .nav-links a:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .mobile-menu .social-links {
+            justify-content: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle.rotating .theme-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="gradient1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%2300f5ff;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%2300f5ff;stop-opacity:0"/></radialGradient><radialGradient id="gradient2" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23FFD700;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%23FFD700;stop-opacity:0"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23gradient1)"/><circle cx="800" cy="300" r="200" fill="url(%23gradient2)"/><circle cx="600" cy="700" r="180" fill="url(%23gradient1)"/></svg>');
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .hero-text p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--cyan), var(--primary));
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 245, 255, 0.4);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--dark);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .code-window {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 60px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .code-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27ca3f; }
+
+        .code-content {
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            line-height: 1.6;
+        }
+
+        .code-line {
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .line-number {
+            color: var(--gray);
+            margin-right: 1rem;
+            width: 20px;
+            flex-shrink: 0;
+        }
+
+        .code-text {
+            color: var(--text-primary);
+            overflow-wrap: break-word;
+        }
+
+        .keyword { color: var(--cyan); }
+        .string { color: var(--gold); }
+        .function { color: var(--accent); }
+        .comment { color: var(--gray); }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-primary);
+            padding: 5rem 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .contact-method:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .contact-method.whatsapp:hover {
+            border-color: #25d366;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-method.instagram:hover {
+            border-color: #e6683c;
+            box-shadow: 0 10px 30px rgba(230, 104, 60, 0.3);
+        }
+
+        .contact-method.linkedin:hover {
+            border-color: #0077b5;
+            box-shadow: 0 10px 30px rgba(0, 119, 181, 0.3);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .contact-icon.whatsapp {
+            background: #25d366;
+        }
+
+        .contact-icon.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .contact-icon.linkedin {
+            background: #0077b5;
+        }
+
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--cyan);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social .social-link {
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Cookie Consent Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border-top: 2px solid var(--cyan);
+            padding: 1.5rem;
+            z-index: 9999;
+            box-shadow: 0 -5px 20px var(--shadow-color);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .cookie-text p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+
+        .cookie-link {
+            color: var(--cyan);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .cookie-link:hover {
+            color: var(--gold);
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            min-width: 120px;
+        }
+
+        .cookie-btn.accept {
+            background: linear-gradient(135deg, var(--cyan), var(--primary));
+            color: var(--white);
+        }
+
+        .cookie-btn.accept:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
+        }
+
+        .cookie-btn.decline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .cookie-btn.decline:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .cookie-btn.settings {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .cookie-btn.settings:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Cookie Settings Modal */
+        .cookie-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .cookie-modal.show {
+            display: flex;
+        }
+
+        .cookie-modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 60px var(--shadow-color);
+        }
+
+        .cookie-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cookie-modal-header h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .cookie-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-close:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .cookie-category {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .cookie-category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .cookie-category h4 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .cookie-category p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .cookie-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .cookie-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .cookie-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gray);
+            transition: 0.3s;
+            border-radius: 24px;
+        }
+
+        .cookie-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background: var(--white);
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        .cookie-toggle input:checked + .cookie-slider {
+            background: var(--cyan);
+        }
+
+        .cookie-toggle input:checked + .cookie-slider:before {
+            transform: translateX(26px);
+        }
+
+        .cookie-toggle input:disabled + .cookie-slider {
+            background: var(--primary);
+            cursor: not-allowed;
+        }
+
+        .cookie-modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Privacy Policy Styles */
+        .privacy-section {
+            margin-bottom: 2rem;
+        }
+
+        .privacy-section h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .privacy-section p, .privacy-section li {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .privacy-section ul {
+            padding-left: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .social-links {
+                gap: 0.5rem;
+            }
+
+            .social-link {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-actions {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .cookie-modal {
+                padding: 1rem;
+            }
+
+            .cookie-modal-content {
+                padding: 1.5rem;
+            }
+
+            .cookie-modal-actions {
+                flex-direction: column;
+            }
+
+            .cookie-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .hero-content {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cookie-banner {
+                padding: 1rem;
+            }
+
+            .cookie-text {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <header>
+        <nav>
+            <div class="logo">i9Script</div>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                
+                <div class="social-links">
+                    <a href="https://wa.me/5592999999999" class="social-link whatsapp" target="_blank" rel="noopener" title="WhatsApp">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="https://instagram.com/i9script" class="social-link instagram" target="_blank" rel="noopener" title="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com/company/i9script" class="social-link linkedin" target="_blank" rel="noopener" title="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
+
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="bi bi-sun-fill theme-icon"></i>
+                    <span>Tema</span>
+                </button>
+
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="nav-links">
+                    <li><a href="#home" onclick="toggleMobileMenu()">Início</a></li>
+                    <li><a href="#services" onclick="toggleMobileMenu()">Serviços</a></li>
+                    <li><a href="#projects" onclick="toggleMobileMenu()">Projetos</a></li>
+                    <li><a href="#contact" onclick="toggleMobileMenu()">Contato</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://wa.me/5592999999999" class="social-link whatsapp" target="_blank" rel="noopener" title="WhatsApp">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="https://instagram.com/i9script" class="social-link instagram" target="_blank" rel="noopener" title="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com/company/i9script" class="social-link linkedin" target="_blank" rel="noopener" title="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Desenvolvimento & <span class="highlight">Automação Inteligente</span></h1>
+                    <p>Transformamos suas ideias em soluções digitais inovadoras. Especializados em desenvolvimento de software, aplicativos, sites e automações que impulsionam seu negócio com a perfeição matemática do infinito.</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="bi bi-eye"></i>
+                            Ver Projetos
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="bi bi-chat-dots"></i>
+                            Fale Conosco
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="code-dot dot-red"></div>
+                            <div class="code-dot dot-yellow"></div>
+                            <div class="code-dot dot-green"></div>
+                        </div>
+                        <div class="code-content">
+                            <div class="code-line">
+                                <span class="line-number">1</span>
+                                <span class="code-text"><span class="keyword">const</span> <span class="function">inovacao</span> = <span class="string">'infinita'</span>;</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">2</span>
+                                <span class="code-text"><span class="keyword">function</span> <span class="function">criarSolucao</span>() {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">3</span>
+                                <span class="code-text">  <span class="keyword">return</span> <span class="string">'excelência'</span>;</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">4</span>
+                                <span class="code-text">}</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">5</span>
+                                <span class="code-text"><span class="comment">// i9Script = i∞</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Vamos Conversar</h2>
+                    <p>Entre em contato conosco e vamos transformar sua ideia em realidade</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Entre em Contato</h3>
+                        <div class="contact-methods">
+                            <a href="https://wa.me/5592999999999?text=Olá! Gostaria de saber mais sobre os serviços da i9Script." class="contact-method whatsapp">
+                                <div class="contact-icon whatsapp">
+                                    <i class="bi bi-whatsapp"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>WhatsApp</h4>
+                                    <p>Fale conosco agora mesmo</p>
+                                </div>
+                            </a>
+
+                            <a href="https://instagram.com/i9script" class="contact-method instagram" target="_blank" rel="noopener">
+                                <div class="contact-icon instagram">
+                                    <i class="bi bi-instagram"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Instagram</h4>
+                                    <p>Siga-nos @i9script</p>
+                                </div>
+                            </a>
+
+                            <a href="https://linkedin.com/company/i9script" class="contact-method linkedin" target="_blank" rel="noopener">
+                                <div class="contact-icon linkedin">
+                                    <i class="bi bi-linkedin"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>LinkedIn</h4>
+                                    <p>Conecte-se profissionalmente</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h3>Solicite um Orçamento</h3>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" name="nome" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="telefone">Telefone/WhatsApp</label>
+                                <input type="tel" id="telefone" name="telefone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="servico">Serviço de Interesse</label>
+                                <select id="servico" name="servico" style="width: 100%; padding: 1rem; border: 1px solid var(--border-color); border-radius: 10px; background: var(--input-bg); color: var(--text-primary);">
+                                    <option value="">Selecione um serviço</option>
+                                    <option value="desenvolvimento-web">Desenvolvimento Web</option>
+                                    <option value="aplicativos-mobile">Aplicativos Mobile</option>
+                                    <option value="automacao">Automação</option>
+                                    <option value="consultoria">Consultoria</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="mensagem">Mensagem</label>
+                                <textarea id="mensagem" name="mensagem" placeholder="Descreva seu projeto ou necessidade..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                                <i class="bi bi-send"></i>
+                                Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>i9Script</h3>
+                    <p>Desenvolvimento de software, aplicativos, sites e automações inteligentes em Manaus, Amazonas.</p>
+                    <p>Inovação infinita em cada projeto.</p>
+                    
+                    <div class="footer-social">
+                        <a href="https://wa.me/5592999999999" class="social-link whatsapp" target="_blank" rel="noopener" title="WhatsApp">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="https://instagram.com/i9script" class="social-link instagram" target="_blank" rel="noopener" title="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/i9script" class="social-link linkedin" target="_blank" rel="noopener" title="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Serviços</h3>
+                    <p><a href="#services">Desenvolvimento Web</a></p>
+                    <p><a href="#services">Aplicativos Mobile</a></p>
+                    <p><a href="#services">Automação</a></p>
+                    <p><a href="#services">Consultoria Tech</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Manaus, Amazonas - Brasil</p>
+                    <p><a href="https://wa.me/5592999999999">WhatsApp: (92) 99999-9999</a></p>
+                    <p><a href="mailto:contato@i9script.com">contato@i9script.com</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Links Úteis</h3>
+                    <p><a href="#home">Início</a></p>
+                    <p><a href="#services">Serviços</a></p>
+                    <p><a href="#projects">Projetos</a></p>
+                    <p><a href="#contact">Contato</a></p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 i9Script. Todos os direitos reservados. | Desenvolvimento infinito em Manaus, AM</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4><i class="bi bi-shield-check"></i> Política de Cookies</h4>
+                <p>Utilizamos cookies essenciais para garantir o funcionamento adequado do site e melhorar sua experiência. 
+                <a href="#" class="cookie-link" onclick="showPrivacyPolicy()">Saiba mais sobre nossa política de privacidade</a>.</p>
+            </div>
+            <div class="cookie-actions">
+                <button class="cookie-btn accept" onclick="acceptAllCookies()">
+                    <i class="bi bi-check-circle"></i> Aceitar Todos
+                </button>
+                <button class="cookie-btn settings" onclick="showCookieSettings()">
+                    <i class="bi bi-gear"></i> Configurar
+                </button>
+                <button class="cookie-btn decline" onclick="declineOptionalCookies()">
+                    <i class="bi bi-x-circle"></i> Recusar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div class="cookie-modal" id="cookieModal">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h3><i class="bi bi-gear"></i> Configurações de Cookies</h3>
+                <button class="cookie-close" onclick="closeCookieModal()">
+                    <i class="bi bi-x"></i>
+                </button>
+            </div>
+
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <h4><i class="bi bi-shield-fill-check"></i> Cookies Essenciais</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" checked disabled>
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>Necessários para o funcionamento básico do site. Incluem preferências de tema, sessão de navegação e funcionalidades essenciais de segurança.</p>
+            </div>
+
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <h4><i class="bi bi-graph-up"></i> Cookies de Performance</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="performanceCookies">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>Coletam informações sobre como você usa nosso site para nos ajudar a melhorar a performance e experiência do usuário.</p>
+            </div>
+
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <h4><i class="bi bi-bullseye"></i> Cookies de Marketing</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="marketingCookies">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>Utilizados para rastrear visitantes e exibir anúncios relevantes. Podem ser compartilhados com parceiros de publicidade.</p>
+            </div>
+
+            <div class="cookie-modal-actions">
+                <button class="cookie-btn decline" onclick="saveCustomCookieSettings()">
+                    Salvar Preferências
+                </button>
+                <button class="cookie-btn accept" onclick="acceptAllCookies()">
+                    Aceitar Todos
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="cookie-modal" id="privacyModal">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h3><i class="bi bi-shield-lock"></i> Política de Privacidade</h3>
+                <button class="cookie-close" onclick="closePrivacyModal()">
+                    <i class="bi bi-x"></i>
+                </button>
+            </div>
+
+            <div class="privacy-section">
+                <h4>1. Informações que Coletamos</h4>
+                <p>Coletamos apenas as informações necessárias para fornecer nossos serviços:</p>
+                <ul>
+                    <li>Informações de contato fornecidas voluntariamente</li>
+                    <li>Dados de navegação para melhorar a experiência</li>
+                    <li>Preferências de configuração do site</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h4>2. Como Utilizamos suas Informações</h4>
+                <p>Suas informações são utilizadas exclusivamente para:</p>
+                <ul>
+                    <li>Responder às suas solicitações de contato</li>
+                    <li>Melhorar nossos serviços e experiência do site</li>
+                    <li>Manter a segurança e funcionalidade do site</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h4>3. Compartilhamento de Dados</h4>
+                <p>Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros, exceto quando necessário para fornecer nossos serviços ou quando exigido por lei.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h4>4. Segurança dos Dados</h4>
+                <p>Implementamos medidas de segurança técnicas e organizacionais para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h4>5. Seus Direitos</h4>
+                <p>Você tem direito a acessar, corrigir, excluir ou limitar o processamento de suas informações pessoais. Entre em contato conosco para exercer esses direitos.</p>
+            </div>
+
+            <div class="cookie-modal-actions">
+                <button class="cookie-btn settings" onclick="closePrivacyModal()">
+                    Entendi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Management System
+        const COOKIE_CONSENT_KEY = 'i9script_cookie_consent';
+        const COOKIE_PREFERENCES_KEY = 'i9script_cookie_preferences';
+
+        // Cookie utility functions
+        function setCookie(name, value, days = 365) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = `expires=${date.toUTCString()}`;
+            document.cookie = `${name}=${value}; ${expires}; path=/; SameSite=Strict; Secure`;
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function deleteCookie(name) {
+            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        }
+
+        // Initialize cookie system
+        function initCookieSystem() {
+            const consent = getCookie(COOKIE_CONSENT_KEY);
+            
+            if (!consent) {
+                // Show banner after a small delay
+                setTimeout(() => {
+                    document.getElementById('cookieBanner').classList.add('show');
+                }, 1000);
+            } else {
+                // Load saved preferences
+                loadCookiePreferences();
+            }
+        }
+
+        // Accept all cookies
+        function acceptAllCookies() {
+            const preferences = {
+                essential: true,
+                performance: true,
+                marketing: true,
+                timestamp: new Date().getTime()
+            };
+            
+            setCookie(COOKIE_CONSENT_KEY, 'accepted');
+            setCookie(COOKIE_PREFERENCES_KEY, JSON.stringify(preferences));
+            
+            loadCookiePreferences();
+            hideCookieBanner();
+            closeCookieModal();
+            
+            // Initialize tracking scripts if accepted
+            initializeTrackingScripts(preferences);
+            
+            showNotification('Cookies aceitos com sucesso!', 'success');
+        }
+
+        // Decline optional cookies
+        function declineOptionalCookies() {
+            const preferences = {
+                essential: true,
+                performance: false,
+                marketing: false,
+                timestamp: new Date().getTime()
+            };
+            
+            setCookie(COOKIE_CONSENT_KEY, 'declined');
+            setCookie(COOKIE_PREFERENCES_KEY, JSON.stringify(preferences));
+            
+            loadCookiePreferences();
+            hideCookieBanner();
+            
+            // Remove optional cookies
+            removeOptionalCookies();
+            
+            showNotification('Preferências salvas. Apenas cookies essenciais serão utilizados.', 'info');
+        }
+
+        // Save custom cookie settings
+        function saveCustomCookieSettings() {
+            const preferences = {
+                essential: true, // Always true
+                performance: document.getElementById('performanceCookies').checked,
+                marketing: document.getElementById('marketingCookies').checked,
+                timestamp: new Date().getTime()
+            };
+            
+            setCookie(COOKIE_CONSENT_KEY, 'custom');
+            setCookie(COOKIE_PREFERENCES_KEY, JSON.stringify(preferences));
+            
+            loadCookiePreferences();
+            hideCookieBanner();
+            closeCookieModal();
+            
+            // Initialize only allowed tracking scripts
+            initializeTrackingScripts(preferences);
+            
+            // Remove disallowed cookies
+            if (!preferences.performance || !preferences.marketing) {
+                removeOptionalCookies();
+            }
+            
+            showNotification('Suas preferências foram salvas com sucesso!', 'success');
+        }
+
+        // Load cookie preferences
+        function loadCookiePreferences() {
+            const preferencesStr = getCookie(COOKIE_PREFERENCES_KEY);
+            if (preferencesStr) {
+                try {
+                    const preferences = JSON.parse(preferencesStr);
+                    
+                    // Update UI if modal is open
+                    const performanceCheckbox = document.getElementById('performanceCookies');
+                    const marketingCheckbox = document.getElementById('marketingCookies');
+                    
+                    if (performanceCheckbox) performanceCheckbox.checked = preferences.performance;
+                    if (marketingCheckbox) marketingCheckbox.checked = preferences.marketing;
+                    
+                    // Initialize tracking based on preferences
+                    initializeTrackingScripts(preferences);
+                    
+                    return preferences;
+                } catch (e) {
+                    console.warn('Error parsing cookie preferences:', e);
+                }
+            }
+            return null;
+        }
+
+        // Initialize tracking scripts based on preferences
+        function initializeTrackingScripts(preferences) {
+            // Only initialize if user has consented
+            if (preferences.performance) {
+                // Initialize performance tracking (e.g., Google Analytics)
+                console.log('Performance tracking initialized');
+                // Example: gtag('config', 'GA_MEASUREMENT_ID');
+            }
+            
+            if (preferences.marketing) {
+                // Initialize marketing tracking (e.g., Facebook Pixel, Google Ads)
+                console.log('Marketing tracking initialized');
+                // Example: fbq('init', 'PIXEL_ID');
+            }
+        }
+
+        // Remove optional cookies
+        function removeOptionalCookies() {
+            // List of optional cookie names to remove
+            const optionalCookies = [
+                '_ga', '_gid', '_gat', // Google Analytics
+                '_fbp', '_fbc', // Facebook
+                '__utm', // UTM tracking
+                // Add other optional cookie names here
+            ];
+            
+            optionalCookies.forEach(cookieName => {
+                deleteCookie(cookieName);
+            });
+            
+            // Clear localStorage items if needed
+            const optionalLocalStorage = [
+                'analytics_data',
+                'marketing_data'
+                // Add other localStorage keys here
+            ];
+            
+            optionalLocalStorage.forEach(key => {
+                localStorage.removeItem(key);
+            });
+        }
+
+        // Show/hide functions
+        function hideCookieBanner() {
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        function showCookieSettings() {
+            // Load current preferences
+            loadCookiePreferences();
+            document.getElementById('cookieModal').classList.add('show');
+        }
+
+        function closeCookieModal() {
+            document.getElementById('cookieModal').classList.remove('show');
+        }
+
+        function showPrivacyPolicy() {
+            document.getElementById('privacyModal').classList.add('show');
+        }
+
+        function closePrivacyModal() {
+            document.getElementById('privacyModal').classList.remove('show');
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? 'var(--cyan)' : 'var(--gold)'};
+                color: var(--white);
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 10001;
+                font-weight: 600;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+            `;
+            notification.innerHTML = `
+                <i class="bi bi-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                ${message}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Hide notification after 4 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 4000);
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Add rotation effect
+            themeToggle.classList.add('rotating');
+            setTimeout(() => themeToggle.classList.remove('rotating'), 300);
+            
+            body.setAttribute('data-theme', newTheme);
+            
+            // Store theme preference (essential cookie)
+            setCookie('i9script_theme', newTheme, 365);
+            
+            // Update icon
+            const icon = themeToggle.querySelector('.theme-icon');
+            icon.className = newTheme === 'dark' ? 'bi bi-sun-fill theme-icon' : 'bi bi-moon-fill theme-icon';
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('show');
+        }
+
+        // Load saved theme and initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load theme (essential functionality)
+            const savedTheme = getCookie('i9script_theme') || 'dark';
+            document.body.setAttribute('data-theme', savedTheme);
+            
+            const icon = document.querySelector('.theme-icon');
+            icon.className = savedTheme === 'dark' ? 'bi bi-sun-fill theme-icon' : 'bi bi-moon-fill theme-icon';
+            
+            // Initialize cookie system
+            initCookieSystem();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+            } else {
+                header.style.background = 'var(--bg-primary)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Form submission with privacy consideration
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const nome = formData.get('nome');
+            const servico = formData.get('servico');
+            const mensagem = formData.get('mensagem');
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Olá! Meu nome é ${nome}. Tenho interesse em: ${servico}. ${mensagem}`;
+            const whatsappUrl = `https://wa.me/5592999999999?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            showNotification('Redirecionando para o WhatsApp...', 'success');
+        });
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            const cookieModal = document.getElementById('cookieModal');
+            const privacyModal = document.getElementById('privacyModal');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            
+            // Close cookie modal
+            if (e.target === cookieModal) {
+                closeCookieModal();
+            }
+            
+            // Close privacy modal
+            if (e.target === privacyModal) {
+                closePrivacyModal();
+            }
+            
+            // Close mobile menu
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                mobileMenu.classList.remove('show');
+            }
+        });
+
+        // Keyboard accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCookieModal();
+                closePrivacyModal();
+                document.getElementById('mobileMenu').classList.remove('show');
+            }
+        });
+    </script>.querySelector('.theme-icon');
+            icon.className = newTheme === 'dark' ? 'bi bi-sun-fill theme-icon' : 'bi bi-moon-fill theme-icon';
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('show');
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.body.setAttribute('data-theme', savedTheme);
+            
+            const icon = document.querySelector('.theme-icon');
+            icon.className = savedTheme === 'dark' ? 'bi bi-sun-fill theme-icon' : 'bi bi-moon-fill theme-icon';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+            } else {
+                header.style.background = 'var(--bg-primary)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Form submission (you can customize this)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const nome = formData.get('nome');
+            const servico = formData.get('servico');
+            const mensagem = formData.get('mensagem');
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Olá! Meu nome é ${nome}. Tenho interesse em: ${servico}. ${mensagem}`;
+            const whatsappUrl = `https://wa.me/5592999999999?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                mobileMenu.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
