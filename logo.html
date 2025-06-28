@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo i9Script - Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            background: #0f172a;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .logo-preview {
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 245, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 4rem;
+            background: linear-gradient(135deg, #00f5ff, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            text-align: center;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        label {
+            font-size: 0.9rem;
+            color: #00f5ff;
+        }
+
+        input, select, button {
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+        }
+
+        button {
+            background: linear-gradient(135deg, #00f5ff, #2563eb);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+        }
+
+        .download-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .size-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        canvas {
+            display: none;
+        }
+
+        .info {
+            text-align: center;
+            max-width: 600px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .gradient-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gradient-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .gradient-preview.active {
+            border-color: #00f5ff;
+            transform: scale(1.1);
+        }
+
+        .gradient-preview:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin-bottom: 1rem;">🎨 Gerador de Logo i9Script</h1>
+    <p class="info">
+        Personalize e baixe a logo da i9Script em diferentes tamanhos e estilos. 
+        Ideal para uso em websites, aplicativos, documentos e materiais gráficos.
+    </p>
+
+    <div class="logo-container">
+        <div class="logo-preview" id="logoPreview">
+            <h1 class="logo-text" id="logoText">i9Script</h1>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Texto da Logo:</label>
+                <input type="text" id="logoInput" value="i9Script" maxlength="20">
+            </div>
+
+            <div class="control-group">
+                <label>Tamanho da Fonte:</label>
+                <input type="range" id="fontSizeSlider" min="2" max="8" value="4" step="0.1">
+                <span id="fontSizeValue">4rem</span>
+            </div>
+
+            <div class="control-group">
+                <label>Peso da Fonte:</label>
+                <select id="fontWeight">
+                    <option value="700">Bold (700)</option>
+                    <option value="800" selected>Extra Bold (800)</option>
+                    <option value="900">Black (900)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>Gradientes Disponíveis:</label>
+            <div class="gradient-options">
+                <div class="gradient-preview active" data-gradient="linear-gradient(135deg, #00f5ff, #FFD700)" style="background: linear-gradient(135deg, #00f5ff, #FFD700);"></div>
+                <div class="gradient-preview" data-gradient="linear-gradient(135deg, #00f5ff, #2563eb)" style="background: linear-gradient(135deg, #00f5ff, #2563eb);"></div>
+                <div class="gradient-preview" data-gradient="linear-gradient(135deg, #FFD700, #ff6b6b)" style="background: linear-gradient(135deg, #FFD700, #ff6b6b);"></div>
+                <div class="gradient-preview" data-gradient="linear-gradient(135deg, #ff6b6b, #00f5ff)" style="background: linear-gradient(135deg, #ff6b6b, #00f5ff);"></div>
+                <div class="gradient-preview" data-gradient="linear-gradient(45deg, #00f5ff, #FFD700, #ff6b6b)" style="background: linear-gradient(45deg, #00f5ff, #FFD700, #ff6b6b);"></div>
+                <div class="gradient-preview" data-gradient="linear-gradient(135deg, #8b5cf6, #06b6d4)" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4);"></div>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <div class="size-option">
+                <strong>Favicon</strong>
+                <small>32x32px</small>
+                <button onclick="downloadLogo(32, 32, 'i9script-favicon')">Download</button>
+            </div>
+
+            <div class="size-option">
+                <strong>Ícone Pequeno</strong>
+                <small>64x64px</small>
+                <button onclick="downloadLogo(64, 64, 'i9script-icon-small')">Download</button>
+            </div>
+
+            <div class="size-option">
+                <strong>Ícone Médio</strong>
+                <small>128x128px</small>
+                <button onclick="downloadLogo(128, 128, 'i9script-icon-medium')">Download</button>
+            </div>
+
+            <div class="size-option">
+                <strong>Logo Padrão</strong>
+                <small>256x256px</small>
+                <button onclick="downloadLogo(256, 256, 'i9script-logo')">Download</button>
+            </div>
+
+            <div class="size-option">
+                <strong>Logo HD</strong>
+                <small>512x512px</small>
+                <button onclick="downloadLogo(512, 512, 'i9script-logo-hd')">Download</button>
+            </div>
+
+            <div class="size-option">
+                <strong>Logo 4K</strong>
+                <small>1024x1024px</small>
+                <button onclick="downloadLogo(1024, 1024, 'i9script-logo-4k')">Download</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <button onclick="downloadAllSizes()" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                📦 Baixar Todos os Tamanhos
+            </button>
+        </div>
+    </div>
+
+    <canvas id="logoCanvas"></canvas>
+
+    <script>
+        let currentGradient = 'linear-gradient(135deg, #00f5ff, #FFD700)';
+
+        // Elementos DOM
+        const logoText = document.getElementById('logoText');
+        const logoInput = document.getElementById('logoInput');
+        const fontSizeSlider = document.getElementById('fontSizeSlider');
+        const fontSizeValue = document.getElementById('fontSizeValue');
+        const fontWeightSelect = document.getElementById('fontWeight');
+        const gradientPreviews = document.querySelectorAll('.gradient-preview');
+
+        // Event Listeners
+        logoInput.addEventListener('input', updateLogoText);
+        fontSizeSlider.addEventListener('input', updateFontSize);
+        fontWeightSelect.addEventListener('change', updateFontWeight);
+
+        gradientPreviews.forEach(preview => {
+            preview.addEventListener('click', () => {
+                gradientPreviews.forEach(p => p.classList.remove('active'));
+                preview.classList.add('active');
+                currentGradient = preview.dataset.gradient;
+                updateGradient();
+            });
+        });
+
+        function updateLogoText() {
+            logoText.textContent = logoInput.value || 'i9Script';
+        }
+
+        function updateFontSize() {
+            const size = fontSizeSlider.value;
+            logoText.style.fontSize = size + 'rem';
+            fontSizeValue.textContent = size + 'rem';
+        }
+
+        function updateFontWeight() {
+            logoText.style.fontWeight = fontWeightSelect.value;
+        }
+
+        function updateGradient() {
+            logoText.style.background = currentGradient;
+            logoText.style.webkitBackgroundClip = 'text';
+            logoText.style.backgroundClip = 'text';
+        }
+
+        function downloadLogo(width, height, filename) {
+            const canvas = document.getElementById('logoCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Configurar canvas
+            canvas.width = width;
+            canvas.height = height;
+            
+            // Configurar proporções
+            const fontSize = Math.min(width, height) * 0.15;
+            const text = logoInput.value || 'i9Script';
+            
+            // Fundo transparente
+            ctx.clearRect(0, 0, width, height);
+            
+            // Configurar fonte
+            ctx.font = `${fontWeightSelect.value} ${fontSize}px Orbitron, sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Criar gradiente
+            const gradient = ctx.createLinearGradient(0, 0, width, height);
+            
+            // Extrair cores do gradiente atual
+            if (currentGradient.includes('#00f5ff') && currentGradient.includes('#FFD700')) {
+                gradient.addColorStop(0, '#00f5ff');
+                gradient.addColorStop(1, '#FFD700');
+            } else if (currentGradient.includes('#00f5ff') && currentGradient.includes('#2563eb')) {
+                gradient.addColorStop(0, '#00f5ff');
+                gradient.addColorStop(1, '#2563eb');
+            } else if (currentGradient.includes('#FFD700') && currentGradient.includes('#ff6b6b')) {
+                gradient.addColorStop(0, '#FFD700');
+                gradient.addColorStop(1, '#ff6b6b');
+            } else if (currentGradient.includes('#ff6b6b') && currentGradient.includes('#00f5ff')) {
+                gradient.addColorStop(0, '#ff6b6b');
+                gradient.addColorStop(1, '#00f5ff');
+            } else if (currentGradient.includes('#00f5ff') && currentGradient.includes('#FFD700') && currentGradient.includes('#ff6b6b')) {
+                gradient.addColorStop(0, '#00f5ff');
+                gradient.addColorStop(0.5, '#FFD700');
+                gradient.addColorStop(1, '#ff6b6b');
+            } else if (currentGradient.includes('#8b5cf6') && currentGradient.includes('#06b6d4')) {
+                gradient.addColorStop(0, '#8b5cf6');
+                gradient.addColorStop(1, '#06b6d4');
+            } else {
+                // Fallback
+                gradient.addColorStop(0, '#00f5ff');
+                gradient.addColorStop(1, '#FFD700');
+            }
+            
+            ctx.fillStyle = gradient;
+            ctx.fillText(text, width / 2, height / 2);
+            
+            // Download
+            const link = document.createElement('a');
+            link.download = filename + '.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            
+            // Feedback visual
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = '✓ Baixado!';
+            button.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = 'linear-gradient(135deg, #00f5ff, #2563eb)';
+            }, 2000);
+        }
+
+        function downloadAllSizes() {
+            const sizes = [
+                { width: 32, height: 32, name: 'i9script-favicon' },
+                { width: 64, height: 64, name: 'i9script-icon-small' },
+                { width: 128, height: 128, name: 'i9script-icon-medium' },
+                { width: 256, height: 256, name: 'i9script-logo' },
+                { width: 512, height: 512, name: 'i9script-logo-hd' },
+                { width: 1024, height: 1024, name: 'i9script-logo-4k' }
+            ];
+            
+            const button = event.target;
+            const originalText = button.textContent;
+            let downloadCount = 0;
+            
+            button.textContent = '⏳ Gerando...';
+            button.disabled = true;
+            
+            sizes.forEach((size, index) => {
+                setTimeout(() => {
+                    downloadLogo(size.width, size.height, size.name);
+                    downloadCount++;
+                    
+                    button.textContent = `📦 ${downloadCount}/${sizes.length} concluído`;
+                    
+                    if (downloadCount === sizes.length) {
+                        button.textContent = '✅ Todos baixados!';
+                        button.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                        
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                            button.style.background = 'linear-gradient(135deg, #00f5ff, #2563eb)';
+                            button.disabled = false;
+                        }, 3000);
+                    }
+                }, index * 500);
+            });
+        }
+
+        // Carregar fonte e inicializar
+        document.fonts.ready.then(() => {
+            console.log('🎨 Fonte Orbitron carregada com sucesso!');
+            console.log('✨ Gerador de Logo i9Script pronto para uso!');
+        });
+    </script>
+</body>
+</html>
