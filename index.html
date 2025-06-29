@@ -176,6 +176,36 @@
             width: 100%;
         }
 
+        /* Language Toggle */
+        .language-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .language-toggle:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .flag-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .language-toggle.switching .flag-icon {
+            transform: rotate(180deg);
+        }
+
         /* Mobile Menu Toggle */
         .mobile-menu-toggle {
             display: none;
@@ -1262,10 +1292,6 @@
             font-size: 0.9rem;
         }
 
-        .cookie-text {
-            display: none;
-        }
-
         /* Responsive Breakpoints */
         
         /* Extra Large Screens */
@@ -1332,7 +1358,7 @@
                 gap: 1rem;
             }
             
-            .theme-toggle {
+            .theme-toggle, .language-toggle {
                 padding: 0.4rem 0.8rem;
                 font-size: 0.9rem;
             }
@@ -1432,11 +1458,11 @@
                 font-size: 1.4rem;
             }
             
-            .theme-toggle {
+            .theme-toggle, .language-toggle {
                 padding: 0.3rem 0.6rem;
             }
             
-            .theme-icon {
+            .theme-icon, .flag-icon {
                 font-size: 1rem;
             }
 
@@ -1649,13 +1675,17 @@
             <div class="logo">i9Script</div>
             <div class="nav-container">
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#home" onclick="closeMenu()">Início</a></li>
-                    <li><a href="#brand" onclick="closeMenu()">Nossa Marca</a></li>
-                    <li><a href="#services" onclick="closeMenu()">Serviços</a></li>
-                    <li><a href="#projects" onclick="closeMenu()">Projetos</a></li>
-                    <li><a href="#tech" onclick="closeMenu()">Tecnologias</a></li>
-                    <li><a href="#contact" onclick="closeMenu()">Contato</a></li>
+                    <li><a href="#home" onclick="closeMenu()" data-pt="Início" data-en="Home">Início</a></li>
+                    <li><a href="#brand" onclick="closeMenu()" data-pt="Nossa Marca" data-en="Our Brand">Nossa Marca</a></li>
+                    <li><a href="#services" onclick="closeMenu()" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                    <li><a href="#projects" onclick="closeMenu()" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                    <li><a href="#tech" onclick="closeMenu()" data-pt="Tecnologias" data-en="Technologies">Tecnologias</a></li>
+                    <li><a href="#contact" onclick="closeMenu()" data-pt="Contato" data-en="Contact">Contato</a></li>
                 </ul>
+                <button class="language-toggle" id="languageToggle" aria-label="Alterar idioma">
+                    <span class="flag-icon">🇧🇷</span>
+                    <span class="lang-text">PT</span>
+                </button>
                 <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
                     <span class="theme-icon">🌙</span>
                 </button>
@@ -1670,11 +1700,11 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Desenvolvimento & <span class="highlight">Automação</span> Inteligente</h1>
-                <p>Transformamos suas ideias em soluções digitais inovadoras. Especializados em desenvolvimento de software, aplicativos, sites e automações que impulsionam seu negócio.</p>
+                <h1 data-pt="Desenvolvimento & <span class='highlight'>Automação</span> Inteligente" data-en="Development & Intelligent <span class='highlight'>Automation</span>">Desenvolvimento & <span class="highlight">Automação</span> Inteligente</h1>
+                <p data-pt="Transformamos suas ideias em soluções digitais inovadoras. Especializados em desenvolvimento de software, aplicativos, sites e automações que impulsionam seu negócio." data-en="We transform your ideas into innovative digital solutions. Specialized in software development, applications, websites and automations that boost your business.">Transformamos suas ideias em soluções digitais inovadoras. Especializados em desenvolvimento de software, aplicativos, sites e automações que impulsionam seu negócio.</p>
                 <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">Ver Projetos</a>
-                    <a href="#contact" class="btn btn-secondary">Fale Conosco</a>
+                    <a href="#projects" class="btn btn-primary" data-pt="Ver Projetos" data-en="View Projects">Ver Projetos</a>
+                    <a href="#contact" class="btn btn-secondary" data-pt="Fale Conosco" data-en="Contact Us">Fale Conosco</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -1684,7 +1714,7 @@
                         <div class="code-dot dot-yellow"></div>
                         <div class="code-dot dot-green"></div>
                     </div>
-                    <div class="code-content">
+                    <div class="code-content" id="codeContent">
                         <div class="code-line">
                             <span class="line-number">1</span>
                             <span class="code-text"><span class="keyword">const</span> <span class="function">i9Script</span> = {</span>
@@ -1718,88 +1748,88 @@
     <section id="brand" class="brand-analysis">
         <div class="container">
             <div class="brand-logo-main">i9Script</div>
-            <div class="brand-tagline">Inovação Infinita em Cada Linha de Código</div>
+            <div class="brand-tagline" data-pt="Inovação Infinita em Cada Linha de Código" data-en="Infinite Innovation in Every Line of Code">Inovação Infinita em Cada Linha de Código</div>
             
             <div class="letter-breakdown">
                 <div class="letter-card loading">
                     <span class="letter-symbol i-symbol">i</span>
-                    <h3 class="letter-title">Inovação</h3>
-                    <p class="letter-meaning">
-                        O "i" minúsculo representa humildade e acessibilidade, mas também é o símbolo universal da informação e inteligência. Em tecnologia, o "i" remete a Interactive, Intelligent, Innovative.
+                    <h3 class="letter-title" data-pt="Inovação" data-en="Innovation">Inovação</h3>
+                    <p class="letter-meaning" data-pt="O 'i' minúsculo representa inovação de forma inteligente. Em tecnologia, o 'i' remete a Interactive, Intelligent, Innovative." data-en="The lowercase 'i' represents innovation in an intelligent way. In technology, 'i' refers to Interactive, Intelligent, Innovative.">
+                        O "i" minúsculo representa inovação de forma inteligente. Em tecnologia, o "i" remete a Interactive, Intelligent, Innovative.
                     </p>
                     <div class="letter-keywords">
-                        <span class="keyword-tag">Inovação</span>
-                        <span class="keyword-tag">Inteligência</span>
-                        <span class="keyword-tag">Interativo</span>
-                        <span class="keyword-tag">Informação</span>
-                        <span class="keyword-tag">Interface</span>
+                        <span class="keyword-tag" data-pt="Inovação" data-en="Innovation">Inovação</span>
+                        <span class="keyword-tag" data-pt="Inteligência" data-en="Intelligence">Inteligência</span>
+                        <span class="keyword-tag" data-pt="Interativo" data-en="Interactive">Interativo</span>
+                        <span class="keyword-tag" data-pt="Informação" data-en="Information">Informação</span>
+                        <span class="keyword-tag" data-pt="Interface" data-en="Interface">Interface</span>
                     </div>
                 </div>
 
                 <div class="letter-card loading">
                     <span class="letter-symbol nine-symbol">9</span>
-                    <h3 class="letter-title">Infinito & Excelência</h3>
-                    <p class="letter-meaning">
+                    <h3 class="letter-title" data-pt="Infinito & Excelência" data-en="Infinite & Excellence">Infinito & Excelência</h3>
+                    <p class="letter-meaning" data-pt="O número 9 é o verdadeiro símbolo do infinito matemático. Multiplicado por qualquer número, sempre retorna a 9 (pela soma dos dígitos). Representa completude, totalidade e ciclos infinitos de excelência." data-en="The number 9 is the true symbol of mathematical infinity. Multiplied by any number, it always returns to 9 (by the sum of digits). It represents completeness, totality and infinite cycles of excellence.">
                         O número 9 é o verdadeiro símbolo do infinito matemático. Multiplicado por qualquer número, sempre retorna a 9 (pela soma dos dígitos). Representa completude, totalidade e ciclos infinitos de excelência.
                     </p>
                     <div class="letter-keywords">
-                        <span class="keyword-tag gold">Infinito</span>
-                        <span class="keyword-tag gold">Perfeição</span>
-                        <span class="keyword-tag gold">Completude</span>
-                        <span class="keyword-tag gold">Totalidade</span>
-                        <span class="keyword-tag gold">Excelência</span>
+                        <span class="keyword-tag gold" data-pt="Infinito" data-en="Infinite">Infinito</span>
+                        <span class="keyword-tag gold" data-pt="Perfeição" data-en="Perfection">Perfeição</span>
+                        <span class="keyword-tag gold" data-pt="Completude" data-en="Completeness">Completude</span>
+                        <span class="keyword-tag gold" data-pt="Totalidade" data-en="Totality">Totalidade</span>
+                        <span class="keyword-tag gold" data-pt="Excelência" data-en="Excellence">Excelência</span>
                     </div>
                     <div class="nine-demo">
-                        <h4 style="color: var(--gold); margin-bottom: 1rem;">Demonstração da Propriedade do 9</h4>
+                        <h4 style="color: var(--gold); margin-bottom: 1rem;" data-pt="Demonstração da Propriedade do 9" data-en="Demonstration of the Property of 9">Demonstração da Propriedade do 9</h4>
                         <div class="nine-calculation" id="nineDemo">9 × 1 = 9 → 9</div>
                     </div>
                 </div>
 
                 <div class="letter-card loading">
                     <span class="letter-symbol script-symbol">Script</span>
-                    <h3 class="letter-title">Código & Automação</h3>
-                    <p class="letter-meaning">
+                    <h3 class="letter-title" data-pt="Código & Automação" data-en="Code & Automation">Código & Automação</h3>
+                    <p class="letter-meaning" data-pt="'Script' é a essência da programação - códigos que automatizam, simplificam e resolvem problemas. Representa a capacidade de transformar ideias complexas em soluções práticas e eficientes." data-en="'Script' is the essence of programming - codes that automate, simplify and solve problems. It represents the ability to transform complex ideas into practical and efficient solutions.">
                         "Script" é a essência da programação - códigos que automatizam, simplificam e resolvem problemas. Representa a capacidade de transformar ideias complexas em soluções práticas e eficientes.
                     </p>
                     <div class="letter-keywords">
-                        <span class="keyword-tag red">Automação</span>
-                        <span class="keyword-tag red">Programação</span>
-                        <span class="keyword-tag red">Eficiência</span>
-                        <span class="keyword-tag red">Solução</span>
-                        <span class="keyword-tag red">Desenvolvimento</span>
+                        <span class="keyword-tag red" data-pt="Automação" data-en="Automation">Automação</span>
+                        <span class="keyword-tag red" data-pt="Programação" data-en="Programming">Programação</span>
+                        <span class="keyword-tag red" data-pt="Eficiência" data-en="Efficiency">Eficiência</span>
+                        <span class="keyword-tag red" data-pt="Solução" data-en="Solution">Solução</span>
+                        <span class="keyword-tag red" data-pt="Desenvolvimento" data-en="Development">Desenvolvimento</span>
                     </div>
                 </div>
             </div>
 
             <div class="synergy-section loading">
-                <h2 class="synergy-title">A Sinergia Perfeita</h2>
+                <h2 class="synergy-title" data-pt="A Sinergia Perfeita" data-en="The Perfect Synergy">A Sinergia Perfeita</h2>
                 <div class="synergy-grid">
                     <div class="synergy-item">
                         <span class="synergy-icon">🚀</span>
-                        <h3>Inovação Contínua</h3>
-                        <p>O "i" garante que cada projeto seja uma nova fronteira tecnológica</p>
+                        <h3 data-pt="Inovação Contínua" data-en="Continuous Innovation">Inovação Contínua</h3>
+                        <p data-pt="O 'i' garante que cada projeto seja uma nova fronteira tecnológica" data-en="The 'i' ensures that each project is a new technological frontier">O "i" garante que cada projeto seja uma nova fronteira tecnológica</p>
                     </div>
                     <div class="synergy-item">
                         <span class="synergy-icon">♾️</span>
-                        <h3>Possibilidades Infinitas</h3>
-                        <p>O "9" representa que não há limites para o que pode ser criado</p>
+                        <h3 data-pt="Possibilidades Infinitas" data-en="Infinite Possibilities">Possibilidades Infinitas</h3>
+                        <p data-pt="O '9' representa que não há limites para o que pode ser criado" data-en="The '9' represents that there are no limits to what can be created">O "9" representa que não há limites para o que pode ser criado</p>
                     </div>
                     <div class="synergy-item">
                         <span class="synergy-icon">⚡</span>
-                        <h3>Execução Perfeita</h3>
-                        <p>"Script" transforma ideias em realidade digital tangível</p>
+                        <h3 data-pt="Execução Perfeita" data-en="Perfect Execution">Execução Perfeita</h3>
+                        <p data-pt="'Script' transforma ideias em realidade digital tangível" data-en="'Script' transforms ideas into tangible digital reality">"Script" transforma ideias em realidade digital tangível</p>
                     </div>
                     <div class="synergy-item">
                         <span class="synergy-icon">🔄</span>
-                        <h3>Automação Inteligente</h3>
-                        <p>Sistemas que trabalham 24/7 com precisão matemática</p>
+                        <h3 data-pt="Automação Inteligente" data-en="Intelligent Automation">Automação Inteligente</h3>
+                        <p data-pt="Sistemas que trabalham 24/7 com precisão matemática" data-en="Systems that work 24/7 with mathematical precision">Sistemas que trabalham 24/7 com precisão matemática</p>
                     </div>
                 </div>
             </div>
 
             <div style="background: var(--bg-tertiary); border-radius: 20px; padding: 3rem; margin: 3rem 0; text-align: center; border: 1px solid var(--border-color);" class="loading">
-                <h3 style="color: var(--cyan); margin-bottom: 1rem; font-size: 1.8rem;">Filosofia da Marca</h3>
-                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);">
+                <h3 style="color: var(--cyan); margin-bottom: 1rem; font-size: 1.8rem;" data-pt="Filosofia da Marca" data-en="Brand Philosophy">Filosofia da Marca</h3>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);" data-pt="<strong style='color: var(--gold);'>i9Script</strong> não é apenas uma empresa de tecnologia - é a manifestação da inovação infinita. Onde o 'i' de inovação encontra o '9' da perfeição matemática, nascem scripts que transcendem o código comum para se tornarem soluções extraordinárias. Cada projeto é um ciclo completo de excelência que sempre retorna ao seu estado perfeito, assim como o número 9." data-en="<strong style='color: var(--gold);'>i9Script</strong> is not just a technology company - it is the manifestation of infinite innovation. Where the 'i' of innovation meets the '9' of mathematical perfection, scripts are born that transcend common code to become extraordinary solutions. Each project is a complete cycle of excellence that always returns to its perfect state, just like the number 9.">
                     <strong style="color: var(--gold);">i9Script</strong> não é apenas uma empresa de tecnologia - é a manifestação da inovação infinita. 
                     Onde o "i" de inovação encontra o "9" da perfeição matemática, nascem scripts que transcendem 
                     o código comum para se tornarem soluções extraordinárias. Cada projeto é um ciclo completo de 
@@ -1812,74 +1842,74 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header loading">
-                <h2>Nossos Serviços</h2>
-                <p>Oferecemos soluções completas e personalizadas para atender todas as suas necessidades digitais com a precisão matemática do infinito.</p>
+                <h2 data-pt="Nossos Serviços" data-en="Our Services">Nossos Serviços</h2>
+                <p data-pt="Oferecemos soluções completas e personalizadas para atender todas as suas necessidades digitais com a precisão matemática do infinito." data-en="We offer complete and customized solutions to meet all your digital needs with the mathematical precision of infinity.">Oferecemos soluções completas e personalizadas para atender todas as suas necessidades digitais com a precisão matemática do infinito.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card loading">
                     <div class="service-icon">💻</div>
-                    <h3>Desenvolvimento Web</h3>
-                    <p>Sites modernos, responsivos e otimizados para performance e SEO com design baseado na proporção áurea.</p>
+                    <h3 data-pt="Desenvolvimento Web" data-en="Web Development">Desenvolvimento Web</h3>
+                    <p data-pt="Sites modernos, responsivos e otimizados para performance e SEO com design baseado na proporção áurea." data-en="Modern, responsive websites optimized for performance and SEO with design based on the golden ratio.">Sites modernos, responsivos e otimizados para performance e SEO com design baseado na proporção áurea.</p>
                     <ul class="service-features">
-                        <li>Sites institucionais</li>
-                        <li>E-commerce</li>
-                        <li>Landing pages</li>
-                        <li>Sistemas web</li>
+                        <li data-pt="Sites institucionais" data-en="Corporate websites">Sites institucionais</li>
+                        <li data-pt="E-commerce" data-en="E-commerce">E-commerce</li>
+                        <li data-pt="Landing pages" data-en="Landing pages">Landing pages</li>
+                        <li data-pt="Sistemas web" data-en="Web systems">Sistemas web</li>
                     </ul>
                 </div>
                 <div class="service-card loading">
                     <div class="service-icon">📱</div>
-                    <h3>Aplicativos Mobile</h3>
-                    <p>Apps nativos e híbridos para iOS e Android com excelente UX e performance infinita.</p>
+                    <h3 data-pt="Aplicativos Mobile" data-en="Mobile Applications">Aplicativos Mobile</h3>
+                    <p data-pt="Apps nativos e híbridos para iOS e Android com excelente UX e performance infinita." data-en="Native and hybrid apps for iOS and Android with excellent UX and infinite performance.">Apps nativos e híbridos para iOS e Android com excelente UX e performance infinita.</p>
                     <ul class="service-features">
-                        <li>Apps nativos</li>
-                        <li>React Native</li>
-                        <li>Flutter</li>
-                        <li>PWAs</li>
+                        <li data-pt="Apps nativos" data-en="Native apps">Apps nativos</li>
+                        <li data-pt="React Native" data-en="React Native">React Native</li>
+                        <li data-pt="Flutter" data-en="Flutter">Flutter</li>
+                        <li data-pt="PWAs" data-en="PWAs">PWAs</li>
                     </ul>
                 </div>
                 <div class="service-card loading">
                     <div class="service-icon">🤖</div>
-                    <h3>Automações Inteligentes</h3>
-                    <p>Automação de processos para aumentar produtividade e reduzir custos com eficiência do número 9.</p>
+                    <h3 data-pt="Automações Inteligentes" data-en="Intelligent Automations">Automações Inteligentes</h3>
+                    <p data-pt="Automação de processos para aumentar produtividade e reduzir custos com eficiência do número 9." data-en="Process automation to increase productivity and reduce costs with the efficiency of number 9.">Automação de processos para aumentar produtividade e reduzir custos com eficiência do número 9.</p>
                     <ul class="service-features">
-                        <li>Bots e chatbots</li>
-                        <li>Integração de APIs</li>
-                        <li>Automação de tarefas</li>
-                        <li>Processamento de dados</li>
+                        <li data-pt="Bots e chatbots" data-en="Bots and chatbots">Bots e chatbots</li>
+                        <li data-pt="Integração de APIs" data-en="API integration">Integração de APIs</li>
+                        <li data-pt="Automação de tarefas" data-en="Task automation">Automação de tarefas</li>
+                        <li data-pt="Processamento de dados" data-en="Data processing">Processamento de dados</li>
                     </ul>
                 </div>
                 <div class="service-card loading">
                     <div class="service-icon">☁️</div>
-                    <h3>Cloud & DevOps</h3>
-                    <p>Infraestrutura moderna na nuvem com deploy automatizado e escalabilidade infinita.</p>
+                    <h3 data-pt="Cloud & DevOps" data-en="Cloud & DevOps">Cloud & DevOps</h3>
+                    <p data-pt="Infraestrutura moderna na nuvem com deploy automatizado e escalabilidade infinita." data-en="Modern cloud infrastructure with automated deployment and infinite scalability.">Infraestrutura moderna na nuvem com deploy automatizado e escalabilidade infinita.</p>
                     <ul class="service-features">
-                        <li>AWS / Azure / GCP</li>
-                        <li>CI/CD</li>
-                        <li>Docker</li>
-                        <li>Kubernetes</li>
+                        <li data-pt="AWS / Azure / GCP" data-en="AWS / Azure / GCP">AWS / Azure / GCP</li>
+                        <li data-pt="CI/CD" data-en="CI/CD">CI/CD</li>
+                        <li data-pt="Docker" data-en="Docker">Docker</li>
+                        <li data-pt="Kubernetes" data-en="Kubernetes">Kubernetes</li>
                     </ul>
                 </div>
                 <div class="service-card loading">
                     <div class="service-icon">🔍</div>
-                    <h3>Análise de Dados</h3>
-                    <p>Insights valiosos através de análise inteligente de dados com precisão matemática.</p>
+                    <h3 data-pt="Análise de Dados" data-en="Data Analysis">Análise de Dados</h3>
+                    <p data-pt="Insights valiosos através de análise inteligente de dados com precisão matemática." data-en="Valuable insights through intelligent data analysis with mathematical precision.">Insights valiosos através de análise inteligente de dados com precisão matemática.</p>
                     <ul class="service-features">
-                        <li>Dashboard analytics</li>
-                        <li>Business Intelligence</li>
-                        <li>Machine Learning</li>
-                        <li>Relatórios automatizados</li>
+                        <li data-pt="Dashboard analytics" data-en="Dashboard analytics">Dashboard analytics</li>
+                        <li data-pt="Business Intelligence" data-en="Business Intelligence">Business Intelligence</li>
+                        <li data-pt="Machine Learning" data-en="Machine Learning">Machine Learning</li>
+                        <li data-pt="Relatórios automatizados" data-en="Automated reports">Relatórios automatizados</li>
                     </ul>
                 </div>
                 <div class="service-card loading">
                     <div class="service-icon">🛡️</div>
-                    <h3>Segurança Digital</h3>
-                    <p>Proteção completa para seus sistemas e dados empresariais com monitoramento contínuo.</p>
+                    <h3 data-pt="Segurança Digital" data-en="Digital Security">Segurança Digital</h3>
+                    <p data-pt="Proteção completa para seus sistemas e dados empresariais com monitoramento contínuo." data-en="Complete protection for your business systems and data with continuous monitoring.">Proteção completa para seus sistemas e dados empresariais com monitoramento contínuo.</p>
                     <ul class="service-features">
-                        <li>Auditoria de segurança</li>
-                        <li>Testes de penetração</li>
-                        <li>Backup automatizado</li>
-                        <li>Monitoramento 24/7</li>
+                        <li data-pt="Auditoria de segurança" data-en="Security audit">Auditoria de segurança</li>
+                        <li data-pt="Testes de penetração" data-en="Penetration testing">Testes de penetração</li>
+                        <li data-pt="Backup automatizado" data-en="Automated backup">Backup automatizado</li>
+                        <li data-pt="Monitoramento 24/7" data-en="24/7 monitoring">Monitoramento 24/7</li>
                     </ul>
                 </div>
             </div>
@@ -1889,15 +1919,15 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header loading">
-                <h2>Projetos em Destaque</h2>
-                <p>Conheça alguns dos projetos que desenvolvemos e que estão transformando negócios com inovação infinita.</p>
+                <h2 data-pt="Projetos em Destaque" data-en="Featured Projects">Projetos em Destaque</h2>
+                <p data-pt="Conheça alguns dos projetos que desenvolvemos e que estão transformando negócios com inovação infinita." data-en="Discover some of the projects we've developed that are transforming businesses with infinite innovation.">Conheça alguns dos projetos que desenvolvemos e que estão transformando negócios com inovação infinita.</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card loading">
                     <div class="project-image">🛒</div>
                     <div class="project-content">
-                        <h3>E-commerce Inteligente</h3>
-                        <p>Plataforma completa de vendas online com IA integrada, painel administrativo, sistema de pagamentos e analytics avançados baseados na proporção áurea.</p>
+                        <h3 data-pt="E-commerce Inteligente" data-en="Smart E-commerce">E-commerce Inteligente</h3>
+                        <p data-pt="Plataforma completa de vendas online com IA integrada, painel administrativo, sistema de pagamentos e analytics avançados baseados na proporção áurea." data-en="Complete online sales platform with integrated AI, administrative panel, payment system and advanced analytics based on the golden ratio.">Plataforma completa de vendas online com IA integrada, painel administrativo, sistema de pagamentos e analytics avançados baseados na proporção áurea.</p>
                         <div class="project-tags">
                             <span class="tag">React</span>
                             <span class="tag">Node.js</span>
@@ -1906,34 +1936,34 @@
                             <span class="tag">AI/ML</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">Ver Demo</a>
-                            <a href="#" class="project-link">Código</a>
+                            <a href="#" class="project-link" data-pt="Ver Demo" data-en="View Demo">Ver Demo</a>
+                            <a href="#" class="project-link" data-pt="Código" data-en="Code">Código</a>
                         </div>
                     </div>
                 </div>
                 <div class="project-card loading">
                     <div class="project-image">🏥</div>
                     <div class="project-content">
-                        <h3>Sistema Hospitalar 9.0</h3>
-                        <p>Plataforma completa para gestão hospitalar com prontuário eletrônico, agendamento online e automações inteligentes para otimização de processos.</p>
+                        <h3 data-pt="Sistema Hospitalar 9.0" data-en="Hospital System 9.0">Sistema Hospitalar 9.0</h3>
+                        <p data-pt="Plataforma completa para gestão hospitalar com prontuário eletrônico, agendamento online e automações inteligentes para otimização de processos." data-en="Complete platform for hospital management with electronic medical records, online scheduling and intelligent automations for process optimization.">Plataforma completa para gestão hospitalar com prontuário eletrônico, agendamento online e automações inteligentes para otimização de processos.</p>
                         <div class="project-tags">
                             <span class="tag">Angular</span>
                             <span class="tag">.NET Core</span>
                             <span class="tag">SQL Server</span>
                             <span class="tag">Azure</span>
-                            <span class="tag">Automação</span>
+                            <span class="tag" data-pt="Automação" data-en="Automation">Automação</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">Ver Demo</a>
-                            <a href="#" class="project-link">Código</a>
+                            <a href="#" class="project-link" data-pt="Ver Demo" data-en="View Demo">Ver Demo</a>
+                            <a href="#" class="project-link" data-pt="Código" data-en="Code">Código</a>
                         </div>
                     </div>
                 </div>
                 <div class="project-card loading">
                     <div class="project-image">📊</div>
                     <div class="project-content">
-                        <h3>Dashboard Analytics Infinito</h3>
-                        <p>Sistema de business intelligence com análise em tempo real, machine learning e visualizações baseadas na sequência de Fibonacci.</p>
+                        <h3 data-pt="Dashboard Analytics Infinito" data-en="Infinite Analytics Dashboard">Dashboard Analytics Infinito</h3>
+                        <p data-pt="Sistema de business intelligence com análise em tempo real, machine learning e visualizações baseadas na sequência de Fibonacci." data-en="Business intelligence system with real-time analysis, machine learning and visualizations based on the Fibonacci sequence.">Sistema de business intelligence com análise em tempo real, machine learning e visualizações baseadas na sequência de Fibonacci.</p>
                         <div class="project-tags">
                             <span class="tag">Python</span>
                             <span class="tag">Django</span>
@@ -1942,8 +1972,8 @@
                             <span class="tag">Redis</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">Ver Demo</a>
-                            <a href="#" class="project-link">Código</a>
+                            <a href="#" class="project-link" data-pt="Ver Demo" data-en="View Demo">Ver Demo</a>
+                            <a href="#" class="project-link" data-pt="Código" data-en="Code">Código</a>
                         </div>
                     </div>
                 </div>
@@ -1954,8 +1984,8 @@
     <section id="tech" class="tech">
         <div class="container">
             <div class="section-header loading">
-                <h2>Tecnologias que Dominamos</h2>
-                <p>Utilizamos as tecnologias mais modernas e eficientes do mercado para criar soluções robustas com a perfeição do número 9.</p>
+                <h2 data-pt="Tecnologias que Dominamos" data-en="Technologies We Master">Tecnologias que Dominamos</h2>
+                <p data-pt="Utilizamos as tecnologias mais modernas e eficientes do mercado para criar soluções robustas com a perfeição do número 9." data-en="We use the most modern and efficient technologies on the market to create robust solutions with the perfection of number 9.">Utilizamos as tecnologias mais modernas e eficientes do mercado para criar soluções robustas com a perfeição do número 9.</p>
             </div>
             <div class="tech-grid">
                 <div class="tech-item loading">
@@ -2026,8 +2056,8 @@
         <div class="container">
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Vamos Criar Algo Infinito Juntos?</h3>
-                    <p>Pronto para transformar sua ideia em realidade com a precisão matemática do número 9? Entre em contato conosco e vamos criar algo extraordinário que sempre retorna à perfeição!</p>
+                    <h3 data-pt="Vamos Criar Algo Infinito Juntos?" data-en="Let's Create Something Infinite Together?">Vamos Criar Algo Infinito Juntos?</h3>
+                    <p data-pt="Pronto para transformar sua ideia em realidade com a precisão matemática do número 9? Entre em contato conosco e vamos criar algo extraordinário que sempre retorna à perfeição!" data-en="Ready to transform your idea into reality with the mathematical precision of number 9? Contact us and let's create something extraordinary that always returns to perfection!">Pronto para transformar sua ideia em realidade com a precisão matemática do número 9? Entre em contato conosco e vamos criar algo extraordinário que sempre retorna à perfeição!</p>
                     <ul class="contact-methods">
                         <li>
                             <div class="contact-icon">
@@ -2057,8 +2087,8 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
-                                <strong>Localização</strong><br>
-                                Brasil
+                                <strong data-pt="Localização" data-en="Location">Localização</strong><br>
+                                <span data-pt="Brasil" data-en="Brazil">Brasil</span>
                             </div>
                         </li>
                         <li>
@@ -2066,8 +2096,8 @@
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div>
-                                <strong>Horário</strong><br>
-                                Seg-Sex: 9h às 18h
+                                <strong data-pt="Horário" data-en="Schedule">Horário</strong><br>
+                                <span data-pt="Seg-Sex: 9h às 18h" data-en="Mon-Fri: 9am to 6pm">Seg-Sex: 9h às 18h</span>
                             </div>
                         </li>
                     </ul>
@@ -2075,7 +2105,7 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Nome Completo</label>
+                            <label for="name" data-pt="Nome Completo" data-en="Full Name">Nome Completo</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
@@ -2083,23 +2113,23 @@
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="project">Tipo de Projeto</label>
+                            <label for="project" data-pt="Tipo de Projeto" data-en="Project Type">Tipo de Projeto</label>
                             <select id="project" name="project" required>
-                                <option value="">Selecione o tipo de projeto</option>
-                                <option value="website">Website/Landing Page</option>
-                                <option value="ecommerce">E-commerce</option>
-                                <option value="app">Aplicativo Mobile</option>
-                                <option value="automation">Automação</option>
-                                <option value="system">Sistema Web</option>
-                                <option value="ai">Inteligência Artificial</option>
-                                <option value="other">Outro</option>
+                                <option value="" data-pt="Selecione o tipo de projeto" data-en="Select project type">Selecione o tipo de projeto</option>
+                                <option value="website" data-pt="Website/Landing Page" data-en="Website/Landing Page">Website/Landing Page</option>
+                                <option value="ecommerce" data-pt="E-commerce" data-en="E-commerce">E-commerce</option>
+                                <option value="app" data-pt="Aplicativo Mobile" data-en="Mobile App">Aplicativo Mobile</option>
+                                <option value="automation" data-pt="Automação" data-en="Automation">Automação</option>
+                                <option value="system" data-pt="Sistema Web" data-en="Web System">Sistema Web</option>
+                                <option value="ai" data-pt="Inteligência Artificial" data-en="Artificial Intelligence">Inteligência Artificial</option>
+                                <option value="other" data-pt="Outro" data-en="Other">Outro</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita..."></textarea>
+                            <label for="message" data-pt="Mensagem" data-en="Message">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" data-pt="Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita..." data-en="Tell us about your project and how we can apply our infinite innovation..." placeholder="Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;" data-pt="Enviar Mensagem ∞" data-en="Send Message ∞">
                             Enviar Mensagem ∞
                         </button>
                     </form>
@@ -2153,9 +2183,9 @@
                    <i class="fab fa-telegram-plane"></i>
                 </a>
             </div>
-            <p>&copy; 2025 i9Script. Todos os direitos reservados.</p>
-            <p>Desenvolvimento profissional com eficiência e qualidade.</p>
-            <p style="color: var(--gold); margin-top: 1rem;">9 × ∞ = Inovação Perpétua</p>
+            <p data-pt="&copy; 2025 i9Script. Todos os direitos reservados." data-en="&copy; 2025 i9Script. All rights reserved.">&copy; 2025 i9Script. Todos os direitos reservados.</p>
+            <p data-pt="Desenvolvimento profissional com eficiência e qualidade." data-en="Professional development with efficiency and quality.">Desenvolvimento profissional com eficiência e qualidade.</p>
+            <p style="color: var(--gold); margin-top: 1rem;" data-pt="9 × ∞ = Inovação Perpétua" data-en="9 × ∞ = Perpetual Innovation">9 × ∞ = Inovação Perpétua</p>
         </div>
     </footer>
 
@@ -2172,20 +2202,20 @@
     <!-- Cookie Banner -->
     <div class="cookie-banner" id="cookieBanner">
         <div class="cookie-content">
-            <div class="cookie-text">
+            <div class="cookie-text" data-pt="🍪 Utilizamos cookies para melhorar sua experiência de navegação e personalizar conteúdo. Ao continuar navegando, você concorda com nossa <a href='#' onclick='showCookiePolicy()'>Política de Cookies</a> e <a href='#' onclick='showPrivacyPolicy()'>Política de Privacidade</a>." data-en="🍪 We use cookies to improve your browsing experience and personalize content. By continuing to browse, you agree to our <a href='#' onclick='showCookiePolicy()'>Cookie Policy</a> and <a href='#' onclick='showPrivacyPolicy()'>Privacy Policy</a>.">
                 🍪 Utilizamos cookies para melhorar sua experiência de navegação e personalizar conteúdo. 
                 Ao continuar navegando, você concorda com nossa 
                 <a href="#" onclick="showCookiePolicy()">Política de Cookies</a> e 
                 <a href="#" onclick="showPrivacyPolicy()">Política de Privacidade</a>.
             </div>
             <div class="cookie-buttons">
-                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()" data-pt="Aceitar Todos" data-en="Accept All">
                     Aceitar Todos
                 </button>
-                <button class="cookie-btn cookie-btn-settings" onclick="showCookieSettings()">
+                <button class="cookie-btn cookie-btn-settings" onclick="showCookieSettings()" data-pt="Configurar" data-en="Configure">
                     Configurar
                 </button>
-                <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()">
+                <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()" data-pt="Recusar" data-en="Decline">
                     Recusar
                 </button>
             </div>
@@ -2195,29 +2225,160 @@
     <!-- Cookie Settings Modal -->
     <div class="cookie-modal" id="cookieModal">
         <div class="cookie-modal-content">
-            <h3>Configurações de Cookies</h3>
+            <h3 data-pt="Configurações de Cookies" data-en="Cookie Settings">Configurações de Cookies</h3>
             <div style="margin-bottom: 1.5rem;">
                 <div class="cookie-option">
                     <input type="checkbox" id="essentialCookies" checked disabled>
-                    <label for="essentialCookies">Cookies Essenciais (obrigatórios)</label>
+                    <label for="essentialCookies" data-pt="Cookies Essenciais (obrigatórios)" data-en="Essential Cookies (required)">Cookies Essenciais (obrigatórios)</label>
                 </div>
                 <div class="cookie-option">
                     <input type="checkbox" id="analyticsCookies">
-                    <label for="analyticsCookies">Cookies de Análise</label>
+                    <label for="analyticsCookies" data-pt="Cookies de Análise" data-en="Analytics Cookies">Cookies de Análise</label>
                 </div>
                 <div class="cookie-option">
                     <input type="checkbox" id="marketingCookies">
-                    <label for="marketingCookies">Cookies de Marketing</label>
+                    <label for="marketingCookies" data-pt="Cookies de Marketing" data-en="Marketing Cookies">Cookies de Marketing</label>
                 </div>
             </div>
             <div class="cookie-modal-buttons">
-                <button class="cookie-btn cookie-btn-decline" onclick="closeCookieModal()">Cancelar</button>
-                <button class="cookie-btn cookie-btn-accept" onclick="saveCookieSettings()">Salvar</button>
+                <button class="cookie-btn cookie-btn-decline" onclick="closeCookieModal()" data-pt="Cancelar" data-en="Cancel">Cancelar</button>
+                <button class="cookie-btn cookie-btn-accept" onclick="saveCookieSettings()" data-pt="Salvar" data-en="Save">Salvar</button>
             </div>
         </div>
     </div>
 
     <script>
+        // Language system
+        let currentLanguage = localStorage.getItem('language') || 'pt';
+        
+        const translations = {
+            pt: {
+                codeComment: '// Código que transforma ideias',
+                innovation: 'infinita',
+                result: 'excelência',
+                whatsappMessage: 'Olá! Gostaria de saber mais sobre os serviços da i9Script.'
+            },
+            en: {
+                codeComment: '// Code that transforms ideas',
+                innovation: 'infinite',
+                result: 'excellence',
+                whatsappMessage: 'Hello! I would like to know more about i9Script services.'
+            }
+        };
+
+        function updateContent(lang) {
+            document.querySelectorAll('[data-pt][data-en]').forEach(element => {
+                const ptText = element.getAttribute('data-pt');
+                const enText = element.getAttribute('data-en');
+                
+                if (ptText && enText) {
+                    if (lang === 'pt') {
+                        element.innerHTML = ptText;
+                    } else {
+                        element.innerHTML = enText;
+                    }
+                }
+            });
+
+            // Update code content
+            updateCodeContent(lang);
+            
+            // Update form placeholder
+            const messageTextarea = document.querySelector('#message');
+            if (messageTextarea) {
+                const placeholder = lang === 'pt' 
+                    ? 'Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita...'
+                    : 'Tell us about your project and how we can apply our infinite innovation...';
+                messageTextarea.placeholder = placeholder;
+            }
+
+            // Update WhatsApp link
+            const whatsappLink = document.querySelector('a[href*="wa.me"]');
+            if (whatsappLink) {
+                const message = encodeURIComponent(translations[lang].whatsappMessage);
+                whatsappLink.href = `https://wa.me/5592984654008?text=${message}`;
+            }
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en-US';
+            
+            // Update meta tags
+            updateMetaTags(lang);
+        }
+
+        function updateCodeContent(lang) {
+            const codeContent = document.getElementById('codeContent');
+            if (codeContent) {
+                const comment = translations[lang].codeComment;
+                const innovation = translations[lang].innovation;
+                const result = translations[lang].result;
+                
+                codeContent.innerHTML = `
+                    <div class="code-line">
+                        <span class="line-number">1</span>
+                        <span class="code-text"><span class="keyword">const</span> <span class="function">i9Script</span> = {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">2</span>
+                        <span class="code-text">  <span class="string">'innovation'</span>: <span class="string">'${innovation}'</span>,</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">3</span>
+                        <span class="code-text">  <span class="string">'perfection'</span>: <span class="string">9</span>,</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">4</span>
+                        <span class="code-text">  <span class="string">'result'</span>: <span class="string">'${result}'</span></span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">5</span>
+                        <span class="code-text">};</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">6</span>
+                        <span class="code-text"><span class="comment">${comment}</span></span>
+                    </div>
+                `;
+            }
+        }
+
+        function updateMetaTags(lang) {
+            const title = lang === 'pt' 
+                ? 'i9Script - Desenvolvimento & Automação'
+                : 'i9Script - Development & Automation';
+            
+            const description = lang === 'pt'
+                ? 'i9Script - Desenvolvimento de software, aplicativos, sites e automações inteligentes em Manaus, Amazonas. Inovação infinita em cada projeto.'
+                : 'i9Script - Software development, applications, websites and intelligent automations in Manaus, Amazonas. Infinite innovation in every project.';
+
+            document.title = title;
+            document.querySelector('meta[name="description"]').content = description;
+            document.querySelector('meta[property="og:title"]').content = title;
+            document.querySelector('meta[property="og:description"]').content = description;
+            document.querySelector('meta[name="twitter:title"]').content = title;
+            document.querySelector('meta[name="twitter:description"]').content = description;
+        }
+
+        function toggleLanguage() {
+            const languageToggle = document.getElementById('languageToggle');
+            const flagIcon = languageToggle.querySelector('.flag-icon');
+            const langText = languageToggle.querySelector('.lang-text');
+            
+            languageToggle.classList.add('switching');
+            
+            setTimeout(() => {
+                currentLanguage = currentLanguage === 'pt' ? 'en' : 'pt';
+                
+                flagIcon.textContent = currentLanguage === 'pt' ? '🇧🇷' : '🇺🇸';
+                langText.textContent = currentLanguage === 'pt' ? 'PT' : 'EN';
+                
+                localStorage.setItem('language', currentLanguage);
+                updateContent(currentLanguage);
+                
+                languageToggle.classList.remove('switching');
+            }, 150);
+        }
+
         // Initialize theme
         document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
 
@@ -2259,6 +2420,11 @@
                 closeMenu();
             }
         });
+
+        // Language toggle
+        document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+
+        // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('.theme-icon');
         
@@ -2300,19 +2466,19 @@
             const errors = [];
             
             if (!formData.name || formData.name.trim().length < 2) {
-                errors.push('Nome deve ter pelo menos 2 caracteres');
+                errors.push(currentLanguage === 'pt' ? 'Nome deve ter pelo menos 2 caracteres' : 'Name must have at least 2 characters');
             }
             
             if (!validateEmail(formData.email)) {
-                errors.push('Email inválido');
+                errors.push(currentLanguage === 'pt' ? 'Email inválido' : 'Invalid email');
             }
             
             if (!formData.project) {
-                errors.push('Selecione um tipo de projeto');
+                errors.push(currentLanguage === 'pt' ? 'Selecione um tipo de projeto' : 'Select a project type');
             }
             
             if (!formData.message || formData.message.trim().length < 10) {
-                errors.push('Mensagem deve ter pelo menos 10 caracteres');
+                errors.push(currentLanguage === 'pt' ? 'Mensagem deve ter pelo menos 10 caracteres' : 'Message must have at least 10 characters');
             }
             
             return errors;
@@ -2337,7 +2503,10 @@
             const now = Date.now();
             if (now - lastSubmission < SUBMISSION_COOLDOWN) {
                 const remainingTime = Math.ceil((SUBMISSION_COOLDOWN - (now - lastSubmission)) / 1000);
-                throw new Error(`Aguarde ${remainingTime} segundos antes de enviar novamente`);
+                const message = currentLanguage === 'pt' 
+                    ? `Aguarde ${remainingTime} segundos antes de enviar novamente`
+                    : `Wait ${remainingTime} seconds before sending again`;
+                throw new Error(message);
             }
             lastSubmission = now;
         }
@@ -2428,7 +2597,9 @@
         }
 
         function showCookiePolicy() {
-            alert(`POLÍTICA DE COOKIES - i9Script
+            const title = currentLanguage === 'pt' ? 'POLÍTICA DE COOKIES - i9Script' : 'COOKIE POLICY - i9Script';
+            const content = currentLanguage === 'pt' ? `
+${title}
 
 Utilizamos cookies para:
 
@@ -2447,11 +2618,35 @@ Utilizamos cookies para:
 - Medir eficácia de campanhas
 - Oferecer experiências personalizadas
 
-Você pode gerenciar suas preferências a qualquer momento através do botão de configurações de cookies.`);
+Você pode gerenciar suas preferências a qualquer momento através do botão de configurações de cookies.` : `
+${title}
+
+We use cookies for:
+
+🔧 ESSENTIAL COOKIES (required):
+- Maintain your theme preferences
+- Remember your cookie settings
+- Ensure basic website functionality
+
+📊 ANALYTICS COOKIES (optional):
+- Understand how you navigate the site
+- Improve user experience
+- Analyze page performance
+
+📢 MARKETING COOKIES (optional):
+- Personalize relevant content
+- Measure campaign effectiveness
+- Offer personalized experiences
+
+You can manage your preferences at any time through the cookie settings button.`;
+            
+            alert(content);
         }
 
         function showPrivacyPolicy() {
-            alert(`POLÍTICA DE PRIVACIDADE - i9Script
+            const title = currentLanguage === 'pt' ? 'POLÍTICA DE PRIVACIDADE - i9Script' : 'PRIVACY POLICY - i9Script';
+            const content = currentLanguage === 'pt' ? `
+${title}
 
 Respeitamos sua privacidade e protegemos seus dados:
 
@@ -2470,7 +2665,29 @@ Respeitamos sua privacidade e protegemos seus dados:
 - Corrigir informações incorretas
 - Excluir seus dados (direito ao esquecimento)
 
-Contato: contato@i9script.com`);
+Contato: contato@i9script.com` : `
+${title}
+
+We respect your privacy and protect your data:
+
+🛡️ DATA COLLECTION:
+- We only collect data necessary for our services
+- Contact information when you send us messages
+- Browsing data to improve experience
+
+🔒 PROTECTION:
+- We use encryption to protect sensitive data
+- We don't sell your information to third parties
+- Secure storage on trusted servers
+
+📧 YOUR RIGHTS:
+- Request access to your data
+- Correct incorrect information
+- Delete your data (right to be forgotten)
+
+Contact: contato@i9script.com`;
+            
+            alert(content);
         }
 
         // Demonstração automática da propriedade do 9
@@ -2500,6 +2717,17 @@ Contato: contato@i9script.com`);
 
         // Main initialization
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language
+            updateContent(currentLanguage);
+            
+            // Set initial language toggle state
+            const languageToggle = document.getElementById('languageToggle');
+            const flagIcon = languageToggle.querySelector('.flag-icon');
+            const langText = languageToggle.querySelector('.lang-text');
+            
+            flagIcon.textContent = currentLanguage === 'pt' ? '🇧🇷' : '🇺🇸';
+            langText.textContent = currentLanguage === 'pt' ? 'PT' : 'EN';
+            
             // Initialize security measures
             preventXSS();
             
@@ -2544,7 +2772,8 @@ Contato: contato@i9script.com`);
                     // Validate form data
                     const errors = validateForm(data);
                     if (errors.length > 0) {
-                        alert('Erros encontrados:\n' + errors.join('\n'));
+                        const errorTitle = currentLanguage === 'pt' ? 'Erros encontrados:' : 'Errors found:';
+                        alert(errorTitle + '\n' + errors.join('\n'));
                         return;
                     }
                     
@@ -2562,12 +2791,17 @@ Contato: contato@i9script.com`);
                     const submitBtn = this.querySelector('button[type="submit"]');
                     const originalText = submitBtn.textContent;
                     
-                    submitBtn.textContent = 'Enviando... ⚡';
+                    const sendingText = currentLanguage === 'pt' ? 'Enviando... ⚡' : 'Sending... ⚡';
+                    const successText = currentLanguage === 'pt' 
+                        ? 'Mensagem enviada com sucesso! Entraremos em contato em breve para começar sua jornada infinita de inovação! 🚀'
+                        : 'Message sent successfully! We will contact you soon to start your infinite journey of innovation! 🚀';
+                    
+                    submitBtn.textContent = sendingText;
                     submitBtn.disabled = true;
                     
                     // Simulate API call with security headers
                     setTimeout(() => {
-                        alert('Mensagem enviada com sucesso! Entraremos em contato em breve para começar sua jornada infinita de inovação! 🚀');
+                        alert(successText);
                         this.reset();
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;
@@ -2675,6 +2909,7 @@ Contato: contato@i9script.com`);
             
             // Theme information
             console.log('🎨 Tema atual:', document.documentElement.getAttribute('data-theme'));
+            console.log('🌍 Idioma atual:', currentLanguage);
             console.log('🍪 Status dos cookies:', {
                 consent: localStorage.getItem('cookieConsent'),
                 analytics: localStorage.getItem('analyticsCookies'),
@@ -2741,6 +2976,28 @@ Contato: contato@i9script.com`);
         window.addEventListener('scroll', debounce(() => {
             toggleBackToTop();
         }, 10));
+
+        // Update select options based on language
+        function updateSelectOptions() {
+            const projectSelect = document.getElementById('project');
+            if (projectSelect && projectSelect.options) {
+                Array.from(projectSelect.options).forEach(option => {
+                    const ptText = option.getAttribute('data-pt');
+                    const enText = option.getAttribute('data-en');
+                    
+                    if (ptText && enText) {
+                        option.textContent = currentLanguage === 'pt' ? ptText : enText;
+                    }
+                });
+            }
+        }
+
+        // Language change observer
+        const originalUpdateContent = updateContent;
+        updateContent = function(lang) {
+            originalUpdateContent(lang);
+            updateSelectOptions();
+        };
     </script>
 </body>
 </html>
