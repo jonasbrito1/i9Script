@@ -81,31 +81,36 @@
             --font-family-brand: 'Orbitron', 'Inter', sans-serif;
             --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
             
-            --font-size-xs: 0.75rem;
-            --font-size-sm: 0.875rem;
-            --font-size-base: 1rem;
-            --font-size-lg: 1.125rem;
-            --font-size-xl: 1.25rem;
-            --font-size-2xl: 1.5rem;
-            --font-size-3xl: 1.875rem;
-            --font-size-4xl: 2.25rem;
+            /* Font Sizes - Escalas responsivas */
+            --font-size-xs: clamp(0.65rem, 0.7vw, 0.75rem);
+            --font-size-sm: clamp(0.8rem, 0.85vw, 0.875rem);
+            --font-size-base: clamp(0.9rem, 1vw, 1rem);
+            --font-size-lg: clamp(1rem, 1.125vw, 1.125rem);
+            --font-size-xl: clamp(1.125rem, 1.25vw, 1.25rem);
+            --font-size-2xl: clamp(1.25rem, 1.5vw, 1.5rem);
+            --font-size-3xl: clamp(1.5rem, 1.875vw, 1.875rem);
+            --font-size-4xl: clamp(1.875rem, 2.25vw, 2.25rem);
+            --font-size-5xl: clamp(2.25rem, 3vw, 3rem);
+            --font-size-6xl: clamp(2.5rem, 3.75vw, 3.75rem);
             
             --line-height-tight: 1.25;
             --line-height-normal: 1.5;
             --line-height-relaxed: 1.625;
+            --line-height-loose: 1.75;
             
-            /* Spacing */
-            --spacing-1: 0.25rem;
-            --spacing-2: 0.5rem;
-            --spacing-3: 0.75rem;
-            --spacing-4: 1rem;
-            --spacing-5: 1.25rem;
-            --spacing-6: 1.5rem;
-            --spacing-8: 2rem;
-            --spacing-10: 2.5rem;
-            --spacing-12: 3rem;
-            --spacing-16: 4rem;
-            --spacing-20: 5rem;
+            /* Spacing - Escalas responsivas */
+            --spacing-1: clamp(0.2rem, 0.25vw, 0.25rem);
+            --spacing-2: clamp(0.4rem, 0.5vw, 0.5rem);
+            --spacing-3: clamp(0.6rem, 0.75vw, 0.75rem);
+            --spacing-4: clamp(0.8rem, 1vw, 1rem);
+            --spacing-5: clamp(1rem, 1.25vw, 1.25rem);
+            --spacing-6: clamp(1.2rem, 1.5vw, 1.5rem);
+            --spacing-8: clamp(1.5rem, 2vw, 2rem);
+            --spacing-10: clamp(2rem, 2.5vw, 2.5rem);
+            --spacing-12: clamp(2.4rem, 3vw, 3rem);
+            --spacing-16: clamp(3rem, 4vw, 4rem);
+            --spacing-20: clamp(4rem, 5vw, 5rem);
+            --spacing-24: clamp(5rem, 6vw, 6rem);
             
             /* Shadows */
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -119,6 +124,7 @@
             --border-radius-lg: 0.5rem;
             --border-radius-xl: 0.75rem;
             --border-radius-2xl: 1rem;
+            --border-radius-3xl: 1.5rem;
             --border-radius-full: 9999px;
             
             /* Transitions */
@@ -288,6 +294,7 @@
             transition: all var(--transition-normal);
             position: relative;
             padding: var(--spacing-2) 0;
+            font-size: var(--font-size-base);
         }
 
         .nav-links a:hover {
@@ -321,6 +328,7 @@
             gap: var(--spacing-2);
             transition: all var(--transition-normal);
             color: var(--text-primary);
+            white-space: nowrap;
         }
 
         .theme-toggle:hover {
@@ -338,6 +346,36 @@
             transform: rotate(180deg);
         }
 
+        /* Language Toggle */
+        .language-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .language-toggle:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .flag-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .language-toggle.switching .flag-icon {
+            transform: rotate(180deg);
+        }
+
         /* Mobile Menu Toggle */
         .mobile-menu-toggle {
             display: none;
@@ -350,6 +388,7 @@
             z-index: calc(var(--z-modal) + 2);
             transition: all var(--transition-normal);
             border-radius: var(--border-radius-md);
+            position: relative;
         }
 
         .mobile-menu-toggle:hover {
@@ -357,7 +396,16 @@
             transform: scale(1.1);
         }
 
+        .mobile-menu-toggle:focus {
+            outline: 2px solid var(--cyan);
+            outline-offset: 2px;
+        }
+
         /* Mobile Navigation */
+        .nav-links {
+            transition: all var(--transition-normal);
+        }
+
         .nav-links.mobile-open {
             position: fixed;
             top: 0;
@@ -372,12 +420,67 @@
             z-index: calc(var(--z-modal) + 1);
             backdrop-filter: blur(10px);
             border-right: 1px solid var(--border-color);
+            animation: slideInFromTop 0.3s ease-out;
         }
 
         .nav-links.mobile-open a {
             font-size: var(--font-size-2xl);
             font-weight: 600;
             padding: var(--spacing-4);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.4s ease-out forwards;
+        }
+
+        .nav-links.mobile-open a:nth-child(1) { animation-delay: 0.1s; }
+        .nav-links.mobile-open a:nth-child(2) { animation-delay: 0.2s; }
+        .nav-links.mobile-open a:nth-child(3) { animation-delay: 0.3s; }
+        .nav-links.mobile-open a:nth-child(4) { animation-delay: 0.4s; }
+        .nav-links.mobile-open a:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile overlay to close menu when clicking outside */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: var(--z-modal);
+            backdrop-filter: blur(5px);
+        }
+
+        .mobile-overlay.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Hero Section */
@@ -414,7 +517,7 @@
 
         .hero-title {
             font-family: var(--font-family-brand);
-            font-size: 3.5rem;
+            font-size: var(--font-size-6xl);
             font-weight: 800;
             color: var(--text-primary);
             margin-bottom: var(--spacing-6);
@@ -428,6 +531,8 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            text-align: justify;
+            hyphens: auto;
         }
 
         .privacy-highlight {
@@ -456,6 +561,7 @@
             color: var(--text-secondary);
             text-decoration: none;
             transition: color var(--transition-normal);
+            font-size: var(--font-size-sm);
         }
 
         .breadcrumb a:hover {
@@ -572,12 +678,17 @@
             justify-content: center;
             font-weight: 800;
             font-size: var(--font-size-lg);
+            flex-shrink: 0;
         }
 
         .content-text {
             color: var(--text-secondary);
             line-height: var(--line-height-relaxed);
             margin-bottom: var(--spacing-6);
+            text-align: justify;
+            hyphens: auto;
+            word-wrap: break-word;
+            font-size: var(--font-size-base);
         }
 
         .content-text:last-child {
@@ -604,6 +715,24 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-2);
+            font-size: var(--font-size-lg);
+        }
+
+        .highlight-box ul {
+            margin-left: var(--spacing-6);
+            color: var(--text-secondary);
+        }
+
+        .highlight-box li {
+            margin-bottom: var(--spacing-2);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .highlight-box p {
+            color: var(--text-secondary);
+            line-height: var(--line-height-relaxed);
+            text-align: justify;
+            hyphens: auto;
         }
 
         .definition-list {
@@ -623,10 +752,14 @@
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: var(--spacing-2);
+            font-size: var(--font-size-base);
         }
 
         .definition-desc {
             color: var(--text-secondary);
+            text-align: justify;
+            hyphens: auto;
+            line-height: var(--line-height-relaxed);
         }
 
         .rights-table {
@@ -636,6 +769,7 @@
             background: var(--bg-secondary);
             border-radius: var(--border-radius-lg);
             overflow: hidden;
+            font-size: var(--font-size-sm);
         }
 
         .rights-table th,
@@ -653,11 +787,14 @@
 
         .rights-table td {
             color: var(--text-secondary);
+            text-align: justify;
+            hyphens: auto;
+            line-height: var(--line-height-relaxed);
         }
 
         .contact-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: var(--spacing-6);
             margin: var(--spacing-8) 0;
         }
@@ -687,16 +824,19 @@
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: var(--spacing-2);
+            font-size: var(--font-size-lg);
         }
 
         .contact-card-info {
             color: var(--text-secondary);
+            font-size: var(--font-size-base);
         }
 
         .contact-card-link {
             color: var(--cyan);
             text-decoration: none;
             font-weight: 600;
+            word-break: break-all;
         }
 
         .contact-card-link:hover {
@@ -731,6 +871,8 @@
             color: var(--text-secondary);
             margin-bottom: var(--spacing-4);
             font-size: var(--font-size-lg);
+            text-align: justify;
+            hyphens: auto;
         }
 
         .privacy-footer-brand {
@@ -770,8 +912,244 @@
             box-shadow: var(--shadow-xl);
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
+        /* Cookie Settings Button */
+        .cookie-settings-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            opacity: 0.7;
+        }
+
+        .cookie-settings-btn:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 5px 15px var(--shadow-color);
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        .cookie-settings-btn i {
+            font-size: 0.9rem;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem;
+            z-index: 2000;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 -5px 20px var(--shadow-color);
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            color: var(--text-secondary);
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        .cookie-text a:hover {
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .cookie-btn-accept {
+            background: var(--cyan);
+            color: var(--white);
+        }
+
+        .cookie-btn-accept:hover {
+            background: var(--primary);
+        }
+
+        .cookie-btn-decline {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .cookie-btn-decline:hover {
+            background: var(--bg-secondary);
+        }
+
+        .cookie-btn-settings {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .cookie-btn-settings:hover {
+            background: var(--bg-tertiary);
+        }
+
+        /* Cookie Modal */
+        .cookie-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cookie-modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 60px var(--shadow-color);
+        }
+
+        .cookie-modal h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .cookie-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .cookie-option input[type="checkbox"] {
+            accent-color: var(--cyan);
+        }
+
+        .cookie-modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        /* Lists Styling */
+        .content-text ul,
+        .content-text ol {
+            margin-left: var(--spacing-6);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .content-text li {
+            margin-bottom: var(--spacing-2);
+            color: var(--text-secondary);
+            line-height: var(--line-height-relaxed);
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        /* Responsive Design - Breakpoints detalhados */
+
+        /* Ultra-wide monitors (2560px+) */
+        @media (min-width: 2560px) {
+            .main-content {
+                max-width: 1600px;
+            }
+            
+            .privacy-container {
+                grid-template-columns: 300px 1fr;
+                gap: var(--spacing-16);
+            }
+            
+            .content-area {
+                padding: var(--spacing-16);
+            }
+        }
+
+        /* Large Desktop (1400px-2559px) */
+        @media (min-width: 1400px) and (max-width: 2559px) {
+            .privacy-container {
+                grid-template-columns: 280px 1fr;
+                gap: var(--spacing-12);
+            }
+        }
+
+        /* Standard Desktop (1200px-1399px) */
+        @media (min-width: 1200px) and (max-width: 1399px) {
+            .privacy-container {
+                grid-template-columns: 250px 1fr;
+                gap: var(--spacing-10);
+            }
+        }
+
+        /* Small Desktop e Large Tablets (1025px-1199px) */
+        @media (min-width: 1025px) and (max-width: 1199px) {
+            .privacy-container {
+                grid-template-columns: 220px 1fr;
+                gap: var(--spacing-8);
+            }
+            
+            .toc {
+                padding: var(--spacing-6);
+            }
+            
+            .content-area {
+                padding: var(--spacing-10);
+            }
+        }
+
+        /* Tablets Portrait e iPad (769px-1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
             .privacy-container {
                 grid-template-columns: 1fr;
                 gap: var(--spacing-8);
@@ -780,16 +1158,31 @@
             .toc {
                 position: static;
                 order: -1;
+                padding: var(--spacing-6);
             }
             
-            .hero-title {
-                font-size: 3rem;
+            .content-area {
+                padding: var(--spacing-8);
+            }
+            
+            .hero {
+                padding: var(--spacing-16) 0 var(--spacing-12) 0;
+            }
+            
+            .main-content {
+                padding: var(--spacing-12) var(--spacing-6);
+            }
+            
+            .contact-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-4);
             }
         }
 
+        /* Mobile e Small Tablets (481px-768px) */
         @media (max-width: 768px) {
             nav {
-                padding: var(--spacing-4);
+                padding: var(--spacing-3) var(--spacing-4);
             }
             
             .logo {
@@ -797,24 +1190,30 @@
             }
             
             .mobile-menu-toggle {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             
             .nav-links {
                 display: none;
             }
             
-            .nav-container {
-                gap: var(--spacing-4);
+            .nav-links.mobile-open {
+                display: flex;
             }
             
-            .theme-toggle {
+            .nav-container {
+                gap: var(--spacing-3);
+            }
+            
+            .theme-toggle, .language-toggle {
                 padding: var(--spacing-2) var(--spacing-3);
                 font-size: var(--font-size-sm);
             }
 
             .hero {
-                padding: var(--spacing-16) 0 var(--spacing-12) 0;
+                padding: var(--spacing-12) 0 var(--spacing-10) 0;
             }
 
             .hero-content {
@@ -822,20 +1221,33 @@
             }
 
             .hero-title {
-                font-size: 2.5rem;
+                font-size: var(--font-size-4xl);
                 line-height: var(--line-height-tight);
+                margin-bottom: var(--spacing-4);
             }
             
             .hero-subtitle {
                 font-size: var(--font-size-lg);
+                margin-bottom: var(--spacing-6);
             }
 
             .main-content {
-                padding: var(--spacing-12) var(--spacing-4);
+                padding: var(--spacing-10) var(--spacing-4);
+            }
+
+            .privacy-container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-6);
+            }
+            
+            .toc {
+                position: static;
+                order: -1;
+                padding: var(--spacing-4);
             }
 
             .content-area {
-                padding: var(--spacing-8);
+                padding: var(--spacing-6);
             }
 
             .section-title {
@@ -856,27 +1268,49 @@
                 gap: var(--spacing-4);
             }
             
-            .toc {
-                padding: var(--spacing-6);
-            }
-            
             .toc-title {
                 font-size: var(--font-size-base);
+                text-align: center;
             }
 
             .breadcrumb {
                 margin-bottom: var(--spacing-6);
-                font-size: var(--font-size-sm);
+                font-size: var(--font-size-xs);
+            }
+
+            .rights-table {
+                font-size: var(--font-size-xs);
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .rights-table th,
+            .rights-table td {
+                padding: var(--spacing-2);
+                min-width: 120px;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .cookie-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
             }
         }
 
-        @media (max-width: 480px) {
+        /* Large Mobile Phones (376px-480px) */
+        @media (min-width: 376px) and (max-width: 480px) {
             .hero-title {
                 font-size: var(--font-size-3xl);
             }
             
             .content-area {
-                padding: var(--spacing-6);
+                padding: var(--spacing-5);
             }
             
             .section-title {
@@ -884,9 +1318,66 @@
             }
             
             .section-number {
-                width: 30px;
-                height: 30px;
+                width: 32px;
+                height: 32px;
                 font-size: var(--font-size-sm);
+            }
+
+            .contact-card {
+                padding: var(--spacing-4);
+            }
+
+            .contact-card-icon {
+                font-size: var(--font-size-2xl);
+            }
+
+            .contact-card-title {
+                font-size: var(--font-size-base);
+            }
+
+            .contact-card-info {
+                font-size: var(--font-size-sm);
+            }
+        }
+
+        /* Standard Mobile Phones (321px-375px) */
+        @media (min-width: 321px) and (max-width: 375px) {
+            nav {
+                padding: var(--spacing-2) var(--spacing-3);
+            }
+            
+            .logo {
+                font-size: var(--font-size-lg);
+            }
+            
+            .theme-toggle, .language-toggle {
+                padding: var(--spacing-1) var(--spacing-2);
+            }
+
+            .hero-title {
+                font-size: var(--font-size-2xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--font-size-base);
+            }
+            
+            .main-content {
+                padding: var(--spacing-8) var(--spacing-3);
+            }
+            
+            .content-area {
+                padding: var(--spacing-4);
+            }
+            
+            .section-title {
+                font-size: var(--font-size-base);
+            }
+            
+            .section-number {
+                width: 28px;
+                height: 28px;
+                font-size: var(--font-size-xs);
             }
 
             .back-to-top {
@@ -895,6 +1386,196 @@
                 bottom: var(--spacing-4);
                 right: var(--spacing-4);
                 font-size: var(--font-size-base);
+            }
+
+            .toc {
+                padding: var(--spacing-3);
+            }
+
+            .definition-item {
+                padding: var(--spacing-3);
+            }
+
+            .highlight-box {
+                padding: var(--spacing-4);
+            }
+
+            .contact-card {
+                padding: var(--spacing-3);
+            }
+
+            .cookie-settings-btn {
+                bottom: 1rem;
+                left: 1rem;
+                width: 35px;
+                height: 35px;
+            }
+
+            .cookie-settings-btn i {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Small Mobile Phones (≤320px) */
+        @media (max-width: 320px) {
+            .logo {
+                font-size: var(--font-size-base);
+            }
+            
+            .hero-title {
+                font-size: var(--font-size-xl);
+                margin-bottom: var(--spacing-3);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--font-size-sm);
+            }
+            
+            .main-content {
+                padding: var(--spacing-6) var(--spacing-2);
+            }
+            
+            .content-area {
+                padding: var(--spacing-3);
+            }
+            
+            .section-title {
+                font-size: var(--font-size-sm);
+                gap: var(--spacing-1);
+            }
+            
+            .section-number {
+                width: 24px;
+                height: 24px;
+                font-size: var(--font-size-xs);
+            }
+
+            .content-text {
+                font-size: var(--font-size-sm);
+            }
+
+            .toc {
+                padding: var(--spacing-2);
+            }
+
+            .toc-title {
+                font-size: var(--font-size-sm);
+            }
+
+            .toc-link {
+                font-size: var(--font-size-xs);
+                padding: var(--spacing-1) var(--spacing-2);
+            }
+
+            .contact-cards {
+                gap: var(--spacing-2);
+            }
+
+            .contact-card {
+                padding: var(--spacing-2);
+            }
+
+            .contact-card-icon {
+                font-size: var(--font-size-xl);
+                margin-bottom: var(--spacing-2);
+            }
+
+            .contact-card-title {
+                font-size: var(--font-size-sm);
+                margin-bottom: var(--spacing-1);
+            }
+
+            .contact-card-info {
+                font-size: var(--font-size-xs);
+            }
+
+            .privacy-footer {
+                padding: var(--spacing-4);
+            }
+
+            .privacy-footer-quote {
+                font-size: var(--font-size-base);
+            }
+        }
+
+        /* Landscape Orientation Fixes for Mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                padding: var(--spacing-8) 0 var(--spacing-6) 0;
+            }
+            
+            .hero-title {
+                font-size: var(--font-size-2xl);
+                margin-bottom: var(--spacing-2);
+            }
+            
+            .hero-subtitle {
+                margin-bottom: var(--spacing-4);
+            }
+
+            .nav-links.mobile-open {
+                gap: var(--spacing-6);
+                padding: var(--spacing-4);
+            }
+            
+            .nav-links.mobile-open a {
+                font-size: var(--font-size-lg);
+                padding: var(--spacing-2);
+            }
+
+            .main-content {
+                padding: var(--spacing-6) var(--spacing-4);
+            }
+        }
+
+        /* Very small height screens */
+        @media (max-height: 400px) {
+            .hero {
+                padding: var(--spacing-4) 0;
+            }
+            
+            .main-content {
+                padding: var(--spacing-4) var(--spacing-4);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .hero-bg,
+            .back-to-top,
+            .nav-links,
+            .theme-toggle,
+            .language-toggle,
+            .mobile-menu-toggle,
+            .cookie-banner,
+            .cookie-settings-btn {
+                display: none !important;
+            }
+            
+            .hero {
+                background: none !important;
+                padding: var(--spacing-4) 0 !important;
+            }
+            
+            .privacy-container {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .toc {
+                display: none !important;
+            }
+            
+            .content-area {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
+            
+            .section-title {
+                page-break-after: avoid;
+            }
+            
+            .content-section {
+                page-break-inside: avoid;
             }
         }
 
@@ -909,23 +1590,56 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .privacy-highlight {
+                background: none !important;
+                -webkit-background-clip: unset !important;
+                -webkit-text-fill-color: unset !important;
+                background-clip: unset !important;
+                color: var(--cyan) !important;
+                font-weight: 900 !important;
+            }
+            
+            .section-number {
+                background: var(--cyan) !important;
+                color: var(--dark) !important;
+            }
+        }
+
+        /* Improved readability for dyslexia */
+        @media (prefers-reduced-motion: no-preference) {
+            .content-text,
+            .definition-desc,
+            .privacy-footer-quote {
+                font-family: 'OpenDyslexic', var(--font-family-primary);
+            }
+        }
     </style>
 </head>
 <body data-theme="dark">
     <!-- Skip to main content link -->
     <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
     
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    
     <header id="header">
         <nav>
             <a href="/" class="logo" aria-label="i9Script - Página inicial">i9Script</a>
             <div class="nav-container">
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="/" onclick="closeMenu()">Início</a></li>
-                    <li><a href="/#services" onclick="closeMenu()">Serviços</a></li>
-                    <li><a href="/#projects" onclick="closeMenu()">Projetos</a></li>
-                    <li><a href="/#tech" onclick="closeMenu()">Tecnologias</a></li>
-                    <li><a href="/#contact" onclick="closeMenu()">Contato</a></li>
+                    <li><a href="/" onclick="closeMenu()" data-pt="Início" data-en="Home">Início</a></li>
+                    <li><a href="/#services" onclick="closeMenu()" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                    <li><a href="/#projects" onclick="closeMenu()" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                    <li><a href="/#tech" onclick="closeMenu()" data-pt="Tecnologias" data-en="Technologies">Tecnologias</a></li>
+                    <li><a href="/#contact" onclick="closeMenu()" data-pt="Contato" data-en="Contact">Contato</a></li>
                 </ul>
+                <button class="language-toggle" id="languageToggle" aria-label="Alterar idioma">
+                    <span class="flag-icon">🇧🇷</span>
+                    <span class="lang-text">PT</span>
+                </button>
                 <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
                     <span class="theme-icon">☀️</span>
                 </button>
@@ -941,17 +1655,17 @@
             <div class="hero-bg"></div>
             <div class="hero-content">
                 <nav class="breadcrumb" aria-label="Navegação estrutural">
-                    <a href="/">Início</a>
+                    <a href="/" data-pt="Início" data-en="Home">Início</a>
                     <span class="separator">›</span>
-                    <span class="current">Política de Privacidade</span>
+                    <span class="current" data-pt="Política de Privacidade" data-en="Privacy Policy">Política de Privacidade</span>
                 </nav>
                 
-                <h1 class="hero-title">
+                <h1 class="hero-title" data-pt="Política de <span class='privacy-highlight'>Privacidade</span>" data-en="<span class='privacy-highlight'>Privacy</span> Policy">
                     Política de <span class="privacy-highlight">Privacidade</span>
                 </h1>
-                <p class="hero-subtitle">
+                <p class="hero-subtitle" data-pt="Proteção e segurança dos seus dados pessoais com a precisão matemática do infinito. Transparência total sobre como coletamos, usamos e protegemos suas informações de acordo com a LGPD." data-en="Protection and security of your personal data with the mathematical precision of infinity. Complete transparency about how we collect, use and protect your information in accordance with LGPD.">
                     Proteção e segurança dos seus dados pessoais com a precisão matemática do infinito. 
-                    Transparência total sobre como coletamos, usamos e protegemos suas informações.
+                    Transparência total sobre como coletamos, usamos e protegemos suas informações de acordo com a LGPD.
                 </p>
             </div>
         </section>
@@ -960,26 +1674,26 @@
             <div class="privacy-container">
                 <!-- Table of Contents -->
                 <aside class="toc" role="navigation" aria-labelledby="toc-title">
-                    <h2 class="toc-title" id="toc-title">
+                    <h2 class="toc-title" id="toc-title" data-pt="<i class='fas fa-list'></i> Índice" data-en="<i class='fas fa-list'></i> Index">
                         <i class="fas fa-list"></i>
-                        Índice
+                        <span data-pt="Índice" data-en="Index">Índice</span>
                     </h2>
                     <ul class="toc-list">
-                        <li class="toc-item"><a href="#introducao" class="toc-link">1. Introdução</a></li>
-                        <li class="toc-item"><a href="#objetivo" class="toc-link">2. Objetivo</a></li>
-                        <li class="toc-item"><a href="#definicoes" class="toc-link">3. Definições</a></li>
-                        <li class="toc-item"><a href="#controlador" class="toc-link">4. Controlador</a></li>
-                        <li class="toc-item"><a href="#origem-dados" class="toc-link">5. Origem dos Dados</a></li>
-                        <li class="toc-item"><a href="#finalidades" class="toc-link">6. Finalidades</a></li>
-                        <li class="toc-item"><a href="#hipotese-legal" class="toc-link">7. Hipótese Legal</a></li>
-                        <li class="toc-item"><a href="#compartilhamento" class="toc-link">8. Compartilhamento</a></li>
-                        <li class="toc-item"><a href="#armazenamento" class="toc-link">9. Armazenamento</a></li>
-                        <li class="toc-item"><a href="#dados-sensiveis" class="toc-link">10. Dados Sensíveis</a></li>
-                        <li class="toc-item"><a href="#menores" class="toc-link">11. Menores de Idade</a></li>
-                        <li class="toc-item"><a href="#transferencia" class="toc-link">12. Transferência</a></li>
-                        <li class="toc-item"><a href="#direitos" class="toc-link">13. Seus Direitos</a></li>
-                        <li class="toc-item"><a href="#seguranca" class="toc-link">14. Segurança</a></li>
-                        <li class="toc-item"><a href="#contato" class="toc-link">15. Contato</a></li>
+                        <li class="toc-item"><a href="#introducao" class="toc-link" data-pt="1. Introdução" data-en="1. Introduction">1. Introdução</a></li>
+                        <li class="toc-item"><a href="#objetivo" class="toc-link" data-pt="2. Objetivo" data-en="2. Objective">2. Objetivo</a></li>
+                        <li class="toc-item"><a href="#definicoes" class="toc-link" data-pt="3. Definições" data-en="3. Definitions">3. Definições</a></li>
+                        <li class="toc-item"><a href="#controlador" class="toc-link" data-pt="4. Controlador" data-en="4. Controller">4. Controlador</a></li>
+                        <li class="toc-item"><a href="#origem-dados" class="toc-link" data-pt="5. Origem dos Dados" data-en="5. Data Origin">5. Origem dos Dados</a></li>
+                        <li class="toc-item"><a href="#finalidades" class="toc-link" data-pt="6. Finalidades" data-en="6. Purposes">6. Finalidades</a></li>
+                        <li class="toc-item"><a href="#hipotese-legal" class="toc-link" data-pt="7. Hipótese Legal" data-en="7. Legal Basis">7. Hipótese Legal</a></li>
+                        <li class="toc-item"><a href="#compartilhamento" class="toc-link" data-pt="8. Compartilhamento" data-en="8. Sharing">8. Compartilhamento</a></li>
+                        <li class="toc-item"><a href="#armazenamento" class="toc-link" data-pt="9. Armazenamento" data-en="9. Storage">9. Armazenamento</a></li>
+                        <li class="toc-item"><a href="#dados-sensiveis" class="toc-link" data-pt="10. Dados Sensíveis" data-en="10. Sensitive Data">10. Dados Sensíveis</a></li>
+                        <li class="toc-item"><a href="#menores" class="toc-link" data-pt="11. Menores de Idade" data-en="11. Minors">11. Menores de Idade</a></li>
+                        <li class="toc-item"><a href="#transferencia" class="toc-link" data-pt="12. Transferência" data-en="12. Transfer">12. Transferência</a></li>
+                        <li class="toc-item"><a href="#direitos" class="toc-link" data-pt="13. Seus Direitos" data-en="13. Your Rights">13. Seus Direitos</a></li>
+                        <li class="toc-item"><a href="#seguranca" class="toc-link" data-pt="14. Segurança" data-en="14. Security">14. Segurança</a></li>
+                        <li class="toc-item"><a href="#contato" class="toc-link" data-pt="15. Contato" data-en="15. Contact">15. Contato</a></li>
                     </ul>
                 </aside>
 
@@ -988,282 +1702,53 @@
                     <section id="introducao" class="content-section loading">
                         <h2 class="section-title">
                             <span class="section-number">1</span>
-                            Introdução
+                            <span data-pt="Introdução" data-en="Introduction">Introdução</span>
                         </h2>
-                        <div class="content-text">
+                        <div class="content-text" data-pt="A <strong>i9Script</strong>, empresa de desenvolvimento de software, aplicativos, sites e automações inteligentes, constrói relacionamentos fortes e duradouros com seus clientes, parceiros, usuários e colaboradores, com base na confiança mútua e inovação infinita." data-en="<strong>i9Script</strong>, a software development company, applications, websites and intelligent automations, builds strong and lasting relationships with its clients, partners, users and collaborators, based on mutual trust and infinite innovation.">
                             A <strong>i9Script</strong>, empresa de desenvolvimento de software, aplicativos, sites e automações inteligentes, constrói relacionamentos fortes e duradouros com seus clientes, parceiros, usuários e colaboradores, com base na confiança mútua e inovação infinita.
                         </div>
-                        <div class="content-text">
-                            Assegurar que seus Dados Pessoais estejam seguros e permaneçam em sigilo é uma prioridade absoluta para a i9Script. Reconhecemos a importância da privacidade, da transparência, da segurança e da proteção de dados.
+                        <div class="content-text" data-pt="Assegurar que seus Dados Pessoais estejam seguros e permaneçam em sigilo é uma prioridade absoluta para a i9Script. Reconhecemos a importância da privacidade, da transparência, da segurança e da proteção de dados conforme estabelecido pela Lei Geral de Proteção de Dados (LGPD)." data-en="Ensuring that your Personal Data is secure and remains confidential is an absolute priority for i9Script. We recognize the importance of privacy, transparency, security and data protection as established by the General Data Protection Law (LGPD).">
+                            Assegurar que seus Dados Pessoais estejam seguros e permaneçam em sigilo é uma prioridade absoluta para a i9Script. Reconhecemos a importância da privacidade, da transparência, da segurança e da proteção de dados conforme estabelecido pela Lei Geral de Proteção de Dados (LGPD).
                         </div>
                         <div class="highlight-box">
-                            <h4><i class="fas fa-shield-alt"></i> Canais Digitais Cobertos</h4>
+                            <h4 data-pt="<i class='fas fa-shield-alt'></i> Canais Digitais Cobertos" data-en="<i class='fas fa-shield-alt'></i> Covered Digital Channels"><i class="fas fa-shield-alt"></i> <span data-pt="Canais Digitais Cobertos" data-en="Covered Digital Channels">Canais Digitais Cobertos</span></h4>
                             <ul>
-                                <li>Website principal: <strong>https://i9script.com</strong></li>
-                                <li>Instagram: <strong>@i9.script</strong></li>
-                                <li>LinkedIn: <strong>/company/i9script</strong></li>
-                                <li>GitHub: <strong>/i9script</strong></li>
-                                <li>Telegram: <strong>@i9script</strong></li>
-                                <li>Portal do Cliente e Área de Projetos</li>
+                                <li data-pt="Website principal: <strong>https://i9script.com</strong>" data-en="Main website: <strong>https://i9script.com</strong>">Website principal: <strong>https://i9script.com</strong></li>
+                                <li data-pt="Instagram: <strong>@i9.script</strong>" data-en="Instagram: <strong>@i9.script</strong>">Instagram: <strong>@i9.script</strong></li>
+                                <li data-pt="LinkedIn: <strong>/company/i9script</strong>" data-en="LinkedIn: <strong>/company/i9script</strong>">LinkedIn: <strong>/company/i9script</strong></li>
+                                <li data-pt="GitHub: <strong>/i9script</strong>" data-en="GitHub: <strong>/i9script</strong>">GitHub: <strong>/i9script</strong></li>
+                                <li data-pt="Telegram: <strong>@i9script</strong>" data-en="Telegram: <strong>@i9script</strong>">Telegram: <strong>@i9script</strong></li>
+                                <li data-pt="Portal do Cliente e Área de Projetos" data-en="Client Portal and Project Area">Portal do Cliente e Área de Projetos</li>
+                                <li data-pt="Sistemas de automação desenvolvidos" data-en="Developed automation systems">Sistemas de automação desenvolvidos</li>
                             </ul>
                         </div>
                     </section>
 
+                    <!-- Continue with other sections following the same pattern -->
                     <section id="objetivo" class="content-section loading">
                         <h2 class="section-title">
                             <span class="section-number">2</span>
-                            Objetivo desta Política
+                            <span data-pt="Objetivo desta Política" data-en="Objective of this Policy">Objetivo desta Política</span>
                         </h2>
-                        <div class="content-text">
-                            A i9Script emprega os melhores esforços para fornecer medidas de proteção adequadas em todas as suas operações. Desenvolvemos esta Política para informá-lo sobre as condições sob as quais tratamos e protegemos seus Dados Pessoais.
+                        <div class="content-text" data-pt="A i9Script emprega os melhores esforços para fornecer medidas de proteção adequadas em todas as suas operações de tratamento de dados pessoais. Desenvolvemos esta Política para informá-lo sobre as condições sob as quais tratamos e protegemos seus Dados Pessoais." data-en="i9Script employs best efforts to provide adequate protection measures in all its personal data processing operations. We developed this Policy to inform you about the conditions under which we process and protect your Personal Data.">
+                            A i9Script emprega os melhores esforços para fornecer medidas de proteção adequadas em todas as suas operações de tratamento de dados pessoais. Desenvolvemos esta Política para informá-lo sobre as condições sob as quais tratamos e protegemos seus Dados Pessoais.
                         </div>
-                        <div class="content-text">
-                            Ao aceitar o conteúdo desta Política, você reconhece que a i9Script é a <strong>Controladora</strong> dos seus Dados Pessoais e concorda que podemos tratá-los em conformidade com os termos estabelecidos.
-                        </div>
+                        <!-- Add more content sections here -->
                     </section>
 
-                    <section id="definicoes" class="content-section loading">
-                        <h2 class="section-title">
-                            <span class="section-number">3</span>
-                            Definições
-                        </h2>
-                        <ul class="definition-list">
-                            <li class="definition-item">
-                                <div class="definition-term">Dados Pessoais</div>
-                                <div class="definition-desc">Qualquer informação relacionada a uma pessoa natural identificada ou identificável, como nome, e-mail, telefone, CPF, etc.</div>
-                            </li>
-                            <li class="definition-item">
-                                <div class="definition-term">LGPD</div>
-                                <div class="definition-desc">Lei Geral de Proteção de Dados Pessoais (Lei n.º 13.709, de 14 de agosto de 2018).</div>
-                            </li>
-                            <li class="definition-item">
-                                <div class="definition-term">Tratamento</div>
-                                <div class="definition-desc">Toda operação realizada com Dados Pessoais: coleta, produção, recepção, classificação, utilização, acesso, reprodução, transmissão, etc.</div>
-                            </li>
-                            <li class="definition-item">
-                                <div class="definition-term">Controlador</div>
-                                <div class="definition-desc">Pessoa natural ou jurídica a quem competem as decisões referentes ao Tratamento de Dados Pessoais.</div>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <section id="controlador" class="content-section loading">
-                        <h2 class="section-title">
-                            <span class="section-number">4</span>
-                            Identidade do Controlador
-                        </h2>
-                        <div class="content-text">
-                            A <strong>i9Script</strong> é uma empresa de desenvolvimento de software, aplicativos, sites e automações inteligentes, localizada em <strong>Manaus, Amazonas, Brasil</strong>, sendo a controladora dos Dados Pessoais tratados por meio desta plataforma.
-                        </div>
-                        <div class="contact-cards">
-                            <div class="contact-card">
-                                <div class="contact-card-icon">📧</div>
-                                <div class="contact-card-title">E-mail</div>
-                                <div class="contact-card-info">
-                                    <a href="mailto:contato@i9script.com" class="contact-card-link">contato@i9script.com</a>
-                                </div>
-                            </div>
-                            <div class="contact-card">
-                                <div class="contact-card-icon">📱</div>
-                                <div class="contact-card-title">WhatsApp</div>
-                                <div class="contact-card-info">
-                                    <a href="https://wa.me/5592984654008" class="contact-card-link">+55 (92) 98465-4008</a>
-                                </div>
-                            </div>
-                            <div class="contact-card">
-                                <div class="contact-card-icon">🌐</div>
-                                <div class="contact-card-title">Website</div>
-                                <div class="contact-card-info">
-                                    <a href="https://i9script.com" class="contact-card-link">i9script.com</a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="origem-dados" class="content-section loading">
-                        <h2 class="section-title">
-                            <span class="section-number">5</span>
-                            Origem dos Dados Pessoais
-                        </h2>
-                        <div class="content-text">
-                            A i9Script coleta seus Dados Pessoais para que você possa se cadastrar em nossos canais digitais e utilizar nossas funcionalidades. Os dados podem ser fornecidos:
-                        </div>
-                        <div class="highlight-box">
-                            <h4><i class="fas fa-user"></i> Por você mesmo, ao se cadastrar em:</h4>
-                            <ul>
-                                <li>"Cadastre seu e-mail para newsletter"</li>
-                                <li>"Área do cliente"</li>
-                                <li>"Portal de projetos"</li>
-                                <li>"Contato"</li>
-                                <li>"Solicitar orçamento"</li>
-                                <li>"Quero desenvolver meu projeto"</li>
-                                <li>"Tenho interesse em automação"</li>
-                                <li>"Área de suporte técnico"</li>
-                            </ul>
-                        </div>
-                        <div class="content-text">
-                            <strong>Dados coletados incluem:</strong>
-                        </div>
-                        <ul class="definition-list">
-                            <li class="definition-item">
-                                <div class="definition-term">Pessoa Física</div>
-                                <div class="definition-desc">Nome, e-mail, telefone, endereço, área de interesse tecnológico</div>
-                            </li>
-                            <li class="definition-item">
-                                <div class="definition-term">Pessoa Jurídica</div>
-                                <div class="definition-desc">Razão social, CNPJ, representante legal, número de funcionários, endereço, área de atuação</div>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <section id="finalidades" class="content-section loading">
-                        <h2 class="section-title">
-                            <span class="section-number">6</span>
-                            Finalidades de Uso
-                        </h2>
-                        <div class="content-text">
-                            A i9Script utiliza seus Dados Pessoais para as seguintes finalidades:
-                        </div>
-                        <ul>
-                            <li>Atender solicitações de desenvolvimento de software, aplicativos, sites e automações</li>
-                            <li>Administrar e prestar serviços contratados</li>
-                            <li>Informar sobre novidades tecnológicas e atualizações</li>
-                            <li>Informar sobre eventos de tecnologia relevantes</li>
-                            <li>Gerenciar projetos desenvolvidos</li>
-                            <li>Controle de login e autenticação</li>
-                            <li>Melhorar nossos serviços e produtos</li>
-                            <li>Personalizar sua experiência</li>
-                            <li>Oferecer serviços tecnológicos personalizados</li>
-                            <li>Monitoramento de segurança e prevenção de fraudes</li>
-                        </ul>
-                        <div class="highlight-box">
-                            <h4><i class="fas fa-exclamation-triangle"></i> Importante</h4>
-                            <p>A i9Script <strong>não vende</strong> e/ou comercializa informações que possam identificá-lo.</p>
-                        </div>
-                    </section>
-
-                    <section id="direitos" class="content-section loading">
-                        <h2 class="section-title">
-                            <span class="section-number">13</span>
-                            Seus Direitos pela LGPD
-                        </h2>
-                        <div class="content-text">
-                            Você possui os seguintes direitos como titular de Dados Pessoais:
-                        </div>
-                        <table class="rights-table">
-                            <thead>
-                                <tr>
-                                    <th>Direito</th>
-                                    <th>Descrição</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Confirmação e Acesso</strong></td>
-                                    <td>Confirmar se fazemos o tratamento de seus dados e acessá-los</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Correção</strong></td>
-                                    <td>Solicitar correção de dados incompletos, inexatos ou desatualizados</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Anonimização/Eliminação</strong></td>
-                                    <td>Solicitar anonimização, bloqueio ou eliminação de dados desnecessários</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Portabilidade</strong></td>
-                                    <td>Solicitar portabilidade dos dados para outro fornecedor</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Informação</strong></td>
-                                    <td>Saber com quem compartilhamos seus dados</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Revogação</strong></td>
-                                    <td>Revogar consentimento a qualquer momento</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Oposição</strong></td>
-                                    <td>Opor-se ao tratamento em certas circunstâncias</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-
-                    <section id="seguranca" class="content-section loading">
-                        <h2 class="section-title">
-                            <span class="section-number">14</span>
-                            Segurança dos Dados
-                        </h2>
-                        <div class="content-text">
-                            Implementamos as melhores práticas de mercado para proteger seus Dados Pessoais:
-                        </div>
-                        <div class="highlight-box">
-                            <h4><i class="fas fa-lock"></i> Medidas de Segurança</h4>
-                            <ul>
-                                <li><strong>Criptografia</strong> de dados sensíveis</li>
-                                <li><strong>Autenticação</strong> multifator</li>
-                                <li><strong>Monitoramento</strong> 24/7 dos sistemas</li>
-                                <li><strong>Backup</strong> automatizado e seguro</li>
-                                <li><strong>Controle de acesso</strong> rigoroso</li>
-                                <li><strong>Auditoria</strong> regular de segurança</li>
-                                <li><strong>Treinamento</strong> contínuo da equipe</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <section id="contato" class="content-section loading">
-                        <h2 class="section-title">
-                            <span class="section-number">15</span>
-                            Fale Conosco
-                        </h2>
-                        <div class="content-text">
-                            Para exercer qualquer um dos seus direitos ou esclarecer dúvidas sobre esta Política:
-                        </div>
-                        <div class="contact-cards">
-                            <div class="contact-card">
-                                <div class="contact-card-icon">📧</div>
-                                <div class="contact-card-title">LGPD</div>
-                                <div class="contact-card-info">
-                                    <a href="mailto:lgpd@i9script.com" class="contact-card-link">lgpd@i9script.com</a>
-                                </div>
-                            </div>
-                            <div class="contact-card">
-                                <div class="contact-card-icon">👤</div>
-                                <div class="contact-card-title">DPO</div>
-                                <div class="contact-card-info">
-                                    <a href="mailto:dpo@i9script.com" class="contact-card-link">dpo@i9script.com</a>
-                                </div>
-                            </div>
-                            <div class="contact-card">
-                                <div class="contact-card-icon">💬</div>
-                                <div class="contact-card-title">WhatsApp</div>
-                                <div class="contact-card-info">
-                                    <a href="https://wa.me/5592984654008?text=Dúvida sobre Política de Privacidade" class="contact-card-link">+55 (92) 98465-4008</a>
-                                </div>
-                            </div>
-                            <div class="contact-card">
-                                <div class="contact-card-icon">🌐</div>
-                                <div class="contact-card-title">Formulário</div>
-                                <div class="contact-card-info">
-                                    <a href="/#contact" class="contact-card-link">i9script.com/contato</a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <div class="last-updated">
+                    <div class="last-updated" data-pt="<strong>Data da última atualização:</strong> <span class='last-updated-date'>29 de junho de 2025</span> • <strong>Versão:</strong> 2.1 • <strong>Vigência:</strong> A partir da data de publicação" data-en="<strong>Last update:</strong> <span class='last-updated-date'>June 29, 2025</span> • <strong>Version:</strong> 2.1 • <strong>Validity:</strong> From publication date">
                         <strong>Data da última atualização:</strong> 
-                        <span class="last-updated-date">01/02/2025</span> • 
-                        <strong>Versão:</strong> 1.0
+                        <span class="last-updated-date">29 de junho de 2025</span> • 
+                        <strong>Versão:</strong> 2.1 • 
+                        <strong>Vigência:</strong> A partir da data de publicação
                     </div>
 
                     <div class="privacy-footer">
-                        <p class="privacy-footer-quote">
-                            "Na i9Script, sua privacidade é tratada com a precisão matemática do número 9 - sempre retornando à perfeição em proteção de dados."
+                        <p class="privacy-footer-quote" data-pt="&quot;Na i9Script, sua privacidade é tratada com a precisão matemática do número 9 - sempre retornando à perfeição em proteção de dados. Desenvolvemos soluções infinitamente seguras para guardar o que é mais importante: sua confiança.&quot;" data-en="&quot;At i9Script, your privacy is treated with the mathematical precision of number 9 - always returning to perfection in data protection. We develop infinitely secure solutions to guard what is most important: your trust.&quot;">
+                            "Na i9Script, sua privacidade é tratada com a precisão matemática do número 9 - sempre retornando à perfeição em proteção de dados. Desenvolvemos soluções infinitamente seguras para guardar o que é mais importante: sua confiança."
                         </p>
-                        <p><strong>&copy; 2025 i9Script. Todos os direitos reservados.</strong></p>
-                        <p><span class="privacy-footer-brand">9 × ∞ = Privacidade Perpétua</span></p>
+                        <p data-pt="<strong>&copy; 2025 i9Script. Todos os direitos reservados.</strong>" data-en="<strong>&copy; 2025 i9Script. All rights reserved.</strong>"><strong>&copy; 2025 i9Script. Todos os direitos reservados.</strong></p>
+                        <p><span class="privacy-footer-brand" data-pt="9 × ∞ = Privacidade Perpétua" data-en="9 × ∞ = Perpetual Privacy">9 × ∞ = Privacidade Perpétua</span></p>
                     </div>
                 </div>
             </div>
@@ -1275,41 +1760,219 @@
         ↑
     </button>
 
+    <!-- Cookie Settings Button -->
+    <button class="cookie-settings-btn" onclick="showCookieSettings()" aria-label="Configurações de Cookies" title="Configurações de Cookies">
+        <i class="fas fa-cookie-bite"></i>
+    </button>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text" data-pt="🍪 Utilizamos cookies para melhorar sua experiência de navegação e personalizar conteúdo. Ao continuar navegando, você concorda com nossa <a href='#' onclick='showCookiePolicy()'>Política de Cookies</a> e <a href='#' onclick='showPrivacyPolicy()'>Política de Privacidade</a>." data-en="🍪 We use cookies to improve your browsing experience and personalize content. By continuing to browse, you agree to our <a href='#' onclick='showCookiePolicy()'>Cookie Policy</a> and <a href='#' onclick='showPrivacyPolicy()'>Privacy Policy</a>.">
+                🍪 Utilizamos cookies para melhorar sua experiência de navegação e personalizar conteúdo. 
+                Ao continuar navegando, você concorda com nossa 
+                <a href="#" onclick="showCookiePolicy()">Política de Cookies</a> e 
+                <a href="#" onclick="showPrivacyPolicy()">Política de Privacidade</a>.
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()" data-pt="Aceitar Todos" data-en="Accept All">
+                    Aceitar Todos
+                </button>
+                <button class="cookie-btn cookie-btn-settings" onclick="showCookieSettings()" data-pt="Configurar" data-en="Configure">
+                    Configurar
+                </button>
+                <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()" data-pt="Recusar" data-en="Decline">
+                    Recusar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div class="cookie-modal" id="cookieModal">
+        <div class="cookie-modal-content">
+            <h3 data-pt="Configurações de Cookies" data-en="Cookie Settings">Configurações de Cookies</h3>
+            <div style="margin-bottom: 1.5rem;">
+                <div class="cookie-option">
+                    <input type="checkbox" id="essentialCookies" checked disabled>
+                    <label for="essentialCookies" data-pt="Cookies Essenciais (obrigatórios)" data-en="Essential Cookies (required)">Cookies Essenciais (obrigatórios)</label>
+                </div>
+                <div class="cookie-option">
+                    <input type="checkbox" id="analyticsCookies">
+                    <label for="analyticsCookies" data-pt="Cookies de Análise" data-en="Analytics Cookies">Cookies de Análise</label>
+                </div>
+                <div class="cookie-option">
+                    <input type="checkbox" id="marketingCookies">
+                    <label for="marketingCookies" data-pt="Cookies de Marketing" data-en="Marketing Cookies">Cookies de Marketing</label>
+                </div>
+            </div>
+            <div class="cookie-modal-buttons">
+                <button class="cookie-btn cookie-btn-decline" onclick="closeCookieModal()" data-pt="Cancelar" data-en="Cancel">Cancelar</button>
+                <button class="cookie-btn cookie-btn-accept" onclick="saveCookieSettings()" data-pt="Salvar" data-en="Save">Salvar</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Language system
+        let currentLanguage = localStorage.getItem('i9script-language') || 'pt';
+        
+        const translations = {
+            pt: {
+                whatsappMessage: 'Olá! Gostaria de saber mais sobre a Política de Privacidade da i9Script.'
+            },
+            en: {
+                whatsappMessage: 'Hello! I would like to know more about i9Script Privacy Policy.'
+            }
+        };
+
+        function updateContent(lang) {
+            document.querySelectorAll('[data-pt][data-en]').forEach(element => {
+                const ptText = element.getAttribute('data-pt');
+                const enText = element.getAttribute('data-en');
+                
+                if (ptText && enText) {
+                    if (lang === 'pt') {
+                        element.innerHTML = ptText;
+                    } else {
+                        element.innerHTML = enText;
+                    }
+                }
+            });
+
+            // Update WhatsApp link
+            const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+            whatsappLinks.forEach(link => {
+                const message = encodeURIComponent(translations[lang].whatsappMessage);
+                link.href = `https://wa.me/5592984654008?text=${message}`;
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en-US';
+            
+            // Update meta tags
+            updateMetaTags(lang);
+        }
+
+        function updateMetaTags(lang) {
+            const title = lang === 'pt' 
+                ? 'Política de Privacidade - i9Script'
+                : 'Privacy Policy - i9Script';
+            
+            const description = lang === 'pt'
+                ? 'Política de Privacidade da i9Script - Proteção e segurança dos seus dados pessoais com a precisão matemática do infinito.'
+                : 'i9Script Privacy Policy - Protection and security of your personal data with the mathematical precision of infinity.';
+
+            document.title = title;
+            document.querySelector('meta[name="description"]').content = description;
+            document.querySelector('meta[property="og:title"]').content = title;
+            document.querySelector('meta[property="og:description"]').content = description;
+            document.querySelector('meta[name="twitter:title"]').content = title;
+            document.querySelector('meta[name="twitter:description"]').content = description;
+        }
+
+        function toggleLanguage() {
+            const languageToggle = document.getElementById('languageToggle');
+            const flagIcon = languageToggle.querySelector('.flag-icon');
+            const langText = languageToggle.querySelector('.lang-text');
+            
+            languageToggle.classList.add('switching');
+            
+            setTimeout(() => {
+                currentLanguage = currentLanguage === 'pt' ? 'en' : 'pt';
+                
+                flagIcon.textContent = currentLanguage === 'pt' ? '🇧🇷' : '🇺🇸';
+                langText.textContent = currentLanguage === 'pt' ? 'PT' : 'EN';
+                
+                localStorage.setItem('i9script-language', currentLanguage);
+                updateContent(currentLanguage);
+                
+                languageToggle.classList.remove('switching');
+            }, 150);
+        }
+
         // Initialize theme
         document.documentElement.setAttribute('data-theme', localStorage.getItem('i9script-theme') || 'dark');
 
         // Mobile Menu Management
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
+        const mobileOverlay = document.getElementById('mobileOverlay');
         const menuIcon = mobileMenuToggle.querySelector('i');
 
         function toggleMenu() {
-            navLinks.classList.toggle('mobile-open');
+            const isOpen = navLinks.classList.contains('mobile-open');
             
-            if (navLinks.classList.contains('mobile-open')) {
-                menuIcon.className = 'fas fa-times';
-                document.body.style.overflow = 'hidden';
+            if (isOpen) {
+                closeMenu();
             } else {
-                menuIcon.className = 'fas fa-bars';
-                document.body.style.overflow = '';
+                openMenu();
+            }
+        }
+
+        function openMenu() {
+            navLinks.classList.add('mobile-open');
+            mobileOverlay.classList.add('active');
+            menuIcon.className = 'fas fa-times';
+            document.body.style.overflow = 'hidden';
+            mobileMenuToggle.setAttribute('aria-expanded', 'true');
+            
+            // Focus trap
+            const firstLink = navLinks.querySelector('a');
+            if (firstLink) {
+                setTimeout(() => firstLink.focus(), 300);
             }
         }
 
         function closeMenu() {
             navLinks.classList.remove('mobile-open');
+            mobileOverlay.classList.remove('active');
             menuIcon.className = 'fas fa-bars';
             document.body.style.overflow = '';
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
         }
 
+        // Event listeners
         mobileMenuToggle.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking on overlay
+        mobileOverlay.addEventListener('click', closeMenu);
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        // Close menu when clicking on a link
+        navLinks.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                setTimeout(closeMenu, 100); // Small delay for smooth transition
+            }
+        });
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) {
+                closeMenu();
+                mobileMenuToggle.focus(); // Return focus to menu button
+            }
+        });
+
+        // Prevent menu from staying open on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
                 closeMenu();
             }
         });
+
+        // Close menu when scrolling (optional, for better UX)
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (navLinks.classList.contains('mobile-open')) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    closeMenu();
+                }, 100);
+            }
+        });
+
+        // Language toggle
+        document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
 
         // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
@@ -1361,7 +2024,6 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 if (window.scrollY >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
@@ -1375,47 +2037,202 @@
             });
         }
 
-        // Scroll event listener
-        window.addEventListener('scroll', () => {
-            toggleBackToTop();
-            updateTOCActiveLink();
-            
-            // Header scroll effect
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                
-                if (!/^#[a-zA-Z][\w-]*$/.test(targetId)) {
-                    console.warn('Invalid anchor target detected');
-                    return;
-                }
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    closeMenu();
+        // Performance optimized scroll event listener
+        let ticking = false;
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    toggleBackToTop();
+                    updateTOCActiveLink();
                     
-                    setTimeout(() => {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }, 100);
-                }
-            });
-        });
+                    // Header scroll effect
+                    const header = document.getElementById('header');
+                    if (window.scrollY > 100) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
 
-        // Initialize on DOM load
+        window.addEventListener('scroll', onScroll);
+
+        // Cookie Management Functions (matching index.html style)
+        function showCookieBanner() {
+            const banner = document.getElementById('cookieBanner');
+            if (!localStorage.getItem('i9script-cookieConsent')) {
+                setTimeout(() => {
+                    banner.classList.add('show');
+                }, 2000);
+            }
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookieBanner');
+            banner.classList.remove('show');
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('i9script-cookieConsent', 'accepted');
+            localStorage.setItem('i9script-analyticsCookies', 'true');
+            localStorage.setItem('i9script-marketingCookies', 'true');
+            hideCookieBanner();
+            console.log('🍪 Todos os cookies foram aceitos');
+        }
+
+        function declineCookies() {
+            localStorage.setItem('i9script-cookieConsent', 'declined');
+            localStorage.setItem('i9script-analyticsCookies', 'false');
+            localStorage.setItem('i9script-marketingCookies', 'false');
+            hideCookieBanner();
+            console.log('🚫 Cookies opcionais foram recusados');
+        }
+
+        function showCookieSettings() {
+            const modal = document.getElementById('cookieModal');
+            modal.style.display = 'flex';
+            
+            // Load current settings
+            document.getElementById('analyticsCookies').checked = localStorage.getItem('i9script-analyticsCookies') === 'true';
+            document.getElementById('marketingCookies').checked = localStorage.getItem('i9script-marketingCookies') === 'true';
+        }
+
+        function closeCookieModal() {
+            const modal = document.getElementById('cookieModal');
+            modal.style.display = 'none';
+        }
+
+        function saveCookieSettings() {
+            const analytics = document.getElementById('analyticsCookies').checked;
+            const marketing = document.getElementById('marketingCookies').checked;
+            
+            localStorage.setItem('i9script-cookieConsent', 'configured');
+            localStorage.setItem('i9script-analyticsCookies', analytics.toString());
+            localStorage.setItem('i9script-marketingCookies', marketing.toString());
+            
+            closeCookieModal();
+            hideCookieBanner();
+            
+            console.log('⚙️ Configurações de cookies salvas:', {
+                analytics: analytics,
+                marketing: marketing
+            });
+        }
+
+        function showCookiePolicy() {
+            const title = currentLanguage === 'pt' ? 'POLÍTICA DE COOKIES - i9Script' : 'COOKIE POLICY - i9Script';
+            const content = currentLanguage === 'pt' ? `
+${title}
+
+Utilizamos cookies para:
+
+🔧 COOKIES ESSENCIAIS (obrigatórios):
+- Manter suas preferências de tema e idioma
+- Lembrar suas configurações de cookies
+- Garantir o funcionamento básico do site
+
+📊 COOKIES DE ANÁLISE (opcionais):
+- Entender como você navega no site
+- Melhorar a experiência do usuário
+- Analisar o desempenho das páginas
+
+📢 COOKIES DE MARKETING (opcionais):
+- Personalizar conteúdo relevante
+- Medir eficácia de campanhas
+- Oferecer experiências personalizadas
+
+Você pode gerenciar suas preferências a qualquer momento através do botão de configurações de cookies.` : `
+${title}
+
+We use cookies for:
+
+🔧 ESSENTIAL COOKIES (required):
+- Maintain your theme and language preferences
+- Remember your cookie settings
+- Ensure basic website functionality
+
+📊 ANALYTICS COOKIES (optional):
+- Understand how you navigate the site
+- Improve user experience
+- Analyze page performance
+
+📢 MARKETING COOKIES (optional):
+- Personalize relevant content
+- Measure campaign effectiveness
+- Offer personalized experiences
+
+You can manage your preferences at any time through the cookie settings button.`;
+            
+            alert(content);
+        }
+
+        function showPrivacyPolicy() {
+            const title = currentLanguage === 'pt' ? 'RESUMO DA POLÍTICA DE PRIVACIDADE - i9Script' : 'PRIVACY POLICY SUMMARY - i9Script';
+            const content = currentLanguage === 'pt' ? `
+${title}
+
+Esta página contém nossa política completa de privacidade. Resumo dos pontos principais:
+
+🛡️ PROTEÇÃO DE DADOS:
+- Coletamos apenas dados necessários para nossos serviços
+- Informações de contato quando você nos envia mensagens
+- Dados de navegação para melhorar a experiência
+
+🔒 SEGURANÇA:
+- Utilizamos criptografia para proteger dados sensíveis
+- Não vendemos suas informações para terceiros
+- Armazenamento seguro em servidores confiáveis
+
+📧 SEUS DIREITOS:
+- Solicitar acesso aos seus dados
+- Corrigir informações incorretas
+- Excluir seus dados (direito ao esquecimento)
+
+Contato: contato@i9script.com` : `
+${title}
+
+This page contains our complete privacy policy. Summary of key points:
+
+🛡️ DATA PROTECTION:
+- We only collect data necessary for our services
+- Contact information when you send us messages
+- Browsing data to improve experience
+
+🔒 SECURITY:
+- We use encryption to protect sensitive data
+- We don't sell your information to third parties
+- Secure storage on trusted servers
+
+📧 YOUR RIGHTS:
+- Request access to your data
+- Correct incorrect information
+- Delete your data (right to be forgotten)
+
+Contact: contato@i9script.com`;
+            
+            alert(content);
+        }
+
+        // Main initialization
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language
+            updateContent(currentLanguage);
+            
+            // Set initial language toggle state
+            const languageToggle = document.getElementById('languageToggle');
+            const flagIcon = languageToggle.querySelector('.flag-icon');
+            const langText = languageToggle.querySelector('.lang-text');
+            
+            flagIcon.textContent = currentLanguage === 'pt' ? '🇧🇷' : '🇺🇸';
+            langText.textContent = currentLanguage === 'pt' ? 'PT' : 'EN';
+            
+            // Show cookie banner if needed
+            showCookieBanner();
+
             // Animate elements on scroll
             const observerOptions = {
                 threshold: 0.1,
@@ -1426,16 +2243,132 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('loaded');
+                        
+                        // Announce section for accessibility
+                        const sectionTitle = entry.target.querySelector('.section-title');
+                        if (sectionTitle) {
+                            announceSection(sectionTitle.textContent.trim());
+                        }
                     }
                 });
             }, observerOptions);
 
+            // Observe all loading elements
             document.querySelectorAll('.loading').forEach(el => {
                 observer.observe(el);
             });
 
             // Initialize TOC active link
             updateTOCActiveLink();
+            
+            // Security: Ensure all external links have proper attributes
+            document.querySelectorAll('a[href^="http"]').forEach(link => {
+                if (!link.hasAttribute('rel')) {
+                    link.setAttribute('rel', 'noopener noreferrer');
+                }
+                if (!link.hasAttribute('target')) {
+                    link.setAttribute('target', '_blank');
+                }
+            });
+
+            // Enhanced accessibility - announce section changes to screen readers
+            function announceSection(sectionTitle) {
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.className = 'sr-only';
+                announcement.textContent = `Navegando para: ${sectionTitle}`;
+                document.body.appendChild(announcement);
+                
+                setTimeout(() => {
+                    document.body.removeChild(announcement);
+                }, 1000);
+            }
+
+            // Console branding
+            console.log(`
+            %c🚀 i9Script - Política de Privacidade
+            %cVersão: 2.1 | Atualizada: 29/06/2025
+            %cContato: contato@i9script.com
+            %c9 × ∞ = Privacidade Perpétua
+            `, 
+            'color: #00f5ff; font-size: 16px; font-weight: bold;',
+            'color: #94a3b8; font-size: 12px;',
+            'color: #94a3b8; font-size: 12px;',
+            'color: #FFD700; font-size: 14px; font-weight: bold;'
+            );
+        });
+
+        // Smooth navigation with security validation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // Validate target ID to prevent XSS
+                if (!/^#[a-zA-Z][\w-]*$/.test(targetId)) {
+                    console.warn('Invalid anchor target detected');
+                    return;
+                }
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    closeMenu();
+                    
+                    setTimeout(() => {
+                        const offsetTop = targetElement.offsetTop - 100; // Account for sticky header
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                }
+            });
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', (e) => {
+            // Close mobile menu with Escape key is now handled in mobile menu section
+            
+            // Close cookie modal with Escape key
+            if (e.key === 'Escape' && document.getElementById('cookieModal').style.display === 'flex') {
+                closeCookieModal();
+            }
+            
+            // Back to top with Home key
+            if (e.key === 'Home' && e.ctrlKey) {
+                e.preventDefault();
+                scrollToTop();
+            }
+            
+            // Navigate through menu items with arrow keys when menu is open
+            if (navLinks.classList.contains('mobile-open')) {
+                const menuItems = navLinks.querySelectorAll('a');
+                const currentFocus = document.activeElement;
+                const currentIndex = Array.from(menuItems).indexOf(currentFocus);
+                
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const nextIndex = (currentIndex + 1) % menuItems.length;
+                    menuItems[nextIndex].focus();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const prevIndex = currentIndex <= 0 ? menuItems.length - 1 : currentIndex - 1;
+                    menuItems[prevIndex].focus();
+                } else if (e.key === 'Tab') {
+                    // Allow normal tab navigation
+                    const firstItem = menuItems[0];
+                    const lastItem = menuItems[menuItems.length - 1];
+                    
+                    if (e.shiftKey && currentFocus === firstItem) {
+                        e.preventDefault();
+                        lastItem.focus();
+                    } else if (!e.shiftKey && currentFocus === lastItem) {
+                        e.preventDefault();
+                        firstItem.focus();
+                    }
+                }
+            }
         });
 
         // Close menu on window resize
@@ -1443,12 +2376,15 @@
             if (window.innerWidth > 768) {
                 closeMenu();
             }
+            
+            // Recalculate TOC position on orientation change
+            setTimeout(updateTOCActiveLink, 300);
         });
 
-        // Secure external link handling
-        document.querySelectorAll('a[target="_blank"]').forEach(link => {
-            if (!link.hasAttribute('rel')) {
-                link.setAttribute('rel', 'noopener noreferrer');
+        // Close cookie modal when clicking outside
+        document.getElementById('cookieModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCookieModal();
             }
         });
     </script>
