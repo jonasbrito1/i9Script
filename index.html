@@ -30,10 +30,15 @@
     <title>i9Script - Desenvolvimento & Automação</title>
     
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300f5ff;stop-opacity:1' /><stop offset='100%25' style='stop-color:%23FFD700;stop-opacity:1' /></linearGradient></defs><text x='50' y='65' font-family='Orbitron,sans-serif' font-size='60' font-weight='800' text-anchor='middle' fill='url(%23grad)'>i9</text></svg>" type="image/svg+xml">
-    
+     
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1.0">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1.0">
     <!-- Font Awesome para ícones das redes sociais -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- EmailJS para envio de emails -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
     <!-- Google Fonts para Orbitron (usada no favicon e logo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -206,7 +211,7 @@
             transform: rotate(180deg);
         }
 
-        /* Mobile Menu Toggle */
+        /* Mobile Menu Toggle - CORRIGIDO */
         .mobile-menu-toggle {
             display: none;
             background: none;
@@ -215,8 +220,13 @@
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
-            z-index: 1002;
+            z-index: 2001; /* Z-index mais alto para ficar acima do menu */
             transition: all 0.3s ease;
+            position: relative;
+            width: 45px;
+            height: 45px;
+            justify-content: center;
+            align-items: center;
         }
 
         .mobile-menu-toggle:hover {
@@ -224,27 +234,98 @@
             transform: scale(1.1);
         }
 
-        /* Mobile Navigation */
+        .mobile-menu-toggle:focus {
+            outline: 2px solid var(--cyan);
+            outline-offset: 2px;
+        }
+
+        /* Ícone do hambúrguer animado */
+        .mobile-menu-toggle i {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mobile-menu-toggle.active {
+            color: var(--cyan);
+        }
+
+        .mobile-menu-toggle.active i {
+            transform: rotate(180deg);
+        }
+
+        /* Mobile Navigation - COMPLETAMENTE REDESENHADO */
+        .nav-links {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
         .nav-links.mobile-open {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 100vw;
             height: 100vh;
-            background: var(--bg-primary);
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 3rem;
-            z-index: 1001;
-            backdrop-filter: blur(10px);
-            border-right: 1px solid var(--border-color);
+            z-index: 2000;
+            padding: 2rem;
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+            overflow-y: auto;
+        }
+
+        /* Overlay para tema claro */
+        [data-theme="light"] .nav-links.mobile-open {
+            background: rgba(248, 250, 252, 0.98);
+        }
+
+        /* Animação dos itens do menu móvel */
+        .nav-links.mobile-open li {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .nav-links.mobile-open li:nth-child(1) { animation-delay: 0.1s; }
+        .nav-links.mobile-open li:nth-child(2) { animation-delay: 0.2s; }
+        .nav-links.mobile-open li:nth-child(3) { animation-delay: 0.3s; }
+        .nav-links.mobile-open li:nth-child(4) { animation-delay: 0.4s; }
+        .nav-links.mobile-open li:nth-child(5) { animation-delay: 0.5s; }
+        .nav-links.mobile-open li:nth-child(6) { animation-delay: 0.6s; }
+        .nav-links.mobile-open li:nth-child(7) { animation-delay: 0.7s; }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .nav-links.mobile-open a {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            padding: 1rem;
+            padding: 1.5rem 2rem;
+            color: var(--text-primary);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: block;
+            text-align: center;
+            min-width: 250px;
+        }
+
+        .nav-links.mobile-open a:hover {
+            background: rgba(0, 245, 255, 0.2);
+            border-color: var(--cyan);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
         }
 
         /* Theme Toggle */
@@ -376,10 +457,41 @@
             border: 2px solid var(--gold);
         }
 
-        .btn-secondary:hover {
-            background: var(--gold);
-            color: var(--dark);
-            transform: translateY(-2px);
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn:disabled:hover {
+            transform: none !important;
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3) !important;
+        }
+
+        /* Loading animation for submit button */
+        .btn-loading {
+            position: relative;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            margin: auto;
+            border: 2px solid transparent;
+            border-top-color: var(--white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .hero-visual {
@@ -985,6 +1097,18 @@
             box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1);
         }
 
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        .form-group input:focus::placeholder,
+        .form-group textarea:focus::placeholder {
+            opacity: 0.5;
+        }
+
         /* Footer */
         footer {
             background: var(--bg-primary);
@@ -1336,7 +1460,7 @@
             }
         }
 
-        /* Tablets */
+        /* Tablets - MELHORADO PARA MENU MÓVEL */
         @media (max-width: 768px) {
             nav {
                 padding: 1rem;
@@ -1346,12 +1470,19 @@
                 font-size: 1.6rem;
             }
             
+            /* MOSTRAR BOTÃO HAMBÚRGUER */
             .mobile-menu-toggle {
-                display: block;
+                display: flex;
             }
             
+            /* ESCONDER MENU DESKTOP */
             .nav-links {
                 display: none;
+            }
+            
+            /* MENU MÓVEL ATIVO */
+            .nav-links.mobile-open {
+                display: flex;
             }
             
             .nav-container {
@@ -1361,6 +1492,8 @@
             .theme-toggle, .language-toggle {
                 padding: 0.4rem 0.8rem;
                 font-size: 0.9rem;
+                z-index: 2001; /* Acima do menu móvel */
+                position: relative;
             }
 
             .hero-content {
@@ -1448,7 +1581,7 @@
             }
         }
 
-        /* Large Mobile Phones */
+        /* Large Mobile Phones - MENU MÓVEL OTIMIZADO */
         @media (max-width: 480px) {
             nav {
                 padding: 0.8rem;
@@ -1464,6 +1597,19 @@
             
             .theme-icon, .flag-icon {
                 font-size: 1rem;
+            }
+
+            /* MENU MÓVEL COMPACTO */
+            .mobile-menu-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
+            }
+
+            .nav-links.mobile-open a {
+                font-size: 1.5rem;
+                padding: 1.2rem 1.5rem;
+                min-width: 200px;
             }
 
             .hero-text h1 {
@@ -1580,10 +1726,22 @@
             }
         }
 
-        /* Small Mobile Phones */
+        /* Small Mobile Phones - MENU EXTRA COMPACTO */
         @media (max-width: 360px) {
             .logo {
                 font-size: 1.2rem;
+            }
+
+            .mobile-menu-toggle {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+
+            .nav-links.mobile-open a {
+                font-size: 1.3rem;
+                padding: 1rem;
+                min-width: 180px;
             }
             
             .hero-text h1 {
@@ -1626,7 +1784,7 @@
             }
         }
 
-        /* Landscape Orientation Fixes */
+        /* Landscape Orientation Fixes - MENU MÓVEL LANDSCAPE */
         @media (max-height: 500px) and (orientation: landscape) {
             .hero {
                 min-height: 100vh;
@@ -1649,6 +1807,20 @@
             .cta-buttons {
                 margin-bottom: 1rem;
             }
+
+            /* MENU MÓVEL EM LANDSCAPE */
+            .nav-links.mobile-open {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 1rem;
+                gap: 1.5rem;
+            }
+
+            .nav-links.mobile-open a {
+                font-size: 1.2rem;
+                padding: 0.8rem 1.2rem;
+                min-width: auto;
+            }
         }
 
         /* Smooth scroll */
@@ -1667,6 +1839,24 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Prevent body scroll when mobile menu is open */
+        body.menu-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* Backdrop blur para suporte total */
+        @supports not (backdrop-filter: blur(20px)) {
+            .nav-links.mobile-open {
+                background: var(--bg-primary);
+            }
+            
+            [data-theme="light"] .nav-links.mobile-open {
+                background: var(--bg-primary);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1681,8 +1871,7 @@
                     <li><a href="#projects" onclick="closeMenu()" data-pt="Projetos" data-en="Projects">Projetos</a></li>
                     <li><a href="#tech" onclick="closeMenu()" data-pt="Tecnologias" data-en="Technologies">Tecnologias</a></li>
                     <li><a href="#contact" onclick="closeMenu()" data-pt="Contato" data-en="Contact">Contato</a></li>
-                    <li><a href="privacy_policy.html" onclick="closeMenu()" data-pt="Política de Privacidade" data-en="Privacy Policy">Política de Privacidade</a></li>
-
+                    <li><a href="governanca/index.html" onclick="closeMenu()" data-pt="Governança" data-en="Governance">Governança</a></li>
                 </ul>
                 <button class="language-toggle" id="languageToggle" aria-label="Alterar idioma">
                     <span class="flag-icon">🇧🇷</span>
@@ -2059,7 +2248,7 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h3 data-pt="Vamos Criar Algo Infinito Juntos?" data-en="Let's Create Something Infinite Together?">Vamos Criar Algo Infinito Juntos?</h3>
-                    <p data-pt="Pronto para transformar sua ideia em realidade com a precisão matemática do número 9? Entre em contato conosco e vamos criar algo extraordinário que sempre retorna à perfeição!" data-en="Ready to transform your idea into reality with the mathematical precision of number 9? Contact us and let's create something extraordinary that always returns to perfection!">Pronto para transformar sua ideia em realidade com a precisão matemática do número 9? Entre em contato conosco e vamos criar algo extraordinário que sempre retorna à perfeição!</p>
+                    <p data-pt="Pronto para transformar sua ideia em realidade? Entre em contato conosco e vamos criar algo extraordinário!" data-en="Ready to transform your idea into reality with the mathematical precision of number 9? Contact us and let's create something extraordinary that always returns to perfection!">Pronto para transformar sua ideia em realidade com a precisão matemática do número 9? Entre em contato conosco e vamos criar algo extraordinário que sempre retorna à perfeição!</p>
                     <ul class="contact-methods">
                         <li>
                             <div class="contact-icon">
@@ -2129,7 +2318,13 @@
                         </div>
                         <div class="form-group">
                             <label for="message" data-pt="Mensagem" data-en="Message">Mensagem</label>
-                            <textarea id="message" name="message" rows="5" data-pt="Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita..." data-en="Tell us about your project and how we can apply our infinite innovation..." placeholder="Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita..."></textarea>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="5" 
+                                required
+                                placeholder="Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita...">
+                            </textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;" data-pt="Enviar Mensagem ∞" data-en="Send Message ∞">
                             Enviar Mensagem ∞
@@ -2187,7 +2382,6 @@
             </div>
             <p data-pt="&copy; 2025 i9Script. Todos os direitos reservados." data-en="&copy; 2025 i9Script. All rights reserved.">&copy; 2025 i9Script. Todos os direitos reservados.</p>
             <p data-pt="Desenvolvimento profissional com eficiência e qualidade." data-en="Professional development with efficiency and quality.">Desenvolvimento profissional com eficiência e qualidade.</p>
-            <p style="color: var(--gold); margin-top: 1rem;" data-pt="9 × ∞ = Inovação Perpétua" data-en="9 × ∞ = Perpetual Innovation">9 × ∞ = Inovação Perpétua</p>
         </div>
     </footer>
 
@@ -2258,13 +2452,15 @@
                 codeComment: '// Código que transforma ideias',
                 innovation: 'infinita',
                 result: 'excelência',
-                whatsappMessage: 'Olá! Gostaria de saber mais sobre os serviços da i9Script.'
+                whatsappMessage: 'Olá! Gostaria de saber mais sobre os serviços da i9Script.',
+                messagePlaceholder: 'Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita...'
             },
             en: {
                 codeComment: '// Code that transforms ideas',
                 innovation: 'infinite',
                 result: 'excellence',
-                whatsappMessage: 'Hello! I would like to know more about i9Script services.'
+                whatsappMessage: 'Hello! I would like to know more about i9Script services.',
+                messagePlaceholder: 'Tell us about your project and how we can apply our infinite innovation...'
             }
         };
 
@@ -2288,10 +2484,7 @@
             // Update form placeholder
             const messageTextarea = document.querySelector('#message');
             if (messageTextarea) {
-                const placeholder = lang === 'pt' 
-                    ? 'Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita...'
-                    : 'Tell us about your project and how we can apply our infinite innovation...';
-                messageTextarea.placeholder = placeholder;
+                messageTextarea.placeholder = translations[lang].messagePlaceholder;
             }
 
             // Update WhatsApp link
@@ -2384,42 +2577,222 @@
         // Initialize theme
         document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
 
-        // Mobile Menu Management
+        // EmailJS Configuration
+        // Para configurar o EmailJS:
+        // 1. Acesse https://www.emailjs.com/
+        // 2. Crie uma conta gratuita
+        // 3. Adicione um serviço de email (Gmail, Outlook, etc.)
+        // 4. Crie um template de email
+        // 5. Substitua as chaves abaixo pelas suas chaves reais
+        const EMAILJS_CONFIG = {
+            publicKey: 'YOUR_PUBLIC_KEY', // Substitua pela sua chave pública do EmailJS
+            serviceId: 'YOUR_SERVICE_ID', // Substitua pelo seu Service ID
+            templateId: 'YOUR_TEMPLATE_ID' // Substitua pelo seu Template ID
+        };
+
+        // TEMPLATE SUGERIDO PARA O EMAILJS:
+        /*
+        Assunto: [i9Script] Nova mensagem de {{from_name}}
+        
+        Corpo do email:
+        🚀 NOVA MENSAGEM DO SITE i9Script
+
+        👤 DADOS DO CLIENTE:
+        Nome: {{from_name}}
+        Email: {{from_email}}
+        Tipo de Projeto: {{project_type}}
+
+        💬 MENSAGEM:
+        {{message}}
+
+        📅 Data/Hora: {{date}}
+        🌐 Navegador: {{user_agent}}
+
+        ---
+        Para responder, use: {{reply_to}}
+        */
+
+        // Initialize EmailJS
+        function initEmailJS() {
+            if (typeof emailjs !== 'undefined') {
+                try {
+                    emailjs.init(EMAILJS_CONFIG.publicKey);
+                    return true;
+                } catch (error) {
+                    console.warn('EmailJS initialization failed:', error);
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        // Check if EmailJS is properly configured
+        function isEmailJSConfigured() {
+            return EMAILJS_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY' && 
+                   EMAILJS_CONFIG.serviceId !== 'YOUR_SERVICE_ID' && 
+                   EMAILJS_CONFIG.templateId !== 'YOUR_TEMPLATE_ID';
+        }
+
+        // Send email via EmailJS
+        async function sendEmailViaEmailJS(formData) {
+            try {
+                if (!isEmailJSConfigured()) {
+                    throw new Error('EmailJS not configured - using fallback');
+                }
+
+                if (!initEmailJS()) {
+                    throw new Error('EmailJS not available');
+                }
+
+                const templateParams = {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    project_type: formData.project,
+                    message: formData.message,
+                    to_email: 'contato@i9script.com',
+                    reply_to: formData.email,
+                    date: new Date().toLocaleString('pt-BR'),
+                    user_agent: navigator.userAgent.substring(0, 100)
+                };
+
+                const response = await emailjs.send(
+                    EMAILJS_CONFIG.serviceId,
+                    EMAILJS_CONFIG.templateId,
+                    templateParams
+                );
+
+                if (response.status === 200) {
+                    return { success: true, method: 'EmailJS' };
+                } else {
+                    throw new Error('EmailJS failed');
+                }
+            } catch (error) {
+                console.warn('EmailJS failed:', error);
+                throw error;
+            }
+        }
+
+        // Send email via mailto (fallback)
+        function sendEmailViaMailto(formData) {
+            const subject = encodeURIComponent(`[i9Script] ${formData.project ? 'Projeto: ' + formData.project : 'Contato do Site'}`);
+            
+            const body = encodeURIComponent(`
+🚀 NOVA MENSAGEM DO SITE i9Script
+
+👤 DADOS DO CLIENTE:
+Nome: ${formData.name}
+Email: ${formData.email}
+Tipo de Projeto: ${formData.project || 'Não especificado'}
+
+💬 MENSAGEM:
+${formData.message}
+
+📅 Data/Hora: ${new Date().toLocaleString('pt-BR')}
+🌐 Navegador: ${navigator.userAgent.substring(0, 100)}
+
+---
+Enviado automaticamente pelo formulário de contato do site i9Script.
+            `.trim());
+
+            const mailtoLink = `mailto:contato@i9script.com?subject=${subject}&body=${body}`;
+            
+            // Open mailto link
+            window.open(mailtoLink, '_blank');
+            
+            return { success: true, method: 'mailto' };
+        }
+
+        // Main email sending function
+        async function sendContactEmail(formData) {
+            try {
+                // Try EmailJS first (more professional)
+                return await sendEmailViaEmailJS(formData);
+            } catch (emailjsError) {
+                console.log('EmailJS failed, using mailto fallback');
+                // Fallback to mailto
+                return sendEmailViaMailto(formData);
+            }
+        }
+
+        // MOBILE MENU MANAGEMENT - CORRIGIDO E MELHORADO
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
         const menuIcon = mobileMenuToggle.querySelector('i');
 
         function toggleMenu() {
-            navLinks.classList.toggle('mobile-open');
+            const isOpen = navLinks.classList.contains('mobile-open');
             
-            if (navLinks.classList.contains('mobile-open')) {
-                menuIcon.className = 'fas fa-times';
-                document.body.style.overflow = 'hidden';
+            if (isOpen) {
+                closeMenu();
             } else {
-                menuIcon.className = 'fas fa-bars';
-                document.body.style.overflow = '';
+                openMenu();
             }
+        }
+
+        function openMenu() {
+            navLinks.classList.add('mobile-open');
+            mobileMenuToggle.classList.add('active');
+            menuIcon.className = 'fas fa-times';
+            document.body.classList.add('menu-open');
+            
+            // Prevent scroll on body
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            
+            // Focus management for accessibility
+            setTimeout(() => {
+                const firstLink = navLinks.querySelector('a');
+                if (firstLink) firstLink.focus();
+            }, 100);
         }
 
         function closeMenu() {
             navLinks.classList.remove('mobile-open');
+            mobileMenuToggle.classList.remove('active');
             menuIcon.className = 'fas fa-bars';
+            document.body.classList.remove('menu-open');
+            
+            // Restore scroll on body
             document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
         }
 
-        mobileMenuToggle.addEventListener('click', toggleMenu);
+        // Event listeners for mobile menu
+        mobileMenuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMenu();
+        });
 
-        // Close menu when clicking outside
+        // Close menu when clicking outside (only on mobile menu links area)
         document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+            if (navLinks.classList.contains('mobile-open')) {
+                // Check if click is on menu content or navigation items
+                const isMenuContent = navLinks.contains(e.target);
+                const isToggleButton = mobileMenuToggle.contains(e.target);
+                const isThemeToggle = document.getElementById('themeToggle').contains(e.target);
+                const isLanguageToggle = document.getElementById('languageToggle').contains(e.target);
+                
+                if (!isMenuContent && !isToggleButton && !isThemeToggle && !isLanguageToggle) {
+                    closeMenu();
+                }
+            }
+        });
+
+        // Close menu on window resize to desktop size
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navLinks.classList.contains('mobile-open')) {
                 closeMenu();
             }
         });
 
-        // Close menu on window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
+        // Handle escape key to close menu
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) {
                 closeMenu();
+                mobileMenuToggle.focus();
             }
         });
 
@@ -2722,7 +3095,7 @@ Contact: contato@i9script.com`;
             // Initialize language
             updateContent(currentLanguage);
             
-            // Set initial language toggle state
+            // Set initial language toggle state and update placeholders
             const languageToggle = document.getElementById('languageToggle');
             const flagIcon = languageToggle.querySelector('.flag-icon');
             const langText = languageToggle.querySelector('.lang-text');
@@ -2730,8 +3103,22 @@ Contact: contato@i9script.com`;
             flagIcon.textContent = currentLanguage === 'pt' ? '🇧🇷' : '🇺🇸';
             langText.textContent = currentLanguage === 'pt' ? 'PT' : 'EN';
             
+            // Update placeholder for current language
+            const messageTextarea = document.querySelector('#message');
+            if (messageTextarea) {
+                messageTextarea.placeholder = translations[currentLanguage].messagePlaceholder;
+            }
+            
             // Initialize security measures
             preventXSS();
+            
+            // Check EmailJS configuration
+            if (isEmailJSConfigured()) {
+                console.log('✅ EmailJS configurado - emails serão enviados diretamente');
+            } else {
+                console.log('⚠️ EmailJS não configurado - usando fallback mailto:');
+                console.log('📧 Para configurar o EmailJS, visite: https://www.emailjs.com/');
+            }
             
             // Show cookie banner if needed
             showCookieBanner();
@@ -2755,8 +3142,8 @@ Contact: contato@i9script.com`;
                 observer.observe(el);
             });
 
-            // Form submission with security
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
+            // Form submission with real email sending
+            document.getElementById('contactForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 try {
@@ -2785,32 +3172,64 @@ Contact: contato@i9script.com`;
                         console.log('📊 Dados de formulário para análise:', {
                             project: data.project,
                             timestamp: new Date().toISOString(),
-                            userAgent: navigator.userAgent.substring(0, 100) // Limited for privacy
+                            userAgent: navigator.userAgent.substring(0, 100)
                         });
                     }
                     
-                    // Simulate form submission
+                    // Update button state
                     const submitBtn = this.querySelector('button[type="submit"]');
                     const originalText = submitBtn.textContent;
-                    
-                    const sendingText = currentLanguage === 'pt' ? 'Enviando... ⚡' : 'Sending... ⚡';
-                    const successText = currentLanguage === 'pt' 
-                        ? 'Mensagem enviada com sucesso! Entraremos em contato em breve para começar sua jornada infinita de inovação! 🚀'
-                        : 'Message sent successfully! We will contact you soon to start your infinite journey of innovation! 🚀';
+                    const sendingText = currentLanguage === 'pt' ? 'Enviando...' : 'Sending...';
                     
                     submitBtn.textContent = sendingText;
                     submitBtn.disabled = true;
+                    submitBtn.classList.add('btn-loading');
                     
-                    // Simulate API call with security headers
-                    setTimeout(() => {
-                        alert(successText);
-                        this.reset();
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    }, 2000);
+                    try {
+                        // Send email
+                        const result = await sendContactEmail(data);
+                        
+                        // Success messages based on method used
+                        let successMessage;
+                        if (result.method === 'EmailJS') {
+                            successMessage = currentLanguage === 'pt' 
+                                ? '✅ Mensagem enviada com sucesso! Entraremos em contato em breve para começar sua jornada infinita de inovação! 🚀'
+                                : '✅ Message sent successfully! We will contact you soon to start your infinite journey of innovation! 🚀';
+                        } else {
+                            successMessage = currentLanguage === 'pt' 
+                                ? '📧 Seu cliente de email foi aberto com a mensagem. Por favor, clique em "Enviar" no seu programa de email para finalizar o envio! 🚀'
+                                : '📧 Your email client has been opened with the message. Please click "Send" in your email program to complete the sending! 🚀';
+                        }
+                        
+                        alert(successMessage);
+                        
+                        // Reset form only if EmailJS was successful
+                        if (result.method === 'EmailJS') {
+                            this.reset();
+                        }
+                        
+                        // Log successful submission
+                        console.log('📧 Email enviado via:', result.method);
+                        
+                    } catch (emailError) {
+                        console.error('Erro no envio:', emailError);
+                        
+                        const errorMessage = currentLanguage === 'pt' 
+                            ? '❌ Erro ao enviar mensagem. Por favor, tente novamente ou entre em contato diretamente pelo WhatsApp ou email.'
+                            : '❌ Error sending message. Please try again or contact us directly via WhatsApp or email.';
+                        
+                        alert(errorMessage);
+                    }
                     
                 } catch (error) {
                     alert(error.message);
+                } finally {
+                    // Restore button state
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = currentLanguage === 'pt' ? 'Enviar Mensagem ∞' : 'Send Message ∞';
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('btn-loading');
                 }
             });
 

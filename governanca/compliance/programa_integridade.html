@@ -1,0 +1,2568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Programa de Integridade da i9Script  - Governança corporativa, ética e transparência em todos os nossos negócios.">
+    <meta name="keywords" content="programa de integridade, compliance, ética, governança corporativa, i9Script , transparência, anticorrupção">
+    <meta name="author" content="i9Script ">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#00f5ff">
+    <meta name="color-scheme" content="light dark">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Programa de Integridade - i9Script ">
+    <meta property="og:description" content="Governança corporativa, ética e transparência em todos os nossos negócios.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://i9Script.com/programa-integridade">
+    <meta property="og:image" content="https://i9Script.com/assets/integrity-og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Programa de Integridade - i9Script ">
+    <meta name="twitter:description" content="Governança corporativa, ética e transparência em todos os nossos negócios.">
+    
+    <title>Programa de Integridade - i9Script </title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300f5ff;stop-opacity:1' /><stop offset='100%25' style='stop-color:%23FFD700;stop-opacity:1' /></linearGradient></defs><text x='50' y='65' font-family='Orbitron,sans-serif' font-size='40' font-weight='800' text-anchor='middle' fill='url(%23grad)'>SX</text></svg>" type="image/svg+xml">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Design System - CSS Custom Properties */
+        :root {
+            /* Colors - i9Script  Brand */
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --gold: #FFD700;
+            --cyan: #00f5ff;
+            --red: #ff6b6b;
+            --green: #4ade80;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --dark-medium: #334155;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --light: #f8fafc;
+            --white: #ffffff;
+            
+            /* Typography */
+            --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-family-brand: 'Orbitron', 'Inter', sans-serif;
+            
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            
+            --line-height-tight: 1.25;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+            
+            /* Spacing */
+            --spacing-1: 0.25rem;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-5: 1.25rem;
+            --spacing-6: 1.5rem;
+            --spacing-8: 2rem;
+            --spacing-10: 2.5rem;
+            --spacing-12: 3rem;
+            --spacing-16: 4rem;
+            --spacing-20: 5rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            
+            /* Borders */
+            --border-radius-sm: 0.125rem;
+            --border-radius-md: 0.375rem;
+            --border-radius-lg: 0.5rem;
+            --border-radius-xl: 0.75rem;
+            --border-radius-2xl: 1rem;
+            --border-radius-full: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 150ms ease-in-out;
+            --transition-normal: 250ms ease-in-out;
+            --transition-slow: 350ms ease-in-out;
+            
+            /* Z-Index Scale */
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal-backdrop: 1040;
+            --z-modal: 1050;
+            --z-popover: 1060;
+            --z-tooltip: 1070;
+            --z-toast: 1080;
+        }
+
+        /* Theme Variables */
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: rgba(15, 23, 42, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+            --input-bg: #f8fafc;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --card-bg: #1e293b;
+            --input-bg: #334155;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 100%;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: var(--font-family-primary);
+            line-height: var(--line-height-normal);
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+            transition: background-color var(--transition-normal), color var(--transition-normal);
+        }
+
+        /* Focus Management */
+        :focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 2px;
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--dark);
+            color: var(--white);
+            padding: var(--spacing-2) var(--spacing-4);
+            text-decoration: none;
+            border-radius: var(--border-radius-md);
+            z-index: var(--z-tooltip);
+            transition: top var(--transition-fast);
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            z-index: var(--z-sticky);
+            transition: all var(--transition-normal);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+            background: var(--bg-primary);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-4) var(--spacing-8);
+            position: relative;
+        }
+
+        .logo {
+            font-family: var(--font-family-brand);
+            font-size: var(--font-size-2xl);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all var(--transition-normal);
+            z-index: calc(var(--z-modal) + 2);
+            text-decoration: none;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 2px 8px rgba(0, 245, 255, 0.3));
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-8);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-8);
+            transition: all var(--transition-normal);
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-normal);
+            position: relative;
+            padding: var(--spacing-2) 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            transition: width var(--transition-normal);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-full);
+            padding: var(--spacing-2) var(--spacing-4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            transition: all var(--transition-normal);
+            color: var(--text-primary);
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .theme-icon {
+            font-size: var(--font-size-lg);
+            transition: transform var(--transition-normal);
+        }
+
+        .theme-toggle.rotating .theme-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: var(--font-size-2xl);
+            cursor: pointer;
+            padding: var(--spacing-2);
+            z-index: calc(var(--z-modal) + 2);
+            transition: all var(--transition-normal);
+            border-radius: var(--border-radius-md);
+        }
+
+        .mobile-menu-toggle:hover {
+            color: var(--cyan);
+            transform: scale(1.1);
+        }
+
+        /* Mobile Navigation */
+        .nav-links.mobile-open {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--bg-primary);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-12);
+            z-index: calc(var(--z-modal) + 1);
+            border-right: 1px solid var(--border-color);
+            animation: slideInFromTop 0.3s ease-out;
+        }
+
+        .nav-links.mobile-open a {
+            font-size: var(--font-size-2xl);
+            font-weight: 600;
+            padding: var(--spacing-4);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.4s ease-out forwards;
+        }
+
+        .nav-links.mobile-open a:nth-child(1) { animation-delay: 0.1s; }
+        .nav-links.mobile-open a:nth-child(2) { animation-delay: 0.2s; }
+        .nav-links.mobile-open a:nth-child(3) { animation-delay: 0.3s; }
+        .nav-links.mobile-open a:nth-child(4) { animation-delay: 0.4s; }
+        .nav-links.mobile-open a:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: var(--spacing-20) 0 var(--spacing-16) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="gradient1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%2300f5ff;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%2300f5ff;stop-opacity:0"/></radialGradient><radialGradient id="gradient2" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23FFD700;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%23FFD700;stop-opacity:0"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23gradient1)"/><circle cx="800" cy="300" r="200" fill="url(%23gradient2)"/><circle cx="600" cy="700" r="180" fill="url(%23gradient1)"/></svg>');
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-8);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-family: var(--font-family-brand);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-6);
+            line-height: var(--line-height-tight);
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-8);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .integrity-highlight {
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            margin-bottom: var(--spacing-8);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-normal);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--cyan);
+        }
+
+        .breadcrumb .separator {
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb .current {
+            color: var(--cyan);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-16) var(--spacing-8);
+        }
+
+        .integrity-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: var(--spacing-12);
+            align-items: start;
+        }
+
+        /* Table of Contents */
+        .toc {
+            position: sticky;
+            top: 100px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius-2xl);
+            padding: var(--spacing-8);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .toc-title {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-6);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            margin-bottom: var(--spacing-2);
+        }
+
+        .toc-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            transition: all var(--transition-normal);
+            display: block;
+            padding: var(--spacing-2) var(--spacing-3);
+            border-radius: var(--border-radius-md);
+            border-left: 3px solid transparent;
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            color: var(--cyan);
+            background: rgba(0, 245, 255, 0.1);
+            border-left-color: var(--cyan);
+        }
+
+        /* Content Area */
+        .content-area {
+            background: var(--card-bg);
+            border-radius: var(--border-radius-2xl);
+            padding: var(--spacing-12);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .content-section {
+            margin-bottom: var(--spacing-12);
+        }
+
+        .content-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-6);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: var(--spacing-4);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+
+        .section-number {
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: var(--font-size-lg);
+            flex-shrink: 0;
+        }
+
+        .content-text {
+            color: var(--text-secondary);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--spacing-6);
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .content-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-6);
+            margin: var(--spacing-6) 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--cyan);
+            font-weight: 700;
+            margin-bottom: var(--spacing-3);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+
+        .highlight-box ul {
+            margin-left: var(--spacing-6);
+            color: var(--text-secondary);
+        }
+
+        .highlight-box li {
+            margin-bottom: var(--spacing-2);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .highlight-box p {
+            color: var(--text-secondary);
+            line-height: var(--line-height-relaxed);
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-6);
+            margin: var(--spacing-8) 0;
+        }
+
+        .pillar-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-6);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--cyan);
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+        }
+
+        .pillar-icon {
+            font-size: var(--font-size-3xl);
+            color: var(--cyan);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .pillar-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-3);
+            font-size: var(--font-size-lg);
+        }
+
+        .pillar-description {
+            color: var(--text-secondary);
+            line-height: var(--line-height-relaxed);
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-6);
+            margin: var(--spacing-8) 0;
+        }
+
+        .contact-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-6);
+            text-align: center;
+            transition: all var(--transition-normal);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--cyan);
+        }
+
+        .contact-card-icon {
+            font-size: var(--font-size-3xl);
+            color: var(--cyan);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .contact-card-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .contact-card-info {
+            color: var(--text-secondary);
+        }
+
+        .contact-card-link {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .contact-card-link:hover {
+            text-decoration: underline;
+        }
+
+        .governance-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-4);
+            margin: var(--spacing-8) 0;
+        }
+
+        .stat-item {
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-4);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-number {
+            font-size: var(--font-size-3xl);
+            font-weight: 800;
+            color: var(--cyan);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-1);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--cyan), var(--primary));
+            border-radius: var(--border-radius-2xl);
+            padding: var(--spacing-12);
+            text-align: center;
+            margin: var(--spacing-12) 0;
+            color: var(--white);
+        }
+
+        .cta-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-4);
+        }
+
+        .cta-description {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-8);
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: var(--white);
+            color: var(--primary);
+            padding: var(--spacing-3) var(--spacing-6);
+            border-radius: var(--border-radius-lg);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-normal);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+
+        .cta-button:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .last-updated {
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-4);
+            text-align: center;
+            border: 1px solid var(--border-color);
+            margin-top: var(--spacing-8);
+        }
+
+        .last-updated-date {
+            font-weight: 700;
+            color: var(--cyan);
+        }
+
+        .integrity-footer {
+            text-align: center;
+            margin-top: var(--spacing-12);
+            padding: var(--spacing-8);
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius-2xl);
+            border: 1px solid var(--border-color);
+        }
+
+        .integrity-footer-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-4);
+            font-size: var(--font-size-lg);
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .integrity-footer-brand {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--spacing-8);
+            right: var(--spacing-8);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--cyan), var(--primary));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: var(--font-size-lg);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all var(--transition-normal);
+            z-index: var(--z-fixed);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .loading.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .integrity-container {
+                grid-template-columns: 220px 1fr;
+                gap: var(--spacing-10);
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .content-area {
+                padding: var(--spacing-10);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .integrity-container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-8);
+            }
+            
+            .toc {
+                position: static;
+                order: -1;
+                padding: var(--spacing-6);
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .content-area {
+                padding: var(--spacing-8);
+            }
+
+            .main-content {
+                padding: var(--spacing-12) var(--spacing-6);
+            }
+
+            .pillar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: var(--spacing-4);
+            }
+            
+            .logo {
+                font-size: var(--font-size-xl);
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-container {
+                gap: var(--spacing-4);
+            }
+            
+            .theme-toggle {
+                padding: var(--spacing-2) var(--spacing-3);
+                font-size: var(--font-size-sm);
+            }
+
+            .hero {
+                padding: var(--spacing-16) 0 var(--spacing-12) 0;
+            }
+
+            .hero-content {
+                padding: 0 var(--spacing-4);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: var(--line-height-tight);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--font-size-lg);
+            }
+
+            .main-content {
+                padding: var(--spacing-12) var(--spacing-4);
+            }
+
+            .content-area {
+                padding: var(--spacing-6);
+            }
+
+            .section-title {
+                font-size: var(--font-size-xl);
+                flex-direction: column;
+                text-align: center;
+                gap: var(--spacing-2);
+            }
+
+            .section-number {
+                width: 35px;
+                height: 35px;
+                font-size: var(--font-size-base);
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-4);
+            }
+            
+            .toc-title {
+                font-size: var(--font-size-base);
+                text-align: center;
+            }
+
+            .breadcrumb {
+                margin-bottom: var(--spacing-6);
+                font-size: var(--font-size-sm);
+            }
+
+            .governance-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-3);
+            }
+
+            .cta-section {
+                padding: var(--spacing-8);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pillar-grid {
+                gap: var(--spacing-4);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .content-area {
+                padding: var(--spacing-5);
+            }
+            
+            .section-title {
+                font-size: var(--font-size-lg);
+            }
+            
+            .section-number {
+                width: 30px;
+                height: 30px;
+                font-size: var(--font-size-sm);
+            }
+
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: var(--spacing-4);
+                right: var(--spacing-4);
+                font-size: var(--font-size-base);
+            }
+
+            .contact-card {
+                padding: var(--spacing-4);
+            }
+
+            .contact-card-icon {
+                font-size: var(--font-size-2xl);
+            }
+
+            .toc {
+                padding: var(--spacing-4);
+            }
+
+            .highlight-box {
+                padding: var(--spacing-4);
+            }
+
+            .pillar-card {
+                padding: var(--spacing-4);
+            }
+
+            .governance-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: var(--spacing-6);
+            }
+
+            .cta-title {
+                font-size: var(--font-size-xl);
+            }
+
+            .cta-description {
+                font-size: var(--font-size-base);
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo {
+                font-size: var(--font-size-lg);
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .content-area {
+                padding: var(--spacing-4);
+            }
+            
+            .section-title {
+                font-size: var(--font-size-base);
+            }
+
+            .section-number {
+                width: 25px;
+                height: 25px;
+                font-size: var(--font-size-xs);
+            }
+
+            .contact-cards {
+                gap: var(--spacing-3);
+            }
+
+            .main-content {
+                padding: var(--spacing-8) var(--spacing-3);
+            }
+
+            .toc {
+                padding: var(--spacing-3);
+            }
+
+            .back-to-top {
+                width: 35px;
+                height: 35px;
+                font-size: var(--font-size-sm);
+            }
+
+            .breadcrumb {
+                font-size: 0.75rem;
+            }
+
+            .pillar-card {
+                padding: var(--spacing-3);
+            }
+
+            .cta-section {
+                padding: var(--spacing-4);
+            }
+        }
+
+        /* Landscape Orientation Fixes */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                padding: var(--spacing-8) 0 var(--spacing-6) 0;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+                margin-bottom: var(--spacing-4);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--font-size-base);
+                margin-bottom: var(--spacing-4);
+            }
+
+            .main-content {
+                padding: var(--spacing-8) var(--spacing-4);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .hero-bg,
+            .back-to-top,
+            .nav-links,
+            .theme-toggle,
+            .mobile-menu-toggle {
+                display: none !important;
+            }
+            
+            .hero {
+                background: none !important;
+                padding: var(--spacing-4) 0 !important;
+            }
+            
+            .integrity-container {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .toc {
+                display: none !important;
+            }
+            
+            .content-area {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
+            
+            .section-title {
+                page-break-after: avoid;
+            }
+            
+            .content-section {
+                page-break-inside: avoid;
+            }
+
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+                color: #000;
+                background: #fff;
+            }
+
+            .hero-title {
+                font-size: 24pt;
+                color: #000;
+            }
+
+            .section-number {
+                background: #ccc !important;
+                color: #000 !important;
+            }
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --border-color: #000;
+                --shadow-color: rgba(0, 0, 0, 0.8);
+            }
+
+            [data-theme="light"] {
+                --text-secondary: #333;
+                --border-color: #000;
+            }
+
+            [data-theme="dark"] {
+                --text-secondary: #ccc;
+                --border-color: #fff;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .hero-bg {
+                animation: none;
+            }
+
+            .integrity-highlight {
+                animation: none;
+            }
+
+            .loading {
+                transition: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Focus visible improvements */
+        .toc-link:focus-visible,
+        .contact-card-link:focus-visible,
+        .breadcrumb a:focus-visible,
+        .cta-button:focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    
+    <header id="header">
+        <nav>
+            <a href="/" class="logo" aria-label="i9Script  - Página inicial">i9Script</a>
+            <div class="nav-container">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/" onclick="closeMenu()">Início</a></li>
+                    <li><a href="/#sobre" onclick="closeMenu()">Sobre</a></li>
+                    <li><a href="/#servicos" onclick="closeMenu()">Serviços</a></li>
+                    <li><a href="/#investidores" onclick="closeMenu()">Investidores</a></li>
+                    <li><a href="/#contato" onclick="closeMenu()">Contato</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <nav class="breadcrumb" aria-label="Navegação estrutural">
+                    <a href="/">Início</a>
+                    <span class="separator">›</span>
+                    <a href="/governanca">Governança</a>
+                    <span class="separator">›</span>
+                    <span class="current">Programa de Integridade</span>
+                </nav>
+                
+                <h1 class="hero-title">
+                    Programa de <span class="integrity-highlight">Integridade</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Com uma estrutura de tomadas de decisão e planejamento estratégico moderna, alinhada às melhores práticas de mercado, 
+                    a i9Script  considera a governança corporativa um indutor de profissionalismo, inovação e concretização 
+                    da Missão, da Visão e dos Valores organizacionais.
+                </p>
+            </div>
+        </section>
+
+        <div class="main-content">
+            <div class="integrity-container">
+                <!-- Table of Contents -->
+                <aside class="toc" role="navigation" aria-labelledby="toc-title">
+                    <h2 class="toc-title" id="toc-title">
+                        <i class="fas fa-list-check"></i>
+                        Índice
+                    </h2>
+                    <ul class="toc-list">
+                        <li class="toc-item"><a href="#visao-geral" class="toc-link">1. Visão Geral</a></li>
+                        <li class="toc-item"><a href="#governanca" class="toc-link">2. Governança Corporativa</a></li>
+                        <li class="toc-item"><a href="#programa-integridade" class="toc-link">3. Programa de Integridade</a></li>
+                        <li class="toc-item"><a href="#codigo-conduta" class="toc-link">4. Código de Conduta</a></li>
+                        <li class="toc-item"><a href="#codigo-terceiros" class="toc-link">5. Código de Terceiros</a></li>
+                        <li class="toc-item"><a href="#canal-etica" class="toc-link">6. Canal de Ética</a></li>
+                        <li class="toc-item"><a href="#politica-anticorrupcao" class="toc-link">7. Política Anticorrupção</a></li>
+                        <li class="toc-item"><a href="#privacidade-lgpd" class="toc-link">8. Privacidade e LGPD</a></li>
+                        <li class="toc-item"><a href="#pilares-compliance" class="toc-link">9. Pilares do Compliance</a></li>
+                        <li class="toc-item"><a href="#lideranca" class="toc-link">10. Compromisso da Liderança</a></li>
+                        <li class="toc-item"><a href="#contato" class="toc-link">11. Contato</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Content Area -->
+                <div class="content-area">
+                    <section id="visao-geral" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">1</span>
+                            Visão Geral
+                        </h2>
+                        <div class="content-text">
+                            Desde 2021, adicionamos em nosso planejamento estratégico a entrada de alguns sócios investidores, 
+                            o que nos confere uma série de responsabilidades quanto à garantia de <strong>transparência</strong>, 
+                            <strong>equidade</strong>, <strong>responsabilidade corporativa</strong> e <strong>integridade</strong> 
+                            nas práticas de governança.
+                        </div>
+                        <div class="content-text">
+                            Possuímos um <strong>Comitê de Conformidade, Ética e Riscos</strong> que zelam pela integridade 
+                            e transparência em todos os nossos negócios, para nossos atuais e possíveis investidores. 
+                            Em setembro de 2023, a i9Script  iniciou suas atividades, com a finalidade de levar a transparência, 
+                            ética e a cultura de nossos valores que precisavam ser elevados a outro nível.
+                        </div>
+                        <div class="governance-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">2021</span>
+                                <div class="stat-label">Início do Programa</div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">2023</span>
+                                <div class="stat-label">Ativação Completa</div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <div class="stat-label">Transparência</div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <div class="stat-label">Canal de Ética</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="governanca" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">2</span>
+                            Governança Corporativa
+                        </h2>
+                        <div class="content-text">
+                            Nossa estrutura de governança corporativa está alinhada às melhores práticas de mercado, 
+                            proporcionando um ambiente de negócios ético, transparente e responsável. Consideramos a 
+                            governança como um elemento fundamental para o crescimento sustentável e a criação de valor 
+                            para todos os stakeholders.
+                        </div>
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-building"></i> Estrutura de Governança</h4>
+                            <ul>
+                                <li><strong>Conselho de Administração:</strong> Supervisão estratégica e tomada de decisões</li>
+                                <li><strong>Comitê de Conformidade, Ética e Riscos:</strong> Monitoramento contínuo</li>
+                                <li><strong>Auditoria Interna:</strong> Controles internos e avaliação de riscos</li>
+                                <li><strong>Gestão Executiva:</strong> Implementação das diretrizes e políticas</li>
+                                <li><strong>Canais de Comunicação:</strong> Transparência e prestação de contas</li>
+                            </ul>
+                        </div>
+                        <div class="content-text">
+                            A entrada de sócios investidores fortaleceu ainda mais nossa estrutura de governança, 
+                            estabelecendo novos padrões de excelência e accountability que beneficiam toda a organização.
+                        </div>
+                    </section>
+
+                    <section id="programa-integridade" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">3</span>
+                            Programa de Integridade
+                        </h2>
+                        <div class="content-text">
+                            Em linha com as melhores práticas de governança e com as orientações da Controladoria Geral da União, 
+                            o Programa está estruturado com base em pilares que visam garantir os mecanismos e procedimentos 
+                            adequados à estrutura da Companhia.
+                        </div>
+                        <div class="content-text">
+                            O Programa de Conformidade da i9Script  se aplica a <strong>todas as empresas controladas</strong> 
+                            e tem o objetivo de prevenir, detectar e remediar a ocorrência de desvios, fraudes, irregularidade 
+                            e atos ilícitos, principalmente no ambiente público, bem como fortalecer os princípios éticos 
+                            e padrões de transparência.
+                        </div>
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-shield-check"></i> Objetivos do Programa</h4>
+                            <ul>
+                                <li><strong>Prevenir:</strong> Identificar e mitigar riscos antes que se materializem</li>
+                                <li><strong>Detectar:</strong> Monitorar atividades e identificar desvios rapidamente</li>
+                                <li><strong>Remediar:</strong> Corrigir irregularidades e fortalecer controles</li>
+                                <li><strong>Educar:</strong> Capacitar colaboradores em práticas éticas</li>
+                                <li><strong>Monitorar:</strong> Acompanhar continuamente a efetividade do programa</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="codigo-conduta" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">4</span>
+                            Código de Conduta
+                        </h2>
+                        <div class="content-text">
+                            O Código de Conduta da i9Script  se aplica a <strong>todos que mantém qualquer vínculo e relação 
+                            com a empresa</strong>. Ele é composto por um conjunto de orientações que retratam nossos valores 
+                            e que devem nortear sua atuação.
+                        </div>
+                        <div class="pillar-grid">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">⚖️</div>
+                                <div class="pillar-title">Cumprimento de Leis</div>
+                                <div class="pillar-description">
+                                    Aderência total às leis e regulamentos aplicáveis em todas as jurisdições onde operamos.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">🤝</div>
+                                <div class="pillar-title">Relações de Trabalho</div>
+                                <div class="pillar-description">
+                                    Promoção de um ambiente de trabalho respeitoso, inclusivo e livre de discriminação.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">👔</div>
+                                <div class="pillar-title">Conduta Profissional</div>
+                                <div class="pillar-description">
+                                    Padrões elevados de comportamento ético e profissional para colaboradores e diretores.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">🛡️</div>
+                                <div class="pillar-title">Combate à Corrupção</div>
+                                <div class="pillar-description">
+                                    Tolerância zero com práticas corruptas, suborno e qualquer forma de conduta inadequada.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">🔍</div>
+                                <div class="pillar-title">Conflito de Interesses</div>
+                                <div class="pillar-description">
+                                    Identificação, declaração e gestão adequada de situações de conflito de interesses.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-section">
+                            <h3 class="cta-title">Nosso Código de Conduta</h3>
+                            <p class="cta-description">
+                                Acesse o documento completo com todas as diretrizes e orientações éticas da i9Script .
+                            </p>
+                            <div class="cta-buttons">
+                                <a href="#" class="cta-button">
+                                    <i class="fas fa-download"></i>
+                                    Download PDF
+                                </a>
+                                <a href="#" class="cta-button">
+                                    <i class="fas fa-eye"></i>
+                                    Visualizar Online
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="codigo-terceiros" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">5</span>
+                            Código de Conduta de Terceiros
+                        </h2>
+                        <div class="content-text">
+                            A i9Script  espera dos seus terceiros o mesmo nível de <strong>ética</strong>, 
+                            <strong>integridade</strong>, <strong>transparência</strong> e <strong>conformidade com as leis</strong>.
+                        </div>
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-handshake"></i> Expectativas para Terceiros</h4>
+                            <ul>
+                                <li>Aderência aos mesmos padrões éticos da i9Script </li>
+                                <li>Cumprimento integral da legislação aplicável</li>
+                                <li>Transparência em todas as operações e transações</li>
+                                <li>Cooperação com auditorias e verificações de compliance</li>
+                                <li>Comunicação imediata de qualquer irregularidade identificada</li>
+                                <li>Participação em treinamentos quando solicitado</li>
+                            </ul>
+                        </div>
+                        <div class="content-text">
+                            Todos os parceiros, fornecedores, consultores e demais terceiros devem assinar e cumprir 
+                            nosso Código de Conduta específico, que estabelece as diretrizes para o relacionamento 
+                            comercial ético e transparente.
+                        </div>
+                        <div class="cta-section">
+                            <h3 class="cta-title">Código de Conduta de Terceiros</h3>
+                            <p class="cta-description">
+                                Documento obrigatório para todos os parceiros comerciais da i9Script .
+                            </p>
+                            <div class="cta-buttons">
+                                <a href="#" class="cta-button">
+                                    <i class="fas fa-file-contract"></i>
+                                    Acessar Código
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="canal-etica" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">6</span>
+                            Canal de Ética & Conduta
+                        </h2>
+                        <div class="content-text">
+                            O Canal de Ética & Conduta funciona da seguinte forma: o interessado terá a possibilidade 
+                            de formalizar seus relatos pelos seguintes canais de comunicação: <strong>telefone (09h00 às 18h00 - dias úteis)</strong> 
+                            e <strong>site (24hs)</strong>, todos administrados exclusivamente por empresa terceirizada.
+                        </div>
+                        <div class="content-text">
+                            O <strong>anonimato é garantido</strong> ao interessado de boa-fé, bem como a possibilidade 
+                            do acompanhamento da tratativa da denúncia, de forma independente, por meio de número de protocolo.
+                        </div>
+                        <div class="contact-cards">
+                            <div class="contact-card">
+                                <div class="contact-card-icon">📞</div>
+                                <div class="contact-card-title">Canal Telefônico</div>
+                                <div class="contact-card-info">
+                                    <strong>0800-591-3457</strong><br>
+                                    Segunda a Sexta: 09h00 às 18h00
+                                </div>
+                            </div>
+                            <div class="contact-card">
+                                <div class="contact-card-icon">🌐</div>
+                                <div class="contact-card-title">Portal Online</div>
+                                <div class="contact-card-info">
+                                    Disponível 24 horas por dia<br>
+                                    <a href="#" class="contact-card-link">Fazer Relato/Denúncia</a>
+                                </div>
+                            </div>
+                            <div class="contact-card">
+                                <div class="contact-card-icon">🔒</div>
+                                <div class="contact-card-title">Anonimato Garantido</div>
+                                <div class="contact-card-info">
+                                    Proteção total da identidade<br>
+                                    Empresa terceirizada independente
+                                </div>
+                            </div>
+                            <div class="contact-card">
+                                <div class="contact-card-icon">📋</div>
+                                <div class="contact-card-title">Acompanhamento</div>
+                                <div class="contact-card-info">
+                                    Protocolo para seguimento<br>
+                                    Retorno sobre investigações
+                                </div>
+                            </div>
+                        </div>
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-info-circle"></i> Como Funciona o Canal</h4>
+                            <ul>
+                                <li><strong>Recebimento:</strong> Sua comunicação é recebida pela empresa terceirizada</li>
+                                <li><strong>Protocolo:</strong> Você recebe um número para acompanhar o caso</li>
+                                <li><strong>Investigação:</strong> Análise independente e imparcial dos fatos</li>
+                                <li><strong>Ação:</strong> Medidas corretivas quando necessário</li>
+                                <li><strong>Feedback:</strong> Retorno sobre as ações tomadas</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="politica-anticorrupcao" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">7</span>
+                            Política Anticorrupção
+                        </h2>
+                        <div class="content-text">
+                            A Política Anticorrupção da i9Script abrange um conjunto de Políticas que entendemos como 
+                            essenciais para o efetivo combate à corrupção em todas as suas formas.
+                        </div>
+                        <div class="pillar-grid">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">🏛️</div>
+                                <div class="pillar-title">Interação com o Poder Público</div>
+                                <div class="pillar-description">
+                                    Diretrizes claras para relacionamento ético e transparente com órgãos públicos, 
+                                    autoridades e agentes públicos.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">📋</div>
+                                <div class="pillar-title">Participação em Licitações</div>
+                                <div class="pillar-description">
+                                    Procedimentos rigorosos para garantir participação íntegra e competitiva em 
+                                    processos licitatórios.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">🎁</div>
+                                <div class="pillar-title">Doações e Patrocínios</div>
+                                <div class="pillar-description">
+                                    Critérios transparentes para doações, patrocínios e investimentos sociais, 
+                                    evitando conflitos de interesse.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">🍽️</div>
+                                <div class="pillar-title">Brindes e Hospitalidade</div>
+                                <div class="pillar-description">
+                                    Regras claras sobre oferecimento e recebimento de brindes, presentes, 
+                                    entretenimento e hospitalidade.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-section">
+                            <h3 class="cta-title">Nossa Política Anticorrupção</h3>
+                            <p class="cta-description">
+                                Documento completo com todas as diretrizes para combate à corrupção na i9Script .
+                            </p>
+                            <div class="cta-buttons">
+                                <a href="#" class="cta-button">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Acessar Política
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="privacidade-lgpd" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">8</span>
+                            Política de Privacidade e LGPD
+                        </h2>
+                        <div class="content-text">
+                            Em respeito à sua privacidade e à segurança de suas informações, atualizamos a nossa 
+                            Política de Privacidade, visando conferir ainda mais clareza e transparência sobre como 
+                            a i9Script  realiza o tratamento de dados pessoais.
+                        </div>
+                        <div class="content-text">
+                            Esta Política de Privacidade atende aos requisitos previstos na <strong>Lei Geral de 
+                            Proteção de Dados — LGPD</strong> e reflete o posicionamento da i9Script  de estar 
+                            em conformidade com as melhores práticas de proteção de dados.
+                        </div>
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-lock"></i> Compromissos LGPD</h4>
+                            <ul>
+                                <li><strong>Transparência:</strong> Informações claras sobre coleta e uso de dados</li>
+                                <li><strong>Finalidade:</strong> Uso de dados apenas para propósitos específicos</li>
+                                <li><strong>Segurança:</strong> Proteção técnica e organizacional dos dados</li>
+                                <li><strong>Direitos dos Titulares:</strong> Respeito aos direitos previstos na LGPD</li>
+                                <li><strong>Governança:</strong> Estrutura dedicada à proteção de dados</li>
+                            </ul>
+                        </div>
+                        <div class="contact-cards">
+                            <div class="contact-card">
+                                <div class="contact-card-icon">🛡️</div>
+                                <div class="contact-card-title">Encarregado de Dados</div>
+                                <div class="contact-card-info">
+                                    <a href="mailto:lgpd@i9Script.com.br" class="contact-card-link">lgpd@i9Script.com.br</a><br>
+                                    Para exercício de direitos e dúvidas
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="pilares-compliance" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">9</span>
+                            Pilares do Compliance
+                        </h2>
+                        <div class="content-text">
+                            Um Programa de Compliance é um sistema complexo e organizado, composto de diversos componentes, 
+                            que interage com outros componentes de outros processos de negócios da empresa. É um sistema 
+                            que depende de uma estrutura múltipla que inclui pessoas, processos, sistemas eletrônicos, 
+                            documentos, ações e ideias.
+                        </div>
+                        <div class="content-text">
+                            A seguir listamos os componentes, ou pilares, mínimos de um programa de compliance baseados 
+                            nos requerimentos do <strong>Federal Sentencing Guidelines</strong>.
+                        </div>
+                        <div class="pillar-grid">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">👥</div>
+                                <div class="pillar-title">Pessoas</div>
+                                <div class="pillar-description">
+                                    Equipe dedicada ao compliance, com autoridade e recursos suficientes para 
+                                    garantir a eficácia do programa.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">⚙️</div>
+                                <div class="pillar-title">Processos</div>
+                                <div class="pillar-description">
+                                    Procedimentos estruturados para prevenção, detecção e resposta a violações 
+                                    éticas e legais.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">💻</div>
+                                <div class="pillar-title">Sistemas Eletrônicos</div>
+                                <div class="pillar-description">
+                                    Tecnologia para monitoramento, controle e gestão dos riscos de compliance 
+                                    em tempo real.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">📄</div>
+                                <div class="pillar-title">Documentos</div>
+                                <div class="pillar-description">
+                                    Políticas, procedimentos e diretrizes documentadas e atualizadas 
+                                    regularmente.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">🎯</div>
+                                <div class="pillar-title">Ações</div>
+                                <div class="pillar-description">
+                                    Medidas corretivas, treinamentos e iniciativas preventivas implementadas 
+                                    consistentemente.
+                                </div>
+                            </div>
+                            <div class="pillar-card">
+                                <div class="pillar-icon">💡</div>
+                                <div class="pillar-title">Ideias</div>
+                                <div class="pillar-description">
+                                    Cultura organizacional orientada pela ética, inovação e melhoria contínua 
+                                    dos controles.
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="lideranca" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">10</span>
+                            Compromisso da Liderança
+                        </h2>
+                        <div class="content-text">
+                            Um robusto programa de compliance deve receber o <strong>aval explícito e apoio incondicional</strong> 
+                            dos mais altos executivos da empresa. Além disso, as empresas que têm um programa de compliance 
+                            efetivo devem nomear um profissional para o cargo de responsável pela área de Compliance, 
+                            com autoridade e recursos suficientes, e com suficiente autonomia de gestão.
+                        </div>
+                        <div class="content-text">
+                            <strong>Ações valem muito mais do que palavras</strong>, não basta dizer que apoia, participar 
+                            das reuniões ou declarar seu entusiasmo nas comunicações de Compliance. O líder máximo da 
+                            organização deve incorporar os princípios desse programa e praticá-los sempre, não só como 
+                            exemplo aguardado pelos demais, mas também para transformar, de fato, sua empresa num agente 
+                            ético e íntegro.
+                        </div>
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-crown"></i> Compromissos da Alta Liderança</h4>
+                            <ul>
+                                <li><strong>Exemplo Pessoal:</strong> Demonstração prática dos valores éticos em todas as decisões</li>
+                                <li><strong>Recursos Adequados:</strong> Investimento necessário em pessoas, sistemas e processos</li>
+                                <li><strong>Autonomia Operacional:</strong> Independência para o profissional de compliance</li>
+                                <li><strong>Comunicação Clara:</strong> Mensagens consistentes sobre a importância da ética</li>
+                                <li><strong>Accountability:</strong> Responsabilização por resultados e comportamentos</li>
+                                <li><strong>Melhoria Contínua:</strong> Evolução constante do programa de integridade</li>
+                            </ul>
+                        </div>
+                        <div class="content-text">
+                            Assim, a conduta e decisões da liderança não poderão sucumbir jamais, mesmo em casos críticos, 
+                            mantendo sempre a integridade como valor fundamental e inegociável da organização.
+                        </div>
+                    </section>
+
+                    <section id="contato" class="content-section loading">
+                        <h2 class="section-title">
+                            <span class="section-number">11</span>
+                            Entre em Contato
+                        </h2>
+                        <div class="content-text">
+                            Para dúvidas, orientações ou comunicações relacionadas ao Programa de Integridade, 
+                            entre em contato com nossa equipe especializada.
+                        </div>
+                        <div class="contact-cards">
+                            <div class="contact-card">
+                                <div class="contact-card-icon">🛡️</div>
+                                <div class="contact-card-title">Equipe de Compliance</div>
+                                <div class="contact-card-info">
+                                    <a href="mailto:compliance@i9Script.com.br" class="contact-card-link">compliance@i9Script.com.br</a><br>
+                                    Orientações e dúvidas gerais
+                                </div>
+                            </div>
+                            <div class="contact-card">
+                                <div class="contact-card-icon">📞</div>
+                                <div class="contact-card-title">Canal de Ética</div>
+                                <div class="contact-card-info">
+                                    <strong>0800-591-3457</strong><br>
+                                    Denúncias e relatos confidenciais
+                                </div>
+                            </div>
+                            <div class="contact-card">
+                                <div class="contact-card-icon">🔒</div>
+                                <div class="contact-card-title">Proteção de Dados</div>
+                                <div class="contact-card-info">
+                                    <a href="mailto:lgpd@i9Script.com.br" class="contact-card-link">lgpd@i9Script.com.br</a><br>
+                                    Questões sobre privacidade
+                                </div>
+                            </div>
+                            <div class="contact-card">
+                                <div class="contact-card-icon">🏢</div>
+                                <div class="contact-card-title">Governança Corporativa</div>
+                                <div class="contact-card-info">
+                                    <a href="mailto:governanca@i9Script.com.br" class="contact-card-link">governanca@i9Script.com.br</a><br>
+                                    Assuntos institucionais
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-section">
+                            <h3 class="cta-title">Fale com o Time de Compliance</h3>
+                            <p class="cta-description">
+                                Nossa equipe está disponível para orientar sobre questões de integridade, 
+                                ética e conformidade.
+                            </p>
+                            <div class="cta-buttons">
+                                <a href="mailto:compliance@i9Script.com.br" class="cta-button">
+                                    <i class="fas fa-envelope"></i>
+                                    Enviar E-mail
+                                </a>
+                                <a href="#canal-etica" class="cta-button">
+                                    <i class="fas fa-phone"></i>
+                                    Canal de Ética
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Última Atualização -->
+                    <div class="last-updated">
+                        <p>Última atualização: <span class="last-updated-date">Julho de 2025</span></p>
+                        <p>Versão: 1.2</p>
+                    </div>
+
+                    <!-- Footer do Programa -->
+                    <div class="integrity-footer">
+                        <p class="integrity-footer-quote">
+                            "Na i9Script, a integridade não é apenas um programa, é a essência de 
+                            quem somos e como conduzimos nossos negócios. Cada decisão, cada ação, 
+                            cada relacionamento é pautado pelos mais altos padrões éticos e de transparência."
+                        </p>
+                        <p><strong class="integrity-footer-brand">i9Script</strong> - Integridade em cada passo da jornada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Initialize theme
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+
+        // Theme Management
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.querySelector('.theme-icon');
+        const body = document.body;
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            themeToggle.classList.add('rotating');
+            setTimeout(() => {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+                
+                themeToggle.classList.remove('rotating');
+            }, 150);
+        });
+
+        function updateThemeIcon(theme) {
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Mobile Menu
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = mobileMenuToggle.querySelector('i');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.contains('mobile-open');
+            
+            if (isOpen) {
+                navLinks.classList.remove('mobile-open');
+                menuIcon.className = 'fas fa-bars';
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            } else {
+                navLinks.classList.add('mobile-open');
+                menuIcon.className = 'fas fa-times';
+                mobileMenuToggle.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        function closeMenu() {
+            navLinks.classList.remove('mobile-open');
+            menuIcon.className = 'fas fa-bars';
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Table of Contents - Active Link
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const sections = document.querySelectorAll('.content-section');
+
+        function updateActiveSection() {
+            let currentSection = '';
+            const scrollPos = window.pageYOffset + 150;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    currentSection = section.id;
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveSection);
+
+        // Smooth scrolling for TOC links
+        tocLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 100;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Loading Animation
+        const loadingElements = document.querySelectorAll('.loading');
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('loaded');
+                }
+            });
+        }, observerOptions);
+
+        loadingElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Enhanced pillar card interactions
+        const pillarCards = document.querySelectorAll('.pillar-card');
+        pillarCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Enhanced contact card interactions
+        const contactCards = document.querySelectorAll('.contact-card');
+        contactCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Governance stats animation
+        const statItems = document.querySelectorAll('.stat-item');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    statNumber.style.animation = 'countUp 1s ease-out';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statItems.forEach(stat => {
+            statsObserver.observe(stat);
+        });
+
+        // Keyboard Navigation Enhancement
+        document.addEventListener('keydown', (e) => {
+            // ESC key closes mobile menu
+            if (e.key === 'Escape') {
+                if (navLinks.classList.contains('mobile-open')) {
+                    closeMenu();
+                }
+            }
+            
+            // Ctrl/Cmd + K focuses search (if implemented)
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                // Future: Focus search input
+            }
+        });
+
+        // Enhanced responsive behavior
+        function handleResponsiveChanges() {
+            const width = window.innerWidth;
+            
+            // Adjust TOC behavior on resize
+            if (width <= 1024) {
+                const toc = document.querySelector('.toc');
+                if (toc) {
+                    toc.style.position = 'static';
+                }
+            } else {
+                const toc = document.querySelector('.toc');
+                if (toc) {
+                    toc.style.position = 'sticky';
+                }
+            }
+            
+            // Close mobile menu on resize if open
+            if (width > 768 && navLinks.classList.contains('mobile-open')) {
+                closeMenu();
+            }
+        }
+
+        // Debounce function for performance
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply debounce to scroll events
+        const debouncedScrollHandler = debounce(() => {
+            updateActiveSection();
+        }, 10);
+
+        window.addEventListener('scroll', debouncedScrollHandler);
+        window.addEventListener('resize', debounce(handleResponsiveChanges, 100));
+
+        // Initial responsive setup
+        handleResponsiveChanges();
+
+        // Section title animations on scroll
+        const sectionTitles = document.querySelectorAll('.section-title');
+        const titleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInLeft 0.6s ease-out';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sectionTitles.forEach(title => {
+            titleObserver.observe(title);
+        });
+
+        // Add CSS animation for section titles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            
+            @keyframes countUp {
+                from {
+                    transform: scale(0.8);
+                    opacity: 0;
+                }
+                to {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Enhanced TOC interaction
+        const tocItems = document.querySelectorAll('.toc-item');
+        tocItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(3px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Integrity footer animation
+        const integrityFooter = document.querySelector('.integrity-footer');
+        if (integrityFooter) {
+            const footerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.8s ease-out';
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            footerObserver.observe(integrityFooter);
+        }
+
+        // Security functions
+        function sanitizeInput(input) {
+            const div = document.createElement('div');
+            div.textContent = input;
+            return div.innerHTML;
+        }
+
+        function preventXSS() {
+            // Remove any potential script injections from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.forEach((value, key) => {
+                if (/<script|javascript:|data:/i.test(value)) {
+                    console.warn('Potential XSS attempt detected and blocked');
+                    urlParams.delete(key);
+                }
+            });
+        }
+
+        // Performance optimization
+        const performanceObserver = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+                if (entry.entryType === 'measure') {
+                    console.log(`${entry.name}: ${entry.duration}ms`);
+                }
+            }
+        });
+
+        if ('PerformanceObserver' in window) {
+            performanceObserver.observe({ entryTypes: ['measure'] });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize security measures
+            preventXSS();
+            
+            // Performance measurement
+            performance.mark('integrity-page-start');
+            
+            updateActiveSection();
+            
+            // Trigger initial loading animation for visible elements
+            const visibleElements = document.querySelectorAll('.loading');
+            visibleElements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    element.classList.add('loaded');
+                }
+            });
+
+            // Performance measurement end
+            performance.mark('integrity-page-end');
+            performance.measure('integrity-page-load', 'integrity-page-start', 'integrity-page-end');
+
+            // Theme information for console
+            console.log('🎨 Tema atual:', document.documentElement.getAttribute('data-theme'));
+            console.log('🛡️ Programa de Integridade carregado com sucesso');
+
+            // Accessibility improvements
+            document.addEventListener('focusin', (e) => {
+                // Ensure focused elements are visible
+                if (e.target.closest('.nav-links.mobile-open')) {
+                    e.target.scrollIntoView({ block: 'nearest' });
+                }
+            });
+        });
+
+        // Error handling for external resources
+        window.addEventListener('error', (e) => {
+            if (e.target.tagName === 'LINK' || e.target.tagName === 'SCRIPT') {
+                console.warn('Failed to load external resource:', e.target.src || e.target.href);
+            }
+        });
+
+        // Smooth navigation with security
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // Validate target ID to prevent XSS
+                if (!/^#[a-zA-Z][\w-]*$/.test(targetId)) {
+                    console.warn('Invalid anchor target detected');
+                    return;
+                }
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    closeMenu();
+                    
+                    // Smooth scroll to target
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 100);
+                }
+            });
+        });
+
+        // Secure external link handling
+        document.querySelectorAll('a[target="_blank"]').forEach(link => {
+            if (!link.hasAttribute('rel')) {
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+
+        // Contact card link security
+        document.querySelectorAll('.contact-card-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Additional security check for external links
+                if (this.href.includes('mailto:') || this.href.includes('tel:')) {
+                    // These are safe, allow them
+                    return true;
+                } else if (this.href.startsWith('http')) {
+                    // External link, add security attributes
+                    this.setAttribute('rel', 'noopener noreferrer');
+                    this.setAttribute('target', '_blank');
+                }
+            });
+        });
+
+        // CTA button interactions
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Print optimization
+        window.addEventListener('beforeprint', () => {
+            // Expand all collapsed sections for printing
+            const collapsibleElements = document.querySelectorAll('.loading');
+            collapsibleElements.forEach(el => el.classList.add('loaded'));
+        });
+
+        // Content Security Policy violation reporting
+        window.addEventListener('securitypolicyviolation', (e) => {
+            console.warn('CSP Violation:', e.violatedDirective, e.blockedURI);
+        });
+
+        // Enhanced highlight box animations
+        const highlightBoxes = document.querySelectorAll('.highlight-box');
+        highlightBoxes.forEach((box, index) => {
+            box.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Pillar card hover effects with enhanced animation
+        pillarCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+            
+            card.addEventListener('click', function() {
+                // Add ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(0, 245, 255, 0.3);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (event.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (event.clientY - rect.top - size / 2) + 'px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation CSS
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            .pillar-card {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Enhanced scroll progress indicator
+        function updateScrollProgress() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / documentHeight) * 100;
+            
+            // You can use this to create a progress bar if needed
+            document.documentElement.style.setProperty('--scroll-progress', scrollProgress + '%');
+        }
+
+        window.addEventListener('scroll', debounce(updateScrollProgress, 10));
+
+        // Intersection Observer for animations
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Observe elements for animation
+        document.querySelectorAll('.pillar-card, .contact-card, .highlight-box').forEach(el => {
+            animationObserver.observe(el);
+        });
+
+        // Lazy loading for performance
+        if ('IntersectionObserver' in window) {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+        }
+
+        // Console easter egg with integrity theme
+        console.log('🛡️ i9Script  - Programa de Integridade Carregado');
+        console.log('📊 Estatísticas da página:');
+        console.log(`- Seções: ${sections.length}`);
+        console.log(`- Links do TOC: ${tocLinks.length}`);
+        console.log(`- Elementos com animação: ${loadingElements.length}`);
+        console.log(`- Pilares do Compliance: ${pillarCards.length}`);
+        console.log('🔒 Todas as medidas de segurança ativadas');
+        console.log('⚖️ Sistema de ética e compliance configurado');
+        console.log('✨ Integridade e transparência garantidas!');
+
+        // Advanced analytics tracking (placeholder)
+        function trackEvent(eventName, properties = {}) {
+            console.log('📈 Event tracked:', eventName, properties);
+            // Here you would integrate with your analytics service
+        }
+
+        // Track important interactions
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', () => {
+                trackEvent('cta_click', {
+                    button_text: button.textContent.trim(),
+                    section: button.closest('.content-section')?.id || 'unknown'
+                });
+            });
+        });
+
+        document.querySelectorAll('.contact-card-link').forEach(link => {
+            link.addEventListener('click', () => {
+                trackEvent('contact_click', {
+                    contact_type: link.closest('.contact-card')?.querySelector('.contact-card-title')?.textContent || 'unknown',
+                    link_url: link.href
+                });
+            });
+        });
+
+        // Track TOC navigation
+        tocLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                trackEvent('toc_navigation', {
+                    section: link.getAttribute('href'),
+                    section_name: link.textContent.trim()
+                });
+            });
+        });
+
+        // Performance monitoring
+        if ('PerformanceObserver' in window) {
+            // Monitor largest contentful paint
+            const lcpObserver = new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) {
+                    console.log('📊 LCP:', entry.startTime);
+                }
+            });
+            lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+
+            // Monitor first input delay
+            const fidObserver = new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) {
+                    console.log('📊 FID:', entry.processingStart - entry.startTime);
+                }
+            });
+            fidObserver.observe({ entryTypes: ['first-input'] });
+        }
+
+        // Service Worker registration for offline support (if available)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('🔧 SW registered:', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('🔧 SW registration failed:', registrationError);
+                    });
+            });
+        }
+
+        // Memory usage monitoring (development only)
+        if (window.performance && window.performance.memory) {
+            setInterval(() => {
+                const memory = window.performance.memory;
+                if (memory.usedJSHeapSize > memory.jsHeapSizeLimit * 0.9) {
+                    console.warn('⚠️ High memory usage detected');
+                }
+            }, 30000); // Check every 30 seconds
+        }
+
+        // Final initialization log
+        console.log('✅ i9Script  Programa de Integridade - Totalmente carregado e operacional');
+        console.log('🎯 Versão: 1.2 | Última atualização: Julho 2024');
+        console.log('📞 Canal de Ética: 0800-591-3457');
+        console.log('📧 Compliance: compliance@i9Script.com.br');
+    </script>
+</body>
+</html>
