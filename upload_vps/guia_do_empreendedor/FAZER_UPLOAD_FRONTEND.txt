@@ -1,0 +1,106 @@
+================================================================================
+       FAZER UPLOAD DO FRONTEND CORRETO - GUIA DO EMPREENDEDOR
+================================================================================
+
+🔍 PROBLEMA IDENTIFICADO:
+   O frontend no servidor estava com arquivos do i9script ao invés do Guia.
+
+✅ SOLUÇÃO:
+   Build correto já está preparado em:
+   upload_vps/guia_do_empreendedor/frontend/
+
+================================================================================
+PASSO 1: CONECTAR VIA SFTP (TERMIUS)
+================================================================================
+
+Host: 72.61.223.226
+Porta: 22
+Usuário: root
+Senha: 4xmnqiB@t234
+
+
+================================================================================
+PASSO 2: DELETAR PASTA ANTIGA NO SERVIDOR
+================================================================================
+
+Via SSH, execute:
+
+cd /var/www/i9script/guia_do_empreendedor
+rm -rf frontend
+mkdir frontend
+
+
+================================================================================
+PASSO 3: FAZER UPLOAD VIA SFTP
+================================================================================
+
+Local:
+C:\Users\Home\Desktop\Projects\i9script\upload_vps\guia_do_empreendedor\frontend\*
+
+Remoto:
+/var/www/i9script/guia_do_empreendedor/frontend/
+
+⚠️ IMPORTANTE: Fazer upload de TODOS os arquivos e pastas, incluindo:
+   - index.html (2926 bytes)
+   - assets/ (pasta com JS e CSS)
+   - Todas as imagens
+
+
+================================================================================
+PASSO 4: VERIFICAR APÓS O UPLOAD
+================================================================================
+
+Via SSH, execute:
+
+# Ver arquivos enviados
+ls -la /var/www/i9script/guia_do_empreendedor/frontend/
+
+# Ver título correto
+grep -i "<title>" /var/www/i9script/guia_do_empreendedor/frontend/index.html
+
+# Deve aparecer: "Guia Portal Empreendedor"
+
+
+================================================================================
+PASSO 5: TESTAR NO NAVEGADOR
+================================================================================
+
+curl -s https://i9script.com/guiadoempreendedor | grep -i "<title>"
+
+# Deve retornar:
+# <title>
+#   Guia Portal Empreendedor
+# </title>
+
+# Se ainda aparecer "і9Script", limpar cache do Nginx:
+rm -rf /var/cache/nginx/*
+systemctl reload nginx
+
+
+================================================================================
+PASSO 6: TESTAR NO NAVEGADOR
+================================================================================
+
+1. Abrir: https://i9script.com/guiadoempreendedor
+2. CTRL+F5 para forçar reload sem cache
+3. Deve carregar o Guia do Empreendedor (não o i9script)
+
+
+================================================================================
+ESTRUTURA ESPERADA NO SERVIDOR
+================================================================================
+
+/var/www/i9script/guia_do_empreendedor/frontend/
+├── index.html (2926 bytes - título: "Guia Portal Empreendedor")
+├── assets/
+│   ├── index-B0_xqkQg.css
+│   └── index-Se_SGqxd.js
+├── favicon.png
+├── guia-logo.png.png
+├── hero-conexao.jpg
+├── Logo Oficial.png
+├── logo-oficial2.png
+├── programa-conexao-empresarial.jpeg
+└── outros arquivos...
+
+================================================================================

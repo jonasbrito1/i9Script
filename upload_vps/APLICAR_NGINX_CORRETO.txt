@@ -1,0 +1,173 @@
+================================================================================
+           APLICAR CONFIGURAÇÃO NGINX CORRETA - PASSO A PASSO
+================================================================================
+
+📋 PROBLEMA IDENTIFICADO:
+   O "root /var/www/i9script/frontend;" estava no nível do server block,
+   sobrescrevendo o "alias" da location /guiadoempreendedor
+
+✅ SOLUÇÃO APLICADA:
+   Movemos o "root" para dentro da location / específica do i9script
+   Agora cada location tem seu próprio root/alias independente
+
+================================================================================
+PASSO 1: FAZER BACKUP DA CONFIGURAÇÃO ATUAL
+================================================================================
+
+ssh root@72.61.223.226
+
+# Fazer backup da configuração atual
+cp /etc/nginx/sites-available/i9script.com /etc/nginx/sites-available/i9script.com.backup
+
+# Ver a configuração atual (opcional)
+cat /etc/nginx/sites-available/i9script.com
+
+
+================================================================================
+PASSO 2: SUBSTITUIR PELO ARQUIVO CORRETO
+================================================================================
+
+# Opção A: Copiar do arquivo que fizemos upload via SFTP
+cp /var/www/i9script/upload_vps/config/nginx-i9script-completo.conf /etc/nginx/sites-available/i9script.com
+
+# Opção B: Editar diretamente (se preferir)
+nano /etc/nginx/sites-available/i9script.com
+# Cole o conteúdo do arquivo nginx-i9script-completo.conf
+# Salve com: Ctrl+O, Enter, Ctrl+X
+
+
+================================================================================
+PASSO 3: TESTAR A CONFIGURAÇÃO
+================================================================================
+
+# Testar sintaxe do Nginx
+nginx -t
+
+# Deve aparecer:
+# nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+# nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+
+================================================================================
+PASSO 4: RECARREGAR NGINX
+================================================================================
+
+# Recarregar configuração (sem derrubar conexões existentes)
+systemctl reload nginx
+
+# OU reiniciar completamente (se reload não funcionar)
+systemctl restart nginx
+
+# Verificar status
+systemctl status nginx
+
+
+================================================================================
+PASSO 5: TESTAR O FUNCIONAMENTO
+================================================================================
+
+# Teste 1: Verificar i9script (raiz)
+curl -I https://i9script.com
+# Deve retornar 200 OK
+
+# Teste 2: Verificar Guia do Empreendedor
+curl -I https://i9script.com/guiadoempreendedor
+# Deve retornar 200 OK
+
+# Teste 3: Verificar conteúdo correto do Guia (tamanho deve ser ~2926 bytes)
+curl -s https://i9script.com/guiadoempreendedor | wc -c
+
+# Teste 4: Verificar título da página
+curl -s https://i9script.com/guiadoempreendedor | grep -i "<title>"
+# Deve mostrar "Guia do Empreendedor" e NÃO "і9Script"
+
+# Teste 5: API do i9script
+curl http://localhost:5000/api/health
+
+# Teste 6: API do Guia
+curl http://localhost:5001/api/health
+
+
+================================================================================
+PASSO 6: TESTAR NO NAVEGADOR
+================================================================================
+
+1. Abra: https://i9script.com
+   ✅ Deve carregar o i9script normalmente
+
+2. Abra: https://i9script.com/guiadoempreendedor
+   ✅ Deve carregar o Guia do Empreendedor
+   ✅ NÃO deve redirecionar para i9script.com
+
+3. Teste login em ambos os sistemas
+
+
+================================================================================
+DIFERENÇAS PRINCIPAIS DA CONFIGURAÇÃO CORRETA
+================================================================================
+
+❌ ERRADO (configuração antiga):
+server {
+    root /var/www/i9script/frontend;  ← AQUI ESTÁ O PROBLEMA!
+
+    location ^~ /guiadoempreendedor {
+        alias /var/www/i9script/guia_do_empreendedor/frontend;
+        # O alias é ignorado por causa do root global acima
+    }
+}
+
+✅ CORRETO (nova configuração):
+server {
+    # SEM root aqui no nível do server!
+
+    location ^~ /guiadoempreendedor {
+        alias /var/www/i9script/guia_do_empreendedor/frontend;
+        # Agora o alias funciona corretamente
+    }
+
+    location / {
+        root /var/www/i9script/frontend;  ← root DENTRO da location
+        # Só afeta esta location específica
+    }
+}
+
+
+================================================================================
+SE ALGO DER ERRADO
+================================================================================
+
+# Restaurar backup
+cp /etc/nginx/sites-available/i9script.com.backup /etc/nginx/sites-available/i9script.com
+systemctl reload nginx
+
+# Ver logs de erro do Nginx
+tail -f /var/log/nginx/error.log
+
+# Ver logs de acesso
+tail -f /var/log/nginx/access.log
+
+
+================================================================================
+APÓS CONFIRMAÇÃO DE FUNCIONAMENTO
+================================================================================
+
+Os seguintes serviços devem estar rodando:
+
+✅ Nginx (porta 80/443)
+✅ i9script backend (porta 5000)
+✅ Guia backend (porta 5001)
+✅ MariaDB (porta 3306)
+
+# Verificar todos os serviços:
+systemctl status nginx
+docker ps | grep i9script
+docker ps | grep guia
+systemctl status mariadb
+
+# URLs finais:
+https://i9script.com → i9script (React)
+https://i9script.com/api → i9script backend (porta 5000)
+https://i9script.com/guiadoempreendedor → Guia do Empreendedor (Vite)
+https://i9script.com/guiadoempreendedor/api → Guia backend (porta 5001)
+
+================================================================================

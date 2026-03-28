@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="i9Vet - Loja Online Veterinária. Produtos para cães, gatos e pets em geral. Rações, medicamentos, acessórios e muito mais com entrega rápida.">
+    <meta name="keywords" content="petshop online, produtos veterinários, ração para cães, ração para gatos, medicamentos pets, acessórios animais, i9vet">
+    <meta name="author" content="i9Vet">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="i9Vet - Loja Online Veterinária">
+    <meta property="og:description" content="Tudo para seu pet: rações, medicamentos, acessórios e cuidados veterinários online">
+    
+    <!-- PWA -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="i9Vet Shop">
+    
+    <title>i9Vet - Loja Online Veterinária | Produtos para Pets</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-300: #93c5fd;
+            --primary-400: #60a5fa;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            
+            --secondary-50: #f8fafc;
+            --secondary-100: #f1f5f9;
+            --secondary-200: #e2e8f0;
+            --secondary-300: #cbd5e1;
+            --secondary-400: #94a3b8;
+            --secondary-500: #64748b;
+            --secondary-600: #475569;
+            --secondary-700: #334155;
+            --secondary-800: #1e293b;
+            --secondary-900: #0f172a;
+            
+            --success-50: #ecfdf5;
+            --success-500: #10b981;
+            --success-600: #059669;
+            
+            --warning-50: #fffbeb;
+            --warning-500: #f59e0b;
+            --warning-600: #d97706;
+            
+            --error-50: #fef2f2;
+            --error-500: #ef4444;
+            --error-600: #dc2626;
+            
+            --info-50: #eff6ff;
+            --info-500: #3b82f6;
+            --info-600: #2563eb;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            
+            --container-padding: clamp(1rem, 5vw, 2rem);
+            --section-spacing: clamp(3rem, 8vw, 6rem);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--secondary-700);
+            background: #ffffff;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container System */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        /* System Notification */
+        .system-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-xl);
+            color: white;
+            font-weight: 500;
+            z-index: 10000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 400px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .system-notification.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .system-notification.success { background: var(--success-500); }
+        .system-notification.warning { background: var(--warning-500); }
+        .system-notification.error { background: var(--error-500); }
+        .system-notification.info { background: var(--info-500); }
+
+        .notification-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .notification-close:hover {
+            opacity: 1;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--secondary-200);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .top-bar {
+            background: var(--primary-600);
+            color: white;
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            min-height: 80px;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-600);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 1rem;
+            position: relative;
+            min-width: 250px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 2px solid var(--secondary-200);
+            border-radius: var(--radius-xl);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-400);
+            font-size: 1.2rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: var(--primary-500);
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cart-button:hover {
+            background: var(--primary-600);
+            transform: translateY(-1px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--error-500);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .user-menu {
+            position: relative;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--success-50);
+            color: var(--success-700);
+            border-radius: var(--radius-lg);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--success-200);
+        }
+
+        .user-badge {
+            background: var(--success-500);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .nav-categories {
+            background: var(--secondary-50);
+            border-bottom: 1px solid var(--secondary-200);
+            padding: 1rem 0;
+        }
+
+        .categories-nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-600);
+            text-decoration: none;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .category-link:hover {
+            background: white;
+            color: var(--primary-600);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .category-count {
+            background: var(--secondary-300);
+            color: var(--secondary-700);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-100);
+            color: var(--secondary-700);
+            border: 1px solid var(--secondary-300);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-200);
+            transform: translateY(-1px);
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: var(--section-spacing) 0;
+            background: var(--secondary-50);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--secondary-800);
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--secondary-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .category-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .category-description {
+            color: var(--secondary-600);
+            margin-bottom: 1rem;
+        }
+
+        .category-products {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-600);
+            font-weight: 500;
+        }
+
+        /* Products Section */
+        .products {
+            padding: var(--section-spacing) 0;
+            background: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid var(--secondary-200);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-300);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary-100), var(--secondary-200));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--secondary-400);
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-mais-vendido {
+            background: var(--primary-500);
+            color: white;
+        }
+
+        .badge-oferta {
+            background: var(--error-500);
+            color: white;
+        }
+
+        .badge-novidade {
+            background: var(--success-500);
+            color: white;
+        }
+
+        .badge-recomendado {
+            background: var(--warning-500);
+            color: white;
+        }
+
+        .product-discount {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--error-500);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-brand {
+            color: var(--secondary-500);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-800);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            color: var(--secondary-600);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .rating-stars {
+            color: var(--warning-500);
+        }
+
+        .rating-value {
+            font-weight: 600;
+            color: var(--secondary-700);
+        }
+
+        .rating-reviews {
+            color: var(--secondary-500);
+            font-size: 0.875rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-current {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-600);
+        }
+
+        .price-old {
+            font-size: 1rem;
+            color: var(--secondary-400);
+            text-decoration: line-through;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-add-cart {
+            flex: 1;
+            background: var(--primary-500);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--primary-600);
+            transform: translateY(-1px);
+        }
+
+        .btn-favorite {
+            background: var(--secondary-100);
+            color: var(--secondary-600);
+            border: 1px solid var(--secondary-300);
+            padding: 0.75rem;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-favorite:hover {
+            background: var(--error-50);
+            color: var(--error-500);
+            border-color: var(--error-300);
+        }
+
+        /* Services Section */
+        .services {
+            padding: var(--section-spacing) 0;
+            background: var(--secondary-50);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-800);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--secondary-600);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: var(--primary-600);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .newsletter-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-description {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-900);
+            color: var(--secondary-300);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--secondary-400);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--secondary-700);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        /* Mobile responsivo */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            .search-bar {
+                order: 2;
+                margin: 0;
+                max-width: none;
+                min-width: auto;
+            }
+
+            .header-actions {
+                order: 1;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .categories-nav {
+                gap: 0.5rem;
+                justify-content: flex-start;
+            }
+
+            .category-link {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .product-info {
+                padding: 1rem;
+            }
+
+            .categories-grid,
+            .products-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --container-padding: 1rem;
+                --section-spacing: 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+
+            .header-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+            }
+
+            .cart-button {
+                justify-content: center;
+            }
+
+            .user-info {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .categories-nav {
+                grid-template-columns: repeat(2, 1fr);
+                display: grid;
+                gap: 0.5rem;
+            }
+
+            .category-link {
+                justify-content: center;
+                text-align: center;
+                flex-direction: column;
+                padding: 0.75rem 0.5rem;
+            }
+
+            .category-count {
+                margin-top: 0.25rem;
+            }
+        }
+
+        /* Animações */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading states */
+        .loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* CSS para o spinner de loading */
+        .spinner {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .btn-add-cart:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <!-- System Notification -->
+    <div class="system-notification success" id="systemNotification" style="display: none;">
+        <span>Bem-vindo à demonstração da i9Vet Shop! 🎉</span>
+        <button class="notification-close" onclick="closeNotification()">&times;</button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                🚚 Frete grátis para compras acima de R$ 99,00 | 📞 Atendimento: (11) 1234-5678
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="nav container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🐾</div>
+                <span>i9Vet Shop</span>
+            </a>
+            
+            <div class="search-bar">
+                <div class="search-icon">🔍</div>
+                <input type="text" class="search-input" placeholder="Buscar produtos para seu pet...">
+            </div>
+
+            <div class="header-actions">
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <span id="userGreeting">👋 Bem-vindo!</span>
+                    <span class="user-badge">Cliente</span>
+                </div>
+                <button class="btn btn-secondary" onclick="toggleLogin()">🔐 <span id="loginText">Login</span></button>
+                
+                <a href="#" class="cart-button" onclick="showCart()">
+                    🛒 Carrinho
+                    <span class="cart-count" id="cartCount" style="display: none;">0</span>
+                    <span id="cartTotal" style="font-size: 0.9rem; opacity: 0.9;">
+                        R$ 0,00
+                    </span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Categories Navigation -->
+        <div class="nav-categories">
+            <div class="container">
+                <div class="categories-nav" id="categoriesNav">
+                    <!-- Categories will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content animate-on-scroll">
+                    <h1 class="hero-title">🐾 i9Vet Shop</h1>
+                    <p class="hero-subtitle" id="heroSubtitle">
+                        Loja Online Veterinária | Tudo para seu Pet com Amor e Cuidado
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">500+</span>
+                            <span class="hero-stat-label">Produtos</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">50+</span>
+                            <span class="hero-stat-label">Marcas</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">10k+</span>
+                            <span class="hero-stat-label">Clientes</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="#produtos" class="btn btn-primary">🛒 Ver Produtos</a>
+                        <a href="#categorias" class="btn btn-glass">📋 Categorias</a>
+                        <button class="btn btn-glass" onclick="toggleLogin()" id="heroRegister">👤 Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categorias" class="categories">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Categorias</h2>
+                    <p class="section-description">
+                        Encontre exatamente o que seu pet precisa nas nossas categorias especializadas
+                    </p>
+                </div>
+
+                <div class="categories-grid" id="categoriesGrid">
+                    <!-- Categories will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="produtos" class="products">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Produtos em Destaque</h2>
+                    <p class="section-description">
+                        Os produtos mais vendidos e recomendados para seu pet
+                    </p>
+                </div>
+
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-primary" onclick="showNotification('Em breve: página completa de produtos! 🚀', 'info')">Ver Todos os Produtos</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Nossos Serviços</h2>
+                    <p class="section-description">
+                        Cuidado completo para seu pet com profissionais especializados
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card animate-on-scroll">
+                        <span class="service-icon">🩺</span>
+                        <h3 class="service-title">Consultas Veterinárias</h3>
+                        <p class="service-description">
+                            Atendimento veterinário completo com profissionais experientes
+                        </p>
+                        <button class="btn btn-primary" onclick="showNotification('Agendamento de consultas em breve! 📅', 'info')">Agendar</button>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <span class="service-icon">🛁</span>
+                        <h3 class="service-title">Banho & Tosa</h3>
+                        <p class="service-description">
+                            Cuidados estéticos para manter seu pet sempre bonito e saudável
+                        </p>
+                        <button class="btn btn-primary" onclick="showNotification('Serviço de banho e tosa em breve! 🐕', 'info')">Agendar</button>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <span class="service-icon">💉</span>
+                        <h3 class="service-title">Vacinação</h3>
+                        <p class="service-description">
+                            Programa completo de vacinação para proteger seu pet
+                        </p>
+                        <button class="btn btn-primary" onclick="showNotification('Programa de vacinação em desenvolvimento! 💉', 'info')">Agendar</button>
+                    </div>
+
+                    <div class="service-card animate-on-scroll">
+                        <span class="service-icon">🚚</span>
+                        <h3 class="service-title">Entrega Rápida</h3>
+                        <p class="service-description">
+                            Entrega no mesmo dia para região metropolitana
+                        </p>
+                        <button class="btn btn-secondary" onclick="showNotification('Sistema de entrega em implementação! 📦', 'info')">Saiba Mais</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content animate-on-scroll">
+                    <h2 class="newsletter-title">📧 Newsletter</h2>
+                    <p class="newsletter-description">
+                        Receba ofertas exclusivas e dicas de cuidados para seu pet!
+                    </p>
+                    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                        <input type="email" class="newsletter-input" placeholder="Seu e-mail" required>
+                        <button type="submit" class="btn btn-secondary">Inscrever</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🐾 i9Vet Shop</h3>
+                    <p>Sua loja online veterinária de confiança. Produtos de qualidade e cuidado especializado para seu pet.</p>
+                    <p style="margin-top: 1rem;">
+                        📧 contato@i9vet.com.br<br>
+                        📞 (11) 1234-5678<br>
+                        📱 WhatsApp: (11) 9876-5432
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Categorias</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showNotification('Categoria Alimentação em breve! 🍖', 'info')">Alimentação</a></li>
+                        <li><a href="#" onclick="showNotification('Categoria Higiene em breve! 🧴', 'info')">Higiene & Cuidados</a></li>
+                        <li><a href="#" onclick="showNotification('Categoria Veterinário em breve! 💊', 'info')">Veterinário</a></li>
+                        <li><a href="#" onclick="showNotification('Categoria Acessórios em breve! 🎾', 'info')">Acessórios</a></li>
+                        <li><a href="#" onclick="showNotification('Categoria Camas em breve! 🏠', 'info')">Camas & Casinhas</a></li>
+                        <li><a href="#" onclick="showNotification('Serviços em breve! ✂️', 'info')">Serviços</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Serviços</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showNotification('Consultas em breve! 🩺', 'info')">Consultas</a></li>
+                        <li><a href="#" onclick="showNotification('Banho & Tosa em breve! 🛁', 'info')">Banho & Tosa</a></li>
+                        <li><a href="#" onclick="showNotification('Vacinação em breve! 💉', 'info')">Vacinação</a></li>
+                        <li><a href="#" onclick="showNotification('Sistema de entrega em breve! 🚚', 'info')">Entrega</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Ajuda</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showNotification('Tutorial de compra em breve! 📚', 'info')">Como Comprar</a></li>
+                        <li><a href="#" onclick="showNotification('Política de trocas em breve! 🔄', 'info')">Trocas e Devoluções</a></li>
+                        <li><a href="#" onclick="showNotification('Informações de entrega em breve! 📦', 'info')">Formas de Entrega</a></li>
+                        <li><a href="#" onclick="showNotification('Opções de pagamento em breve! 💳', 'info')">Formas de Pagamento</a></li>
+                        <li><a href="#" onclick="showNotification('Formulário de contato em breve! 📞', 'info')">Fale Conosco</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 i9Vet Shop. Todos os direitos reservados.</p>
+                <p>Desenvolvido por <a href="https://i9script.com" target="_blank" rel="noopener noreferrer" style="color: var(--primary-400); text-decoration: none; font-weight: 600;">i9Script</a> para os pets do Brasil</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;" id="footerUserInfo">
+                    Modo demonstração - Todas as funcionalidades são simuladas
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dados simulados
+        const appData = {
+            user: {
+                isLoggedIn: false,
+                name: '',
+                email: '',
+                type: 'cliente'
+            },
+            cart: {
+                items: [],
+                count: 0,
+                total: 0,
+                totalFormatted: 'R$ 0,00'
+            },
+            categories: [
+                {
+                    slug: 'pet-food',
+                    name: 'Alimentação',
+                    icon: '🍖',
+                    description: 'Rações, petiscos e suplementos',
+                    products: 156
+                },
+                {
+                    slug: 'pet-care',
+                    name: 'Higiene & Cuidados',
+                    icon: '🧴',
+                    description: 'Shampoos, escovas e produtos de limpeza',
+                    products: 89
+                },
+                {
+                    slug: 'pet-vet',
+                    name: 'Veterinário',
+                    icon: '💊',
+                    description: 'Medicamentos e produtos veterinários',
+                    products: 67
+                },
+                {
+                    slug: 'acessorios',
+                    name: 'Acessórios',
+                    icon: '🎾',
+                    description: 'Coleiras, brinquedos e utensílios',
+                    products: 134
+                },
+                {
+                    slug: 'camas-casinhas',
+                    name: 'Camas & Casinhas',
+                    icon: '🏠',
+                    description: 'Conforto para seu pet',
+                    products: 45
+                },
+                {
+                    slug: 'servicos',
+                    name: 'Serviços',
+                    icon: '✂️',
+                    description: 'Banho, tosa e consultas',
+                    products: 12
+                }
+            ],
+            products: [
+                {
+                    id: 1,
+                    name: 'Ração Premium Cães Adultos',
+                    category: 'pet-food',
+                    price: 89.90,
+                    oldPrice: 109.90,
+                    description: 'Ração super premium para cães adultos de porte médio',
+                    brand: 'Royal Canin',
+                    rating: 4.8,
+                    reviews: 324,
+                    badge: 'Mais Vendido',
+                    discount: 18
+                },
+                {
+                    id: 2,
+                    name: 'Shampoo Hipoalergênico',
+                    category: 'pet-care',
+                    price: 24.90,
+                    oldPrice: 32.90,
+                    description: 'Shampoo suave para pets com pele sensível',
+                    brand: 'Virbac',
+                    rating: 4.6,
+                    reviews: 156,
+                    badge: 'Oferta',
+                    discount: 24
+                },
+                {
+                    id: 3,
+                    name: 'Antipulgas e Carrapatos',
+                    category: 'pet-vet',
+                    price: 45.90,
+                    oldPrice: null,
+                    description: 'Proteção completa contra pulgas e carrapatos',
+                    brand: 'Bayer',
+                    rating: 4.9,
+                    reviews: 289,
+                    badge: 'Recomendado',
+                    discount: 0
+                },
+                {
+                    id: 4,
+                    name: 'Brinquedo Interativo',
+                    category: 'acessorios',
+                    price: 35.90,
+                    oldPrice: 42.90,
+                    description: 'Brinquedo que estimula a inteligência do pet',
+                    brand: 'Kong',
+                    rating: 4.7,
+                    reviews: 98,
+                    badge: 'Novidade',
+                    discount: 16
+                }
+            ]
+        };
+
+        // DOM Ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+            showSystemNotification();
+        });
+
+        function initializeApp() {
+            loadCategories();
+            loadProducts();
+            initAnimationsOnScroll();
+            initSearch();
+            initMobileOptimizations();
+            updateUI();
+            
+            console.log('🐾 i9Vet Shop - Demo carregado com sucesso!');
+            console.log('⌨️ Atalhos do teclado:');
+            console.log('Ctrl + K: Focar na busca');
+            console.log('Alt + C: Ir para carrinho (demo)');
+        }
+
+        // Load categories
+        function loadCategories() {
+            const categoriesNav = document.getElementById('categoriesNav');
+            const categoriesGrid = document.getElementById('categoriesGrid');
+            
+            // Navigation categories
+            categoriesNav.innerHTML = appData.categories.map(cat => `
+                <a href="#" class="category-link" onclick="showNotification('Categoria ${cat.name} em breve! ${cat.icon}', 'info')">
+                    <span>${cat.icon}</span>
+                    <span>${cat.name}</span>
+                    <span class="category-count">${cat.products}</span>
+                </a>
+            `).join('');
+            
+            // Categories grid
+            categoriesGrid.innerHTML = appData.categories.map(cat => `
+                <a href="#" class="category-card animate-on-scroll" onclick="showNotification('Categoria ${cat.name} em breve! ${cat.icon}', 'info')">
+                    <span class="category-icon">${cat.icon}</span>
+                    <h3 class="category-name">${cat.name}</h3>
+                    <p class="category-description">${cat.description}</p>
+                    <div class="category-products">
+                        <span>📦 ${cat.products} produtos</span>
+                        <span>→</span>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Load products
+        function loadProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            
+            productsGrid.innerHTML = appData.products.map(product => {
+                const categoryIcon = appData.categories.find(cat => cat.slug === product.category)?.icon || '🎾';
+                const stars = '⭐'.repeat(Math.floor(product.rating)) + '☆'.repeat(5 - Math.floor(product.rating));
+                
+                return `
+                    <div class="product-card animate-on-scroll" data-product-id="${product.id}">
+                        <div class="product-image">
+                            ${categoryIcon}
+                            
+                            ${product.badge ? `
+                                <div class="product-badge badge-${product.badge.toLowerCase().replace(' ', '-')}">
+                                    ${product.badge}
+                                </div>
+                            ` : ''}
+                            
+                            ${product.discount > 0 ? `
+                                <div class="product-discount">
+                                    -${product.discount}%
+                                </div>
+                            ` : ''}
+                        </div>
+                        
+                        <div class="product-info">
+                            <div class="product-brand">${product.brand}</div>
+                            <h3 class="product-name">${product.name}</h3>
+                            <p class="product-description">${product.description}</p>
+                            
+                            <div class="product-rating">
+                                <div class="rating-stars">${stars}</div>
+                                <span class="rating-value">${product.rating}</span>
+                                <span class="rating-reviews">(${product.reviews})</span>
+                            </div>
+                            
+                            <div class="product-price">
+                                <span class="price-current">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
+                                ${product.oldPrice ? `
+                                    <span class="price-old">R$ ${product.oldPrice.toFixed(2).replace('.', ',')}</span>
+                                ` : ''}
+                            </div>
+                            
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart(${product.id})">
+                                    🛒 Adicionar
+                                </button>
+                                <button class="btn-favorite" onclick="toggleFavorite(${product.id})">
+                                    ❤️
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Show system notification
+        function showSystemNotification() {
+            const notification = document.getElementById('systemNotification');
+            if (notification) {
+                notification.style.display = 'flex';
+                setTimeout(() => {
+                    notification.classList.add('visible');
+                }, 500);
+                
+                setTimeout(() => {
+                    closeNotification();
+                }, 8000);
+            }
+        }
+
+        // Close notification
+        function closeNotification() {
+            const notification = document.getElementById('systemNotification');
+            if (notification) {
+                notification.classList.remove('visible');
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        // Animations on Scroll
+        function initAnimationsOnScroll() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Search functionality
+        function initSearch() {
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        const query = this.value.trim();
+                        if (query) {
+                            showNotification(`Busca por "${query}" em breve! 🔍`, 'info');
+                            this.value = '';
+                        }
+                    }
+                });
+            }
+        }
+
+        // Toggle login/logout
+        function toggleLogin() {
+            if (appData.user.isLoggedIn) {
+                // Logout
+                appData.user.isLoggedIn = false;
+                appData.user.name = '';
+                appData.user.email = '';
+                showNotification('Logout realizado com sucesso! Volte sempre! 👋', 'success');
+            } else {
+                // Simular login
+                const names = ['Maria Silva', 'João Santos', 'Ana Costa', 'Pedro Oliveira', 'Carla Ferreira'];
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                
+                appData.user.isLoggedIn = true;
+                appData.user.name = randomName;
+                appData.user.email = randomName.toLowerCase().replace(' ', '.') + '@email.com';
+                
+                showNotification(`Bem-vindo(a), ${randomName}! 🎉`, 'success');
+            }
+            updateUI();
+        }
+
+        // Update UI based on user state
+        function updateUI() {
+            const userInfo = document.getElementById('userInfo');
+            const loginText = document.getElementById('loginText');
+            const userGreeting = document.getElementById('userGreeting');
+            const heroSubtitle = document.getElementById('heroSubtitle');
+            const heroRegister = document.getElementById('heroRegister');
+            const footerUserInfo = document.getElementById('footerUserInfo');
+            
+            if (appData.user.isLoggedIn) {
+                const greeting = getSaudacao();
+                userInfo.style.display = 'flex';
+                loginText.textContent = 'Sair';
+                userGreeting.textContent = `👋 ${greeting}, ${appData.user.name}!`;
+                heroSubtitle.textContent = `${greeting}, ${appData.user.name}! Encontre tudo para seu pet em um só lugar.`;
+                heroRegister.style.display = 'none';
+                footerUserInfo.innerHTML = `
+                    Logado como: ${appData.user.email} | 
+                    Carrinho: ${appData.cart.count} itens | 
+                    Modo demonstração
+                `;
+            } else {
+                userInfo.style.display = 'none';
+                loginText.textContent = 'Login';
+                heroSubtitle.textContent = 'Loja Online Veterinária | Tudo para seu Pet com Amor e Cuidado';
+                heroRegister.style.display = 'inline-flex';
+                footerUserInfo.textContent = 'Modo demonstração - Todas as funcionalidades são simuladas';
+            }
+            
+            updateCartUI();
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const button = event.target;
+            const originalText = button.innerHTML;
+            
+            // Show loading state
+            button.innerHTML = '<span class="spinner"></span> Adicionando...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                const product = appData.products.find(p => p.id === productId);
+                if (product) {
+                    const existingItem = appData.cart.items.find(item => item.id === productId);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        appData.cart.items.push({
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCartTotals();
+                    showNotification('Produto adicionado ao carrinho! 🛒', 'success');
+                    updateCartUI();
+                }
+                
+                // Restore button
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 1000);
+        }
+
+        // Update cart totals
+        function updateCartTotals() {
+            appData.cart.count = appData.cart.items.reduce((sum, item) => sum + item.quantity, 0);
+            appData.cart.total = appData.cart.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            appData.cart.totalFormatted = `R$ ${appData.cart.total.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartButton = document.querySelector('.cart-button');
+            
+            if (appData.cart.count > 0) {
+                cartCount.style.display = 'flex';
+                cartCount.textContent = appData.cart.count;
+            } else {
+                cartCount.style.display = 'none';
+            }
+            
+            cartTotal.textContent = appData.cart.totalFormatted;
+            
+            // Animate cart button
+            if (appData.cart.count > 0) {
+                cartButton.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    cartButton.style.transform = 'scale(1)';
+                }, 200);
+            }
+        }
+
+        // Show cart
+        function showCart() {
+            if (appData.cart.count === 0) {
+                showNotification('Seu carrinho está vazio! Adicione alguns produtos. 🛒', 'info');
+            } else {
+                const items = appData.cart.items.map(item => 
+                    `${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}`
+                ).join('\n');
+                
+                showNotification(`Carrinho:\n${items}\n\nTotal: ${appData.cart.totalFormatted}`, 'info');
+            }
+        }
+
+        // Toggle favorite
+        function toggleFavorite(productId) {
+            const btn = event.target;
+            const isFavorited = btn.textContent === '💖';
+            
+            btn.textContent = isFavorited ? '❤️' : '💖';
+            btn.style.transform = 'scale(1.2)';
+            
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+            }, 200);
+            
+            showNotification(
+                isFavorited ? 'Removido dos favoritos' : 'Adicionado aos favoritos! ❤️',
+                isFavorited ? 'info' : 'success'
+            );
+        }
+
+        // Newsletter subscription
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            
+            showNotification('E-mail cadastrado com sucesso! 📧', 'success');
+            event.target.reset();
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `system-notification ${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button class="notification-close" onclick="this.parentElement.remove()">&times;</button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('visible');
+            }, 100);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.classList.remove('visible');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }
+            }, 5000);
+        }
+
+        // Get greeting based on time
+        function getSaudacao() {
+            const hora = new Date().getHours();
+            if (hora >= 5 && hora < 12) {
+                return 'Bom dia';
+            } else if (hora >= 12 && hora < 18) {
+                return 'Boa tarde';
+            } else {
+                return 'Boa noite';
+            }
+        }
+
+        // Mobile optimizations
+        function initMobileOptimizations() {
+            // Touch interactions for product cards
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                let touchStartTime;
+                
+                card.addEventListener('touchstart', function() {
+                    touchStartTime = Date.now();
+                });
+                
+                card.addEventListener('touchend', function(e) {
+                    const touchDuration = Date.now() - touchStartTime;
+                    if (touchDuration < 500) { // Quick tap
+                        const productId = card.dataset.productId;
+                        if (productId) {
+                            showNotification(`Produto selecionado! Toque em "Adicionar" para comprar. 🛒`, 'info');
+                        }
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl + K = Focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                const searchInput = document.querySelector('.search-input');
+                if (searchInput) {
+                    searchInput.focus();
+                }
+            }
+            
+            // Alt + C = Show cart
+            if (e.altKey && e.key === 'c') {
+                e.preventDefault();
+                showCart();
+            }
+            
+            // Alt + L = Toggle login
+            if (e.altKey && e.key === 'l') {
+                e.preventDefault();
+                toggleLogin();
+            }
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            if ('performance' in window) {
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                console.log(`🚀 Demo carregado em ${loadTime}ms`);
+                
+                if (loadTime > 3000) {
+                    console.warn('⚠️ Tempo de carregamento acima de 3 segundos');
+                }
+            }
+        });
+
+        // Demo Easter eggs
+        let clickCount = 0;
+        document.querySelector('.logo').addEventListener('click', function(e) {
+            e.preventDefault();
+            clickCount++;
+            
+            if (clickCount === 5) {
+                showNotification('🎉 Easter egg encontrado! Você descobriu o modo desenvolvedor!', 'success');
+                console.log('🎨 i9Vet Shop - Modo Desenvolvedor Ativado!');
+                console.log('💻 Dados da aplicação:', appData);
+                clickCount = 0;
+            }
+        });
+
+        // Add click sound effect (simulated)
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('button, .btn, .cart-button, .category-link, .category-card')) {
+                // Visual feedback for clicks
+                e.target.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    e.target.style.transform = '';
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeliveryAI - App de Delivery Inteligente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/assets/utils/images/i9Script.svg">
+
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Primary Colors */
+            --primary: #FF6B35;
+            --primary-dark: #E55A2B;
+            --primary-light: #FF8A65;
+            
+            /* Secondary Colors */
+            --secondary: #4CAF50;
+            --secondary-dark: #388E3C;
+            --secondary-light: #81C784;
+            
+            /* Accent Colors */
+            --accent: #2196F3;
+            --accent-dark: #1976D2;
+            --accent-light: #64B5F6;
+            
+            /* Neutral Colors */
+            --dark: #1A1A1A;
+            --dark-light: #2D2D2D;
+            --gray: #757575;
+            --gray-light: #BDBDBD;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+            
+            /* Status Colors */
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --error: #F44336;
+            --info: #2196F3;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            --gradient-secondary: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+            --gradient-accent: linear-gradient(135deg, #2196F3 0%, #21CBF3 100%);
+            --gradient-warm: linear-gradient(135deg, #FF8A65 0%, #FFB74D 100%);
+            --gradient-cool: linear-gradient(135deg, #64B5F6 0%, #81C784 100%);
+            --gradient-dark: linear-gradient(135deg, #2D2D2D 0%, #1A1A1A 100%);
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+            --shadow-xl: 0 16px 32px rgba(0,0,0,0.25);
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 50px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 1.2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item a:hover,
+        .nav-item a.active {
+            color: var(--primary);
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="60" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="80" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Nunito', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: var(--radius-full);
+        }
+
+        .btn-light {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--white);
+        }
+
+        .btn-light:hover {
+            background: transparent;
+            color: var(--white);
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+
+        .feature-icon.secondary {
+            background: var(--gradient-secondary);
+        }
+
+        .feature-icon.accent {
+            background: var(--gradient-accent);
+        }
+
+        .feature-icon.warm {
+            background: var(--gradient-warm);
+        }
+
+        .feature-card h3 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* App Demo Section */
+        .app-demo {
+            background: var(--light);
+            padding: 4rem 0;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .demo-content h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .demo-content p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .demo-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .demo-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .demo-features i {
+            background: var(--gradient-secondary);
+            color: var(--white);
+            padding: 0.5rem;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            position: relative;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .phone-frame {
+            background: var(--dark);
+            padding: 2rem 1rem;
+            border-radius: 2rem;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+        }
+
+        .phone-screen {
+            background: var(--white);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            height: 500px;
+        }
+
+        .app-interface {
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-header h3 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .app-header .btn {
+            padding: 0.5rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-bar {
+            background: var(--light);
+            border: none;
+            padding: 1rem;
+            border-radius: var(--radius-full);
+            width: 100%;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .categories {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .category-chip {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .category-chip.inactive {
+            background: var(--light);
+            color: var(--gray);
+        }
+
+        .restaurant-card {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .restaurant-image {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .restaurant-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .restaurant-info p {
+            color: var(--gray);
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .rating i {
+            color: var(--warning);
+            font-size: 0.7rem;
+        }
+
+        .rating span {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Dashboard Section */
+        .dashboard {
+            padding: 4rem 0;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .dashboard-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .dashboard-header h3 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .dashboard-icon {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 1.2rem;
+        }
+
+        .dashboard-icon.secondary {
+            background: var(--gradient-secondary);
+        }
+
+        .dashboard-icon.accent {
+            background: var(--gradient-accent);
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: var(--radius-md);
+        }
+
+        .metric-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .metric-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        .metric-trend {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .metric-trend.up {
+            color: var(--success);
+        }
+
+        .metric-trend.down {
+            color: var(--error);
+        }
+
+        .chart-placeholder {
+            height: 200px;
+            background: var(--light);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 3rem;
+        }
+
+        /* AI Features */
+        .ai-features {
+            background: var(--gradient-dark);
+            color: var(--white);
+            padding: 4rem 0;
+        }
+
+        .ai-features .section-title h2,
+        .ai-features .section-title p {
+            color: var(--white);
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .ai-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            transition: all 0.3s ease;
+        }
+
+        .ai-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .ai-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-card h3 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .ai-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-progress {
+            background: rgba(255, 255, 255, 0.2);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .ai-progress-bar {
+            height: 100%;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .ai-progress-text {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Chatbot */
+        .chatbot {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 300px;
+            height: 400px;
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-window.open {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        .chatbot-header {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h4 {
+            font-weight: 600;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .message.bot {
+            background: var(--light);
+            color: var(--dark);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.user {
+            background: var(--gradient-primary);
+            color: var(--white);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chatbot-input {
+            padding: 1rem;
+            border-top: 1px solid var(--light);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            border: 1px solid var(--light);
+            border-radius: var(--radius-full);
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .chatbot-input button {
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .footer-logo i {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.5rem;
+            border-radius: var(--radius-md);
+        }
+
+        .footer-text {
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+        }
+
+        .footer-credits {
+            border-top: 1px solid var(--dark-light);
+            padding-top: 2rem;
+            color: var(--gray-light);
+        }
+
+        .footer-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .demo-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .phone-mockup {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .header-content {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .features-grid,
+            .dashboard-grid,
+            .ai-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card,
+            .dashboard-card,
+            .ai-card {
+                padding: 1.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .demo-content h2 {
+                font-size: 2rem;
+            }
+
+            .chatbot {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .chatbot-window {
+                width: 280px;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content {
+                padding: 0.75rem;
+            }
+
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .features,
+            .dashboard,
+            .app-demo {
+                padding: 2rem 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.75rem;
+            }
+
+            .phone-frame {
+                padding: 1rem 0.5rem;
+            }
+
+            .phone-screen {
+                height: 400px;
+            }
+
+            .app-interface {
+                padding: 1rem;
+            }
+
+            .chatbot-window {
+                width: calc(100vw - 2rem);
+                right: -1rem;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            display: none;
+            padding: 1rem;
+        }
+
+        .mobile-menu.open {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        .mobile-menu-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mobile-menu-list a {
+            color: var(--dark);
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-list a:hover,
+        .mobile-menu-list a.active {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary);
+        }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, var(--light) 25%, var(--gray-light) 50%, var(--light) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-motorcycle"></i>
+                <span>DeliveryAI</span>
+            </a>
+            
+            <nav class="nav-menu">
+                <li class="nav-item"><a href="#home" class="active">Início</a></li>
+                <li class="nav-item"><a href="#features">Recursos</a></li>
+                <li class="nav-item"><a href="#demo">Demo</a></li>
+                <li class="nav-item"><a href="#dashboard">Dashboard</a></li>
+                <li class="nav-item"><a href="#ai">IA</a></li>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">Login</a>
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Teste Grátis
+                </a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-list">
+            <li><a href="#home" class="active">Início</a></li>
+            <li><a href="#features">Recursos</a></li>
+            <li><a href="#demo">Demo</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#ai">IA</a></li>
+            <li><a href="#" style="padding-top: 1rem; border-top: 1px solid var(--light);">Login</a></li>
+            <li><a href="#" style="color: var(--primary); font-weight: 600;">Teste Grátis</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Delivery Inteligente com IA</h1>
+                    <p>Revolucione seu negócio de delivery com inteligência artificial avançada para otimização de rotas, previsão de demanda e atendimento automatizado.</p>
+                    <div class="hero-buttons">
+                        <a href="#demo" class="btn btn-light btn-hero">
+                            <i class="fas fa-play"></i>
+                            Ver Demo
+                        </a>
+                        <a href="#features" class="btn btn-outline btn-hero">
+                            <i class="fas fa-info-circle"></i>
+                            Saiba Mais
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Recursos Inteligentes</h2>
+                    <p>Nossa plataforma utiliza IA avançada para otimizar cada aspecto do seu serviço de delivery</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3>Otimização de Rotas IA</h3>
+                        <p>Algoritmos de machine learning calculam as rotas mais eficientes em tempo real, considerando trânsito, clima e demanda.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon secondary">
+                            <i class="fas fa-chart-trending-up"></i>
+                        </div>
+                        <h3>Previsão de Demanda</h3>
+                        <p>IA analisa padrões históricos, eventos e sazonalidade para prever demanda e otimizar estoque e pessoal.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon accent">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Chatbot Inteligente</h3>
+                        <p>Atendimento 24/7 com processamento de linguagem natural para resolver dúvidas e processar pedidos automaticamente.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon warm">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Sistema de Avaliações IA</h3>
+                        <p>Análise de sentimentos em avaliações e feedback automático para restaurantes e entregadores melhorarem o serviço.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Demo Section -->
+        <section id="demo" class="app-demo">
+            <div class="container">
+                <div class="demo-container">
+                    <div class="demo-content">
+                        <h2>Interface Intuitiva e Poderosa</h2>
+                        <p>Nossa interface foi desenvolvida pensando na experiência do usuário, combinando simplicidade com funcionalidades avançadas de IA.</p>
+                        
+                        <ul class="demo-features">
+                            <li>
+                                <i class="fas fa-search"></i>
+                                Busca inteligente com sugestões personalizadas
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                Rastreamento em tempo real com IA preditiva
+                            </li>
+                            <li>
+                                <i class="fas fa-credit-card"></i>
+                                Pagamentos seguros e múltiplas opções
+                            </li>
+                            <li>
+                                <i class="fas fa-bell"></i>
+                                Notificações inteligentes personalizadas
+                            </li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-download"></i>
+                            Baixar App
+                        </a>
+                    </div>
+                    
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="app-interface">
+                                    <div class="app-header">
+                                        <h3>DeliveryAI</h3>
+                                        <button class="btn">
+                                            <i class="fas fa-user"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <input type="text" class="search-bar" placeholder="Buscar restaurantes ou pratos...">
+                                    
+                                    <div class="categories">
+                                        <span class="category-chip">Todos</span>
+                                        <span class="category-chip inactive">Pizza</span>
+                                        <span class="category-chip inactive">Burger</span>
+                                        <span class="category-chip inactive">Asiático</span>
+                                    </div>
+                                    
+                                    <div class="restaurant-card">
+                                        <div class="restaurant-image">
+                                            <i class="fas fa-pizza-slice"></i>
+                                        </div>
+                                        <div class="restaurant-info">
+                                            <h4>Pizzaria Italiana</h4>
+                                            <p>Italiana • 25-35 min • R$ 8,00</p>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <span>4.8</span>
+                                                <span style="color: var(--gray); margin-left: 0.5rem;">(342)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="restaurant-card">
+                                        <div class="restaurant-image" style="background: var(--gradient-secondary);">
+                                            <i class="fas fa-hamburger"></i>
+                                        </div>
+                                        <div class="restaurant-info">
+                                            <h4>Burger House</h4>
+                                            <p>Hambúrguer • 20-30 min • R$ 6,00</p>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <span>4.6</span>
+                                                <span style="color: var(--gray); margin-left: 0.5rem;">(528)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="restaurant-card">
+                                        <div class="restaurant-image" style="background: var(--gradient-warm);">
+                                            <i class="fas fa-fish"></i>
+                                        </div>
+                                        <div class="restaurant-info">
+                                            <h4>Sushi Express</h4>
+                                            <p>Japonês • 30-40 min • R$ 10,00</p>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <span>4.9</span>
+                                                <span style="color: var(--gray); margin-left: 0.5rem;">(189)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Dashboard Analítico</h2>
+                    <p>Monitore métricas importantes e insights gerados pela IA para otimizar seu negócio</p>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="dashboard-header">
+                            <h3>Vendas em Tempo Real</h3>
+                            <div class="dashboard-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <span class="metric-label">Pedidos Hoje</span>
+                            <div>
+                                <span class="metric-value">1,247</span>
+                                <span class="metric-trend up">↗ +15%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <span class="metric-label">Receita</span>
+                            <div>
+                                <span class="metric-value">R$ 45,230</span>
+                                <span class="metric-trend up">↗ +23%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-area"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="dashboard-header">
+                            <h3>Entregas e Rotas</h3>
+                            <div class="dashboard-icon secondary">
+                                <i class="fas fa-route"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <span class="metric-label">Entregas Ativas</span>
+                            <div>
+                                <span class="metric-value">87</span>
+                                <span class="metric-trend up">↗ +8%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <span class="metric-label">Tempo Médio</span>
+                            <div>
+                                <span class="metric-value">28 min</span>
+                                <span class="metric-trend down">↘ -12%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-placeholder">
+                            <i class="fas fa-map"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="dashboard-header">
+                            <h3>Satisfação do Cliente</h3>
+                            <div class="dashboard-icon accent">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <span class="metric-label">Avaliação Média</span>
+                            <div>
+                                <span class="metric-value">4.8/5</span>
+                                <span class="metric-trend up">↗ +0.2</span>
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <span class="metric-label">NPS Score</span>
+                            <div>
+                                <span class="metric-value">87</span>
+                                <span class="metric-trend up">↗ +5</span>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-placeholder">
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Features Section -->
+        <section id="ai" class="ai-features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Inteligência Artificial Avançada</h2>
+                    <p>Conheça as tecnologias de IA que tornam nosso sistema único no mercado</p>
+                </div>
+                
+                <div class="ai-grid">
+                    <div class="ai-card">
+                        <div class="ai-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Machine Learning</h3>
+                        <p>Algoritmos que aprendem continuamente com os dados para melhorar predições e otimizações.</p>
+                        <div class="ai-progress">
+                            <div class="ai-progress-bar" style="width: 95%;"></div>
+                        </div>
+                        <div class="ai-progress-text">Precisão: 95%</div>
+                    </div>
+                    
+                    <div class="ai-card">
+                        <div class="ai-icon" style="background: var(--gradient-secondary);">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Processamento de Linguagem</h3>
+                        <p>NLP avançado para entender e responder consultas de clientes de forma natural.</p>
+                        <div class="ai-progress">
+                            <div class="ai-progress-bar" style="width: 88%; background: var(--gradient-secondary);"></div>
+                        </div>
+                        <div class="ai-progress-text">Compreensão: 88%</div>
+                    </div>
+                    
+                    <div class="ai-card">
+                        <div class="ai-icon" style="background: var(--gradient-warm);">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Visão Computacional</h3>
+                        <p>Reconhecimento de imagens para verificação de qualidade e identificação de produtos.</p>
+                        <div class="ai-progress">
+                            <div class="ai-progress-bar" style="width: 92%; background: var(--gradient-warm);"></div>
+                        </div>
+                        <div class="ai-progress-text">Acurácia: 92%</div>
+                    </div>
+                    
+                    <div class="ai-card">
+                        <div class="ai-icon" style="background: var(--gradient-primary);">
+                            <i class="fas fa-chart-network"></i>
+                        </div>
+                        <h3>Análise Preditiva</h3>
+                        <p>Previsões precisas de demanda, horários de pico e necessidades operacionais.</p>
+                        <div class="ai-progress">
+                            <div class="ai-progress-bar" style="width: 89%; background: var(--gradient-primary);"></div>
+                        </div>
+                        <div class="ai-progress-text">Precisão: 89%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <button class="chatbot-toggle pulse-animation" onclick="toggleChatbot()">
+            <i class="fas fa-comment"></i>
+        </button>
+        
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h4>Assistente IA</h4>
+                <button class="chatbot-close" onclick="toggleChatbot()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot">
+                    Olá! 👋 Eu sou a IA do DeliveryAI. Como posso ajudar você hoje?
+                </div>
+                <div class="message bot">
+                    Posso explicar nossos recursos, mostrar demos ou responder dúvidas sobre nossa plataforma.
+                </div>
+            </div>
+            
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Digite sua mensagem...">
+                <button onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-motorcycle"></i>
+                <span>DeliveryAI</span>
+            </div>
+            
+            <p class="footer-text">
+                Revolucionando o delivery com inteligência artificial. Otimização de rotas, previsão de demanda e atendimento automatizado para maximizar seus resultados.
+            </p>
+            
+            <div class="footer-credits">
+                <p>Desenvolvido por <a href="https://i9script.com" target="_blank" rel="noopener noreferrer" class="footer-link">i9script.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const toggleIcon = document.querySelector('.mobile-menu-toggle i');
+            
+            mobileMenu.classList.toggle('open');
+            toggleIcon.className = mobileMenu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+        }
+
+        // Chatbot Toggle
+        function toggleChatbot() {
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            chatbotWindow.classList.toggle('open');
+        }
+
+        // Send Message Function
+        function sendMessage() {
+            const input = document.getElementById('chatbotInput');
+            const messages = document.getElementById('chatbotMessages');
+            const message = input.value.trim();
+            
+            if (message) {
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message user';
+                userMessage.textContent = message;
+                messages.appendChild(userMessage);
+                
+                // Clear input
+                input.value = '';
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'message bot';
+                    botMessage.textContent = getBotResponse(message);
+                    messages.appendChild(botMessage);
+                    
+                    // Scroll to bottom
+                    messages.scrollTop = messages.scrollHeight;
+                }, 1000);
+                
+                // Scroll to bottom
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+
+        // Bot Response Logic
+        function getBotResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('rota') || lowerMessage.includes('entrega')) {
+                return '🚀 Nossa IA otimiza rotas em tempo real considerando trânsito, clima e demanda. Reduzimos o tempo de entrega em até 30%!';
+            } else if (lowerMessage.includes('preço') || lowerMessage.includes('custo')) {
+                return '💰 Oferecemos planos flexíveis a partir de R$ 299/mês. Quer agendar uma demonstração personalizada?';
+            } else if (lowerMessage.includes('ia') || lowerMessage.includes('inteligencia')) {
+                return '🤖 Nossa IA inclui: otimização de rotas, previsão de demanda, análise de sentimentos e processamento de linguagem natural!';
+            } else if (lowerMessage.includes('demo') || lowerMessage.includes('teste')) {
+                return '🎯 Você pode testar gratuitamente por 30 dias! Quer que eu agende uma demonstração ao vivo?';
+            } else {
+                return '🤔 Interessante! Posso explicar mais sobre nossos recursos de IA, preços ou agendar uma demo. O que você gostaria de saber?';
+            }
+        }
+
+        // Enter key for chatbot
+        document.getElementById('chatbotInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    if (mobileMenu.classList.contains('open')) {
+                        toggleMobileMenu();
+                    }
+                }
+            });
+        });
+
+        // Active Navigation
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-item a, .mobile-menu-list a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.feature-card, .dashboard-card, .ai-card');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Simulate real-time data updates
+            setInterval(updateMetrics, 5000);
+        });
+
+        // Update Metrics Function
+        function updateMetrics() {
+            const metricValues = document.querySelectorAll('.metric-value');
+            metricValues.forEach(metric => {
+                if (metric.textContent.includes('R$')) {
+                    const currentValue = parseInt(metric.textContent.replace(/[R$,]/g, ''));
+                    const newValue = currentValue + Math.floor(Math.random() * 1000);
+                    metric.textContent = `R$ ${newValue.toLocaleString()}`;
+                } else if (metric.textContent.includes('min')) {
+                    const variation = Math.floor(Math.random() * 3) - 1;
+                    const currentValue = parseInt(metric.textContent);
+                    metric.textContent = `${Math.max(20, currentValue + variation)} min`;
+                } else if (!metric.textContent.includes('/') && !isNaN(parseInt(metric.textContent))) {
+                    const currentValue = parseInt(metric.textContent);
+                    const variation = Math.floor(Math.random() * 10) - 5;
+                    metric.textContent = Math.max(0, currentValue + variation);
+                }
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const toggleButton = document.querySelector('.mobile-menu-toggle');
+            
+            if (mobileMenu.classList.contains('open') && 
+                !mobileMenu.contains(e.target) && 
+                !toggleButton.contains(e.target)) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Progressive form demo
+        function simulateFormSubmission(button) {
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Carregando...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> Sucesso!';
+                button.style.background = 'var(--gradient-secondary)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.style.background = '';
+                }, 2000);
+            }, 2000);
+        }
+
+        // Add click handlers for demo buttons
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.textContent.includes('Teste') || this.textContent.includes('Baixar')) {
+                    e.preventDefault();
+                    simulateFormSubmission(this);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

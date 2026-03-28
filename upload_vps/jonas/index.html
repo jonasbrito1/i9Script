@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jonas Pacheco - Engenheiro de Software especialista em Segurança da Informação, Cibersegurança, DevSecOps e desenvolvimento seguro de sistemas">
+    <meta name="keywords" content="engenheiro de software, segurança da informação, cibersegurança, DevSecOps, desenvolvimento seguro, compliance, PHP, Python, JavaScript">
+    <meta name="author" content="Jonas Pacheco">
+    <title>Jonas Pacheco | Engenheiro de Software & Especialista em Cibersegurança</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css?v=20251103b">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="brand-bracket">&lt;</span>
+                <span class="brand-name">jonas.dvlpr</span>
+                <span class="brand-bracket">/&gt;</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link" data-i18n="nav.home">Início</a>
+                <a href="#about" class="nav-link" data-i18n="nav.about">Sobre</a>
+                <a href="#expertise" class="nav-link" data-i18n="nav.expertise">Especialidades</a>
+                <a href="#projects" class="nav-link" data-i18n="nav.projects">Projetos</a>
+                <a href="#contact" class="nav-link" data-i18n="nav.contact">Contato</a>
+            </div>
+            <button class="lang-toggle" id="langToggle" aria-label="Alternar idioma">
+                <span class="lang-flag">🇧🇷</span>
+                <span class="lang-text">PT</span>
+            </button>
+            <button class="mobile-menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="code-rain"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="profile-photo" data-aos="fade-up">
+                        <div class="photo-container">
+                            <img src="jonas-pro.jpg" alt="Jonas Pacheco - Engenheiro de Software" class="profile-img">
+                            <div class="photo-ring"></div>
+                            <div class="security-badge">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-greeting" data-aos="fade-up" data-aos-delay="100">
+                        <span class="greeting-badge">Engenheiro de Software</span>
+                    </div>
+                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                        Jonas Pacheco
+                    </h1>
+                    <div class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                        <span class="typing-text"></span>
+                    </div>
+                    <p class="hero-description" data-aos="fade-up" data-aos-delay="300">
+                        Transformo desafios técnicos em soluções seguras e escaláveis.<br>
+                        Especializado em desenvolvimento full-stack, DevSecOps e inteligência artificial.
+                    </p>
+                    <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
+                        <a href="#contact" class="btn btn-primary">
+                            <span data-i18n="hero.cta1">Entre em Contato</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <span data-i18n="hero.cta2">Ver Projetos</span>
+                            <i class="fas fa-code"></i>
+                        </a>
+                    </div>
+                    <div class="hero-social" data-aos="fade-up" data-aos-delay="500">
+                        <a href="https://github.com/jonasbrito1" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/jonaspacheco1/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jonasbritopacheco/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual" data-aos="fade-left" data-aos-delay="600">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="btn-close"></span>
+                                <span class="btn-minimize"></span>
+                                <span class="btn-maximize"></span>
+                            </div>
+                            <div class="terminal-title">terminal@jonas:~</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">$</span> <span class="command">cat skills.json</span>
+                            </div>
+                            <div class="terminal-output">
+                                {<br>
+                                &nbsp;&nbsp;"role": "Software Engineer",<br>
+                                &nbsp;&nbsp;"security": ["InfoSec", "Cybersecurity", "DevSecOps"],<br>
+                                &nbsp;&nbsp;"backend": ["PHP", "Python", "Node.js"],<br>
+                                &nbsp;&nbsp;"frontend": ["JavaScript", "React", "HTML/CSS"],<br>
+                                &nbsp;&nbsp;"mobile": ["Kotlin", "Android"],<br>
+                                &nbsp;&nbsp;"database": ["MySQL", "PostgreSQL", "MongoDB"],<br>
+                                &nbsp;&nbsp;"devops": ["Docker", "Git", "CI/CD"]<br>
+                                }
+                            </div>
+                            <div class="terminal-cursor"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">&lt;sobre&gt;</span>
+                <h2 class="section-title">Sobre Mim</h2>
+                <p class="section-subtitle">Construindo soluções que resolvem problemas reais</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <p class="about-description">
+                        Com mais de <strong>50 projetos</strong> desenvolvidos, ajudo empresas a transformar desafios
+                        complexos em soluções eficientes. Meu trabalho vai além de escrever código — entendo do seu
+                        negócio, identifico os reais problemas e entrego sistemas que fazem a diferença no dia a dia.
+                    </p>
+                    <p class="about-description">
+                        Especializado em <strong>desenvolvimento full-stack, segurança e automação</strong>, trabalho
+                        com tecnologias modernas para criar aplicações escaláveis, seguras e fáceis de manter. Se você
+                        precisa de um sistema ERP personalizado, automação de processos ou uma solução de compliance,
+                        posso ajudar.
+                    </p>
+                    <div class="value-props">
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Código limpo e documentado</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Entrega dentro do prazo</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Suporte pós-entrega</span>
+                        </div>
+                    </div>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h3>Desenvolvimento Seguro</h3>
+                                <p>Segurança integrada em todas as etapas do ciclo de desenvolvimento</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-rocket"></i>
+                            <div>
+                                <h3>Escalabilidade</h3>
+                                <p>Arquiteturas preparadas para crescimento</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-cogs"></i>
+                            <div>
+                                <h3>Automação</h3>
+                                <p>Processos otimizados com CI/CD e DevOps</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats" data-aos="fade-left">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Projetos Entregues</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">Satisfação do Cliente</div>
+                        <div class="stat-suffix">%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-number" data-target="99">0</div>
+                        <div class="stat-label">Uptime Garantido</div>
+                        <div class="stat-suffix">%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="stat-number" data-target="0">0</div>
+                        <div class="stat-label">Incidentes de Segurança</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">&lt;especialidades&gt;</span>
+                <h2 class="section-title">Áreas de Expertise</h2>
+                <p class="section-subtitle">Especializado em desenvolvimento seguro e escalável com IA</p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="card-title">Desenvolvimento Backend</h3>
+                    <p class="card-description">
+                        APIs RESTful, microserviços e arquitetura escalável com PHP, Python e Node.js.
+                        Integração com IA e Machine Learning. Foco em performance e segurança.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Node.js</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="card-title">Desenvolvimento Frontend</h3>
+                    <p class="card-description">
+                        Interfaces modernas e responsivas com React, Next.js, JavaScript e HTML/CSS.
+                        Experiência do usuário aprimorada com IA e acessibilidade.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Next.js</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="card-title">Sistemas ERP</h3>
+                    <p class="card-description">
+                        Desenvolvimento de soluções empresariais completas com análise preditiva por IA,
+                        gestão integrada e automação inteligente de processos.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">ERP</span>
+                        <span class="tech-tag">IA</span>
+                        <span class="tech-tag">Integração</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title">DevSecOps</h3>
+                    <p class="card-description">
+                        Integração de segurança no pipeline de desenvolvimento. CI/CD, containerização,
+                        infraestrutura como código e monitoramento automatizado.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">Security</span>
+                        <span class="tech-tag">CI/CD</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="card-title">Desenvolvimento Mobile</h3>
+                    <p class="card-description">
+                        Aplicativos nativos Android com Kotlin e recursos de IA. Design responsivo e
+                        performance otimizada para dispositivos móveis.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">IA</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="card-title">IA & Automação</h3>
+                    <p class="card-description">
+                        Soluções inteligentes com IA, Machine Learning e automação avançada.
+                        Frameworks personalizados para otimização de processos e compliance.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">IA</span>
+                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">Automação</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">&lt;projetos&gt;</span>
+                <h2 class="section-title">Projetos em Destaque</h2>
+                <p class="section-subtitle">Alguns dos trabalhos que desenvolvi</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <a href="https://github.com/jonasbrito1/medsys" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <div class="project-placeholder medsys">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">MedSys</h3>
+                        </div>
+                        <p class="project-description">
+                            Sistema completo de gestão médica e hospitalar que aumentou em 60% a eficiência
+                            no atendimento. Gestão de pacientes, prontuários eletrônicos e agendamentos
+                            com segurança LGPD garantida.
+                        </p>
+                        <div class="project-metrics-small">
+                            <span><i class="fas fa-chart-line"></i> +60% eficiência</span>
+                            <span><i class="fas fa-shield-alt"></i> 100% seguro</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Healthcare</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <a href="https://github.com/jonasbrito1/easycompliance" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <div class="project-placeholder easycompliance">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">EasyCompliance</h3>
+                        </div>
+                        <p class="project-description">
+                            Plataforma que reduziu em 30 horas semanais o tempo gasto com compliance.
+                            Automação completa de processos de auditoria, controles internos e relatórios
+                            regulatórios com zero erros.
+                        </p>
+                        <div class="project-metrics-small">
+                            <span><i class="fas fa-clock"></i> -30h/semana</span>
+                            <span><i class="fas fa-check-circle"></i> 0 erros</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Compliance</span>
+                            <span class="tech-tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <a href="https://github.com/jonasbrito1/evolutionerp" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <div class="project-placeholder evolutionerp">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">EvolutionERP</h3>
+                        </div>
+                        <p class="project-description">
+                            Sistema ERP que reduziu custos operacionais em 40% e integrou todos os
+                            processos da empresa. Módulos de finanças, estoque, vendas e RH trabalhando
+                            em perfeita sincronia.
+                        </p>
+                        <div class="project-metrics-small">
+                            <span><i class="fas fa-dollar-sign"></i> -40% custos</span>
+                            <span><i class="fas fa-link"></i> 100% integrado</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">ERP</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <a href="https://github.com/jonasbrito1/attack-detection-ssh" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <div class="project-placeholder attackdetection">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Attack Detection SSH</h3>
+                        </div>
+                        <p class="project-description">
+                            Sistema de detecção e prevenção de ataques SSH. Monitoramento em tempo real,
+                            análise de padrões e bloqueio automático de tentativas maliciosas.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Security</span>
+                            <span class="tech-tag">SSH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <a href="https://github.com/jonasbrito1/gbcidadenova" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <div class="project-placeholder gbcidadenova">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">GB Cidade Nova</h3>
+                        </div>
+                        <p class="project-description">
+                            Portal institucional com gestão de conteúdo e serviços integrados.
+                            Arquitetura moderna e interface responsiva para melhor experiência do usuário.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CMS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <a href="https://github.com/jonasbrito1/i9Script" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <div class="project-placeholder i9script">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">i9Script</h3>
+                        </div>
+                        <p class="project-description">
+                            Framework de automação e scripts personalizados para otimização de processos.
+                            Ferramentas inteligentes para desenvolvimento e operações de sistemas.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Automation</span>
+                            <span class="tech-tag">Scripts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-cta" data-aos="fade-up">
+                <a href="https://github.com/jonasbrito1?tab=repositories" target="_blank" class="btn btn-primary">
+                    <span>Ver Todos os Projetos</span>
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section - TEMPORARIAMENTE DESABILITADA -->
+    <!--
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">&lt;depoimentos&gt;</span>
+                <h2 class="section-title">O Que Dizem Sobre Meu Trabalho</h2>
+                <p class="section-subtitle">Resultados reais de projetos entregues</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Carlos Mendes</h4>
+                            <p>CEO - TechCorp Solutions</p>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Jonas desenvolveu nosso sistema ERP completo e superou todas as expectativas.
+                        O projeto foi entregue no prazo, com código limpo e documentação impecável.
+                        Conseguimos reduzir custos operacionais em 40% após a implementação."
+                    </p>
+                    <div class="testimonial-metrics">
+                        <div class="metric">
+                            <span class="metric-value">40%</span>
+                            <span class="metric-label">Redução de custos</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">3 meses</span>
+                            <span class="metric-label">Entregue no prazo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Ana Paula Silva</h4>
+                            <p>Diretora de TI - MedHealth</p>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "O sistema de gestão hospitalar que Jonas desenvolveu transformou nossa operação.
+                        A segurança dos dados é impecável e a interface é intuitiva. Nossa equipe adaptou-se
+                        rapidamente e a eficiência aumentou 60%."
+                    </p>
+                    <div class="testimonial-metrics">
+                        <div class="metric">
+                            <span class="metric-value">60%</span>
+                            <span class="metric-label">Mais eficiência</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">100%</span>
+                            <span class="metric-label">Dados seguros</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Roberto Oliveira</h4>
+                            <p>CTO - FinanceHub</p>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Contratamos Jonas para automatizar nossos processos de compliance. O resultado foi
+                        excepcional: economia de 30 horas semanais da equipe e zero erros nos relatórios.
+                        Profissional extremamente competente e confiável."
+                    </p>
+                    <div class="testimonial-metrics">
+                        <div class="metric">
+                            <span class="metric-value">30h/sem</span>
+                            <span class="metric-label">Tempo economizado</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">0</span>
+                            <span class="metric-label">Erros detectados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">&lt;processo&gt;</span>
+                <h2 class="section-title">Como Trabalho</h2>
+                <p class="section-subtitle">Metodologia comprovada para entregar resultados</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Análise & Planejamento</h3>
+                        <p class="step-description">
+                            Entendo profundamente seu negócio, os desafios e objetivos. Documento todos os
+                            requisitos e crio um plano de ação detalhado.
+                        </p>
+                        <ul class="step-deliverables">
+                            <li><i class="fas fa-check"></i> Documentação de requisitos</li>
+                            <li><i class="fas fa-check"></i> Cronograma do projeto</li>
+                            <li><i class="fas fa-check"></i> Proposta técnica</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Design & Arquitetura</h3>
+                        <p class="step-description">
+                            Projeto a arquitetura do sistema priorizando segurança, escalabilidade e
+                            manutenibilidade. Defino a stack tecnológica ideal.
+                        </p>
+                        <ul class="step-deliverables">
+                            <li><i class="fas fa-check"></i> Arquitetura do sistema</li>
+                            <li><i class="fas fa-check"></i> Diagramas técnicos</li>
+                            <li><i class="fas fa-check"></i> Protótipos de interface</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Desenvolvimento</h3>
+                        <p class="step-description">
+                            Codifico seguindo as melhores práticas, com testes automatizados e code reviews
+                            constantes. Você acompanha o progresso em tempo real.
+                        </p>
+                        <ul class="step-deliverables">
+                            <li><i class="fas fa-check"></i> Código limpo e documentado</li>
+                            <li><i class="fas fa-check"></i> Testes automatizados</li>
+                            <li><i class="fas fa-check"></i> Atualizações semanais</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Testes & Validação</h3>
+                        <p class="step-description">
+                            Realizo testes rigorosos de segurança, performance e usabilidade. Corrijo bugs
+                            e otimizo antes do lançamento.
+                        </p>
+                        <ul class="step-deliverables">
+                            <li><i class="fas fa-check"></i> Testes de segurança</li>
+                            <li><i class="fas fa-check"></i> Análise de performance</li>
+                            <li><i class="fas fa-check"></i> Testes de usuário</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="500">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Deploy & Suporte</h3>
+                        <p class="step-description">
+                            Faço o deploy com zero downtime, treino sua equipe e forneço documentação
+                            completa. Suporte pós-entrega está incluído.
+                        </p>
+                        <ul class="step-deliverables">
+                            <li><i class="fas fa-check"></i> Deploy em produção</li>
+                            <li><i class="fas fa-check"></i> Treinamento da equipe</li>
+                            <li><i class="fas fa-check"></i> Suporte e manutenção</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="technologies" class="technologies">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">&lt;tecnologias&gt;</span>
+                <h2 class="section-title">Stack Tecnológico</h2>
+                <p class="section-subtitle">Ferramentas e linguagens que domino</p>
+            </div>
+            <div class="tech-categories">
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">
+                        <i class="fas fa-code"></i>
+                        Linguagens
+                    </h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-php"></i>
+                            <span>PHP</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-code"></i>
+                            <span>Kotlin</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="category-title">
+                        <i class="fas fa-layer-group"></i>
+                        Frameworks
+                    </h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-laravel"></i>
+                            <span>Laravel</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-fire"></i>
+                            <span>Django</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="category-title">
+                        <i class="fas fa-database"></i>
+                        Banco de Dados
+                    </h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-elephant"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-fire"></i>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="category-title">
+                        <i class="fas fa-tools"></i>
+                        DevOps & Tools
+                    </h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-docker"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-infinity"></i>
+                            <span>CI/CD</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-linux"></i>
+                            <span>Linux</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">&lt;contato&gt;</span>
+                <h2 class="section-title">Vamos Trabalhar Juntos?</h2>
+                <p class="section-subtitle">Consultoria gratuita + Garantias de qualidade</p>
+            </div>
+
+            <div class="contact-guarantees" data-aos="fade-up">
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h4>Consultoria Gratuita</h4>
+                    <p>Primeira reunião sem compromisso para entender seu projeto</p>
+                </div>
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h4>Entrega no Prazo</h4>
+                    <p>Cronogramas realistas e cumprimento de deadlines</p>
+                </div>
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4>Suporte Incluído</h4>
+                    <p>30 dias de suporte pós-entrega sem custo adicional</p>
+                </div>
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h4>Código Documentado</h4>
+                    <p>Documentação completa e código limpo garantidos</p>
+                </div>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-text">
+                        <h3>Pronto para começar?</h3>
+                        <p>
+                            Entre em contato agora e receba uma consultoria gratuita sobre seu projeto.
+                            Vou analisar suas necessidades e propor a melhor solução técnica, sem compromisso.
+                        </p>
+                    </div>
+                    <div class="contact-methods">
+                        <a href="mailto:contato@i9script.com" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-content">
+                                <h4>Email</h4>
+                                <p>contato@i9script.com</p>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/5547988521318" target="_blank" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="method-content">
+                                <h4>WhatsApp</h4>
+                                <p>(47) 98852-1318</p>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/jonaspacheco1/" target="_blank" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="method-content">
+                                <h4>LinkedIn</h4>
+                                <p>linkedin.com/in/jonaspacheco1</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/jonasbrito1" target="_blank" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="method-content">
+                                <h4>GitHub</h4>
+                                <p>github.com/jonasbrito1</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper" data-aos="fade-left">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Assunto</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Enviar Mensagem</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand">
+                        <span class="brand-bracket">&lt;</span>
+                        <span class="brand-name">jonas.dvlpr</span>
+                        <span class="brand-bracket">/&gt;</span>
+                    </div>
+                    <p class="footer-tagline">
+                        Desenvolvendo sistemas que resolvem problemas reais
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navegação</h4>
+                        <ul>
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#expertise">Especialidades</a></li>
+                            <li><a href="#projects">Projetos</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="privacy-policy.html">Política de Privacidade</a></li>
+                            <li><a href="terms-of-service.html">Termos de Serviço</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Social</h4>
+                        <ul>
+                            <li><a href="https://github.com/jonasbrito1" target="_blank">GitHub</a></li>
+                            <li><a href="https://www.linkedin.com/in/jonaspacheco1/" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://www.instagram.com/jonasbritopacheco/" target="_blank">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Jonas Pacheco. Todos os direitos reservados.</p>
+                <p class="footer-code">
+                    Desenvolvido por <span class="developer-name">Jonas Pacheco</span> e muito <i class="fas fa-coffee"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

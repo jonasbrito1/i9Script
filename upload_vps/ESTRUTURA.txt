@@ -1,0 +1,197 @@
+================================================================================
+                    ESTRUTURA COMPLETA - upload_vps
+================================================================================
+
+📦 upload_vps/                                      [Tamanho: ~3.1 MB]
+│
+├── 📄 LEIA-ME-PRIMEIRO.txt                         ← COMECE POR AQUI!
+├── 📄 CHECKLIST_PRE_UPLOAD.txt                     ← Lista de verificação
+├── 📄 INSTRUCOES_DEPLOY.txt                        ← Guia detalhado
+├── 📄 ESTRUTURA.txt                                ← Este arquivo
+│
+├── 📄 docker-compose.production.yml                ← Orquestração Docker
+├── 📄 .env.example                                 ← Template variáveis
+├── 📄 .env.production                              ← Configuração produção
+│
+├── 📁 backend/                                     ← Servidor Node.js
+│   ├── 📄 package.json                             (Dependências npm)
+│   ├── 📄 tsconfig.json                            (Config TypeScript)
+│   ├── 📄 .env.production                          (Variáveis backend)
+│   │
+│   └── 📁 src/                                     (Código fonte)
+│       ├── 📁 config/                              (Configurações)
+│       │   └── database.ts                         (Conexão MySQL)
+│       │
+│       ├── 📁 controllers/                         (Lógica de negócio)
+│       │   ├── authController.ts                   (Autenticação)
+│       │   ├── ticketController.ts                 (Sistema tickets)
+│       │   ├── projectController.ts                (Gestão projetos)
+│       │   ├── userController.ts                   (Usuários)
+│       │   └── kanbanController.ts                 (Kanban board)
+│       │
+│       ├── 📁 routes/                              (Rotas API)
+│       │   └── index.ts                            (Definição endpoints)
+│       │
+│       ├── 📁 middleware/                          (Middlewares)
+│       │   └── auth.ts                             (JWT auth)
+│       │
+│       ├── 📁 database/                            (Banco de dados)
+│       │   ├── schema.sql                          (Schema inicial)
+│       │   ├── migrate.ts                          (Script migration)
+│       │   └── 📁 migrations/                      (Alterações DB)
+│       │       ├── 002_add_landing_fields.sql
+│       │       ├── 003_advanced_management_*.sql
+│       │       └── 004_add_status_to_kanban_cards.sql
+│       │
+│       ├── 📁 models/                              (Tipos/Models)
+│       ├── 📁 scripts/                             (Scripts utilitários)
+│       ├── 📁 types/                               (TypeScript types)
+│       └── 📄 index.ts                             (Entry point)
+│
+├── 📁 frontend/                                    ← Build React (Pronto!)
+│   ├── 📄 index.html                               (HTML principal)
+│   ├── 📄 manifest.json                            (PWA manifest)
+│   ├── 📄 robots.txt                               (SEO)
+│   ├── 📄 asset-manifest.json                      (Lista de assets)
+│   │
+│   └── 📁 static/                                  (Assets otimizados)
+│       ├── 📁 css/                                 (Estilos minificados)
+│       │   └── main.[hash].css                     (~10 KB)
+│       │
+│       ├── 📁 js/                                  (JavaScript minificado)
+│       │   └── main.[hash].js                      (~120 KB gzipped)
+│       │
+│       └── 📁 media/                               (Imagens, fontes)
+│           └── (logos, icons, etc)
+│
+├── 📁 config/                                      ← Configurações sistema
+│   ├── 📄 nginx-i9script.conf                      (Nginx + SSL)
+│   └── 📄 mysql-init.sql                           (Setup MySQL)
+│
+└── 📁 scripts/                                     ← Scripts automação
+    ├── 📄 setup-vps.sh                             (Configura VPS inicial)
+    ├── 📄 deploy.sh                                (Deploy completo)
+    ├── 📄 restart.sh                               (Reinicia serviços)
+    └── 📄 logs.sh                                  (Visualiza logs)
+
+
+================================================================================
+                        FLUXO DE DADOS EM PRODUÇÃO
+================================================================================
+
+    Internet
+       ↓
+    [HTTPS - Port 443]
+       ↓
+  ┌─────────────────┐
+  │  Nginx Server   │  ← SSL/TLS, Proxy reverso
+  └─────────────────┘
+       ↓         ↓
+       ↓         └──────────────────┐
+       ↓                            ↓
+  ┌─────────────┐         ┌──────────────────┐
+  │  Frontend   │         │  Backend API     │
+  │  (Static)   │         │  (Node.js:5000)  │
+  └─────────────┘         └──────────────────┘
+                                   ↓
+                          ┌──────────────────┐
+                          │  MySQL Database  │
+                          │  (Port 3306)     │
+                          └──────────────────┘
+
+
+================================================================================
+                            ENDPOINTS DA API
+================================================================================
+
+🔐 Autenticação:
+  POST   /api/auth/register        Registrar usuário
+  POST   /api/auth/login           Login
+  GET    /api/auth/me              Info usuário logado
+
+🎫 Tickets (i9Help):
+  GET    /api/tickets              Listar tickets
+  POST   /api/tickets              Criar ticket
+  GET    /api/tickets/:id          Detalhes ticket
+  PATCH  /api/tickets/:id          Atualizar ticket
+  POST   /api/tickets/:id/comments Adicionar comentário
+  GET    /api/tickets/stats        Estatísticas
+
+📊 Projetos:
+  GET    /api/projects             Listar projetos
+  POST   /api/projects             Criar projeto
+  GET    /api/projects/:id         Detalhes projeto
+  PATCH  /api/projects/:id         Atualizar projeto
+  POST   /api/projects/:id/updates Adicionar update
+  GET    /api/projects/stats       Estatísticas
+
+📋 Kanban:
+  GET    /api/kanban/:projectId    Obter board
+  POST   /api/kanban/:projectId/cards  Criar card
+  PATCH  /api/kanban/cards/:id     Atualizar card
+  DELETE /api/kanban/cards/:id     Deletar card
+
+👥 Usuários:
+  GET    /api/users                Listar usuários
+  PATCH  /api/users/:id            Atualizar usuário
+
+
+================================================================================
+                        VARIÁVEIS DE AMBIENTE
+================================================================================
+
+📁 /.env (Docker)
+  └─ MYSQL_ROOT_PASSWORD
+  └─ MYSQL_DATABASE
+  └─ MYSQL_USER
+  └─ MYSQL_PASSWORD
+
+📁 /backend/.env.production
+  └─ NODE_ENV=production
+  └─ PORT=5000
+  └─ DB_HOST, DB_USER, DB_PASSWORD, DB_NAME
+  └─ JWT_SECRET
+  └─ CORS_ORIGIN=https://i9script.com
+
+
+================================================================================
+                        CONTAINERS DOCKER
+================================================================================
+
+🐳 i9script-mysql-prod
+  • Image: mysql:8.0
+  • Port: 3306
+  • Volume: mysql_data (persistente)
+  • Health check: mysqladmin ping
+
+🐳 i9script-backend-prod
+  • Image: node:18-alpine
+  • Port: 5000
+  • Volume: backend_node_modules
+  • Command: npm run dev (tsx watch)
+
+
+================================================================================
+                        PORTAS UTILIZADAS
+================================================================================
+
+  80   → HTTP (redireciona para HTTPS)
+  443  → HTTPS (Nginx - Frontend + API)
+  5000 → Backend API (interno, via proxy)
+  3306 → MySQL (interno, Docker)
+
+
+================================================================================
+                    CHECKLIST RÁPIDO DE DEPLOY
+================================================================================
+
+□ Configurar DNS → i9script.com aponta para 72.61.223.226
+□ Upload via SFTP → /var/www/i9script/
+□ chmod +x scripts/*.sh
+□ bash scripts/setup-vps.sh
+□ Configurar .env e backend/.env.production
+□ bash scripts/deploy.sh
+□ Testar: https://i9script.com
+
+
+================================================================================

@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: i9script-mysql-prod
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-I9script@2025!Root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-i9script_db}
+      MYSQL_USER: ${MYSQL_USER:-i9script}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-I9script@2025!Secure}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./config/mysql-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - i9script-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u${MYSQL_USER:-i9script}", "-p${MYSQL_PASSWORD:-I9script@2025!Secure}"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+    command: --default-authentication-plugin=mysql_native_password
+
+  backend:
+    image: node:18-alpine
+    container_name: i9script-backend-prod
+    restart: always
+    working_dir: /app
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+    env_file:
+      - backend/.env.production
+    volumes:
+      - ./backend:/app
+      - backend_node_modules:/app/node_modules
+    ports:
+      - "5000:5000"
+    networks:
+      - i9script-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    command: sh -c "npm install && npm run dev"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  i9script-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    name: i9script-mysql-data-prod
+    driver: local
+  backend_node_modules:
+    name: i9script-backend-node-modules
+    driver: local

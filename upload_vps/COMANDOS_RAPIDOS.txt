@@ -1,0 +1,300 @@
+================================================================================
+                    COMANDOS RÁPIDOS - REFERÊNCIA i9Script
+================================================================================
+
+🔐 ACESSO SSH
+--------------------------------------------------------------------------------
+ssh root@72.61.223.226 -p 22
+Senha: 4xmnqiB@t234
+
+
+📂 NAVEGAÇÃO
+--------------------------------------------------------------------------------
+cd /var/www/i9script                    # Ir para diretório da aplicação
+ls -la                                  # Listar arquivos
+pwd                                     # Mostrar diretório atual
+
+
+🚀 DEPLOY E SETUP
+--------------------------------------------------------------------------------
+# Setup inicial (primeira vez)
+bash /var/www/i9script/scripts/setup-vps.sh
+
+# Deploy da aplicação
+bash /var/www/i9script/scripts/deploy.sh
+
+# Tornar scripts executáveis
+chmod +x /var/www/i9script/scripts/*.sh
+
+
+🐳 DOCKER - GERENCIAR CONTAINERS
+--------------------------------------------------------------------------------
+cd /var/www/i9script
+
+# Ver containers rodando
+docker ps
+
+# Ver todos os containers (incluindo parados)
+docker ps -a
+
+# Iniciar containers
+docker-compose -f docker-compose.production.yml up -d
+
+# Parar containers
+docker-compose -f docker-compose.production.yml down
+
+# Reiniciar containers
+docker-compose -f docker-compose.production.yml restart
+
+# Ou usar script:
+bash scripts/restart.sh
+
+# Ver status dos serviços
+docker-compose -f docker-compose.production.yml ps
+
+
+📋 LOGS
+--------------------------------------------------------------------------------
+# Ver todos os logs
+bash scripts/logs.sh
+
+# Logs do backend
+bash scripts/logs.sh backend
+
+# Logs do MySQL
+bash scripts/logs.sh mysql
+
+# Logs direto do Docker
+docker logs i9script-backend-prod
+docker logs i9script-mysql-prod
+
+# Logs em tempo real
+docker logs -f i9script-backend-prod
+
+
+💾 MYSQL - BANCO DE DADOS
+--------------------------------------------------------------------------------
+# Acessar MySQL via Docker
+docker exec -it i9script-mysql-prod mysql -ui9script -p
+# Senha: (a que você definiu no .env)
+
+# Dentro do MySQL:
+USE i9script_db;
+SHOW TABLES;
+SELECT * FROM users;
+EXIT;
+
+# Backup do banco
+docker exec i9script-mysql-prod mysqldump -ui9script -p i9script_db > backup_$(date +%Y%m%d).sql
+
+# Restaurar backup
+docker exec -i i9script-mysql-prod mysql -ui9script -p i9script_db < backup.sql
+
+# Ver tamanho do banco
+docker exec i9script-mysql-prod mysql -ui9script -p -e "SELECT table_schema AS 'Database', ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS 'Size (MB)' FROM information_schema.TABLES WHERE table_schema='i9script_db' GROUP BY table_schema;"
+
+
+🌐 NGINX
+--------------------------------------------------------------------------------
+# Testar configuração
+nginx -t
+
+# Recarregar Nginx
+systemctl reload nginx
+
+# Reiniciar Nginx
+systemctl restart nginx
+
+# Ver status
+systemctl status nginx
+
+# Ver configuração ativa
+cat /etc/nginx/sites-enabled/i9script.com
+
+# Logs do Nginx
+tail -f /var/log/nginx/i9script.access.log
+tail -f /var/log/nginx/i9script.error.log
+
+
+🔒 SSL/HTTPS - CERTBOT
+--------------------------------------------------------------------------------
+# Gerar certificado (primeira vez)
+certbot --nginx -d i9script.com -d www.i9script.com
+
+# Renovar certificado
+certbot renew
+
+# Renovar forçado
+certbot renew --force-renewal
+
+# Ver certificados instalados
+certbot certificates
+
+# Testar renovação automática
+certbot renew --dry-run
+
+
+📊 MONITORAMENTO
+--------------------------------------------------------------------------------
+# Uso de disco
+df -h
+
+# Uso de memória
+free -m
+
+# Processos rodando
+top
+# (pressione 'q' para sair)
+
+# CPU e memória dos containers
+docker stats
+
+# Ver portas em uso
+netstat -tlnp
+
+# Ver processos na porta 5000
+lsof -i :5000
+
+# Ver processos na porta 3306
+lsof -i :3306
+
+
+🔄 ATUALIZAÇÃO DO SISTEMA
+--------------------------------------------------------------------------------
+# Atualizar sistema
+apt update && apt upgrade -y
+
+# Atualizar Docker images
+docker-compose -f /var/www/i9script/docker-compose.production.yml pull
+docker-compose -f /var/www/i9script/docker-compose.production.yml up -d
+
+
+📁 ARQUIVOS E PERMISSÕES
+--------------------------------------------------------------------------------
+# Ver permissões
+ls -la /var/www/i9script
+
+# Ajustar permissões
+chown -R i9script:i9script /var/www/i9script
+chmod -R 755 /var/www/i9script
+
+# Editar arquivo
+nano /var/www/i9script/backend/.env.production
+# (Ctrl+X para sair, Y para salvar)
+
+
+🔥 FIREWALL
+--------------------------------------------------------------------------------
+# Ver status do firewall
+ufw status
+
+# Permitir porta
+ufw allow 80/tcp
+ufw allow 443/tcp
+
+# Bloquear porta
+ufw deny 8080/tcp
+
+# Habilitar firewall
+ufw enable
+
+# Desabilitar firewall
+ufw disable
+
+
+🗑️ LIMPEZA
+--------------------------------------------------------------------------------
+# Remover containers parados
+docker container prune
+
+# Remover images não usadas
+docker image prune -a
+
+# Remover volumes não usados
+docker volume prune
+
+# Limpar tudo (cuidado!)
+docker system prune -a
+
+
+🔍 TROUBLESHOOTING
+--------------------------------------------------------------------------------
+# Backend não inicia:
+docker logs i9script-backend-prod
+docker exec -it i9script-backend-prod sh
+cd /app && npm run dev
+
+# MySQL não conecta:
+docker logs i9script-mysql-prod
+docker exec -it i9script-mysql-prod mysql -uroot -p
+
+# SSL não funciona:
+certbot certificates
+systemctl status nginx
+nginx -t
+
+# Site não carrega:
+systemctl status nginx
+docker ps
+curl http://localhost:5000/api
+
+
+📞 COMANDOS DE EMERGÊNCIA
+--------------------------------------------------------------------------------
+# Reiniciar tudo
+bash /var/www/i9script/scripts/restart.sh
+
+# Parar tudo
+docker-compose -f /var/www/i9script/docker-compose.production.yml down
+
+# Iniciar do zero
+cd /var/www/i9script
+docker-compose -f docker-compose.production.yml down
+docker-compose -f docker-compose.production.yml up -d
+
+# Ver o que está rodando
+ps aux | grep node
+ps aux | grep mysql
+
+
+📝 EDITAR CONFIGURAÇÕES
+--------------------------------------------------------------------------------
+# Variáveis de ambiente Docker
+nano /var/www/i9script/.env
+
+# Variáveis do backend
+nano /var/www/i9script/backend/.env.production
+
+# Configuração Nginx
+nano /etc/nginx/sites-available/i9script.com
+
+
+🎯 ATALHOS ÚTEIS
+--------------------------------------------------------------------------------
+# Criar alias (adicionar no ~/.bashrc)
+alias i9='cd /var/www/i9script'
+alias i9logs='bash /var/www/i9script/scripts/logs.sh'
+alias i9restart='bash /var/www/i9script/scripts/restart.sh'
+alias i9ps='docker-compose -f /var/www/i9script/docker-compose.production.yml ps'
+
+# Aplicar alias
+source ~/.bashrc
+
+
+================================================================================
+                    SEQUÊNCIA COMPLETA DE DEPLOY
+================================================================================
+
+1. SSH: ssh root@72.61.223.226
+2. cd /var/www/i9script
+3. chmod +x scripts/*.sh
+4. bash scripts/setup-vps.sh
+5. nano .env (configurar senhas)
+6. nano backend/.env.production (configurar senhas)
+7. bash scripts/deploy.sh
+8. docker ps (verificar containers)
+9. bash scripts/logs.sh (ver logs)
+10. Acessar: https://i9script.com
+
+
+================================================================================

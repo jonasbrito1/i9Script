@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Analytics Infinito - i9Script</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/assets/utils/images/i9Script.svg">
+
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --gold: #FFD700;
+            --cyan: #00f5ff;
+            --red: #ff6b6b;
+            --green: #22c55e;
+            --purple: #8b5cf6;
+            --orange: #f59e0b;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --dark-medium: #334155;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --card-bg: #1e293b;
+            --input-bg: #334155;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: rgba(15, 23, 42, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+            --input-bg: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .time-filter {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 245, 255, 0.1);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .metric-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .metric-icon.users { background: linear-gradient(135deg, var(--cyan), var(--primary)); }
+        .metric-icon.revenue { background: linear-gradient(135deg, var(--gold), #ca8a04); }
+        .metric-icon.conversion { background: linear-gradient(135deg, var(--green), #16a34a); }
+        .metric-icon.sessions { background: linear-gradient(135deg, var(--purple), #7c3aed); }
+
+        .metric-trend {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+        }
+
+        .metric-trend.up {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--green);
+        }
+
+        .metric-trend.down {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--red);
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .chart-container {
+            height: 350px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), rgba(255, 215, 0, 0.05));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><path d="M0,150 Q100,50 200,100 T400,80" stroke="%2300f5ff" stroke-width="3" fill="none" opacity="0.3"/><path d="M0,120 Q100,80 200,90 T400,70" stroke="%23FFD700" stroke-width="2" fill="none" opacity="0.5"/></svg>') center/cover;
+        }
+
+        .chart-placeholder {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .traffic-sources {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .source-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .source-item:last-child {
+            border-bottom: none;
+        }
+
+        .source-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .source-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--white);
+        }
+
+        .source-icon.google { background: linear-gradient(135deg, #4285f4, #34a853); }
+        .source-icon.facebook { background: linear-gradient(135deg, #1877f2, #42a5f5); }
+        .source-icon.instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d); }
+        .source-icon.direct { background: linear-gradient(135deg, var(--gray), var(--gray-light)); }
+
+        .source-details h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .source-details p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .source-percentage {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .realtime-data {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .realtime-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .live-indicator {
+            width: 12px;
+            height: 12px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .realtime-metric {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .realtime-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .realtime-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .activity-feed {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--cyan);
+        }
+
+        .activity-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--cyan), var(--primary));
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 245, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-tertiary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                Analytics Infinito
+            </div>
+            <div class="header-controls">
+                <select class="time-filter">
+                    <option>Últimos 7 dias</option>
+                    <option>Últimos 30 dias</option>
+                    <option>Últimos 90 dias</option>
+                    <option>Último ano</option>
+                </select>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span class="theme-icon">🌙</span>
+                    <span>Tema</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Dashboard Analytics</h1>
+            <p class="dashboard-subtitle">Visão completa do seu negócio em tempo real</p>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="metric-icon users">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="metric-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        +12.5%
+                    </div>
+                </div>
+                <div class="metric-value">24,892</div>
+                <div class="metric-label">Usuários Únicos</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="metric-icon revenue">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="metric-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        +8.2%
+                    </div>
+                </div>
+                <div class="metric-value">R$ 187.5K</div>
+                <div class="metric-label">Receita Total</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="metric-icon conversion">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="metric-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        +3.1%
+                    </div>
+                </div>
+                <div class="metric-value">4.7%</div>
+                <div class="metric-label">Taxa de Conversão</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="metric-icon sessions">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="metric-trend down">
+                        <i class="fas fa-arrow-down"></i>
+                        -2.3%
+                    </div>
+                </div>
+                <div class="metric-value">156.2K</div>
+                <div class="metric-label">Sessões</div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3 class="chart-title">Visitas vs Conversões</h3>
+                    <div>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Exportar
+                        </button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-placeholder">
+                        <i class="fas fa-chart-area" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                        <p>Gráfico de Área Interativo<br>Análise de Tendências</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="realtime-data">
+                <div class="chart-header">
+                    <div class="realtime-header">
+                        <div class="live-indicator"></div>
+                        <h3 class="chart-title">Dados em Tempo Real</h3>
+                    </div>
+                </div>
+                
+                <div class="realtime-metric">
+                    <div class="realtime-value">247</div>
+                    <div class="realtime-label">Usuários Online Agora</div>
+                </div>
+
+                <div class="activity-feed">
+                    <div class="activity-item">
+                        <div class="activity-dot"></div>
+                        <div class="activity-text">Nova venda - R$ 299,00</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot"></div>
+                        <div class="activity-text">Usuário cadastrado</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot"></div>
+                        <div class="activity-text">Produto visualizado</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot"></div>
+                        <div class="activity-text">Carrinho abandonado</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot"></div>
+                        <div class="activity-text">Newsletter inscrita</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="analytics-grid">
+            <div class="traffic-sources">
+                <div class="chart-header">
+                    <h3 class="chart-title">Fontes de Tráfego</h3>
+                </div>
+
+                <div class="source-item">
+                    <div class="source-info">
+                        <div class="source-icon google">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="source-details">
+                            <h4>Google Search</h4>
+                            <p>Busca orgânica</p>
+                        </div>
+                    </div>
+                    <div class="source-percentage">42%</div>
+                </div>
+
+                <div class="source-item">
+                    <div class="source-info">
+                        <div class="source-icon facebook">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <div class="source-details">
+                            <h4>Facebook</h4>
+                            <p>Mídia social</p>
+                        </div>
+                    </div>
+                    <div class="source-percentage">28%</div>
+                </div>
+
+                <div class="source-item">
+                    <div class="source-info">
+                        <div class="source-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="source-details">
+                            <h4>Instagram</h4>
+                            <p>Mídia social</p>
+                        </div>
+                    </div>
+                    <div class="source-percentage">18%</div>
+                </div>
+
+                <div class="source-item">
+                    <div class="source-info">
+                        <div class="source-icon direct">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="source-details">
+                            <h4>Direto</h4>
+                            <p>Acesso direto</p>
+                        </div>
+                    </div>
+                    <div class="source-percentage">12%</div>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3 class="chart-title">Análise Preditiva</h3>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-brain"></i>
+                        IA Insights
+                    </button>
+                </div>
+                <div class="chart-container" style="height: 280px;">
+                    <div class="chart-placeholder">
+                        <i class="fas fa-robot" style="font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                        <p>Machine Learning<br>Previsões Inteligentes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            const themeIcon = document.querySelector('.theme-icon');
+            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Animate metrics on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const metricCards = document.querySelectorAll('.metric-card');
+            metricCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+
+            // Simulate real-time data updates
+            const realtimeValue = document.querySelector('.realtime-value');
+            let currentValue = 247;
+            
+            setInterval(() => {
+                const change = Math.floor(Math.random() * 10) - 5;
+                currentValue = Math.max(200, Math.min(300, currentValue + change));
+                realtimeValue.textContent = currentValue;
+            }, 3000);
+
+            // Animate activity feed
+            setInterval(() => {
+                const activities = [
+                    'Nova venda - R$ 299,00',
+                    'Usuário cadastrado',
+                    'Produto visualizado',
+                    'Carrinho abandonado',
+                    'Newsletter inscrita',
+                    'Download realizado',
+                    'Comentário postado',
+                    'Avaliação enviada'
+                ];
+                
+                const activityFeed = document.querySelector('.activity-feed');
+                const newActivity = document.createElement('div');
+                newActivity.className = 'activity-item';
+                newActivity.innerHTML = `
+                    <div class="activity-dot"></div>
+                    <div class="activity-text">${activities[Math.floor(Math.random() * activities.length)]}</div>
+                `;
+                
+                activityFeed.insertBefore(newActivity, activityFeed.firstChild);
+                
+                // Remove old activities to keep max 5
+                const items = activityFeed.querySelectorAll('.activity-item');
+                if (items.length > 5) {
+                    activityFeed.removeChild(items[items.length - 1]);
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

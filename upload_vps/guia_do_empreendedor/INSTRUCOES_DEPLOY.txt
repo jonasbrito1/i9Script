@@ -1,0 +1,144 @@
+================================================================================
+                GUIA DO EMPREENDEDOR - DEPLOY NO VPS
+================================================================================
+
+📍 LOCAL: https://i9script.com/guiadoempreendedor
+🔗 API: https://i9script.com/guiadoempreendedor/api
+🗄️ Banco: Supabase (isolado do i9script)
+
+================================================================================
+ESTRUTURA NO SERVIDOR
+================================================================================
+
+/var/www/i9script/guia_do_empreendedor/
+├── frontend/                # Build do React/Vite
+├── backend/                 # API Hono
+│   ├── server/
+│   ├── api/
+│   ├── .env                 # Configurações de produção
+│   └── package.json
+├── config/
+│   └── nginx-guia.conf      # Config Nginx
+└── docker-compose.yml       # Backend container
+
+
+================================================================================
+PASSO A PASSO DO DEPLOY
+================================================================================
+
+1. FAZER UPLOAD VIA SFTP (Termius)
+   ---------------------------------
+   Conectar: 72.61.223.226:22 (root / 4xmnqiB@t234)
+
+   Criar pasta:
+   mkdir -p /var/www/i9script/guia_do_empreendedor
+
+   Upload de:
+   Local: upload_vps/guia_do_empreendedor/*
+   Remoto: /var/www/i9script/guia_do_empreendedor/
+
+
+2. CONFIGURAR NGINX (via SSH)
+   ---------------------------
+   # Adicionar configuração ao arquivo do i9script
+   nano /etc/nginx/sites-available/i9script.com
+
+   # Cole o conteúdo de config/nginx-guia.conf
+   # DENTRO do bloco server HTTPS (após as configurações do i9script)
+
+   # Ou copie e inclua:
+   cat /var/www/i9script/guia_do_empreendedor/config/nginx-guia.conf >> /etc/nginx/sites-available/i9script.com
+
+   # Testar e recarregar:
+   nginx -t
+   systemctl reload nginx
+
+
+3. INICIAR BACKEND (via SSH)
+   --------------------------
+   cd /var/www/i9script/guia_do_empreendedor
+   docker-compose up -d
+
+   # Ver logs:
+   docker logs -f guia-empreendedor-backend
+
+   # Deve aparecer:
+   # 🚀 API Server rodando em http://localhost:5001
+
+
+4. VERIFICAR SE ESTÁ FUNCIONANDO
+   -------------------------------
+   # Testar API:
+   curl http://localhost:5001/api/health
+
+   # Deve retornar:
+   # {"status":"ok","message":"API Server is running"}
+
+   # Testar no navegador:
+   https://i9script.com/guiadoempreendedor
+
+
+================================================================================
+BANCO DE DADOS (SUPABASE)
+================================================================================
+
+✅ Já está configurado e funcionando
+✅ Banco isolado do i9script
+✅ Mesma conta Supabase, projeto diferente
+
+URL: https://znmguqnsteslftyrewun.supabase.co
+
+Se precisar rodar migrations:
+- Acesse: https://supabase.com/dashboard
+- Vá em SQL Editor
+- Execute os arquivos em migrations/
+
+
+================================================================================
+COMANDOS ÚTEIS
+================================================================================
+
+# Ver logs do backend:
+docker logs -f guia-empreendedor-backend
+
+# Reiniciar backend:
+cd /var/www/i9script/guia_do_empreendedor
+docker-compose restart
+
+# Parar backend:
+docker-compose down
+
+# Ver se está rodando:
+docker ps | grep guia
+curl http://localhost:5001/api/health
+
+# Ver configuração Nginx:
+cat /etc/nginx/sites-available/i9script.com | grep -A 20 guiadoempreendedor
+
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problema: 404 ao acessar /guiadoempreendedor
+Solução: Verificar se Nginx foi recarregado e se frontend foi copiado
+
+Problema: API não responde
+Solução: docker logs -f guia-empreendedor-backend
+
+Problema: CORS Error
+Solução: Backend já tem CORS configurado, verificar se está rodando
+
+Problema: Supabase connection error
+Solução: Verificar .env no backend tem as credenciais corretas
+
+
+================================================================================
+PORTAS UTILIZADAS
+================================================================================
+
+5000 → i9script backend
+5001 → Guia do Empreendedor backend
+3306 → MariaDB (i9script)
+
+================================================================================

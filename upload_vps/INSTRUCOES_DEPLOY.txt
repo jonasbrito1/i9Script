@@ -1,0 +1,219 @@
+================================================================================
+                    i9Script - INSTRUÇÕES DE DEPLOY NO VPS
+================================================================================
+
+📋 PRÉ-REQUISITOS
+--------------------------------------------------------------------------------
+✓ VPS com Ubuntu 20.04+ ou Debian 11+
+✓ Acesso SSH root: 72.61.223.226:22
+✓ Domínio i9script.com apontado para o IP do VPS
+✓ Termius configurado para acesso SSH e SFTP
+
+
+🚀 PASSO A PASSO COMPLETO
+--------------------------------------------------------------------------------
+
+ETAPA 1: UPLOAD DOS ARQUIVOS
+-----------------------------
+1. Conectar via SFTP no Termius
+   - Host: 72.61.223.226
+   - Port: 22
+   - User: root
+   - Password: 4xmnqiB@t234
+
+2. Criar diretório no servidor:
+   mkdir -p /var/www/i9script
+
+3. Fazer upload da pasta "upload_vps" completa para:
+   /var/www/i9script/
+
+4. Estrutura final no servidor deve ficar:
+   /var/www/i9script/
+   ├── backend/
+   ├── frontend/
+   ├── config/
+   ├── scripts/
+   ├── docker-compose.production.yml
+   └── .env.example
+
+
+ETAPA 2: CONFIGURAR DNS DO DOMÍNIO
+-----------------------------
+ANTES de executar os scripts, configure o DNS do domínio i9script.com:
+
+1. No painel do seu provedor de domínio, adicione:
+
+   Tipo: A
+   Nome: @
+   Valor: 72.61.223.226
+   TTL: 3600
+
+   Tipo: A
+   Nome: www
+   Valor: 72.61.223.226
+   TTL: 3600
+
+2. Aguarde propagação (pode levar até 48h, geralmente 15-30 minutos)
+
+3. Teste a propagação:
+   ping i9script.com
+   nslookup i9script.com
+
+
+ETAPA 3: EXECUTAR SETUP INICIAL DO VPS
+-----------------------------
+Via SSH no Termius, execute:
+
+cd /var/www/i9script/scripts
+chmod +x *.sh
+bash setup-vps.sh
+
+Este script irá:
+- Atualizar o sistema
+- Instalar Docker e Docker Compose
+- Instalar Nginx
+- Instalar Certbot (SSL)
+- Criar diretórios necessários
+- Configurar firewall
+
+
+ETAPA 4: CONFIGURAR VARIÁVEIS DE AMBIENTE
+-----------------------------
+1. Copiar arquivo de exemplo:
+   cd /var/www/i9script
+   cp .env.example .env
+
+2. Editar senhas (IMPORTANTE):
+   nano .env
+
+   Altere as senhas padrão:
+   - MYSQL_ROOT_PASSWORD
+   - MYSQL_PASSWORD
+
+3. Verificar arquivo .env do backend:
+   nano backend/.env.production
+
+   Ajustar se necessário:
+   - JWT_SECRET (gerar uma chave aleatória forte)
+   - DB_PASSWORD (mesma do arquivo .env acima)
+
+
+ETAPA 5: EXECUTAR DEPLOY
+-----------------------------
+bash /var/www/i9script/scripts/deploy.sh
+
+Este script irá:
+- Configurar Nginx
+- Gerar certificado SSL (Let's Encrypt)
+- Copiar arquivos para locais corretos
+- Iniciar containers Docker (MySQL + Backend)
+- Executar migrations do banco
+
+
+ETAPA 6: VERIFICAR INSTALAÇÃO
+-----------------------------
+1. Ver status dos containers:
+   cd /var/www/i9script
+   docker-compose -f docker-compose.production.yml ps
+
+2. Ver logs em tempo real:
+   bash scripts/logs.sh
+
+3. Testar acesso:
+   - Frontend: https://i9script.com
+   - API: https://i9script.com/api
+   - Login: admin@i9script.com / admin123
+
+
+📝 COMANDOS ÚTEIS
+--------------------------------------------------------------------------------
+
+Reiniciar serviços:
+  bash /var/www/i9script/scripts/restart.sh
+
+Ver logs do backend:
+  bash /var/www/i9script/scripts/logs.sh backend
+
+Ver logs do MySQL:
+  bash /var/www/i9script/scripts/logs.sh mysql
+
+Parar tudo:
+  docker-compose -f /var/www/i9script/docker-compose.production.yml down
+
+Iniciar tudo:
+  docker-compose -f /var/www/i9script/docker-compose.production.yml up -d
+
+Acessar MySQL:
+  docker exec -it i9script-mysql-prod mysql -ui9script -p
+
+Backup do banco:
+  docker exec i9script-mysql-prod mysqldump -ui9script -p i9script_db > backup.sql
+
+
+🔐 CREDENCIAIS PADRÃO
+--------------------------------------------------------------------------------
+
+Sistema (após deploy):
+  Email: admin@i9script.com
+  Senha: admin123
+
+MySQL Root:
+  User: root
+  Password: (definido no .env)
+
+MySQL Aplicação:
+  User: i9script
+  Password: (definido no .env)
+  Database: i9script_db
+
+
+⚠️ IMPORTANTE - SEGURANÇA
+--------------------------------------------------------------------------------
+
+1. ALTERAR SENHAS após primeira instalação:
+   - Senha do MySQL root e usuário i9script
+   - JWT_SECRET no .env.production
+   - Senha de admin do sistema (pelo painel)
+
+2. Configurar backup automático do banco
+
+3. Manter sistema atualizado:
+   apt update && apt upgrade -y
+
+4. Monitorar logs regularmente:
+   bash scripts/logs.sh
+
+
+🆘 TROUBLESHOOTING
+--------------------------------------------------------------------------------
+
+Problema: Certificado SSL não gerou
+Solução: Verifique se DNS está propagado e execute:
+  certbot --nginx -d i9script.com -d www.i9script.com
+
+Problema: Containers não iniciam
+Solução: Ver logs específicos:
+  docker logs i9script-backend-prod
+  docker logs i9script-mysql-prod
+
+Problema: Erro de conexão com banco
+Solução: Verificar variáveis de ambiente e reiniciar:
+  bash scripts/restart.sh
+
+Problema: Frontend retorna 502 Bad Gateway
+Solução: Verificar se backend está rodando:
+  docker ps
+  docker logs i9script-backend-prod
+
+
+📞 SUPORTE
+--------------------------------------------------------------------------------
+Em caso de problemas, forneça:
+1. Logs dos containers
+2. Status dos containers (docker ps -a)
+3. Mensagem de erro completa
+
+
+================================================================================
+                            Boa sorte com o deploy! 🚀
+================================================================================

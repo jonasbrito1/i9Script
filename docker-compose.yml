@@ -1,4 +1,47 @@
 services:
+  mysql:
+    image: mysql:8.0
+    container_name: i9script-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: i9script
+      MYSQL_USER: i9script
+      MYSQL_PASSWORD: i9script123
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - i9script-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot123"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+    labels:
+      - "com.i9script.description=i9Script MySQL Database"
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: i9script-phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root123
+      UPLOAD_LIMIT: 100M
+    ports:
+      - "8082:80"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - i9script-network
+    labels:
+      - "com.i9script.description=i9Script phpMyAdmin"
+
   i9script-web:
     build:
       context: .
@@ -38,7 +81,14 @@ services:
     labels:
       - "com.i9script.description=i9Script Logs Monitor"
 
+networks:
+  i9script-network:
+    driver: bridge
+
 volumes:
+  mysql_data:
+    name: i9script-mysql-data
+    driver: local
   logs-volume:
     name: i9script-logs
     driver: local

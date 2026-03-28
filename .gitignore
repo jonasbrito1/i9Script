@@ -1,0 +1,28 @@
+# Dependency directories
+node_modules/
+**/node_modules/
+
+# Build outputs
+build/
+dist/
+**/build/
+**/dist/
+upload_vps/guia_do_empreendedor/frontend/assets/
+
+# Environment and secrets
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Sensitive local files
+SENHAS_PRODUCAO.txt
+*SENHAS*.txt
+.claude/
+
+# OS / editor artifacts
+nul
+.DS_Store
+Thumbs.db

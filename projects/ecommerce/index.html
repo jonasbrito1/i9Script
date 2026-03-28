@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GarminTech Store - Produtos Premium</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/assets/utils/images/i9Script.svg">
+
+    <style>
+        :root {
+            --garmin-blue: #007cc3;
+            --garmin-dark: #003a5d;
+            --garmin-light: #f8f9fa;
+            --garmin-orange: #ff6b35;
+            --garmin-gray: #6c757d;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--garmin-light);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--garmin-blue);
+            border-radius: 4px;
+        }
+        
+        /* Header */
+        .top-bar {
+            background: var(--garmin-dark);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.875rem;
+        }
+        
+        .top-bar .container-fluid {
+            max-width: 1400px;
+        }
+        
+        .navbar {
+            background: white;
+            box-shadow: var(--shadow-md);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+        }
+        
+        .navbar .container-fluid {
+            max-width: 1400px;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            color: var(--garmin-blue) !important;
+        }
+        
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover {
+            color: var(--garmin-blue) !important;
+            background: rgba(0, 124, 195, 0.1);
+        }
+        
+        /* Search Bar Responsive */
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .search-container .form-control {
+            border-radius: 25px;
+            padding-right: 50px;
+            border: 2px solid #e9ecef;
+            transition: var(--transition);
+        }
+        
+        .search-container .form-control:focus {
+            border-color: var(--garmin-blue);
+            box-shadow: 0 0 0 0.25rem rgba(0, 124, 195, 0.15);
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: var(--garmin-blue);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .search-btn:hover {
+            background: var(--garmin-dark);
+        }
+        
+        .cart-icon {
+            position: relative;
+            color: var(--garmin-blue);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .cart-icon:hover {
+            color: var(--garmin-dark);
+            transform: scale(1.1);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--garmin-orange);
+            color: white;
+            border-radius: 50%;
+            min-width: 20px;
+            height: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 0.3s ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--garmin-blue) 0%, var(--garmin-dark) 100%);
+            color: white;
+            padding: clamp(80px, 15vh, 120px) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero .lead {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .btn-primary {
+            background: var(--garmin-orange);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-outline-light {
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+        
+        .btn-outline-light:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Categories */
+        .categories {
+            padding: clamp(60px, 12vh, 100px) 0;
+            background: var(--garmin-light);
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--garmin-dark);
+        }
+        
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--garmin-gray);
+            margin-bottom: 3rem;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: clamp(20px, 4vw, 30px);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            margin-bottom: 30px;
+            height: 100%;
+            border: 2px solid transparent;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--garmin-blue);
+        }
+        
+        .category-icon {
+            font-size: clamp(2.5rem, 5vw, 3rem);
+            color: var(--garmin-blue);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .category-card:hover .category-icon {
+            transform: scale(1.1);
+            color: var(--garmin-orange);
+        }
+        
+        .category-card h5 {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+        }
+        
+        .category-card p {
+            color: var(--garmin-gray);
+            font-size: clamp(0.875rem, 1.5vw, 1rem);
+            margin: 0;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: clamp(60px, 12vh, 100px) 0;
+        }
+        
+        /* Filter Sidebar */
+        .filter-sidebar {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: clamp(20px, 4vw, 30px);
+            box-shadow: var(--shadow-md);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-title {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--garmin-dark);
+            font-size: 1.25rem;
+        }
+        
+        .filter-group {
+            margin-bottom: 2rem;
+        }
+        
+        .filter-group h6 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1rem;
+        }
+        
+        .form-check {
+            margin-bottom: 0.75rem;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--garmin-blue);
+            border-color: var(--garmin-blue);
+        }
+        
+        .form-check-label {
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        /* Mobile Filter Toggle */
+        .filter-toggle {
+            display: none;
+            background: var(--garmin-blue);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+        
+        /* Product Cards */
+        .product-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            margin-bottom: 30px;
+            border: 2px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--garmin-blue);
+        }
+        
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            height: clamp(200px, 30vw, 250px);
+            background: var(--garmin-light);
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--garmin-orange);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-info {
+            padding: clamp(20px, 4vw, 25px);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-title {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #333;
+            line-height: 1.3;
+        }
+        
+        .product-price {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            font-weight: 700;
+            color: var(--garmin-blue);
+            margin-bottom: 0.75rem;
+        }
+        
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .product-description {
+            color: var(--garmin-gray);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .btn-add-cart {
+            background: var(--garmin-blue);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            width: 100%;
+            font-size: 0.9rem;
+        }
+        
+        .btn-add-cart:hover {
+            background: var(--garmin-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Product Controls */
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .products-header h2 {
+            font-size: clamp(1.75rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--garmin-dark);
+            margin: 0;
+        }
+        
+        .sort-select {
+            min-width: 200px;
+            border-radius: var(--border-radius);
+            border: 2px solid #e9ecef;
+            padding: 8px 15px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--garmin-dark);
+            color: white;
+            padding: clamp(40px, 8vh, 60px) 0 20px;
+        }
+        
+        .footer h5 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+        }
+        
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 2;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .footer a:hover {
+            color: var(--garmin-orange);
+            text-decoration: none;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            color: var(--garmin-orange);
+            transform: translateY(-2px);
+        }
+        
+        /* Cart Modal */
+        .modal-content {
+            border-radius: var(--border-radius);
+            border: none;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid #e9ecef;
+            padding: 1.5rem;
+        }
+        
+        .modal-title {
+            font-weight: 700;
+            color: var(--garmin-dark);
+        }
+        
+        .cart-item {
+            border-bottom: 1px solid #f8f9fa;
+            padding: 1.5rem 0;
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            background: var(--garmin-light);
+            border: 1px solid #ddd;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .quantity-btn:hover {
+            background: var(--garmin-blue);
+            color: white;
+            border-color: var(--garmin-blue);
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--garmin-blue);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 9999;
+            min-width: 300px;
+            max-width: 400px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive Design */
+        
+        /* Extra Small devices (portrait phones, less than 576px) */
+        @media (max-width: 575.98px) {
+            .top-bar {
+                font-size: 0.75rem;
+                text-align: center;
+            }
+            
+            .top-bar .row > div:last-child {
+                display: none;
+            }
+            
+            .navbar {
+                padding: 0.75rem 0;
+            }
+            
+            .search-container {
+                max-width: 100%;
+                margin: 0.5rem 0;
+            }
+            
+            .hero {
+                padding: 60px 0;
+                text-align: center;
+            }
+            
+            .hero .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .categories, .products {
+                padding: 40px 0;
+            }
+            
+            .filter-sidebar {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .filter-toggle {
+                display: block;
+            }
+            
+            .filter-content {
+                display: none;
+            }
+            
+            .filter-content.show {
+                display: block;
+            }
+            
+            .products-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .sort-select {
+                min-width: 100%;
+            }
+            
+            .modal-dialog {
+                margin: 1rem;
+            }
+            
+            .cart-item .row {
+                text-align: center;
+            }
+            
+            .cart-item .col-2,
+            .cart-item .col-1 {
+                margin-bottom: 1rem;
+            }
+            
+            .footer .col-lg-2,
+            .footer .col-lg-4 {
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+        }
+        
+        /* Small devices (landscape phones, 576px and up) */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .filter-toggle {
+                display: block;
+            }
+            
+            .filter-content {
+                display: none;
+            }
+            
+            .filter-content.show {
+                display: block;
+            }
+            
+            .products-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+        
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .search-container {
+                max-width: 250px;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .filter-sidebar {
+                margin-bottom: 2rem;
+            }
+        }
+        
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) {
+            .hero {
+                padding: 100px 0;
+            }
+            
+            .product-image {
+                height: 250px;
+            }
+        }
+        
+        /* Extra large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+            .container-fluid {
+                max-width: 1400px;
+            }
+        }
+        
+        /* Ultra wide screens */
+        @media (min-width: 1400px) {
+            .hero {
+                padding: 120px 0;
+            }
+            
+            .categories, .products {
+                padding: 100px 0;
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --garmin-light: #1a1a1a;
+            }
+        }
+        
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+            .product-card,
+            .category-card,
+            .filter-sidebar {
+                border: 2px solid #333;
+            }
+        }
+        
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <small><i class="fas fa-shipping-fast me-2"></i>Frete grátis acima de R$ 299</small>
+                </div>
+                <div class="col-md-6 text-end">
+                    <small><i class="fas fa-phone me-2"></i>(11) 99999-9999</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-satellite me-2"></i>GarminTech</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#categories">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+                </ul>
+                
+                <div class="d-flex align-items-center flex-wrap gap-2">
+                    <div class="search-container">
+                        <form class="position-relative" role="search">
+                            <input class="form-control" type="search" placeholder="Buscar produtos..." aria-label="Buscar">
+                            <button class="search-btn" type="submit" aria-label="Buscar">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <a href="#" class="cart-icon me-3" data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Carrinho de compras">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <a href="#" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-user me-1"></i>Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="display-4 fw-bold mb-4">Tecnologia Garmin</h1>
+                    <p class="lead mb-4">Descubra a mais avançada tecnologia em GPS, smartwatches e dispositivos esportivos. Equipamentos de precisão para aventureiros e atletas.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+                        <a href="#products" class="btn btn-primary btn-lg">Ver Produtos</a>
+                        <a href="#categories" class="btn btn-outline-light btn-lg">Explorar Categorias</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ffffff20' width='400' height='300' rx='20'/><circle fill='%23007cc3' cx='200' cy='150' r='60'/><text x='200' y='160' text-anchor='middle' fill='white' font-size='20'>GPS</text></svg>" 
+                         alt="Garmin GPS" class="img-fluid" style="max-width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories" id="categories">
+        <div class="container-fluid">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Nossas Categorias</h2>
+                    <p class="section-subtitle">Encontre o produto perfeito para sua aventura</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="category-card h-100" onclick="filterProducts('gps')" role="button" tabindex="0">
+                        <div class="category-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h5>GPS Automotivo</h5>
+                        <p>Navegação precisa para suas viagens</p>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-md-3">
+                    <div class="category-card h-100" onclick="filterProducts('smartwatch')" role="button" tabindex="0">
+                        <div class="category-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h5>Smartwatches</h5>
+                        <p>Monitoramento completo da saúde</p>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-md-3">
+                    <div class="category-card h-100" onclick="filterProducts('marine')" role="button" tabindex="0">
+                        <div class="category-icon">
+                            <i class="fas fa-anchor"></i>
+                        </div>
+                        <h5>Náutico</h5>
+                        <p>Equipamentos para navegação marítima</p>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-md-3">
+                    <div class="category-card h-100" onclick="filterProducts('aviation')" role="button" tabindex="0">
+                        <div class="category-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h5>Aviação</h5>
+                        <p>Tecnologia para pilotos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar Filters -->
+                <div class="col-lg-3">
+                    <div class="filter-sidebar">
+                        <button class="filter-toggle" onclick="toggleFilters()" aria-expanded="false">
+                            <i class="fas fa-filter me-2"></i>Filtros
+                        </button>
+                        
+                        <div class="filter-content">
+                            <h5 class="filter-title">Filtros</h5>
+                            
+                            <div class="filter-group">
+                                <h6>Categoria</h6>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="gps" id="filter-gps">
+                                    <label class="form-check-label" for="filter-gps">GPS Automotivo</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="smartwatch" id="filter-smartwatch">
+                                    <label class="form-check-label" for="filter-smartwatch">Smartwatches</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="marine" id="filter-marine">
+                                    <label class="form-check-label" for="filter-marine">Náutico</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="aviation" id="filter-aviation">
+                                    <label class="form-check-label" for="filter-aviation">Aviação</label>
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <h6>Faixa de Preço</h6>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="0-500" id="price-1">
+                                    <label class="form-check-label" for="price-1">Até R$ 500</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="500-1000" id="price-2">
+                                    <label class="form-check-label" for="price-2">R$ 500 - R$ 1.000</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="1000-2000" id="price-3">
+                                    <label class="form-check-label" for="price-3">R$ 1.000 - R$ 2.000</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2000+" id="price-4">
+                                    <label class="form-check-label" for="price-4">Acima de R$ 2.000</label>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-primary w-100 mb-2" onclick="applyFilters()">Aplicar Filtros</button>
+                            <button class="btn btn-outline-secondary w-100" onclick="clearFilters()">Limpar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="col-lg-9">
+                    <div class="products-header">
+                        <h2>Produtos em Destaque</h2>
+                        <select class="form-select sort-select" onchange="sortProducts(this.value)" aria-label="Ordenar produtos">
+                            <option value="default">Ordenar por</option>
+                            <option value="price-asc">Menor preço</option>
+                            <option value="price-desc">Maior preço</option>
+                            <option value="name">Nome A-Z</option>
+                            <option value="rating">Melhor avaliado</option>
+                        </select>
+                    </div>
+                    
+                    <div class="row g-4" id="products-grid">
+                        <!-- Products will be loaded here by JavaScript -->
+                    </div>
+                    
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Carregando produtos...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="fas fa-satellite me-2"></i>GarminTech</h5>
+                    <p>Sua loja especializada em tecnologia Garmin. Oferecemos os melhores produtos com garantia e suporte especializado.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>Categorias</h5>
+                    <a href="#">GPS Automotivo</a><br>
+                    <a href="#">Smartwatches</a><br>
+                    <a href="#">Náutico</a><br>
+                    <a href="#">Aviação</a><br>
+                    <a href="#">Fitness</a>
+                </div>
+                
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>Atendimento</h5>
+                    <a href="#">Central de Ajuda</a><br>
+                    <a href="#">Fale Conosco</a><br>
+                    <a href="#">Garantia</a><br>
+                    <a href="#">Trocas e Devoluções</a><br>
+                    <a href="#">FAQ</a>
+                </div>
+                
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>Empresa</h5>
+                    <a href="#">Sobre Nós</a><br>
+                    <a href="#">Trabalhe Conosco</a><br>
+                    <a href="#">Política de Privacidade</a><br>
+                    <a href="#">Termos de Uso</a>
+                </div>
+                
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>Contato</h5>
+                    <p><i class="fas fa-phone me-2"></i>(11) 99999-9999</p>
+                    <p><i class="fas fa-envelope me-2"></i>contato@garmintech.com.br</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>São Paulo, SP</p>
+                </div>
+            </div>
+            
+            <hr style="border-color: #666;">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 GarminTech. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Seu Carrinho</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cart-items">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    <div class="text-center py-4" id="empty-cart" style="display: none;">
+                        <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                        <p class="text-muted">Seu carrinho está vazio</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="w-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <strong>Total: <span id="cart-total">R$ 0,00</span></strong>
+                        </div>
+                        <div class="d-flex flex-column flex-sm-row gap-2">
+                            <button type="button" class="btn btn-outline-secondary flex-fill" data-bs-dismiss="modal">Continuar Comprando</button>
+                            <button type="button" class="btn btn-primary flex-fill" onclick="checkout()">Finalizar Compra</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Sample product data
+        const products = [
+            {
+                id: 1,
+                name: "Garmin DriveSmart 65",
+                category: "gps",
+                price: 899.99,
+                oldPrice: 1199.99,
+                rating: 4.5,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23f8f9fa' width='300' height='200'/><rect fill='%23007cc3' x='50' y='50' width='200' height='100' rx='10'/><text x='150' y='105' text-anchor='middle' fill='white' font-size='14'>GPS DriveSmart</text></svg>",
+                description: "GPS automotivo com tela de 6.95 polegadas e recursos inteligentes",
+                badge: "Oferta"
+            },
+            {
+                id: 2,
+                name: "Garmin Vívoactive 4",
+                category: "smartwatch",
+                price: 1299.99,
+                rating: 4.8,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23f8f9fa' width='300' height='200'/><circle fill='%23007cc3' cx='150' cy='100' r='60'/><circle fill='%23ffffff' cx='150' cy='100' r='45'/><text x='150' y='105' text-anchor='middle' fill='%23007cc3' font-size='12'>Vívoactive</text></svg>",
+                description: "Smartwatch com GPS e monitoramento de saúde 24/7",
+                badge: "Novo"
+            },
+            {
+                id: 3,
+                name: "Garmin GPSMAP 86sci",
+                category: "marine",
+                price: 2899.99,
+                rating: 4.7,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23f8f9fa' width='300' height='200'/><rect fill='%23007cc3' x='75' y='40' width='150' height='120' rx='5'/><text x='150' y='105' text-anchor='middle' fill='white' font-size='12'>GPSMAP Marine</text></svg>",
+                description: "GPS marítimo handheld com recursos de navegação avançados",
+                badge: "Premium"
+            },
+            {
+                id: 4,
+                name: "Garmin G5 Electronic Flight",
+                category: "aviation",
+                price: 8999.99,
+                rating: 4.9,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23f8f9fa' width='300' height='200'/><circle fill='%23007cc3' cx='150' cy='100' r='70'/><text x='150' y='105' text-anchor='middle' fill='white' font-size='14'>G5 Aviation</text></svg>",
+                description: "Sistema de voo eletrônico para aeronaves",
+                badge: "Profissional"
+            },
+            {
+                id: 5,
+                name: "Garmin Edge 1040",
+                category: "smartwatch",
+                price: 2499.99,
+                rating: 4.6,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23f8f9fa' width='300' height='200'/><rect fill='%23007cc3' x='75' y='60' width='150' height='80' rx='5'/><text x='150' y='105' text-anchor='middle' fill='white' font-size='12'>Edge Cycling</text></svg>",
+                description: "Computador de ciclismo com GPS e métricas avançadas",
+                badge: "Bestseller"
+            },
+            {
+                id: 6,
+                name: "Garmin Forerunner 955",
+                category: "smartwatch",
+                price: 1899.99,
+                rating: 4.7,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23f8f9fa' width='300' height='200'/><circle fill='%23007cc3' cx='150' cy='100' r='55'/><circle fill='%23ffffff' cx='150' cy='100' r='40'/><text x='150' y='105' text-anchor='middle' fill='%23007cc3' font-size='10'>Forerunner</text></svg>",
+                description: "Relógio multiesportivo com GPS e recursos de treinamento",
+                badge: "Running"
+            }
+        ];
+
+        let cart = [];
+        let filteredProducts = [...products];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayProducts(products);
+            updateCartCount();
+            updateCartModal();
+        });
+
+        // Toggle mobile filters
+        function toggleFilters() {
+            const filterContent = document.querySelector('.filter-content');
+            const filterToggle = document.querySelector('.filter-toggle');
+            
+            filterContent.classList.toggle('show');
+            const isExpanded = filterContent.classList.contains('show');
+            filterToggle.setAttribute('aria-expanded', isExpanded);
+            
+            const icon = filterToggle.querySelector('i');
+            icon.className = isExpanded ? 'fas fa-times me-2' : 'fas fa-filter me-2';
+        }
+
+        // Display products
+        function displayProducts(productsToShow) {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+
+            if (productsToShow.length === 0) {
+                grid.innerHTML = '<div class="col-12 text-center py-5"><p class="text-muted">Nenhum produto encontrado</p></div>';
+                return;
+            }
+
+            productsToShow.forEach(product => {
+                const productCard = `
+                    <div class="col-6 col-md-6 col-lg-4">
+                        <div class="product-card h-100">
+                            <div class="product-image">
+                                <img src="${product.image}" alt="${product.name}" loading="lazy">
+                                ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                            </div>
+                            <div class="product-info">
+                                <h6 class="product-title">${product.name}</h6>
+                                <div class="product-price">
+                                    R$ ${product.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+                                    ${product.oldPrice ? `<small class="text-muted text-decoration-line-through ms-2">R$ ${product.oldPrice.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</small>` : ''}
+                                </div>
+                                <div class="product-rating">
+                                    ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}
+                                    <small class="text-muted ms-1">(${product.rating})</small>
+                                </div>
+                                <p class="product-description">${product.description}</p>
+                                <button class="btn-add-cart" onclick="addToCart(${product.id})" aria-label="Adicionar ${product.name} ao carrinho">
+                                    <i class="fas fa-cart-plus me-2"></i>Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += productCard;
+            });
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+
+            updateCartCount();
+            updateCartModal();
+            
+            showNotification('Produto adicionado ao carrinho!', 'success');
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.querySelector('.cart-count').textContent = count;
+            
+            if (count > 0) {
+                document.querySelector('.cart-count').style.animation = 'pulse 0.3s ease-in-out';
+            }
+        }
+
+        // Update cart modal
+        function updateCartModal() {
+            const cartItems = document.getElementById('cart-items');
+            const emptyCart = document.getElementById('empty-cart');
+            const cartTotal = document.getElementById('cart-total');
+
+            if (cart.length === 0) {
+                cartItems.style.display = 'none';
+                emptyCart.style.display = 'block';
+                cartTotal.textContent = 'R$ 0,00';
+                return;
+            }
+
+            cartItems.style.display = 'block';
+            emptyCart.style.display = 'none';
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                html += `
+                    <div class="cart-item">
+                        <div class="row align-items-center g-3">
+                            <div class="col-3 col-md-2">
+                                <img src="${item.image}" alt="${item.name}" class="img-fluid rounded">
+                            </div>
+                            <div class="col-9 col-md-4">
+                                <h6 class="mb-1">${item.name}</h6>
+                                <small class="text-muted">R$ ${item.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</small>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="quantity-controls">
+                                    <div class="quantity-btn" onclick="updateQuantity(${item.id}, -1)" role="button" tabindex="0" aria-label="Diminuir quantidade">-</div>
+                                    <span class="mx-2">${item.quantity}</span>
+                                    <div class="quantity-btn" onclick="updateQuantity(${item.id}, 1)" role="button" tabindex="0" aria-label="Aumentar quantidade">+</div>
+                                </div>
+                            </div>
+                            <div class="col-4 col-md-2">
+                                <strong>R$ ${itemTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</strong>
+                            </div>
+                            <div class="col-2 col-md-1">
+                                <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})" aria-label="Remover ${item.name}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartItems.innerHTML = html;
+            cartTotal.textContent = `R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+        }
+
+        // Update quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                    return;
+                }
+                updateCartCount();
+                updateCartModal();
+            }
+        }
+
+        // Remove from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            updateCartModal();
+            showNotification('Produto removido do carrinho', 'info');
+        }
+
+        // Filter products
+        function filterProducts(category) {
+            document.getElementById(`filter-${category}`).checked = true;
+            applyFilters();
+            document.getElementById('products').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // Apply filters
+        function applyFilters() {
+            const categoryFilters = [];
+            const priceFilters = [];
+
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                if (checkbox.value.includes('-')) {
+                    priceFilters.push(checkbox.value);
+                } else {
+                    categoryFilters.push(checkbox.value);
+                }
+            });
+
+            filteredProducts = products.filter(product => {
+                const categoryMatch = categoryFilters.length === 0 || categoryFilters.includes(product.category);
+                
+                let priceMatch = priceFilters.length === 0;
+                if (!priceMatch) {
+                    priceFilters.forEach(range => {
+                        if (range === '0-500' && product.price <= 500) priceMatch = true;
+                        if (range === '500-1000' && product.price > 500 && product.price <= 1000) priceMatch = true;
+                        if (range === '1000-2000' && product.price > 1000 && product.price <= 2000) priceMatch = true;
+                        if (range === '2000+' && product.price > 2000) priceMatch = true;
+                    });
+                }
+
+                return categoryMatch && priceMatch;
+            });
+
+            displayProducts(filteredProducts);
+            
+            // Hide filters on mobile after applying
+            if (window.innerWidth < 768) {
+                const filterContent = document.querySelector('.filter-content');
+                if (filterContent.classList.contains('show')) {
+                    toggleFilters();
+                }
+            }
+        }
+
+        // Clear filters
+        function clearFilters() {
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            filteredProducts = [...products];
+            displayProducts(filteredProducts);
+        }
+
+        // Sort products
+        function sortProducts(sortBy) {
+            let sortedProducts = [...filteredProducts];
+
+            switch(sortBy) {
+                case 'price-asc':
+                    sortedProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    sortedProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'name':
+                    sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'rating':
+                    sortedProducts.sort((a, b) => b.rating - a.rating);
+                    break;
+                default:
+                    sortedProducts = [...filteredProducts];
+            }
+
+            displayProducts(sortedProducts);
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Seu carrinho está vazio!', 'warning');
+                return;
+            }
+            
+            showNotification('Redirecionando para o checkout...', 'info');
+            setTimeout(() => {
+                alert('Funcionalidade de checkout em desenvolvimento.\n\nSeus produtos:\n' + 
+                      cart.map(item => `${item.name} (${item.quantity}x)`).join('\n'));
+            }, 1000);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification alert alert-${type === 'success' ? 'success' : type === 'warning' ? 'warning' : 'info'} alert-dismissible`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
+                ${message}
+                <button type="button" class="btn-close" onclick="this.parentElement.remove()" aria-label="Fechar"></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 3000);
+        }
+
+        // Search functionality
+        document.querySelector('form[role="search"]').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchTerm = this.querySelector('input').value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                displayProducts(products);
+                return;
+            }
+            
+            const searchResults = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.description.toLowerCase().includes(searchTerm) ||
+                product.category.toLowerCase().includes(searchTerm)
+            );
+            
+            displayProducts(searchResults);
+            document.getElementById('products').scrollIntoView({behavior: 'smooth'});
+            
+            if (searchResults.length === 0) {
+                showNotification(`Nenhum produto encontrado para "${searchTerm}"`, 'info');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.getElementById('navbarNav');
+                    if (navbarCollapse.classList.contains('show')) {
+                        bootstrap.Collapse.getInstance(navbarCollapse).hide();
+                    }
+                }
+            });
+        });
+
+        // Keyboard navigation for category cards
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            // Reset filter toggle on desktop
+            if (window.innerWidth >= 768) {
+                const filterContent = document.querySelector('.filter-content');
+                const filterToggle = document.querySelector('.filter-toggle');
+                
+                filterContent.classList.remove('show');
+                filterToggle.setAttribute('aria-expanded', 'false');
+                filterToggle.querySelector('i').className = 'fas fa-filter me-2';
+            }
+        });
+
+        // Loading simulation
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('products-grid').style.opacity = '0.5';
+            
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('products-grid').style.opacity = '1';
+            }, 800);
+        }
+
+        // Simulate loading when applying filters
+        const originalApplyFilters = applyFilters;
+        applyFilters = function() {
+            showLoading();
+            setTimeout(originalApplyFilters, 800);
+        };
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                }
+            });
+        }, observerOptions);
+
+        // Observe product cards and category cards
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.querySelectorAll('.product-card, .category-card').forEach(card => {
+                    observer.observe(card);
+                });
+            }, 100);
+        });
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

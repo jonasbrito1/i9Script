@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="i9Script - Desenvolvimento de software com excelência técnica mundial. DevOps CI/CD, Security by Design, Privacy by Design. Profissionais capacitados globalmente entregando resultados concretos.">
-    <meta name="keywords" content="desenvolvimento, software, DevOps, CI/CD, security by design, privacy by design, cloud, React, Node.js, TypeScript, automação, tecnologia, excelência técnica">
+    <meta name="description" content="i9Script - Desenvolvimento de software, aplicativos, sites e automações inteligentes em Manaus, Amazonas. Inovação infinita em cada projeto.">
+    <meta name="keywords" content="desenvolvimento, software, aplicativos, sites, automação, Manaus, Amazonas, programação, tecnologia">
     <meta name="author" content="i9Script">
     <meta name="robots" content="index, follow">
     
@@ -17,7 +17,7 @@
     
     <!-- Open Graph -->
     <meta property="og:title" content="i9Script - Desenvolvimento & Automação">
-    <meta property="og:description" content="Transformamos suas ideias em soluções digitais com excelência técnica. Profissionais capacitados globalmente entregando resultados concretos.">
+    <meta property="og:description" content="Transformamos suas ideias em soluções digitais inovadoras com a perfeição matemática do infinito.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://i9script.com">
     <meta property="og:image" content="https://i9script.com/assets/og-image.jpg">
@@ -25,7 +25,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="i9Script - Desenvolvimento & Automação">
-    <meta name="twitter:description" content="Transformamos suas ideias em soluções digitais com excelência técnica. Profissionais capacitados globalmente entregando resultados concretos.">
+    <meta name="twitter:description" content="Transformamos suas ideias em soluções digitais inovadoras com a perfeição matemática do infinito.">
     
     <title>i9Script - Desenvolvimento & Automação</title>
     
@@ -40,10 +40,10 @@
     <!-- EmailJS para envio de emails -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
-    <!-- Google Fonts para Russo One e Audiowide -->
+    <!-- Google Fonts para Orbitron (usada no favicon e logo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -95,7 +95,7 @@
         }
 
         body {
-            font-family: 'Russo One', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
             background: var(--bg-primary);
@@ -124,7 +124,7 @@
         }
 
         .logo {
-            font-family: 'Audiowide', 'Russo One', sans-serif;
+            font-family: 'Orbitron', 'Inter', sans-serif;
             font-size: 1.8rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--cyan), var(--gold));
@@ -357,33 +357,6 @@
             transform: rotate(180deg);
         }
 
-        /* Login Button */
-        .btn-login {
-            background: linear-gradient(135deg, var(--cyan), var(--primary));
-            color: var(--white);
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
-        }
-
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 245, 255, 0.4);
-        }
-
-        .btn-login i {
-            font-size: 1rem;
-        }
-
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -422,7 +395,6 @@
         }
 
         .hero-text h1 {
-            font-family: 'Audiowide', 'Russo One', sans-serif;
             font-size: 3.5rem;
             font-weight: 800;
             color: var(--text-primary);
@@ -606,7 +578,6 @@
         }
 
         .brand-logo-main {
-            font-family: 'Audiowide', 'Russo One', sans-serif;
             font-size: 4rem;
             font-weight: 900;
             text-align: center;
@@ -804,11 +775,10 @@
         }
 
         .section-header h2 {
-            font-family: 'Audiowide', 'Russo One', sans-serif;
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--cyan), var(--gold));
+            background: linear-gradient(135deg, var(--text-primary), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1910,9 +1880,6 @@
                 <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
                     <span class="theme-icon">🌙</span>
                 </button>
-                <a href="http://localhost:3001/login" class="btn-login" data-pt="Login" data-en="Login">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </a>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -1925,7 +1892,7 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 data-pt="Desenvolvimento & <span class='highlight'>Automação</span> Inteligente" data-en="Development & Intelligent <span class='highlight'>Automation</span>">Desenvolvimento & <span class="highlight">Automação</span> Inteligente</h1>
-                <p data-pt="Transformando suas ideias em soluções digitais concretas. Desenvolvimento de software, aplicativos, sites e automações com excelência técnica e resultados mensuráveis." data-en="Globally trained professionals transforming your ideas into concrete digital solutions. Software development, applications, websites and automations with technical excellence and measurable results.">Transformando suas ideias em soluções digitais concretas. Desenvolvimento de software, aplicativos, sites e automações com excelência técnica e resultados mensuráveis.</p>
+                <p data-pt="Transformamos suas ideias em soluções digitais inovadoras. Especializados em desenvolvimento de software, aplicativos, sites e automações que impulsionam seu negócio." data-en="We transform your ideas into innovative digital solutions. Specialized in software development, applications, websites and automations that boost your business.">Transformamos suas ideias em soluções digitais inovadoras. Especializados em desenvolvimento de software, aplicativos, sites e automações que impulsionam seu negócio.</p>
                 <div class="cta-buttons">
                     <a href="#projects" class="btn btn-primary" data-pt="Ver Projetos" data-en="View Projects">Ver Projetos</a>
                     <a href="#contact" class="btn btn-secondary" data-pt="Fale Conosco" data-en="Contact Us">Fale Conosco</a>
@@ -1972,7 +1939,7 @@
     <section id="brand" class="brand-analysis">
         <div class="container">
             <div class="brand-logo-main">i9Script</div>
-            <div class="brand-tagline" data-pt="Inovação Técnica em Cada Linha de Código" data-en="Technical Innovation in Every Line of Code">Inovação Técnica em Cada Linha de Código</div>
+            <div class="brand-tagline" data-pt="Inovação Infinita em Cada Linha de Código" data-en="Infinite Innovation in Every Line of Code">Inovação Infinita em Cada Linha de Código</div>
             
             <div class="letter-breakdown">
                 <div class="letter-card loading">
@@ -1992,7 +1959,7 @@
 
                 <div class="letter-card loading">
                     <span class="letter-symbol nine-symbol">9</span>
-                    <h3 class="letter-title" data-pt="Excelência Técnica" data-en="Technical Excellence">Excelência Técnica</h3>
+                    <h3 class="letter-title" data-pt="Infinito & Excelência" data-en="Infinite & Excellence">Infinito & Excelência</h3>
                     <p class="letter-meaning" data-pt="O número 9 é o verdadeiro símbolo do infinito matemático. Multiplicado por qualquer número, sempre retorna a 9 (pela soma dos dígitos). Representa completude, totalidade e ciclos infinitos de excelência." data-en="The number 9 is the true symbol of mathematical infinity. Multiplied by any number, it always returns to 9 (by the sum of digits). It represents completeness, totality and infinite cycles of excellence.">
                         O número 9 é o verdadeiro símbolo do infinito matemático. Multiplicado por qualquer número, sempre retorna a 9 (pela soma dos dígitos). Representa completude, totalidade e ciclos infinitos de excelência.
                     </p>
@@ -2035,7 +2002,7 @@
                     </div>
                     <div class="synergy-item">
                         <span class="synergy-icon">♾️</span>
-                        <h3 data-pt="Possibilidades Técnicas" data-en="Technical Possibilities">Possibilidades Técnicas</h3>
+                        <h3 data-pt="Possibilidades Infinitas" data-en="Infinite Possibilities">Possibilidades Infinitas</h3>
                         <p data-pt="O '9' representa que não há limites para o que pode ser criado" data-en="The '9' represents that there are no limits to what can be created">O "9" representa que não há limites para o que pode ser criado</p>
                     </div>
                     <div class="synergy-item">
@@ -2053,45 +2020,12 @@
 
             <div style="background: var(--bg-tertiary); border-radius: 20px; padding: 3rem; margin: 3rem 0; text-align: center; border: 1px solid var(--border-color);" class="loading">
                 <h3 style="color: var(--cyan); margin-bottom: 1rem; font-size: 1.8rem;" data-pt="Filosofia da Marca" data-en="Brand Philosophy">Filosofia da Marca</h3>
-                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);" data-pt="<strong style='color: var(--gold);'>i9Script</strong> não é apenas uma empresa de tecnologia - é a manifestação da excelência técnica. Onde o 'i' de inovação encontra o '9' da perfeição matemática, nascem scripts que transcendem o código comum para se tornarem soluções extraordinárias. Cada projeto é um ciclo completo de excelência que sempre retorna ao seu estado perfeito, assim como o número 9." data-en="<strong style='color: var(--gold);'>i9Script</strong> is not just a technology company - it is the manifestation of technical excellence. Where the 'i' of innovation meets the '9' of mathematical perfection, scripts are born that transcend common code to become extraordinary solutions. Each project is a complete cycle of excellence that always returns to its perfect state, just like the number 9.">
-                    <strong style="color: var(--gold);">i9Script</strong> não é apenas uma empresa de tecnologia - é a manifestação da excelência técnica.
-                    Onde o "i" de inovação encontra o "9" da perfeição matemática, nascem scripts que transcendem
-                    o código comum para se tornarem soluções extraordinárias. Cada projeto é um ciclo completo de
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);" data-pt="<strong style='color: var(--gold);'>i9Script</strong> não é apenas uma empresa de tecnologia - é a manifestação da inovação infinita. Onde o 'i' de inovação encontra o '9' da perfeição matemática, nascem scripts que transcendem o código comum para se tornarem soluções extraordinárias. Cada projeto é um ciclo completo de excelência que sempre retorna ao seu estado perfeito, assim como o número 9." data-en="<strong style='color: var(--gold);'>i9Script</strong> is not just a technology company - it is the manifestation of infinite innovation. Where the 'i' of innovation meets the '9' of mathematical perfection, scripts are born that transcend common code to become extraordinary solutions. Each project is a complete cycle of excellence that always returns to its perfect state, just like the number 9.">
+                    <strong style="color: var(--gold);">i9Script</strong> não é apenas uma empresa de tecnologia - é a manifestação da inovação infinita. 
+                    Onde o "i" de inovação encontra o "9" da perfeição matemática, nascem scripts que transcendem 
+                    o código comum para se tornarem soluções extraordinárias. Cada projeto é um ciclo completo de 
                     excelência que sempre retorna ao seu estado perfeito, assim como o número 9.
                 </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mission, Vision, Values Section -->
-    <section id="mvv" class="services">
-        <div class="container">
-            <div class="section-header loading">
-                <h2 data-pt="Missão, Visão e Valores" data-en="Mission, Vision and Values">Missão, Visão e Valores</h2>
-                <p data-pt="Nossos princípios fundamentais que guiam cada decisão e linha de código." data-en="Our fundamental principles that guide every decision and line of code.">Nossos princípios fundamentais que guiam cada decisão e linha de código.</p>
-            </div>
-            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="service-card loading">
-                    <div class="service-icon">🎯</div>
-                    <h3 data-pt="Missão" data-en="Mission">Missão</h3>
-                    <p data-pt="Transformar ideias em soluções digitais de excelência técnica, entregando resultados concretos através de profissionais capacitados globalmente e práticas comprovadas de desenvolvimento." data-en="Transform ideas into digital solutions of technical excellence, delivering concrete results through globally trained professionals and proven development practices.">Transformar ideias em soluções digitais de excelência técnica, entregando resultados concretos através de profissionais capacitados globalmente e práticas comprovadas de desenvolvimento.</p>
-                </div>
-                <div class="service-card loading">
-                    <div class="service-icon">🌍</div>
-                    <h3 data-pt="Visão" data-en="Vision">Visão</h3>
-                    <p data-pt="Ser referência global em desenvolvimento de software, reconhecida pela excelência técnica, padrões internacionais e capacidade de entregar soluções inovadoras que transformam negócios em qualquer lugar do mundo." data-en="Be a global reference in software development, recognized for technical excellence, international standards and ability to deliver innovative solutions that transform businesses anywhere in the world.">Ser referência global em desenvolvimento de software, reconhecida pela excelência técnica, padrões internacionais e capacidade de entregar soluções inovadoras que transformam negócios em qualquer lugar do mundo.</p>
-                </div>
-                <div class="service-card loading">
-                    <div class="service-icon">⭐</div>
-                    <h3 data-pt="Valores" data-en="Values">Valores</h3>
-                    <ul class="service-features">
-                        <li data-pt="Excelência Técnica" data-en="Technical Excellence">Excelência Técnica</li>
-                        <li data-pt="Segurança em Primeiro Lugar" data-en="Security First">Segurança em Primeiro Lugar</li>
-                        <li data-pt="Transparência Total" data-en="Total Transparency">Transparência Total</li>
-                        <li data-pt="Capacitação Contínua" data-en="Continuous Training">Capacitação Contínua</li>
-                        <li data-pt="Resultados Mensuráveis" data-en="Measurable Results">Resultados Mensuráveis</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
@@ -2100,7 +2034,7 @@
         <div class="container">
             <div class="section-header loading">
                 <h2 data-pt="Nossos Serviços" data-en="Our Services">Nossos Serviços</h2>
-                <p data-pt="Oferecemos soluções completas e personalizadas para atender todas as suas necessidades digitais com excelência técnica e precisão." data-en="We offer complete and customized solutions to meet all your digital needs with technical excellence and precision.">Oferecemos soluções completas e personalizadas para atender todas as suas necessidades digitais com excelência técnica e precisão.</p>
+                <p data-pt="Oferecemos soluções completas e personalizadas para atender todas as suas necessidades digitais com a precisão matemática do infinito." data-en="We offer complete and customized solutions to meet all your digital needs with the mathematical precision of infinity.">Oferecemos soluções completas e personalizadas para atender todas as suas necessidades digitais com a precisão matemática do infinito.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card loading">
@@ -2117,7 +2051,7 @@
                 <div class="service-card loading">
                     <div class="service-icon">📱</div>
                     <h3 data-pt="Aplicativos Mobile" data-en="Mobile Applications">Aplicativos Mobile</h3>
-                    <p data-pt="Apps nativos e híbridos para iOS e Android com excelente UX e alta performance." data-en="Native and hybrid apps for iOS and Android with excellent UX and high performance.">Apps nativos e híbridos para iOS e Android com excelente UX e alta performance.</p>
+                    <p data-pt="Apps nativos e híbridos para iOS e Android com excelente UX e performance infinita." data-en="Native and hybrid apps for iOS and Android with excellent UX and infinite performance.">Apps nativos e híbridos para iOS e Android com excelente UX e performance infinita.</p>
                     <ul class="service-features">
                         <li data-pt="Apps nativos" data-en="Native apps">Apps nativos</li>
                         <li data-pt="React Native" data-en="React Native">React Native</li>
@@ -2139,7 +2073,7 @@
                 <div class="service-card loading">
                     <div class="service-icon">☁️</div>
                     <h3 data-pt="Cloud & DevOps" data-en="Cloud & DevOps">Cloud & DevOps</h3>
-                    <p data-pt="Infraestrutura moderna na nuvem com deploy automatizado e alta escalabilidade." data-en="Modern cloud infrastructure with automated deployment and high scalability.">Infraestrutura moderna na nuvem com deploy automatizado e alta escalabilidade.</p>
+                    <p data-pt="Infraestrutura moderna na nuvem com deploy automatizado e escalabilidade infinita." data-en="Modern cloud infrastructure with automated deployment and infinite scalability.">Infraestrutura moderna na nuvem com deploy automatizado e escalabilidade infinita.</p>
                     <ul class="service-features">
                         <li data-pt="AWS / Azure / GCP" data-en="AWS / Azure / GCP">AWS / Azure / GCP</li>
                         <li data-pt="CI/CD" data-en="CI/CD">CI/CD</li>
@@ -2177,34 +2111,9 @@
         <div class="container">
             <div class="section-header loading">
                 <h2 data-pt="Projetos em Destaque" data-en="Featured Projects">Projetos em Destaque</h2>
-                <p data-pt="Conheça alguns dos projetos que desenvolvemos e que estão transformando negócios com excelência técnica." data-en="Discover some of the projects we've developed that are transforming businesses with technical excellence.">Conheça alguns dos projetos que desenvolvemos e que estão transformando negócios com excelência técnica.</p>
+                <p data-pt="Conheça alguns dos projetos que desenvolvemos e que estão transformando negócios com inovação infinita." data-en="Discover some of the projects we've developed that are transforming businesses with infinite innovation.">Conheça alguns dos projetos que desenvolvemos e que estão transformando negócios com inovação infinita.</p>
             </div>
             <div class="projects-grid">
-                <div class="project-card loading" style="border: 2px solid var(--cyan); box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);">
-                    <div class="project-image" style="background: linear-gradient(135deg, var(--cyan), var(--gold));">
-                        <i class="fas fa-rocket" style="font-size: 4rem;"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 data-pt="i9Script Web Client" data-en="i9Script Web Client">
-                            <span class="highlight">i9Script Web Client</span>
-                        </h3>
-                        <p data-pt="Sistema completo de gestão e suporte com Dashboard, i9Help (chamados) e acompanhamento de projetos em tempo real." data-en="Complete management and support system with Dashboard, i9Help (tickets) and real-time project tracking.">
-                            Sistema completo de gestão e suporte com Dashboard, i9Help (chamados) e acompanhamento de projetos em tempo real.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MySQL</span>
-                            <span class="tag">Socket.IO</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="http://localhost:3001/login" class="project-link" style="background: var(--cyan); color: var(--white); padding: 0.5rem 1rem; border-radius: 8px;" data-pt="Acessar Sistema" data-en="Access System">
-                                <i class="fas fa-sign-in-alt"></i> Acessar Sistema
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 <div class="project-card loading">
                     <div class="project-image">🛒</div>
                     <div class="project-content">
@@ -2244,7 +2153,7 @@
                 <div class="project-card loading">
                     <div class="project-image">📊</div>
                     <div class="project-content">
-                        <h3 data-pt="Dashboard Analytics Avançado" data-en="Advanced Analytics Dashboard">Dashboard Analytics Avançado</h3>
+                        <h3 data-pt="Dashboard Analytics Infinito" data-en="Infinite Analytics Dashboard">Dashboard Analytics Infinito</h3>
                         <p data-pt="Sistema de business intelligence com análise em tempo real, machine learning e visualizações baseadas na sequência de Fibonacci." data-en="Business intelligence system with real-time analysis, machine learning and visualizations based on the Fibonacci sequence.">Sistema de business intelligence com análise em tempo real, machine learning e visualizações baseadas na sequência de Fibonacci.</p>
                         <div class="project-tags">
                             <span class="tag">Python</span>
@@ -2330,18 +2239,6 @@
                     <div class="tech-icon">🚀</div>
                     <div class="tech-name">Next.js</div>
                 </div>
-                <div class="tech-item loading">
-                    <div class="tech-icon">🔄</div>
-                    <div class="tech-name">DevOps CI/CD</div>
-                </div>
-                <div class="tech-item loading">
-                    <div class="tech-icon">🔒</div>
-                    <div class="tech-name">Security by Design</div>
-                </div>
-                <div class="tech-item loading">
-                    <div class="tech-icon">🛡️</div>
-                    <div class="tech-name">Privacy by Design</div>
-                </div>
             </div>
         </div>
     </section>
@@ -2350,7 +2247,7 @@
         <div class="container">
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3 data-pt="Vamos Criar Algo Extraordinário Juntos?" data-en="Let's Create Something Extraordinary Together?">Vamos Criar Algo Extraordinário Juntos?</h3>
+                    <h3 data-pt="Vamos Criar Algo Infinito Juntos?" data-en="Let's Create Something Infinite Together?">Vamos Criar Algo Infinito Juntos?</h3>
                     <p data-pt="Pronto para transformar sua ideia em realidade? Entre em contato conosco e vamos criar algo extraordinário!" data-en="Ready to transform your idea into reality with the mathematical precision of number 9? Contact us and let's create something extraordinary that always returns to perfection!">Pronto para transformar sua ideia em realidade com a precisão matemática do número 9? Entre em contato conosco e vamos criar algo extraordinário que sempre retorna à perfeição!</p>
                     <ul class="contact-methods">
                         <li>
@@ -2426,7 +2323,7 @@
                                 name="message" 
                                 rows="5" 
                                 required
-                                placeholder="Conte-nos sobre seu projeto e como podemos aplicar nossa excelência técnica...">
+                                placeholder="Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita...">
                             </textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;" data-pt="Enviar Mensagem ∞" data-en="Send Message ∞">
@@ -2556,14 +2453,14 @@
                 innovation: 'infinita',
                 result: 'excelência',
                 whatsappMessage: 'Olá! Gostaria de saber mais sobre os serviços da i9Script.',
-                messagePlaceholder: 'Conte-nos sobre seu projeto e como podemos aplicar nossa excelência técnica...'
+                messagePlaceholder: 'Conte-nos sobre seu projeto e como podemos aplicar nossa inovação infinita...'
             },
             en: {
                 codeComment: '// Code that transforms ideas',
                 innovation: 'infinite',
                 result: 'excellence',
                 whatsappMessage: 'Hello! I would like to know more about i9Script services.',
-                messagePlaceholder: 'Tell us about your project and how we can apply our technical excellence...'
+                messagePlaceholder: 'Tell us about your project and how we can apply our infinite innovation...'
             }
         };
 
@@ -2646,8 +2543,8 @@
                 : 'i9Script - Development & Automation';
             
             const description = lang === 'pt'
-                ? 'i9Script - Desenvolvimento de software com excelência técnica mundial. DevOps CI/CD, Security by Design, Privacy by Design. Profissionais capacitados globalmente entregando resultados concretos.'
-                : 'i9Script - Software development with world-class technical excellence. DevOps CI/CD, Security by Design, Privacy by Design. Globally trained professionals delivering concrete results.';
+                ? 'i9Script - Desenvolvimento de software, aplicativos, sites e automações inteligentes em Manaus, Amazonas. Inovação infinita em cada projeto.'
+                : 'i9Script - Software development, applications, websites and intelligent automations in Manaus, Amazonas. Infinite innovation in every project.';
 
             document.title = title;
             document.querySelector('meta[name="description"]').content = description;
@@ -3296,8 +3193,8 @@ Contact: contato@i9script.com`;
                         let successMessage;
                         if (result.method === 'EmailJS') {
                             successMessage = currentLanguage === 'pt' 
-                                ? '✅ Mensagem enviada com sucesso! Entraremos em contato em breve para começar sua jornada de transformação digital! 🚀'
-                                : '✅ Message sent successfully! We will contact you soon to start your digital transformation journey! 🚀';
+                                ? '✅ Mensagem enviada com sucesso! Entraremos em contato em breve para começar sua jornada infinita de inovação! 🚀'
+                                : '✅ Message sent successfully! We will contact you soon to start your infinite journey of innovation! 🚀';
                         } else {
                             successMessage = currentLanguage === 'pt' 
                                 ? '📧 Seu cliente de email foi aberto com a mensagem. Por favor, clique em "Enviar" no seu programa de email para finalizar o envio! 🚀'
@@ -3522,80 +3419,6 @@ Contact: contato@i9script.com`;
             originalUpdateContent(lang);
             updateSelectOptions();
         };
-
-        // Load projects dynamically from API
-        async function loadProjectsFromAPI() {
-            try {
-                const response = await fetch('http://localhost:5000/api/public/projects');
-                const projects = await response.json();
-
-                const projectsGrid = document.querySelector('#projects .projects-grid');
-                if (!projectsGrid) return;
-
-                // Keep the Web Client card as first
-                const webClientCard = projectsGrid.querySelector('.project-card[style*="border: 2px solid"]');
-
-                // Clear all other cards
-                projectsGrid.innerHTML = '';
-
-                // Re-add Web Client card
-                if (webClientCard) {
-                    projectsGrid.appendChild(webClientCard);
-                }
-
-                // Add projects from API
-                projects.forEach(project => {
-                    const card = document.createElement('div');
-                    card.className = 'project-card';
-
-                    const imageContent = project.landing_image || '📦';
-                    const imageHtml = project.landing_image && project.landing_image.startsWith('http')
-                        ? `<img src="${project.landing_image}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;">`
-                        : imageContent;
-
-                    const tags = project.landing_tags && project.landing_tags.length > 0
-                        ? project.landing_tags
-                        : (project.technologies || []);
-
-                    card.innerHTML = `
-                        <div class="project-image">${imageHtml}</div>
-                        <div class="project-content">
-                            <h3>${project.title}</h3>
-                            <p>${project.description}</p>
-                            <div class="project-tags">
-                                ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                            </div>
-                            <div class="project-links">
-                                ${project.landing_link || project.demo_url ?
-                                    `<a href="${project.landing_link || project.demo_url}" class="project-link" target="_blank">
-                                        <i class="fas fa-external-link-alt"></i> Ver Demo
-                                    </a>` : ''}
-                                ${project.github_url ?
-                                    `<a href="${project.github_url}" class="project-link" target="_blank">
-                                        <i class="fab fa-github"></i> Código
-                                    </a>` : ''}
-                            </div>
-                        </div>
-                    `;
-
-                    projectsGrid.appendChild(card);
-                });
-
-                console.log('✅ Projetos carregados da API:', projects.length);
-            } catch (error) {
-                console.error('❌ Erro ao carregar projetos:', error);
-            }
-        }
-
-        // Load projects when page loads
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadProjectsFromAPI);
-        } else {
-            loadProjectsFromAPI();
-        }
-
-        // Reload projects every 30 seconds for real-time updates
-        setInterval(loadProjectsFromAPI, 30000);
     </script>
 </body>
 </html>

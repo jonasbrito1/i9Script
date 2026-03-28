@@ -1,0 +1,1387 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Principal Ecossistema Empresarial e Networking Qualificado do Brasil. Programa Conexão Empresarial conecta empreendedores brasileiros com visibilidade estratégica, oportunidades reais de negócios e crescimento digital. 3 níveis progressivos: Assinante, Associado e Embaixador. Junte-se a centenas de empresas que já estão crescendo!">
+    <meta name="keywords" content="ecossistema empresarial brasil, networking qualificado, networking empresarial, programa conexão empresarial, guia portal empreendedor, comunidade empreendedores brasil, visibilidade digital empresas, plataforma b2b brasil, networking b2b, parcerias estratégicas, oportunidades de negócios, crescimento empresarial digital, rede de negócios, indicação empresarial, comissões recorrentes, empreendedorismo digital, escritorio virtual, painel de negócios global, comunidade de negócios">
+    <meta name="author" content="Guia Portal Empreendedor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.guiaportalempreendedor.com.br">
+    
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="BR">
+    <meta name="geo.placename" content="São Paulo">
+    <meta name="geo.position" content="-23.5505;-46.6333">
+    <meta name="ICBM" content="-23.5505, -46.6333">
+    
+    <!-- Additional SEO Tags -->
+    <meta name="language" content="Portuguese">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta http-equiv="content-language" content="pt-br">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.guiaportalempreendedor.com.br">
+    <meta property="og:title" content="Programa Conexão Empresarial | Guia Portal Empreendedor">
+    <meta property="og:description" content="O Principal Ecossistema Empresarial e de Networking Qualificado do Brasil. Una-se a centenas de empreendedores brasileiros, gere oportunidades reais de negócios e molde o futuro dos negócios no Brasil e no exterior por meio do digital.">
+    <meta property="og:image" content="https://www.guiaportalempreendedor.com.br/images/hero-networking.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.guiaportalempreendedor.com.br">
+    <meta property="twitter:title" content="Programa Conexão Empresarial | Guia Portal Empreendedor">
+    <meta property="twitter:description" content="O Principal Ecossistema Empresarial e de Networking Qualificado do Brasil. Una-se a centenas de empreendedores brasileiros, gere oportunidades reais de negócios e molde o futuro dos negócios no Brasil e no exterior por meio do digital.">
+    <meta property="twitter:image" content="https://www.guiaportalempreendedor.com.br/images/hero-networking.jpg">
+    <title>Ecossistema Empresarial e Networking Qualificado #1 do Brasil | Programa Conexão Empresarial</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/new-sections.css">
+    <link rel="stylesheet" href="css/plans-novo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Schema.org Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Guia Portal Empreendedor",
+      "alternateName": "Programa Conexão Empresarial",
+      "url": "https://www.guiaportalempreendedor.com.br",
+      "logo": "https://www.guiaportalempreendedor.com.br/images/logo-guia.png",
+      "description": "Principal Ecossistema Empresarial e Networking Qualificado do Brasil. Conectando empreendedores brasileiros com visibilidade estratégica, oportunidades reais de negócios e crescimento digital.",
+      "sameAs": [
+        "https://www.facebook.com/guiaempreendedordigital",
+        "https://www.instagram.com/guia.empreendedordigital",
+        "https://www.linkedin.com/company/guia-portal-empreendedor",
+        "https://www.youtube.com/@guiaempreendedordigital",
+        "https://www.tiktok.com/@guiaempreendedordigital"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-11-5196-5828",
+        "contactType": "Customer Service",
+        "areaServed": "BR",
+        "availableLanguage": "Portuguese"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Programa Conexão Empresarial",
+      "description": "Ecossistema empresarial com networking qualificado, visibilidade estratégica e oportunidades reais de negócios para empreendedores brasileiros.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Guia Portal Empreendedor"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Plano Assinante",
+          "price": "997",
+          "priceCurrency": "BRL",
+          "priceValidUntil": "2025-12-31",
+          "availability": "https://schema.org/InStock",
+          "url": "https://planos.guiaportalempreendedor.com.br/cadastro?plan=assinante"
+        },
+        {
+          "@type": "Offer",
+          "name": "Plano Associado",
+          "price": "2497",
+          "priceCurrency": "BRL",
+          "priceValidUntil": "2025-12-31",
+          "availability": "https://schema.org/InStock",
+          "url": "https://planos.guiaportalempreendedor.com.br/cadastro?plan=associado"
+        },
+        {
+          "@type": "Offer",
+          "name": "Plano Embaixador",
+          "price": "3997",
+          "priceCurrency": "BRL",
+          "priceValidUntil": "2025-12-31",
+          "availability": "https://schema.org/InStock",
+          "url": "https://planos.guiaportalempreendedor.com.br/cadastro?plan=embaixador"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é o Programa Conexão Empresarial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Programa Conexão Empresarial é uma plataforma de desenvolvimento e crescimento de negócios, que oferece visibilidade estratégica, networking qualificado e oportunidades reais de negócios para empreendedores de todo o Brasil. Ele é estruturado em três níveis de acesso, cada um com benefícios progressivos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais são os níveis e os benefícios do Programa Conexão Empresarial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Assinante: Página personalizada com catálogo, destaque nas buscas, acesso à Comunidade Conecta e suporte dedicado. Associado: Todos os benefícios do plano Assinante, mais destaque na Home, link exclusivo de indicação, escritório virtual e comissões de 10% em indicações diretas. Embaixador: Todos os benefícios do plano Associado, mais espaço para divulgação de eventos, acesso ao Painel de Negócios Global e comissões progressivas de 10%, 5% e 2,5% em três níveis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "De que forma o programa ajuda a minha empresa a crescer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Programa Conexão Empresarial é estruturado para impulsionar o crescimento do seu negócio em quatro pilares fundamentais: Visibilidade Qualificada, Networking Estratégico, Escalabilidade e Monetização através de comissões recorrentes."
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.guiaportalempreendedor.com.br"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Programa Conexão Empresarial",
+          "item": "https://www.guiaportalempreendedor.com.br/programa-conexao-empresarial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Planos e Níveis",
+          "item": "https://www.guiaportalempreendedor.com.br/programa-conexao-empresarial#niveis"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Ecossistema Empresarial e Networking Qualificado",
+      "provider": {
+        "@type": "Organization",
+        "name": "Guia Portal Empreendedor"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Programas de Networking Empresarial",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Plano Assinante - Programa Conexão Empresarial"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Plano Associado - Programa Conexão Empresarial"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Plano Embaixador - Programa Conexão Empresarial"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">GUIA PORTAL EMPREENDEDOR</span>
+            </div>
+            
+            <!-- Menu Desktop: Links diretos -->
+            <nav class="nav desktop-nav">
+                <a href="#sobre" data-translate="menu_about">Sobre</a>
+                <a href="#beneficios" data-translate="menu_benefits">Benefícios</a>
+                <a href="#niveis" data-translate="menu_levels">Níveis</a>
+                <a href="#contato" data-translate="menu_contact">Contato</a>
+            </nav>
+            
+            <a href="#niveis" class="btn-nav desktop-btn" data-translate="btn_start">Começar Agora</a>
+            
+            <div class="language-selector desktop-lang">
+                <button class="lang-current" id="currentLang">
+                    <img src="https://flagcdn.com/w20/br.png" alt="Português" id="currentFlag">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-option active" data-lang="pt" onclick="changeLanguage('pt')">
+                        <img src="https://flagcdn.com/w20/br.png" alt="Português">
+                        <span>Português</span>
+                    </button>
+                    <button class="lang-option" data-lang="en" onclick="changeLanguage('en')">
+                        <img src="https://flagcdn.com/w20/us.png" alt="English">
+                        <span>English</span>
+                    </button>
+                    <button class="lang-option" data-lang="fr" onclick="changeLanguage('fr')">
+                        <img src="https://flagcdn.com/w20/fr.png" alt="Français">
+                        <span>Français</span>
+                    </button>
+                    <button class="lang-option" data-lang="es" onclick="changeLanguage('es')">
+                        <img src="https://flagcdn.com/w20/es.png" alt="Español">
+                        <span>Español</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Menu Mobile: Dropdown -->
+            <div class="menu-selector mobile-menu">
+                <button class="menu-current" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <nav class="menu-dropdown" id="navMenu">
+                    <a href="#sobre" data-translate="menu_about">Sobre</a>
+                    <a href="#beneficios" data-translate="menu_benefits">Benefícios</a>
+                    <a href="#niveis" data-translate="menu_levels">Níveis</a>
+                    <a href="#contato" data-translate="menu_contact">Contato</a>
+                    <a href="#niveis" class="btn-nav" data-translate="btn_start">Começar Agora</a>
+                </nav>
+            </div>
+            
+            <div class="language-selector mobile-lang">
+                <button class="lang-current" id="currentLangMobile">
+                    <img src="https://flagcdn.com/w20/br.png" alt="Português" id="currentFlagMobile">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown" id="langDropdownMobile">
+                    <button class="lang-option active" data-lang="pt" onclick="changeLanguage('pt')">
+                        <img src="https://flagcdn.com/w20/br.png" alt="Português">
+                        <span>Português</span>
+                    </button>
+                    <button class="lang-option" data-lang="en" onclick="changeLanguage('en')">
+                        <img src="https://flagcdn.com/w20/us.png" alt="English">
+                        <span>English</span>
+                    </button>
+                    <button class="lang-option" data-lang="fr" onclick="changeLanguage('fr')">
+                        <img src="https://flagcdn.com/w20/fr.png" alt="Français">
+                        <span>Français</span>
+                    </button>
+                    <button class="lang-option" data-lang="es" onclick="changeLanguage('es')">
+                        <img src="https://flagcdn.com/w20/es.png" alt="Español">
+                        <span>Español</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span data-translate="hero_badge">Programa Oficial do Guia Portal Empreendedor</span>
+                </div>
+                <h1 class="hero-title" data-translate="hero_title">
+                    PROGRAMA<br>
+                    <span class="highlight">CONEXÃO EMPRESARIAL</span>
+                </h1>
+                <p class="hero-tagline" data-translate="hero_tagline">
+                    Ecossistema Empresarial • Networking Qualificado • Crescimento Digital
+                </p>
+                <p class="hero-description" data-translate="hero_description">
+                    O principal ecossistema de networking qualificado e oportunidades de negócios do Brasil
+                </p>
+                <div class="hero-features">
+                    <div class="feature-badge">
+                        <i class="fas fa-user"></i>
+                        <span>Assinante</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-users"></i>
+                        <span>Associado</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-crown"></i>
+                        <span>Embaixador</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="https://planos.guiaportalempreendedor.com.br/cadastro" target="_blank" class="btn-primary btn-hero">
+                        <span data-translate="btn_choose_plan">Escolher Meu Plano</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#sobre" class="btn-secondary btn-hero">
+                        <span data-translate="btn_learn_more">Conhecer o Programa</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                </div>
+                <div class="hero-trust">
+                    <i class="fas fa-shield-check"></i>
+                    <span>Garantia de 7 dias • Cancele quando quiser</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visão Geral Section -->
+    <section id="sobre" class="visao-geral">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" data-translate="label_about">Ecossistema Empresarial Líder no digital</span>
+                <h2 class="section-title">O Principal Ecossistema de<br>Networking Qualificado do Brasil</h2>
+            </div>
+            
+            <div class="visao-content">
+                <div class="visao-main">
+                    <p class="lead-text">
+                        O <strong>Programa Conexão Empresarial</strong> é reconhecido como o <strong>principal ecossistema empresarial e de networking qualificado do Brasil</strong>, conectando empreendedores brasileiros com oportunidades reais de crescimento.
+                    </p>
+                    <p>
+                        Esta iniciativa pioneira reúne <strong>visibilidade estratégica</strong>, <strong>networking B2B qualificado</strong> e <strong>oportunidades tangíveis de negócios</strong> para empreendedores de todo o Brasil que buscam se destacar no mercado digital nacional e internacional.
+                    </p>
+                    <p>
+                        Mais do que uma plataforma de negócios, oferecemos um <strong>ecossistema empresarial completo</strong> onde empresas crescem, conectam-se e prosperam através do networking qualificado e parcerias estratégicas.
+                    </p>
+                </div>
+
+                <div class="visao-grid">
+                    <div class="visao-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="visao-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>Estrutura em 3 Níveis</h3>
+                        <p>Organizado em <strong>Assinante, Associado e Embaixador</strong>, permitindo que cada empreendedor escolha o nível adequado ao seu momento de negócio.</p>
+                    </div>
+
+                    <div class="visao-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="visao-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Benefícios Progressivos</h3>
+                        <p>Cada nível desbloqueia novas vantagens que fortalecem sua presença digital, ampliam suas conexões e aumentam seu potencial de retorno.</p>
+                    </div>
+
+                    <div class="visao-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="visao-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Crescimento Empresarial</h3>
+                        <p>Possibilita ganhos por indicação e expansão de rede, transformando relacionamento em uma fonte sustentável de receita e autoridade.</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Missão, Visão e Valores Section -->
+    <section id="beneficios" class="missao-visao-harmonioso">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" data-translate="label_mvv">Nosso Propósito</span>
+                <h2 class="section-title">Missão, Visão e Valores</h2>
+                <p class="section-description">Os princípios que nos guiam rumo ao sucesso coletivo</p>
+            </div>
+            
+            <div class="mvv-harmonioso">
+                <div class="mvv-item missao" data-aos="fade-up" data-aos-delay="0">
+                    <div class="mvv-content">
+                        <div class="mvv-icon-harmonioso">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="mvv-text">
+                            <h3>Nossa Missão</h3>
+                            <p>Proporcionar crescimento empresarial por meio de posicionamento estratégico, conexões relevantes e oportunidades reais de negócio.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mvv-item visao" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mvv-content">
+                        <div class="mvv-icon-harmonioso">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="mvv-text">
+                            <h3>Nossa Visão</h3>
+                            <p>Tornar-se o principal ecossistema digital brasileiro de conexões empresariais e colaboração empreendedora do país.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mvv-item valores" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mvv-content">
+                        <div class="mvv-icon-harmonioso">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="mvv-text">
+                            <h3>Nossos Valores</h3>
+                            <p>Ética, Transparência, Crescimento Coletivo, Empreendedorismo Real e Oportunidades Legítimas em todas as interações.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fundamentos Section -->
+    <section class="fundamentos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Nossa Essência</span>
+                <h2 class="section-title">Fundamentos que nos Movem</h2>
+                <p class="section-description">
+                    Os princípios que guiam o Programa Conexão Empresarial
+                </p>
+            </div>
+
+            <div class="fundamentos-grid">
+                <div class="fundamento-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="fundamento-number">01</div>
+                    <h3>Networking Verdadeiro</h3>
+                    <p>Conexões reais e duradouras entre empresários que buscam crescimento mútuo, não apenas troca de cartões.</p>
+                </div>
+
+                <div class="fundamento-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="fundamento-number">02</div>
+                    <h3>Visibilidade Estratégica</h3>
+                    <p>Posicionamento onde o seu mercado realmente procura, com ferramentas e suporte para destacar seu negócio.</p>
+                </div>
+
+                <div class="fundamento-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="fundamento-number">03</div>
+                    <h3>Crescimento Conjunto</h3>
+                    <p>Acreditamos que o sucesso é compartilhado. Quanto mais a comunidade cresce, mais todos prosperam.</p>
+                </div>
+
+                <div class="fundamento-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="fundamento-number">04</div>
+                    <h3>Transparência Total</h3>
+                    <p>Regras claras, benefícios explícitos e sem surpresas. Você sabe exatamente o que esperar em cada nível.</p>
+                </div>
+
+                <div class="fundamento-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="fundamento-number">05</div>
+                    <h3>Oportunidades Reais</h3>
+                    <p>Geramos negócios concretos através de indicações qualificadas, eventos estratégicos e parcerias sólidas.</p>
+                </div>
+
+                <div class="fundamento-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="fundamento-number">06</div>
+                    <h3>Suporte Contínuo</h3>
+                    <p>Mentoria, materiais, treinamentos e uma equipe dedicada para garantir que você aproveite ao máximo o programa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilares Estruturais Section -->
+    <section class="pilares">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Base do Programa</span>
+                <h2 class="section-title">Pilares Estruturais</h2>
+                <p class="section-description">
+                    Crescimento empresarial por meio de posicionamento estratégico, conexões relevantes e oportunidades reais
+                </p>
+            </div>
+
+            <div class="pilares-grid">
+                <div class="pilar-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="pilar-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Visibilidade Qualificada</h3>
+                    <div class="pilar-description">
+                        <p>Sua empresa está posicionada onde empresários procuram fornecedores, serviços e parcerias.</p>
+                    </div>
+                </div>
+
+                <div class="pilar-card highlighted" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pilar-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Networking Estratégico</h3>
+                    <div class="pilar-description">
+                        <p>Acesso à comunidade empresarial, Painel de Negócios e eventos presenciais ou digitais.</p>
+                    </div>
+                </div>
+
+                <div class="pilar-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pilar-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Escalabilidade e Monetização</h3>
+                    <div class="pilar-description">
+                        <p>Comissionamento claro e transparente para quem deseja expandir e indicar novos participantes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Níveis/Planos Section -->
+    <section id="niveis" class="plans-novo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Escolha Seu Nível</span>
+                <h2 class="section-title">Níveis do Programa</h2>
+                <p class="section-description">
+                    Benefícios progressivos que fortalecem a presença digital, ampliam conexões e possibilitam ganhos por indicação
+                </p>
+            </div>
+
+            <div class="plans-grid-novo">
+                <!-- Assinante -->
+                <div class="plan-card-novo" data-aos="fade-up" data-aos-delay="0">
+                    <div class="plan-header-novo">
+                        <div class="plan-icon-novo">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="plan-name-novo">Assinante</h3>
+                        <p class="plan-subtitle-novo">Para quem quer visibilidade profissional</p>
+                    </div>
+                    <div class="plan-price-novo">
+                        <span class="price-value">R$ 997</span>
+                        <span class="price-period">/ano</span>
+                    </div>
+                    <ul class="plan-benefits-novo">
+                        <li><i class="fas fa-check-circle"></i> Página Personalizada com catálogo</li>
+                        <li><i class="fas fa-check-circle"></i> Destaque nas buscas</li>
+                        <li><i class="fas fa-check-circle"></i> Acesso à Comunidade Conecta</li>
+                        <li><i class="fas fa-check-circle"></i> Suporte dedicado</li>
+                    </ul>
+                    <a href="https://planos.guiaportalempreendedor.com.br/cadastro?plan=assinante" target="_blank" class="btn-plan-novo">Ser Assinante</a>
+                </div>
+
+                <!-- Associado -->
+                <div class="plan-card-novo featured-novo" data-aos="fade-up" data-aos-delay="100">
+                    <div class="plan-badge-novo">Mais Popular</div>
+                    <div class="plan-header-novo">
+                        <div class="plan-icon-novo">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="plan-name-novo">Associado</h3>
+                        <p class="plan-subtitle-novo">Para quem busca visibilidade + ganhos diretos</p>
+                    </div>
+                    <div class="plan-price-novo">
+                        <span class="price-value">R$ 2.497</span>
+                        <span class="price-period">/ano</span>
+                    </div>
+                    <ul class="plan-benefits-novo">
+                        <li><i class="fas fa-check-circle"></i> Tudo do Plano Assinante</li>
+                        <li><i class="fas fa-check-circle"></i> Destaque na Home</li>
+                        <li><i class="fas fa-check-circle"></i> Link exclusivo de indicação</li>
+                        <li><i class="fas fa-check-circle"></i> Escritório Virtual</li>
+                        <li><i class="fas fa-check-circle"></i> EPN Play por 1 ano</li>
+                        <li><i class="fas fa-check-circle"></i> Comissão de 10% em indicações diretas</li>
+                    </ul>
+                    <a href="https://planos.guiaportalempreendedor.com.br/cadastro?plan=associado" target="_blank" class="btn-plan-novo btn-featured-novo">Ser Associado</a>
+                </div>
+
+                <!-- Embaixador -->
+                <div class="plan-card-novo" data-aos="fade-up" data-aos-delay="200">
+                    <div class="plan-header-novo">
+                        <div class="plan-icon-novo">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3 class="plan-name-novo">Embaixador</h3>
+                        <p class="plan-subtitle-novo">Para quem busca autoridade, expansão e liderança</p>
+                    </div>
+                    <div class="plan-price-novo">
+                        <span class="price-value">R$ 3.997</span>
+                        <span class="price-period">/ano</span>
+                    </div>
+                    <ul class="plan-benefits-novo">
+                        <li><i class="fas fa-check-circle"></i> Tudo do Plano Associado</li>
+                        <li><i class="fas fa-check-circle"></i> Espaço para divulgação de eventos</li>
+                        <li><i class="fas fa-check-circle"></i> Acesso ao Painel de Negócios Global</li>
+                        <li><i class="fas fa-check-circle"></i> Comissões progressivas em 3 níveis:</li>
+                        <li class="commission-detail">• 1º nível: 10%</li>
+                        <li class="commission-detail">• 2º nível: 5%</li>
+                        <li class="commission-detail">• 3º nível: 2,5%</li>
+                    </ul>
+                    <a href="https://planos.guiaportalempreendedor.com.br/cadastro?plan=embaixador" target="_blank" class="btn-plan-novo">Ser Embaixador</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jornada do Participante -->
+    <section class="jornada">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Passo a Passo</span>
+                <h2 class="section-title">Jornada do Participante</h2>
+                <p class="section-description">
+                    Do início ao sucesso: veja como funciona sua entrada e crescimento no programa
+                </p>
+            </div>
+
+            <div class="jornada-timeline">
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="0">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Escolha do Plano</h3>
+                        <p>Selecione o nível que melhor se adequa ao seu momento: Assinante, Associado ou Embaixador.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="50">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Pagamento e Confirmação</h3>
+                        <p>Realize o pagamento seguro e receba confirmação imediata por email.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Acesso Imediato</h3>
+                        <p>Entre na plataforma e acesse sua área exclusiva de membro.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="150">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Onboarding Personalizado</h3>
+                        <p>Receba orientações completas sobre como aproveitar todos os benefícios do seu nível.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3>Criação do Perfil</h3>
+                        <p>Monte seu perfil profissional com o apoio da equipe de designers.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="250">
+                    <div class="step-number">06</div>
+                    <div class="step-content">
+                        <h3>Acesso ao Grupo Exclusivo</h3>
+                        <p>Entre no grupo de WhatsApp/Telegram da comunidade para networking imediato.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">07</div>
+                    <div class="step-content">
+                        <h3>Publicação e Ativação</h3>
+                        <p>Seu perfil entra no ar e você começa a receber visibilidade no portal.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="350">
+                    <div class="step-number">08</div>
+                    <div class="step-content">
+                        <h3>Treinamento de Ferramentas</h3>
+                        <p>Aprenda a usar todas as funcionalidades: link de indicação, painel de controle, materiais de divulgação.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-number">09</div>
+                    <div class="step-content">
+                        <h3>Primeiras Conexões</h3>
+                        <p>Comece a fazer networking ativo com outros membros do programa.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="450">
+                    <div class="step-number">10</div>
+                    <div class="step-content">
+                        <h3>Primeiras Indicações</h3>
+                        <p>Divulgue seu link personalizado e comece a gerar comissões.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="500">
+                    <div class="step-number">11</div>
+                    <div class="step-content">
+                        <h3>Suporte Contínuo</h3>
+                        <p>Acesse suporte técnico, consultoria estratégica e acompanhamento de resultados.</p>
+                    </div>
+                </div>
+
+                <div class="jornada-step" data-aos="fade-up" data-aos-delay="550">
+                    <div class="step-number">12</div>
+                    <div class="step-content">
+                        <h3>Crescimento e Evolução</h3>
+                        <p>Monitore seus resultados, evolua de nível quando quiser e escale sua receita.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="jornada-cta">
+                <p><i class="fas fa-rocket"></i> <strong>Tudo começa com uma escolha.</strong> Selecione seu plano e inicie sua jornada hoje!</p>
+                <a href="https://www.planos.guiaportalempreendedor.com.br" target="_blank" class="btn-primary">Começar Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabela Comparativa -->
+    <section class="comparison-table">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Compare os Níveis</span>
+                <h2 class="section-title">Qual Plano é Melhor Para Você?</h2>
+                <p class="section-description">
+                    Veja lado a lado os benefícios e escolha o nível ideal para o seu momento
+                </p>
+            </div>
+            
+            <p class="table-scroll-hint" style="text-align: center; color: #64748b; font-size: 0.9rem; margin-bottom: 1rem; display: none;">
+                <i class="fas fa-hand-pointer"></i> Deslize para ver todos os planos
+            </p>
+
+            <div class="table-wrapper">
+                <table class="comparison">
+                    <thead>
+                        <tr>
+                            <th class="feature-column">
+                                <a href="#niveis" class="benefits-header-link">Benefícios</a>
+                            </th>
+                            <th class="plan-column">
+                                <div class="plan-header-cell">
+                                    <i class="fas fa-user"></i>
+                                    <h4>Assinante</h4>
+                                    <p class="plan-price-small">R$ 997/ano</p>
+                                </div>
+                            </th>
+                            <th class="plan-column featured-column">
+                                <div class="plan-header-cell">
+                                    <i class="fas fa-users"></i>
+                                    <h4>Associado</h4>
+                                    <p class="plan-price-small">R$ 2.497/ano</p>
+                                    <span class="badge-popular">Mais Popular</span>
+                                </div>
+                            </th>
+                            <th class="plan-column">
+                                <div class="plan-header-cell">
+                                    <i class="fas fa-crown"></i>
+                                    <h4>Embaixador</h4>
+                                    <p class="plan-price-small">R$ 3.997/ano</p>
+                                    <span class="badge-destaque">Destaque</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-name">Perfil Profissional</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td class="featured-column"><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Página Personalizada com Catálogo</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td class="featured-column"><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Destaque em Buscas</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td class="featured-column"><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Comunidade Conecta</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td class="featured-column"><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Suporte humanizado</td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                            <td class="featured-column"><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr class="separator-row">
+                            <td colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Destaque na Home</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td class="featured-column"><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Link de Indicação Exclusivo</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td class="featured-column"><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Escritório Virtual</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td class="featured-column"><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">EPN Play (1 ano)</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td class="featured-column"><i class="fas fa-check text-success"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Comissões (1º nível)</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td class="featured-column"><strong>10%</strong></td>
+                            <td><strong>10%</strong></td>
+                        </tr>
+                        <tr class="separator-row">
+                            <td colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Espaço para divulgar seus Eventos</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td class="featured-column"><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Painel Global de Negócios e Networking global</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td class="featured-column"><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Destaque Premium</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td class="featured-column"><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Construção de Autoridade de Marca</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td class="featured-column"><i class="fas fa-times text-muted"></i></td>
+                            <td><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Comissão Exponencial até 3º Nível</td>
+                            <td><i class="fas fa-times text-muted"></i></td>
+                            <td class="featured-column"><i class="fas fa-times text-muted"></i></td>
+                            <td><strong>10% + 5% + 2,5%</strong></td>
+                        </tr>
+                        <tr class="cta-row">
+                            <td></td>
+                            <td><a href="https://planos.guiaportalempreendedor.com.br/cadastro" target="_blank" class="btn-table">Escolher</a></td>
+                            <td class="featured-column"><a href="https://planos.guiaportalempreendedor.com.br/cadastro" target="_blank" class="btn-table btn-featured">Escolher</a></td>
+                            <td><a href="https://planos.guiaportalempreendedor.com.br/cadastro" target="_blank" class="btn-table">Escolher</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="comparison-note">
+                <i class="fas fa-shield-alt"></i>
+                <p><strong>Garantia Total:</strong> Todos os planos incluem garantia de 7 dias. Teste sem riscos e cancele quando quiser, sem burocracias.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais Competitivos -->
+    <section class="diferenciais-harmonioso">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Por Que Somos o Ecossistema Digital Nº 1</span>
+                <h2 class="section-title">Diferenciais do Maior Ecossistema<br>Empresarial Digital do Brasil</h2>
+                <p class="section-description">
+                    O que torna o Programa Conexão Empresarial o principal ecossistema de networking qualificado e oportunidades de negócios do Brasil
+                </p>
+            </div>
+
+            <div class="diferenciais-layout">
+                <div class="diferencial-destaque" data-aos="fade-right">
+                    <div class="destaque-numero">500+</div>
+                    <h3>Empreendedores Conectados</h3>
+                    <p>Uma comunidade ativa e engajada gerando negócios reais todos os dias</p>
+                </div>
+
+                <div class="diferenciais-lista">
+                    <div class="diferencial-item" data-aos="fade-left" data-aos-delay="0">
+                        <div class="diferencial-icon-harmonioso">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <div class="diferencial-texto">
+                            <h4>Ecossistema Real e Ativo</h4>
+                            <p>Comunidade engajada gerando oportunidades concretas</p>
+                        </div>
+                    </div>
+
+                    <div class="diferencial-item" data-aos="fade-left" data-aos-delay="100">
+                        <div class="diferencial-icon-harmonioso">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="diferencial-texto">
+                            <h4>Networking Guiado</h4>
+                            <p>Conexões estratégicas com estrutura e ferramentas</p>
+                        </div>
+                    </div>
+
+                    <div class="diferencial-item" data-aos="fade-left" data-aos-delay="200">
+                        <div class="diferencial-icon-harmonioso">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="diferencial-texto">
+                            <h4>Visibilidade Estratégica</h4>
+                            <p>Seu negócio onde realmente importa</p>
+                        </div>
+                    </div>
+
+                    <div class="diferencial-item" data-aos="fade-left" data-aos-delay="300">
+                        <div class="diferencial-icon-harmonioso">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="diferencial-texto">
+                            <h4>Páginas Profissionais</h4>
+                            <p>Design profissional incluído, sem custos extras</p>
+                        </div>
+                    </div>
+
+                    <div class="diferencial-item" data-aos="fade-left" data-aos-delay="400">
+                        <div class="diferencial-icon-harmonioso">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="diferencial-texto">
+                            <h4>Modelo Sustentável</h4>
+                            <p>Crescimento real e escalável da sua receita</p>
+                        </div>
+                    </div>
+
+                    <div class="diferencial-item" data-aos="fade-left" data-aos-delay="500">
+                        <div class="diferencial-icon-harmonioso">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <div class="diferencial-texto">
+                            <h4>Comissionamento Transparente</h4>
+                            <p>Regras claras, pagamentos em até 30 dias</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" data-translate="label_faq">Dúvidas Frequentes</span>
+                <h2 class="section-title">Perguntas Frequentes (FAQ)</h2>
+                <p class="section-description">Programa Conexão Empresarial</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>O que é o Programa Conexão Empresarial?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O Programa Conexão Empresarial é uma plataforma de desenvolvimento e crescimento de negócios, que oferece visibilidade estratégica, networking qualificado e oportunidades reais de negócios para empreendedores de todo o Brasil. Ele é estruturado em três níveis de acesso, cada um com benefícios progressivos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Quais são os níveis e os benefícios do Programa Conexão Empresarial?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Assinante:</strong> Página personalizada com catálogo, destaque nas buscas, acesso à Comunidade Conecta e suporte dedicado.</p>
+                        <p><strong>Associado:</strong> Todos os benefícios do plano Assinante, mais destaque na Home, link exclusivo de indicação, escritório virtual e comissões de 10% em indicações diretas.</p>
+                        <p><strong>Embaixador:</strong> Todos os benefícios do plano Associado, mais espaço para divulgação de eventos, acesso ao Painel de Negócios Global e comissões progressivas de 10%, 5% e 2,5% em três níveis.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Como faço para aderir ao programa?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Você pode escolher o plano ideal e realizar o pagamento anual. Após a confirmação do pagamento, você terá acesso imediato ao painel de controle e começará sua jornada no programa.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Como funciona o processo de adesão e ativação?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Após a escolha do seu plano, o processo acontece de forma simples e estruturada:</p>
+                        <ol>
+                            <li><strong>Adesão:</strong> Escolha do plano e pagamento anual.</li>
+                            <li><strong>Onboarding:</strong> Acesso imediato ao painel de controle.</li>
+                            <li><strong>Design:</strong> Agendamento com a equipe de designers para criar sua página exclusiva.</li>
+                            <li><strong>Go Live:</strong> Ativação oficial da sua empresa no Portal e destaques.</li>
+                            <li><strong>Expansão:</strong> Liberação do escritório virtual e links de indicação (Associados e Embaixadores).</li>
+                            <li><strong>Gestão:</strong> Registro de vendas e comissões no painel.</li>
+                            <li><strong>Acompanhamento:</strong> Suporte contínuo durante toda a vigência do plano.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Como funciona o pagamento de comissões?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>As comissões são pagas em até 30 dias após a confirmação da venda, de forma transparente e clara. Os valores são registrados automaticamente no painel de controle.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Posso escolher ou mudar de nível do programa a qualquer momento?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! Você pode fazer upgrade ou downgrade de nível a qualquer momento durante a vigência do seu plano.</p>
+                        <p><strong>No caso de upgrade:</strong> Você pagará apenas a diferença proporcional entre os planos pelo período restante.</p>
+                        <p><strong>No caso de downgrade:</strong> A mudança será efetivada no próximo ciclo de renovação anual.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Quais são as regras e diretrizes para participar?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O programa opera com regras claras para garantir a qualidade do ecossistema. São proibidos spam e qualquer forma de divulgação enganosa. O código de conduta exige ética, transparência e profissionalismo em todas as interações.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>De que forma o programa ajuda a minha empresa a crescer?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O Programa Conexão Empresarial é estruturado para impulsionar o crescimento do seu negócio em quatro pilares fundamentais:</p>
+                        <ul style="line-height: 1.8;">
+                            <li><strong>Visibilidade Qualificada:</strong> Posicionamento estratégico onde empresas buscam ativamente fornecedores e parceiros de negócios.</li>
+                            <li><strong>Networking Estratégico:</strong> Acesso direto a uma comunidade selecionada de empreendedores e decisores de negócios reais.</li>
+                            <li><strong>Escalabilidade:</strong> Ferramentas e recursos para expandir sua presença digital e alcançar novos mercados.</li>
+                            <li><strong>Monetização:</strong> Oportunidades concretas de ganhar comissões recorrentes através do programa de indicações (Associados e Embaixadores).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>O que é o Painel Global de Negócios?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O <strong>Painel Global de Negócios</strong> é uma ferramenta exclusiva disponível para membros <strong>Embaixadores</strong>.</p>
+                        <p>Através dele, você pode interagir com outros empreendedores e potenciais parceiros de negócios ao redor do mundo, expandindo sua rede de contatos além das fronteiras nacionais e abrindo portas para oportunidades internacionais.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Qual é a principal vantagem de ser um Embaixador?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O Embaixador é visto como uma autoridade no ecossistema, podendo promover eventos, construir uma equipe de vendas e gerar receita em três níveis diferentes de comissões. É ideal para quem busca expandir sua presença e criar um fluxo contínuo de negócios.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Como funciona o suporte dentro do programa?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oferecemos suporte contínuo durante toda a vigência do seu plano, incluindo ajuda para criação da sua página exclusiva, dúvidas sobre comissões e qualquer outro tipo de orientação relacionada ao programa.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>O que acontece se eu não renovar o meu plano?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Se não houver renovação do seu plano, sua página será desativada e você perderá o direito de receber comissões futuras. A desativação ocorre no ciclo de renovação.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Quais são as principais diferenças entre o Programa Conexão Empresarial e outras plataformas?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O Programa Conexão Empresarial se destaca por ser um ecossistema real, com foco em networking qualificado, visibilidade real e oportunidades de negócios tangíveis. Diferente de outras plataformas, aqui você está em um ambiente B2B com foco total no fechamento de negócios e crescimento real.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Como o programa lida com a ética e o profissionalismo?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O programa possui um código de conduta rigoroso que exige ética, transparência e respeito nas interações entre os membros. Spam e práticas enganosas são estritamente proibidos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>O programa oferece alguma forma de treinamento ou suporte para crescimento?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! O programa oferece diversos recursos de desenvolvimento:</p>
+                        <ul style="line-height: 1.8;">
+                            <li><strong>Suporte contínuo</strong> durante toda a vigência do seu plano</li>
+                            <li><strong>Conteúdos exclusivos</strong> sobre empreendedorismo e networking estratégico</li>
+                            <li><strong>Eventos de networking</strong> para expandir suas conexões de forma estratégica</li>
+                            <li><strong>Acesso à plataforma EPN Play</strong> (Associados e Embaixadores) com cursos, treinamentos e conteúdos voltados para o crescimento empresarial</li>
+                            <li><strong>Descontos em cursos e mentorias</strong> oferecidos por parceiros do ecossistema</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Posso compartilhar minha página no Portal com outras pessoas?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Sim, e isso é altamente recomendado!</strong></p>
+                        <p>Sua página personalizada no Portal Empreendedor foi criada especificamente para ser compartilhada com:</p>
+                        <ul style="line-height: 1.8;">
+                            <li>Clientes atuais e potenciais</li>
+                            <li>Parceiros de negócios</li>
+                            <li>Sua rede de contatos profissionais</li>
+                            <li>Redes sociais e canais de divulgação</li>
+                        </ul>
+                        <p>Quanto mais você compartilhar, maior será sua visibilidade online e suas chances de atrair novos negócios e oportunidades!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Termos e Condições -->
+    <section class="termos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Transparência Total</span>
+                <h2 class="section-title">Termos e Condições do Programa</h2>
+                <p class="section-description">
+                    Tudo o que você precisa saber sobre como funciona o Programa Conexão Empresarial
+                </p>
+            </div>
+
+            <div class="termos-grid">
+                <div class="termo-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="termo-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Acesso Imediato</h3>
+                    <p>Confirmação de pagamento = ativação instantânea. Comece a usar todos os benefícios do seu plano imediatamente após o pagamento ser processado.</p>
+                </div>
+
+                <div class="termo-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="termo-icon">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                    <h3>Pagamento de Comissões</h3>
+                    <p>As comissões são calculadas e pagas em até 30 dias após a confirmação da venda. Todas as transações podem ser acompanhadas em tempo real no seu painel.</p>
+                </div>
+
+                <div class="termo-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="termo-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Conduta Ética</h3>
+                    <p>Proibido spam, práticas enganosas ou uso indevido da marca. Mantenha sempre uma postura profissional e ética em todas as interações.</p>
+                </div>
+
+                <div class="termo-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="termo-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Criação de Páginas</h3>
+                    <p>Todas as páginas são desenvolvidas com apoio de designers profissionais. Você fornece o conteúdo e nós criamos o design que converte.</p>
+                </div>
+
+                <div class="termo-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="termo-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Renovação e Upgrades</h3>
+                    <p>Os planos são anuais com renovação automática (pode ser cancelada a qualquer momento). Upgrades entre níveis podem ser feitos a qualquer hora.</p>
+                </div>
+
+                <div class="termo-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="termo-icon">
+                        <i class="fas fa-life-ring"></i>
+                    </div>
+                    <h3>Suporte Humanizado</h3>
+                    <p>Você terá suporte técnico completo e humanizado. O tempo de resposta pode variar de 12h a 48h conforme demanda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section id="contato" class="cta-final">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para Transformar Seu Negócio?</h2>
+                <p>Junte-se a centenas de empreendedores que já estão crescendo com o Portal Empreendedor</p>
+                <div class="cta-buttons">
+                    <a href="#niveis" class="btn-primary large">
+                        <span>Escolher Meu Plano</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="https://www.guiaportalempreendedor.com.br/cadastro-guia-comercial" target="_blank" class="btn-secondary large">
+                        <i class="fas fa-building"></i>
+                        <span>CADASTRE-SE NO GUIA</span>
+                    </a>
+                    <a href="https://wa.me/5511958080801?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Programa%20Conexão%20Empresarial" target="_blank" class="btn-secondary large">
+                        <i class="fab fa-whatsapp"></i>
+                        <span data-translate="btn_whatsapp">Falar no WhatsApp</span>
+                    </a>
+                </div>
+                <div class="cta-trust">
+                    <div class="trust-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Garantia de 7 dias</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-lock"></i>
+                        <span>Pagamento seguro</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-headset"></i>
+                        <span>Suporte humanizado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <h3 class="footer-logo-text">GUIA PORTAL EMPREENDEDOR</h3>
+                    </div>
+                    <p data-translate="footer_slogan">Unindo empreendedores brasileiros, gerando oportunidades e moldando o futuro dos negócios no Brasil e no exterior por meio do digital.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/guiaempreendedordigital" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/guia.empreendedordigital" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/guia-portal-empreendedor" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.youtube.com/@guiaempreendedordigital" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@guiaempreendedordigital" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Programa</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#beneficios">Benefícios</a></li>
+                        <li><a href="#niveis">Níveis</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="https://www.guiaportalempreendedor.com.br" target="_blank">Portal Principal</a></li>
+                        <li><a href="https://www.planos.guiaportalempreendedor.com.br" target="_blank">Planos</a></li>
+                        <li><a href="https://www.guiaportalempreendedor.com.br/empresas/conheca-nossos-embaixadores" target="_blank">Embaixadores</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="/cdn-cgi/l/email-protection#2c4f4342584d58436c4b59454d5c435e584d4049415c5e494942484948435e024f4341024e5e"><span class="__cf_email__" data-cfemail="73101c1d0712071c3314061a12031c0107121f161e030116161d1716171c015d101c1e5d1101">[email&#160;protected]</span></a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+551151965828">(11) 5196-5828</a>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/5511958080801" target="_blank">(11) 95808-0801</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>São Paulo, SP - Brasil</span>
+                        </li>
+                    </ul>
+                    
+                    <!-- Botão Compartilhar no WhatsApp -->
+                    <a href="https://wa.me/?text=Oi%2C%20tudo%20bem%3F%20Lembrei%20de%20voc%C3%AA%20e%20pensei%20que%20essa%20oportunidade%20seria%20perfeita%20para%20o%20seu%20neg%C3%B3cio%21%20Estou%20participando%20de%20um%20projeto%20incr%C3%ADvel%20que%20tem%20ajudado%20muitos%20empreendedores%20a%20se%20destacarem%20no%20digital%2C%20atrair%20mais%20clientes%20e%20fazer%20conex%C3%B5es%20valiosas.%20Ao%20se%20cadastrar%20e%20ter%20sua%20empresa%20aprovada%20no%20Guia%20Portal%20Empreendedor%2C%20voc%C3%AA%20vai%20ter%20acesso%20a%20diversas%20oportunidades%20para%20crescer%20ainda%20mais.%20*E%20o%20melhor%20de%20tudo%3A%20o%20cadastro%20%C3%A9%20100%25%20GRATUITO%21*%20*Importante%3A*%20N%C3%A3o%20se%20esque%C3%A7a%20de%20colocar%20meu%20nome%20na%20parte%20de%20*Indica%C3%A7%C3%A3o*%20e%20capriche%20nas%20informa%C3%A7%C3%B5es%20e%20na%20*foto%20profissional*%20%E2%80%93%20ela%20ser%C3%A1%20sua%20vitrine%20para%20atrair%20novos%20parceiros%20e%20clientes%21%20D%C3%A1%20uma%20olhada%20e%20se%20cadastra%20aqui%3A%20https%3A%2F%2Fwww.guiaportalempreendedor.com.br%2F" 
+                       target="_blank" 
+                       class="local-business-badge share-whatsapp-btn"
+                       aria-label="Compartilhar no WhatsApp">
+                        <i class="fas fa-heart"></i>
+                        <span>Apoie Negócios Locais</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Guia Portal Empreendedor. Todos os direitos reservados.</p>
+                <div class="footer-links">
+                    <a href="https://www.guiaportalempreendedor.com.br/termos" target="_blank">Termos de Uso</a>
+                    <a href="https://www.guiaportalempreendedor.com.br/privacidade" target="_blank">Política de Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9ab10fa628d17315","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.9.1","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>

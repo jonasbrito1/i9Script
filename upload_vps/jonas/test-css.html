@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de CSS - Jonas Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos inline para comparação */
+        .teste-inline {
+            background: #0a0a0a;
+            color: #00d4ff;
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid #00ff88;
+            border-radius: 16px;
+        }
+
+        .teste-variaveis {
+            background: var(--color-bg-card);
+            color: var(--color-blue-primary);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+        }
+    </style>
+</head>
+<body>
+    <div style="padding: 40px; background: #000; color: #fff; font-family: Arial, sans-serif;">
+
+        <h1 style="color: #00d4ff;">🔍 TESTE DE DIAGNÓSTICO - CSS</h1>
+
+        <hr style="border: 1px solid #333; margin: 20px 0;">
+
+        <!-- TESTE 1: Estilos Inline -->
+        <div class="teste-inline">
+            <h2>✅ TESTE 1: Estilos Inline (dentro do HTML)</h2>
+            <p>Se você está vendo este box com:</p>
+            <ul>
+                <li>Fundo preto</li>
+                <li>Texto azul ciano</li>
+                <li>Borda verde</li>
+                <li>Cantos arredondados</li>
+            </ul>
+            <p><strong>→ Os estilos CSS básicos funcionam!</strong></p>
+        </div>
+
+        <!-- TESTE 2: CSS com Variáveis -->
+        <div class="teste-variaveis">
+            <h2>🔍 TESTE 2: CSS com Variáveis (var)</h2>
+            <p>Se você está vendo este box estilizado:</p>
+            <ul>
+                <li>Este box usa variáveis CSS (var)</li>
+                <li>Igual ao portfolio</li>
+            </ul>
+            <p><strong>→ Variáveis CSS funcionam!</strong></p>
+        </div>
+
+        <!-- TESTE 3: Classe do arquivo externo -->
+        <div class="container">
+            <h2>📄 TESTE 3: Arquivo styles.css externo</h2>
+            <p>Esta div usa a classe .container do styles.css</p>
+            <p>Se está com padding e max-width: <strong>→ styles.css carregou!</strong></p>
+            <p>Se não está estilizado: <strong>→ styles.css NÃO carregou!</strong></p>
+        </div>
+
+        <!-- TESTE 4: Section Process -->
+        <section class="process">
+            <div class="container">
+                <h2>⚙️ TESTE 4: Seção "Como Trabalho"</h2>
+                <p>Esta section usa a classe .process</p>
+                <p>Deve ter fundo escuro diferente</p>
+
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Teste de Step</h3>
+                            <p class="step-description">
+                                Se você está vendo um número grande e colorido (01) à esquerda,
+                                com gradiente azul/verde, e este card com borda:
+                                <strong>→ Estilos da seção funcionam!</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTE 5: Guarantees -->
+        <div class="contact-guarantees" style="margin: 20px;">
+            <div class="guarantee-item">
+                <div class="guarantee-icon">
+                    <span>✓</span>
+                </div>
+                <h4>Teste Ícone</h4>
+                <p>Se este ícone está em um círculo colorido (gradiente azul/verde):
+                   <strong>→ Estilos funcionam!</strong></p>
+            </div>
+        </div>
+
+        <hr style="border: 1px solid #333; margin: 40px 0;">
+
+        <!-- INSTRUÇÕES -->
+        <div style="background: #1a1a1a; padding: 20px; border-left: 4px solid #00d4ff;">
+            <h2 style="color: #00d4ff;">📋 COMO INTERPRETAR OS RESULTADOS:</h2>
+
+            <h3 style="color: #00ff88;">✅ SE TUDO APARECE ESTILIZADO:</h3>
+            <ul>
+                <li>O servidor suporta CSS moderno</li>
+                <li>O arquivo styles.css está carregando</li>
+                <li>O problema é cache ou outro arquivo</li>
+            </ul>
+
+            <h3 style="color: #ffd600;">⚠️ SE TESTE 1 FUNCIONA, MAS TESTE 2 NÃO:</h3>
+            <ul>
+                <li>Navegador não suporta variáveis CSS</li>
+                <li>Navegador muito antigo (anterior a 2016)</li>
+                <li>Precisa de fallback CSS</li>
+            </ul>
+
+            <h3 style="color: #ff6b6b;">❌ SE TESTE 1 FUNCIONA, MAS TESTE 3 NÃO:</h3>
+            <ul>
+                <li>Arquivo styles.css NÃO está sendo carregado</li>
+                <li>Problema no servidor ou caminho do arquivo</li>
+                <li>Verificar console (F12) para ver erros</li>
+            </ul>
+
+            <h3 style="color: #ff6b6b;">❌ SE TESTE 4 e 5 NÃO FUNCIONAM:</h3>
+            <ul>
+                <li>Classes específicas não estão no CSS</li>
+                <li>CSS foi corrompido no upload</li>
+                <li>Tamanho do arquivo diferente de 58 KB</li>
+            </ul>
+        </div>
+
+        <hr style="border: 1px solid #333; margin: 40px 0;">
+
+        <!-- VERIFICAÇÕES -->
+        <div style="background: #141414; padding: 20px; border: 1px solid #333;">
+            <h2 style="color: #00d4ff;">🔧 VERIFICAÇÕES ADICIONAIS:</h2>
+
+            <h3>1. Abra o Console (F12):</h3>
+            <ul>
+                <li>Vá na aba "Console"</li>
+                <li>Procure por erros em vermelho</li>
+                <li>Principalmente erros relacionados a "styles.css"</li>
+            </ul>
+
+            <h3>2. Verifique a aba Network (F12):</h3>
+            <ul>
+                <li>Recarregue a página (Ctrl + R)</li>
+                <li>Procure por "styles.css" na lista</li>
+                <li>Verifique o Status: deve ser 200 OK</li>
+                <li>Verifique o Size: deve ser ~58 KB</li>
+            </ul>
+
+            <h3>3. Teste URL direta do CSS:</h3>
+            <ul>
+                <li>Abra nova aba</li>
+                <li>Digite: https://jonas.i9script.com/styles.css</li>
+                <li>Deve abrir um arquivo de texto com código CSS</li>
+                <li>Se mostrar erro 404: arquivo não existe</li>
+            </ul>
+        </div>
+
+        <hr style="border: 1px solid #333; margin: 40px 0;">
+
+        <div style="background: #0a3d0a; padding: 20px; border: 2px solid #00ff88;">
+            <h2 style="color: #00ff88;">✨ PRÓXIMOS PASSOS:</h2>
+            <ol style="line-height: 2;">
+                <li><strong>Salve este arquivo como:</strong> test-css.html</li>
+                <li><strong>Faça upload para:</strong> public_html/jonas/</li>
+                <li><strong>Acesse:</strong> https://jonas.i9script.com/test-css.html</li>
+                <li><strong>Me diga qual teste funcionou e qual não funcionou</strong></li>
+                <li><strong>Envie screenshot do console (F12)</strong></li>
+            </ol>
+        </div>
+
+    </div>
+
+    <script>
+        // Teste JavaScript para verificar se variáveis CSS estão disponíveis
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('=== DIAGNÓSTICO CSS ===');
+
+            // Testar se CSS está carregado
+            const computedStyle = window.getComputedStyle(document.documentElement);
+            const bgPrimary = computedStyle.getPropertyValue('--color-bg-primary');
+
+            console.log('Variável --color-bg-primary:', bgPrimary);
+
+            if (bgPrimary) {
+                console.log('✅ Variáveis CSS estão disponíveis!');
+            } else {
+                console.log('❌ Variáveis CSS NÃO estão disponíveis!');
+                console.log('Possíveis causas:');
+                console.log('1. Arquivo styles.css não carregou');
+                console.log('2. Navegador não suporta variáveis CSS');
+            }
+
+            // Verificar se styles.css foi carregado
+            const links = document.getElementsByTagName('link');
+            for (let i = 0; i < links.length; i++) {
+                if (links[i].href.includes('styles.css')) {
+                    console.log('Link para styles.css encontrado:', links[i].href);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+================================================================================
+                    i9Script - RESUMO EXECUTIVO DO DEPLOY
+================================================================================
+
+📦 O QUE FOI PREPARADO
+--------------------------------------------------------------------------------
+
+Esta pasta contém TUDO necessário para colocar o i9Script em produção no VPS.
+
+Tamanho total: ~3.1 MB
+Arquivos: Backend completo + Frontend build + Configs + Scripts
+
+
+📂 ESTRUTURA PREPARADA
+--------------------------------------------------------------------------------
+
+upload_vps/
+│
+├── backend/                     ← Código do servidor Node.js + TypeScript
+│   ├── src/                     (Controllers, Routes, Database, etc)
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── .env.production          ← Configurações de produção
+│
+├── frontend/                    ← Build otimizado do React
+│   ├── static/                  (JS e CSS minificados)
+│   ├── index.html
+│   └── (outros assets)
+│
+├── config/
+│   ├── nginx-i9script.conf      ← Config Nginx com SSL
+│   └── mysql-init.sql           ← Setup inicial do MySQL
+│
+├── scripts/
+│   ├── setup-vps.sh             ← Instala Docker, Nginx, etc
+│   ├── deploy.sh                ← Deploy completo da aplicação
+│   ├── restart.sh               ← Reinicia serviços
+│   └── logs.sh                  ← Visualiza logs
+│
+├── docker-compose.production.yml   ← Orquestração dos containers
+├── .env.example                    ← Template de variáveis
+│
+└── DOCUMENTAÇÃO:
+    ├── LEIA-ME-PRIMEIRO.txt         ← Este arquivo
+    ├── CHECKLIST_PRE_UPLOAD.txt     ← Lista de verificação
+    └── INSTRUCOES_DEPLOY.txt        ← Passo a passo detalhado
+
+
+🎯 INÍCIO RÁPIDO (3 PASSOS)
+--------------------------------------------------------------------------------
+
+1️⃣ CONFIGURAR DNS (FAZER AGORA!)
+   No painel do domínio, apontar i9script.com para:
+   IP: 72.61.223.226
+
+2️⃣ FAZER UPLOAD VIA TERMIUS
+   - Conectar SFTP: 72.61.223.226:22 (root / 4xmnqiB@t234)
+   - Criar pasta: /var/www/i9script
+   - Arrastar tudo para lá
+
+3️⃣ EXECUTAR NO SERVIDOR
+   Via SSH:
+   cd /var/www/i9script/scripts
+   chmod +x *.sh
+   bash setup-vps.sh
+   bash deploy.sh
+
+
+📋 DOCUMENTOS IMPORTANTES
+--------------------------------------------------------------------------------
+
+🔴 CRÍTICO - LEIA PRIMEIRO:
+   → CHECKLIST_PRE_UPLOAD.txt
+   (Lista de verificação antes de começar)
+
+📘 GUIA COMPLETO:
+   → INSTRUCOES_DEPLOY.txt
+   (Passo a passo detalhado com troubleshooting)
+
+
+🔐 CREDENCIAIS E ACESSO
+--------------------------------------------------------------------------------
+
+VPS SSH/SFTP:
+  Host: 72.61.223.226
+  Port: 22
+  User: root
+  Pass: 4xmnqiB@t234
+
+Sistema (após deploy):
+  URL: https://i9script.com
+  Email: admin@i9script.com
+  Senha: admin123
+
+MySQL (configurar no .env):
+  User: i9script
+  Database: i9script_db
+  Password: (você define)
+
+
+⚙️ O QUE OS SCRIPTS FAZEM
+--------------------------------------------------------------------------------
+
+setup-vps.sh:
+  • Atualiza sistema Ubuntu/Debian
+  • Instala Docker + Docker Compose
+  • Instala Nginx
+  • Instala Certbot (para SSL)
+  • Configura firewall
+  • Cria estrutura de diretórios
+
+deploy.sh:
+  • Configura Nginx
+  • Gera certificado SSL Let's Encrypt
+  • Copia arquivos para locais corretos
+  • Inicia containers Docker (MySQL + Backend)
+  • Executa migrations do banco
+  • Verifica saúde dos serviços
+
+restart.sh:
+  • Reinicia todos os containers
+  • Útil após mudanças
+
+logs.sh:
+  • Visualiza logs em tempo real
+  • logs.sh backend (só backend)
+  • logs.sh mysql (só MySQL)
+
+
+🏗️ ARQUITETURA DE PRODUÇÃO
+--------------------------------------------------------------------------------
+
+FRONTEND (React):
+  ├─ Servido pelo Nginx
+  ├─ Build otimizado e minificado
+  ├─ Cache de assets (1 ano)
+  └─ HTTPS com Let's Encrypt
+
+BACKEND (Node.js):
+  ├─ Roda em Docker container
+  ├─ Proxy reverso via Nginx
+  ├─ Socket.IO para real-time
+  └─ API RESTful
+
+DATABASE (MySQL 8.0):
+  ├─ Container Docker isolado
+  ├─ Dados persistentes em volume
+  └─ Acesso local via porta 3306
+
+NGINX:
+  ├─ SSL/TLS (HTTPS)
+  ├─ Proxy para backend
+  ├─ Serve frontend estático
+  └─ WebSocket support
+
+
+⚠️ IMPORTANTE ANTES DE COMEÇAR
+--------------------------------------------------------------------------------
+
+1. ✅ DNS deve estar apontado ANTES do deploy
+   (necessário para gerar SSL)
+
+2. ✅ Anote as senhas que você vai configurar
+   (MySQL, JWT_SECRET, etc)
+
+3. ✅ Teste acesso SSH antes de começar upload
+
+4. ✅ Verifique se servidor tem ao menos:
+   - 1 GB RAM
+   - 10 GB disco
+   - Ubuntu 20.04+ ou Debian 11+
+
+
+🚀 APÓS DEPLOY BEM-SUCEDIDO
+--------------------------------------------------------------------------------
+
+✓ Site estará em: https://i9script.com
+✓ API em: https://i9script.com/api
+✓ SSL/HTTPS funcionando
+✓ Backend rodando em Docker
+✓ MySQL rodando em Docker
+✓ Banco criado e migrado
+
+TESTE TUDO:
+- Acessar site
+- Fazer login
+- Criar ticket
+- Criar projeto
+- Verificar atualizações em tempo real
+
+
+📞 COMANDOS ÚTEIS PÓS-DEPLOY
+--------------------------------------------------------------------------------
+
+Ver status dos containers:
+  docker ps
+
+Ver logs em tempo real:
+  bash /var/www/i9script/scripts/logs.sh
+
+Reiniciar serviços:
+  bash /var/www/i9script/scripts/restart.sh
+
+Acessar MySQL:
+  docker exec -it i9script-mysql-prod mysql -ui9script -p
+
+Backup do banco:
+  docker exec i9script-mysql-prod mysqldump -ui9script -p i9script_db > backup.sql
+
+Restaurar backup:
+  docker exec -i i9script-mysql-prod mysql -ui9script -p i9script_db < backup.sql
+
+
+🔄 PRÓXIMOS PASSOS
+--------------------------------------------------------------------------------
+
+1. [ ] Ler CHECKLIST_PRE_UPLOAD.txt
+2. [ ] Configurar DNS do domínio
+3. [ ] Fazer upload via SFTP
+4. [ ] Executar setup-vps.sh
+5. [ ] Configurar variáveis de ambiente
+6. [ ] Executar deploy.sh
+7. [ ] Testar aplicação
+8. [ ] Alterar senhas padrão
+9. [ ] Configurar backups
+
+
+💡 DICAS
+--------------------------------------------------------------------------------
+
+• Mantenha uma cópia de backup local desta pasta
+• Documente as senhas em gerenciador seguro
+• Configure backup automático do MySQL após deploy
+• Monitore logs regularmente
+• Atualize sistema com: apt update && apt upgrade
+
+
+✅ TUDO PRONTO PARA O DEPLOY!
+--------------------------------------------------------------------------------
+
+Você tem tudo que precisa nesta pasta.
+Siga o CHECKLIST_PRE_UPLOAD.txt passo a passo.
+
+Boa sorte! 🚀
+
+
+================================================================================

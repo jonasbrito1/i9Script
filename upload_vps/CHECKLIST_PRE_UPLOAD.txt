@@ -1,0 +1,201 @@
+================================================================================
+                    CHECKLIST PRÉ-UPLOAD - i9Script para VPS
+================================================================================
+
+✅ ANTES DE FAZER O UPLOAD
+--------------------------------------------------------------------------------
+
+[ ] 1. VERIFICAR ARQUIVOS PREPARADOS
+    - Pasta upload_vps/ contém:
+      ✓ backend/ (código fonte do servidor)
+      ✓ frontend/ (build do React)
+      ✓ config/ (nginx e mysql)
+      ✓ scripts/ (setup, deploy, restart, logs)
+      ✓ docker-compose.production.yml
+      ✓ .env.example
+      ✓ INSTRUCOES_DEPLOY.txt
+
+[ ] 2. CONFIGURAR DNS DO DOMÍNIO
+    CRÍTICO: Fazer ANTES do upload!
+
+    No painel do provedor de domínio:
+
+    Registro A:
+    - Nome: @ (ou deixe em branco)
+    - Tipo: A
+    - Valor: 72.61.223.226
+    - TTL: 3600
+
+    Registro A (www):
+    - Nome: www
+    - Tipo: A
+    - Valor: 72.61.223.226
+    - TTL: 3600
+
+    Testar propagação:
+    - Use: https://dnschecker.org
+    - Aguarde até propagar (15-30 min)
+
+[ ] 3. VERIFICAR ACESSO SSH
+    - IP: 72.61.223.226
+    - Porta: 22
+    - Usuário: root
+    - Senha: 4xmnqiB@t234
+
+    Testar conexão no Termius
+
+[ ] 4. PREPARAR SENHAS DE PRODUÇÃO
+    Gerar senhas fortes para:
+    - MYSQL_ROOT_PASSWORD
+    - MYSQL_PASSWORD
+    - JWT_SECRET
+
+    Anotar em local seguro!
+
+
+✅ DURANTE O UPLOAD VIA SFTP
+--------------------------------------------------------------------------------
+
+[ ] 1. CONECTAR SFTP NO TERMIUS
+    - Host: 72.61.223.226
+    - Port: 22
+    - User: root
+    - Pass: 4xmnqiB@t234
+
+[ ] 2. CRIAR DIRETÓRIO NO SERVIDOR
+    Via SSH executar:
+    mkdir -p /var/www/i9script
+
+[ ] 3. FAZER UPLOAD DOS ARQUIVOS
+    Arrastar pasta "upload_vps" completa para:
+    /var/www/i9script/
+
+    Aguardar upload completar (pode demorar)
+
+[ ] 4. VERIFICAR ESTRUTURA NO SERVIDOR
+    Via SSH executar:
+    ls -la /var/www/i9script/
+
+    Deve mostrar:
+    - backend/
+    - frontend/
+    - config/
+    - scripts/
+    - docker-compose.production.yml
+    - etc...
+
+
+✅ APÓS UPLOAD - EXECUTAR NO SERVIDOR
+--------------------------------------------------------------------------------
+
+[ ] 1. TORNAR SCRIPTS EXECUTÁVEIS
+    cd /var/www/i9script/scripts
+    chmod +x *.sh
+
+[ ] 2. EXECUTAR SETUP DO VPS
+    bash setup-vps.sh
+
+    (Instala Docker, Nginx, Certbot, etc)
+
+[ ] 3. CONFIGURAR VARIÁVEIS DE AMBIENTE
+    cd /var/www/i9script
+    cp .env.example .env
+    nano .env
+
+    Alterar senhas!
+
+[ ] 4. CONFIGURAR BACKEND ENV
+    nano backend/.env.production
+
+    Verificar:
+    - JWT_SECRET
+    - DB_PASSWORD (igual ao .env)
+    - CORS_ORIGIN=https://i9script.com
+
+[ ] 5. EXECUTAR DEPLOY
+    bash /var/www/i9script/scripts/deploy.sh
+
+    Responder "s" quando perguntar sobre DNS
+
+[ ] 6. VERIFICAR SERVIÇOS
+    docker ps
+
+    Deve mostrar containers rodando:
+    - i9script-mysql-prod
+    - i9script-backend-prod
+
+[ ] 7. TESTAR ACESSO
+    - Frontend: https://i9script.com
+    - API: https://i9script.com/api
+    - Login: admin@i9script.com / admin123
+
+
+✅ PÓS-DEPLOY - SEGURANÇA
+--------------------------------------------------------------------------------
+
+[ ] 1. ALTERAR SENHA DO ADMIN
+    Logar no sistema e alterar senha padrão
+
+[ ] 2. VERIFICAR CERTIFICADO SSL
+    Deve ter cadeado verde no navegador
+
+[ ] 3. TESTAR FUNCIONALIDADES
+    - Login/Logout
+    - Criar ticket
+    - Criar projeto
+    - WebSocket (atualizações em tempo real)
+
+[ ] 4. CONFIGURAR BACKUP
+    Criar rotina de backup do MySQL
+
+[ ] 5. MONITORAR LOGS
+    bash /var/www/i9script/scripts/logs.sh
+
+
+✅ TRANSFERIR DOMÍNIO DO SERVIDOR COMPARTILHADO
+--------------------------------------------------------------------------------
+
+[ ] 1. GARANTIR QUE VPS ESTÁ FUNCIONANDO
+    Testar tudo antes de desativar servidor antigo
+
+[ ] 2. EXPORTAR DADOS DO SERVIDOR ANTIGO (se houver)
+    - Backup do banco de dados
+    - Arquivos de usuários
+    - Configurações
+
+[ ] 3. IMPORTAR PARA VPS (se necessário)
+    - Restaurar backup do banco
+    - Copiar arquivos
+
+[ ] 4. ATUALIZAR DNS (se ainda não fez)
+    Apontar para novo IP: 72.61.223.226
+
+[ ] 5. AGUARDAR PROPAGAÇÃO COMPLETA
+    Testar de diferentes locais/redes
+
+[ ] 6. DESATIVAR SERVIDOR ANTIGO
+    Somente após confirmar que tudo funciona
+
+
+✅ COMANDOS ÚTEIS
+--------------------------------------------------------------------------------
+
+Ver status:
+  docker ps
+
+Ver logs:
+  bash /var/www/i9script/scripts/logs.sh
+
+Reiniciar:
+  bash /var/www/i9script/scripts/restart.sh
+
+Parar tudo:
+  docker-compose -f /var/www/i9script/docker-compose.production.yml down
+
+Acessar MySQL:
+  docker exec -it i9script-mysql-prod mysql -ui9script -p
+
+
+================================================================================
+              PRONTO! Siga o checklist passo a passo ✓
+================================================================================

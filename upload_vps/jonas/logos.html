@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logos Jonas Pacheco - Download SVG e PNG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #b0b0b0;
+            margin-bottom: 3rem;
+            font-size: 1.125rem;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .logo-card {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .logo-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .logo-preview {
+            background: #0a0a0a;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+        }
+
+        .logo-preview img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .logo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #00d4ff;
+        }
+
+        .logo-description {
+            color: #b0b0b0;
+            font-size: 0.9375rem;
+            margin-bottom: 1rem;
+        }
+
+        .logo-specs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .spec-badge {
+            background: #1a1a1a;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: #00ff88;
+            border: 1px solid #2a2a2a;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: #0a0a0a;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .download-btn.secondary {
+            background: #1a1a1a;
+            color: #00d4ff;
+            border: 1px solid #2a2a2a;
+        }
+
+        .download-btn.secondary:hover {
+            background: #2a2a2a;
+            border-color: #00d4ff;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            min-width: 200px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: transparent;
+            color: #ffffff;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content button:hover {
+            background: #2a2a2a;
+            color: #00d4ff;
+        }
+
+        .dropdown-content button:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .dropdown-content button:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .resolution-badge {
+            display: inline-block;
+            background: #00d4ff;
+            color: #0a0a0a;
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+
+        .usage-section {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .usage-section h2 {
+            color: #00ff88;
+            margin-bottom: 1rem;
+        }
+
+        .usage-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .usage-section li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .usage-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: #00d4ff;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 Logos Jonas Pacheco</h1>
+        <p class="subtitle">Download das logos profissionais em SVG e PNG (alta resolução) para web, Canva e redes sociais</p>
+
+        <div class="logo-grid">
+            <!-- Logo 1: Completa com Background -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <img id="logo1" src="logo-jonas-dvlpr.svg" alt="Logo Jonas.dvlpr com background">
+                </div>
+                <h3 class="logo-title">Logo Completa - Background Escuro</h3>
+                <p class="logo-description">Logo com background preto, ideal para uso em fundos claros e Canva</p>
+                <div class="logo-specs">
+                    <span class="spec-badge">SVG + PNG</span>
+                    <span class="spec-badge">400x120px</span>
+                    <span class="spec-badge">Com background</span>
+                </div>
+                <div class="download-buttons">
+                    <a href="logo-jonas-dvlpr.svg" download="jonas-dvlpr-logo.svg" class="download-btn">
+                        ⬇️ Download SVG
+                    </a>
+                    <div class="dropdown">
+                        <button class="download-btn secondary">
+                            🖼️ Download PNG ▼
+                        </button>
+                        <div class="dropdown-content">
+                            <button onclick="downloadPNG('logo1', 'jonas-dvlpr-logo', 400, 120, 1)">
+                                Padrão (400x120px) <span class="resolution-badge">1x</span>
+                            </button>
+                            <button onclick="downloadPNG('logo1', 'jonas-dvlpr-logo', 400, 120, 2)">
+                                Alta (800x240px) <span class="resolution-badge">2x</span>
+                            </button>
+                            <button onclick="downloadPNG('logo1', 'jonas-dvlpr-logo', 400, 120, 4)">
+                                Máxima (1600x480px) <span class="resolution-badge">4x</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logo 2: Transparente -->
+            <div class="logo-card">
+                <div class="logo-preview" style="background: linear-gradient(45deg, #1a1a1a 25%, #0f0f0f 25%, #0f0f0f 50%, #1a1a1a 50%, #1a1a1a 75%, #0f0f0f 75%, #0f0f0f);">
+                    <img id="logo2" src="logo-jonas-dvlpr-transparent.svg" alt="Logo Jonas.dvlpr transparente">
+                </div>
+                <h3 class="logo-title">Logo Completa - Transparente</h3>
+                <p class="logo-description">Logo sem background, ideal para Canva e qualquer fundo</p>
+                <div class="logo-specs">
+                    <span class="spec-badge">SVG + PNG</span>
+                    <span class="spec-badge">400x120px</span>
+                    <span class="spec-badge">Transparente</span>
+                </div>
+                <div class="download-buttons">
+                    <a href="logo-jonas-dvlpr-transparent.svg" download="jonas-dvlpr-logo-transparent.svg" class="download-btn">
+                        ⬇️ Download SVG
+                    </a>
+                    <div class="dropdown">
+                        <button class="download-btn secondary">
+                            🖼️ Download PNG ▼
+                        </button>
+                        <div class="dropdown-content">
+                            <button onclick="downloadPNG('logo2', 'jonas-dvlpr-logo-transparent', 400, 120, 1)">
+                                Padrão (400x120px) <span class="resolution-badge">1x</span>
+                            </button>
+                            <button onclick="downloadPNG('logo2', 'jonas-dvlpr-logo-transparent', 400, 120, 2)">
+                                Alta (800x240px) <span class="resolution-badge">2x</span>
+                            </button>
+                            <button onclick="downloadPNG('logo2', 'jonas-dvlpr-logo-transparent', 400, 120, 4)">
+                                Máxima (1600x480px) <span class="resolution-badge">4x</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logo 3: Ícone -->
+            <div class="logo-card">
+                <div class="logo-preview">
+                    <img id="logo3" src="logo-jonas-icon.svg" alt="Logo Jonas ícone" style="max-width: 150px;">
+                </div>
+                <h3 class="logo-title">Ícone/Avatar</h3>
+                <p class="logo-description">Logo quadrada para perfil, avatar, redes sociais e Canva</p>
+                <div class="logo-specs">
+                    <span class="spec-badge">SVG + PNG</span>
+                    <span class="spec-badge">200x200px</span>
+                    <span class="spec-badge">Circular</span>
+                </div>
+                <div class="download-buttons">
+                    <a href="logo-jonas-icon.svg" download="jonas-icon.svg" class="download-btn">
+                        ⬇️ Download SVG
+                    </a>
+                    <div class="dropdown">
+                        <button class="download-btn secondary">
+                            🖼️ Download PNG ▼
+                        </button>
+                        <div class="dropdown-content">
+                            <button onclick="downloadPNG('logo3', 'jonas-icon', 200, 200, 1)">
+                                Padrão (200x200px) <span class="resolution-badge">1x</span>
+                            </button>
+                            <button onclick="downloadPNG('logo3', 'jonas-icon', 200, 200, 2)">
+                                Alta (400x400px) <span class="resolution-badge">2x</span>
+                            </button>
+                            <button onclick="downloadPNG('logo3', 'jonas-icon', 200, 200, 4)">
+                                Máxima (800x800px) <span class="resolution-badge">4x</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Uso -->
+        <div class="usage-section">
+            <h2>📖 Como Usar</h2>
+
+            <h3 style="color: #00d4ff; margin-top: 1.5rem;">No HTML:</h3>
+            <div class="code-block">
+                <code>&lt;img src="logo-jonas-dvlpr.svg" alt="Jonas Pacheco Logo"&gt;</code>
+            </div>
+
+            <h3 style="color: #00d4ff; margin-top: 1.5rem;">No CSS:</h3>
+            <div class="code-block">
+                <code>.logo {<br>
+                &nbsp;&nbsp;background-image: url('logo-jonas-dvlpr.svg');<br>
+                &nbsp;&nbsp;background-size: contain;<br>
+                &nbsp;&nbsp;background-repeat: no-repeat;<br>
+                }</code>
+            </div>
+
+            <h3 style="color: #00d4ff; margin-top: 1.5rem;">Formatos Disponíveis:</h3>
+            <ul>
+                <li><strong>SVG:</strong> Vetor escalável, sem perda de qualidade, ideal para web</li>
+                <li><strong>PNG:</strong> Imagem bitmap em 3 resoluções (1x, 2x, 4x) para Canva e redes sociais</li>
+                <li><strong>Resolução 4x:</strong> Até 1600x480px (logos) e 800x800px (ícone) - perfeito para impressão</li>
+            </ul>
+
+            <h3 style="color: #00d4ff; margin-top: 1.5rem;">📐 Qual resolução escolher?</h3>
+            <ul>
+                <li><strong>1x (Padrão):</strong> Para web, perfis de redes sociais</li>
+                <li><strong>2x (Alta):</strong> Para Retina displays, posts em HD</li>
+                <li><strong>4x (Máxima):</strong> Para Canva, impressão, banners, thumbnails do YouTube</li>
+            </ul>
+
+            <h3 style="color: #00d4ff; margin-top: 1.5rem;">Especificações:</h3>
+            <ul>
+                <li>Fonte: Fira Code (monospace, tech style)</li>
+                <li>Cores principais: #00d4ff (azul) e #00ff88 (verde)</li>
+                <li>Gradiente: Linear de azul para verde</li>
+                <li>Efeito: Glow/sombra para destaque</li>
+            </ul>
+
+            <h3 style="color: #00d4ff; margin-top: 1.5rem;">🎨 Usar no Canva:</h3>
+            <ul>
+                <li>Clique em "Download PNG" e escolha resolução <strong>Máxima (4x)</strong></li>
+                <li>No Canva: Upload → Faça upload de arquivos</li>
+                <li>Arraste o PNG para seu design</li>
+                <li>Use a versão <strong>transparente</strong> para sobrepor em qualquer fundo</li>
+                <li>Use a versão <strong>com background</strong> para designs minimalistas</li>
+            </ul>
+
+            <h3 style="color: #00d4ff; margin-top: 1.5rem;">Onde usar:</h3>
+            <ul>
+                <li>Header/Navbar do site</li>
+                <li>Footer</li>
+                <li>Redes sociais (perfil, cover, stories)</li>
+                <li>Posts no Instagram, LinkedIn, Facebook</li>
+                <li>Thumbnails do YouTube</li>
+                <li>Assinatura de email</li>
+                <li>Apresentações e documentos</li>
+                <li>GitHub profile</li>
+                <li>LinkedIn banner</li>
+            </ul>
+
+            <h3 style="color: #00d4ff; margin-top: 1.5rem;">Variações de cor:</h3>
+            <p style="color: #b0b0b0; margin-top: 0.5rem;">
+                Os arquivos SVG podem ser editados em qualquer editor de texto ou software de design (Figma, Illustrator, Inkscape) para alterar cores conforme necessário.
+            </p>
+        </div>
+
+        <!-- Paleta de Cores -->
+        <div class="usage-section" style="margin-top: 2rem;">
+            <h2>🎨 Paleta de Cores</h2>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+                <div style="flex: 1; min-width: 150px;">
+                    <div style="background: #00d4ff; height: 80px; border-radius: 8px; margin-bottom: 0.5rem;"></div>
+                    <p style="color: #b0b0b0; font-size: 0.875rem;">Azul Ciano<br><strong>#00d4ff</strong></p>
+                </div>
+                <div style="flex: 1; min-width: 150px;">
+                    <div style="background: #00ff88; height: 80px; border-radius: 8px; margin-bottom: 0.5rem;"></div>
+                    <p style="color: #b0b0b0; font-size: 0.875rem;">Verde Neon<br><strong>#00ff88</strong></p>
+                </div>
+                <div style="flex: 1; min-width: 150px;">
+                    <div style="background: #0a0a0a; height: 80px; border-radius: 8px; margin-bottom: 0.5rem; border: 1px solid #2a2a2a;"></div>
+                    <p style="color: #b0b0b0; font-size: 0.875rem;">Fundo Escuro<br><strong>#0a0a0a</strong></p>
+                </div>
+                <div style="flex: 1; min-width: 150px;">
+                    <div style="background: linear-gradient(135deg, #00d4ff, #00ff88); height: 80px; border-radius: 8px; margin-bottom: 0.5rem;"></div>
+                    <p style="color: #b0b0b0; font-size: 0.875rem;">Gradiente<br><strong>Azul → Verde</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Converte SVG para PNG em alta resolução e faz download
+         * @param {string} imgId - ID da imagem SVG
+         * @param {string} filename - Nome do arquivo (sem extensão)
+         * @param {number} baseWidth - Largura base do SVG
+         * @param {number} baseHeight - Altura base do SVG
+         * @param {number} scale - Escala de resolução (1x, 2x, 4x)
+         */
+        function downloadPNG(imgId, filename, baseWidth, baseHeight, scale) {
+            const img = document.getElementById(imgId);
+            const width = baseWidth * scale;
+            const height = baseHeight * scale;
+
+            // Criar canvas temporário
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+
+            // Criar nova imagem para carregar o SVG
+            const svgImg = new Image();
+            svgImg.crossOrigin = 'anonymous';
+
+            svgImg.onload = function() {
+                // Desenhar SVG no canvas em alta resolução
+                ctx.drawImage(svgImg, 0, 0, width, height);
+
+                // Converter canvas para PNG blob
+                canvas.toBlob(function(blob) {
+                    // Criar link de download
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `${filename}-${width}x${height}.png`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 'image/png', 1.0);
+            };
+
+            svgImg.onerror = function() {
+                alert('Erro ao carregar SVG. Tente novamente.');
+            };
+
+            // Carregar SVG
+            svgImg.src = img.src;
+        }
+    </script>
+</body>
+</html>
